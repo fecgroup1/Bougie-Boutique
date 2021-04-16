@@ -1,22 +1,22 @@
 const express = require('express');
-const App = express();
+const app = express();
 const path = require('path')
 const routers = require('./routers');
-cosnt bodyParser = require('./body-parser')
+const bodyParser = require('body-parser')
 
 
 var port = 33212;
 
-App.use(bodyParser.json());
+app.use(bodyParser.json());
 
-App.use(express.static(__dirname + '../client/dist'));
+app.use(express.static(__dirname + '/../client/dist'));
 
-App.use('/product', routers.productRouter);
+app.use('/product', routers.productRouter);
 
-App.use('/reviews', router.reviewRouter);
+// App.use('/reviews', routers.reviewRouter);
 
-App.use('/qa', router.qaRouter);
+// App.use('/qa', routers.qaRouter);
 
-App.listen(port, ()=> {
+app.listen(port, ()=> {
   console.log(`listening on ${port}`);
 })

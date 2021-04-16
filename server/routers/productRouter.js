@@ -1,18 +1,16 @@
 const router = require('express').Router();
-const Axios = require('axios');
-const TOKEN = require('./../config.js');
+const axios = require('axios');
+const TOKEN = require('../../.config.js');
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/';
 
 axios.defaults.headers.common['Authorization'] = TOKEN;
 
-router.route()
-
 router.route('/:pid/related')
-.get((req, res) => {
-req.body.map((pid) => {
-  getProductData(pid);
-})
-}
+  .get((req, res) => {
+    req.body.map((pid) => {
+      getProductData(pid);
+    });
+  });
 
 router.route('/:pid')
 .get((req, res) => {
@@ -20,15 +18,17 @@ router.route('/:pid')
   getProductData(pid)
   .then((productData) => {
     fnlRes.product = productData;
-    getStyles(pid);
+    getStyles(pid)
     .then((stylesData) => {
       fnlRes.styles = stylesData;
 
-    }).then((getReviews) => {
-
-    }).then((getMeta) => {
-
     })
+    // .then((getReviews) => {
+
+    // })
+    // .then((getMeta) => {
+
+    // })
     .catch((err) => {
       console.log('product Router Error ln 33: ', err)
     })
@@ -81,14 +81,14 @@ calcStars = (ratings) => {
 
 }
 
-getRelatedProducts: (productId) => {
+// getRelatedProducts: (productId) => {
 
-},
+// },
 
-getReviews: (productId) => {
+// getReviews: (productId) => {
 
-},
+// },
 
 
 
-  module.exports = router;
+module.exports = router;

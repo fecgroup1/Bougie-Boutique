@@ -1,3 +1,3 @@
-exports.product = require('productRouter');
-exports.reviews = require('reviewRouter');
-exports.qa = require('qaRouter');
+exports.productRouter = require('./productRouter.js');
+exports.reviewRouter = require('./reviewRouter.js');
+exports.qaRouter = require('./qaRouter.js');
