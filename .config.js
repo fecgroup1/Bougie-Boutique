@@ -1,3 +1,1 @@
-const TOKEN = '';
-
-export default TOKEN;
+module.exports.TOKEN = '';
