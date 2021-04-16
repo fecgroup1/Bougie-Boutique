@@ -11,7 +11,7 @@ class App extends React.Component {
     // this.state = {
     //   currentProduct:{
     //     styles:[{}],
-    //     relatedIds:[],
+ e   //     relatedIds:[],
     //     reviews: {
     //       averageRating: 0,
     //       reviews[{}]
@@ -28,7 +28,10 @@ class App extends React.Component {
       <div>
         <h1>Hola Mundo</h1>
         {/* <Nav/>
-        <ProductDetail/>
+        <Overview
+          state={this.state}
+          method={}
+        />
         <RelatedProducts/>
         <QandA/>
         <ReViews/> */}

@@ -1,4 +1,4 @@
-import Axios from 'axios'
+import Axios from 'axios';
 
 const productMethods = {
   getProduct: (productId) => {
@@ -11,9 +11,21 @@ const productMethods = {
 
   getRelatedProducts: (productId) => {
 
-  }
+  },
+
+  getReviews: (productId) => {
+
+  },
+
+  getMeta: (productId) => {
+    // call calcStars here
+  },
 
   postCart: (productId) => {
+
+  },
+
+  calcStars: (metaData) => {
 
   }
 }
