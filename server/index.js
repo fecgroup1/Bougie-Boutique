@@ -2,8 +2,12 @@ const express = require('express');
 const App = express();
 const path =require('path')
 
-var port = 3321;
+var port = 33212;
 
-app.use(express.static('../client/dist'));
+App.use(express.static(__dirname + '../client/dist'));
+
+App.get('/', (req,res) => {
+  res.send('')
+});
 
 App.listen(port, ()=>{ console.log(`listening on ${port}`)})

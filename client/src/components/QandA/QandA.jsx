@@ -4,7 +4,7 @@ import Question from './Question.js'
 const QandA = ({questions}) => (
   <WidgetContainer>
     <Question
-      loadMore={}
+      // loadMore={}
     />
   </WidgetContainer>
 

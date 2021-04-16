@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDom from 'react-dom'
-import QandA from './QandA.jsx',
+import ReactDom from 'react-dom';
+import QandA from './Components/QandA/QandA.jsx';
+import RelatedProducts from './Components/RelatedProducts';
 
 class App extends React.Component {
 

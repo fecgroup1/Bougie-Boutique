@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const BUILD_DIR = path.resolve(__dirname, 'dist');
+const BUILD_DIR = path.resolve(__dirname, 'client/src/dist');
 const APP_DIR = path.resolve(__dirname, 'client/src');
 
 module.exports = {
