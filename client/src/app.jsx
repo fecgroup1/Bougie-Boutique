@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import QandA from './Components/QandA/QandA.jsx';
+import Store from './Utils/Store.js'
+import Overview from './Components/Overview'
+import QandA from './Components/QandA';
 import RelatedProducts from './Components/RelatedProducts';
+import RatingsReviews from './Components/RatingsReviews';
 
 class App extends React.Component {
 
@@ -11,7 +14,7 @@ class App extends React.Component {
     // this.state = {
     //   currentProduct:{
     //     styles:[{}],
- e   //     relatedIds:[],
+    //     relatedIds:[],
     //     reviews: {
     //       averageRating: 0,
     //       reviews[{}]
@@ -27,14 +30,19 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hola Mundo</h1>
-        {/* <Nav/>
+        <Nav/>
         <Overview
-          state={this.state}
-          method={}
+          store={<Store />}
         />
-        <RelatedProducts/>
-        <QandA/>
-        <ReViews/> */}
+        <RelatedProducts
+          store={<Store />}
+        />
+        <QandA
+          store={<Store />}
+        />
+        <Reviews
+          store={<Store />}
+        />
       </div>
     )
   }
