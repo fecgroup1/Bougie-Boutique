@@ -4,8 +4,8 @@
   "description": "fec",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "local-test": "jest --setupFiles dotenv/config",
+    "circle-ci-test": "jest",
+    "test": "jest --setupFiles dotenv/config",
     "dev-react": "webpack --config ./webpack.config.js --mode development -w",
     "server": " nodemon ./server/index.js"
   },
