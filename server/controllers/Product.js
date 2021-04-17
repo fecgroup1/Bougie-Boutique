@@ -89,7 +89,7 @@ module.exports = {
   },
 
   getRelated: (pid) => {
-    return axios.get(`${url}${pid}/related`)
+    return axios.get(`${url}products/${pid}/related`)
       .then((response) => {
         return response.data;
       })
