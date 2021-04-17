@@ -1,10 +1,6 @@
 const controllers = require('./index.js');
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/';
-<<<<<<< HEAD
 const TOKEN = process.env.TOKEN || require('../../config.js')
-=======
-const TOKEN = process.env.TOKEN || require('./../../config.js');
->>>>>>> update order of TOKEN args for circle ci
 const axios = require('axios');
 
 axios.defaults.headers.common['Authorization'] = TOKEN;
