@@ -13,7 +13,6 @@ module.exports = {
   getForRelated: (pid) => {
     let fnlRes = {};
     return module.exports.getProductData(pid)
-<<<<<<< HEAD
     .then((productData) => {
       fnlRes.product = productData;
       return module.exports.getStyles(pid)
@@ -35,29 +34,6 @@ module.exports = {
       return fnlRes;
     })
   },
-=======
-      .then((productData) => {
-        fnlRes.product = productData;
-        return module.exports.getStyles(pid)
-      })
-      .then((stylesData) => {
-        fnlRes.styles = stylesData;
-        return controllers.review.getMeta(pid)
-      })
-      .then((metaData) => {
-        fnlRes.meta = metaData;
-        return controllers.review.getReviews(pid)
-      })
-      .then((reviewsData) => {
-        fnlRes.reviews = reviewsData;
-        return fnlRes;
-      })
-      .catch((err) => {
-        console.log('Error getting data for related', err);
-        return fnlRes;
-      });
-    },
->>>>>>> refactor getForRelated promise chain, bug fixes, succesfully completed call using method
 
   getAll: (pid) => {
     let fnlRes = {};
@@ -79,7 +55,6 @@ module.exports = {
       return fnlRes;
     })
   },
-
 
   // ******************************************
   // INDIVIDUAL GETS
