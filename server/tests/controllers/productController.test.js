@@ -38,3 +38,21 @@ test('getStyles retrieves style ids, name, original price, sale price, and photo
   .then((data) => cb(data))
   .catch((err) => cb(err));
 });
+
+test('getRelated retriieves the related procducts which is in the form of an array of numbers', done => {
+  const cb = (data) => {
+    try {
+      expect(data[0]).toBe(13024);
+      expect(data[1]).toBe(13025);
+      expect(data[2]).toBe(13030);
+      expect(data[3]).toBe(13029);
+      done();
+    } catch(err) {
+      done(err);
+    }
+  }
+
+  _.getRelated(13023)
+  .then((data) => cb(data))
+  .catch((err) => cb(err));
+});

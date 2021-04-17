@@ -3,9 +3,11 @@ const app = express();
 const routers = require('./routers');
 const bodyParser = require('body-parser')
 const controller = require('./controllers')
+const morgan = require('morgan')
 
+const port = 33212;
 
-var port = 33212;
+app.use(morgan('dev'))
 
 app.use(bodyParser.json());
 
