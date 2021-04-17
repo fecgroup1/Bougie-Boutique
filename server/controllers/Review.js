@@ -1,5 +1,5 @@
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/';
-const TOKEN = require('./../../config.js');
+const TOKEN = process.env.TOKEN || require('../../config.js');
 const axios = require('axios');
 
 axios.defaults.headers.common['Authorization'] = TOKEN;
