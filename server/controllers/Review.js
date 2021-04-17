@@ -42,6 +42,7 @@ module.exports = {
       .then((response) => {
         let reviews = [];
         var listOfReviews= response.data.results;
+        console.log(listOfReviews)
         for (var i=0; i< listOfReviews.length; i++){
           var currentReview = listOfReviews[i];
           reviews.push({
