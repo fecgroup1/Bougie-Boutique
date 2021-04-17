@@ -1,10 +1,12 @@
-// const router = require('express').Router();
-// const axios = require('axios');
-// const TOKEN = require('./../../config.js');
-// const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/';
+const router = require('express').Router();
+const controllers = require('./../controllers');
 
-// axios.defaults.headers.common['Authorization'] = TOKEN;
+ router.route('/')
+ .get((req, res)=>{
+   controllers.review.getReviews(req.query.product_id)
+   .then((data)=> res.send(data))
+   .catch((err)=>res.end())
+ })
 
-// router.route('/')
-// .get(url);
 
+ module.exports = router;

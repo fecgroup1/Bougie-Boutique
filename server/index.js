@@ -15,7 +15,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.use('/product', routers.productRouter);
 
-// app.use('/reviews', routers.reviewRouter);
+app.use('/reviews', routers.reviewRouter);
 
 app.use('/qa', controller.qa.getQA);
 
