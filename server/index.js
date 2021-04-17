@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const routers = require('./routers');
 const bodyParser = require('body-parser')
-const qaController = require('./controllers/QandA.js')
+const controller = require('./controllers')
 
 
 var port = 33212;
@@ -15,7 +15,7 @@ app.use('/product', routers.productRouter);
 
 // app.use('/reviews', routers.reviewRouter);
 
-// app.use('/qa', qaController);
+app.use('/qa', controller.qa.qaController);
 
 app.listen(port, ()=> {
   console.log(`listening on ${port}`);

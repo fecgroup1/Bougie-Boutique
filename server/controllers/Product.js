@@ -59,12 +59,12 @@ module.exports = {
   // INDIVIDUAL GETS
   // ******************************************
   getProductData: (pid) => {
-    return axios.get(`${url}/${pid}`)
+    return axios.get(`${url}products/${pid}`)
       .then((response) => {
         let productData = {
           name: response.data.name,
           slogan: response.data.slogan,
-          description: response.data.slogan,
+          description: response.data.description,
           category: response.data.category,
           features: response.data.features,
         };
@@ -77,7 +77,7 @@ module.exports = {
   },
 
   getStyles: (pid) => {
-    return axios.get(`${url}/${pid}/styles`)
+    return axios.get(`${url}products/${pid}/styles`)
       .then((response) => {
         return response.data.results;
       })
@@ -88,7 +88,7 @@ module.exports = {
   },
 
   getRelated: (pid) => {
-    return axios.get(`${url}/${pid}/related`)
+    return axios.get(`${url}${pid}/related`)
       .then((response) => {
         return response.data;
       })
