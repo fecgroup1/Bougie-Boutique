@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Store from './Utils/Store.js'
+// import { Store, ProductAPI, QuestionAPI, ReviewAPI } from './Utils'
 import Overview from './Components/Overview'
 import QandA from './Components/QandA';
 import RelatedProducts from './Components/RelatedProducts';
