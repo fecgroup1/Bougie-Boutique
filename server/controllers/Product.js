@@ -1,6 +1,6 @@
 const controllers = require('./index.js');
 const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/';
-const TOKEN = require('./../../config.js');
+const TOKEN = process.env.TOKEN || require('../../config.js')
 const axios = require('axios');
 
 axios.defaults.headers.common['Authorization'] = TOKEN;
@@ -11,47 +11,48 @@ module.exports = {
   // BATCH GETS
   // ******************************************
   getForRelated: (pid) => {
-    let fnlRes;
+    let fnlRes = {};
     return module.exports.getProductData(pid)
     .then((productData) => {
       fnlRes.product = productData;
-      module.exports.getStyles(pid)
-      .then((stylesData) => {
-        fnlRes.styles = stylesData;
-        controllers.review.getMeta(pid)
-        .then((metaData) => {
-          fnlRes.meta = metaData;
-          controllers.review.getReviews(pid)
-          .then((reviewsData) => {
-            fnlRes.reviews = reviewsData;
-            return fnlRes;
-          })
-          .catch((err) => {
-            console.log('Error getting data for related', err);
-            return fnlRes;
-          });
-        })
-      })
-    })},
+      return module.exports.getStyles(pid)
+    })
+    .then((stylesData) => {
+      fnlRes.styles = stylesData;
+      return controllers.review.getMeta(pid)
+    })
+    .then((metaData) => {
+      fnlRes.meta = metaData;
+      return controllers.review.getReviews(pid)
+    })
+    .then((reviewsData) => {
+      fnlRes.reviews = reviewsData;
+      return fnlRes;
+    })
+    .catch((err) => {
+      console.log('Error getting data for related', err);
+      return fnlRes;
+    })
+  },
 
   getAll: (pid) => {
     let fnlRes = {};
     return module.exports.getForRelated(pid)
     .then((resObj) => {
       fnlRes = resObj;
-      controllers.qa.getQA(pid)
-      .then((qaData) => {
-        fnlRes.qa = qaData;
-        module.exports.getRelated(pid)
-        .then((related) => {
-          fnlRes.related = related;
-          return fnlRes;
-        })
-        .catch((err) => {
-          console.log('Error getting all data for product', err);
-          return fnlRes;
-        })
-      })
+      return controllers.qa.getQA(pid)
+    })
+    .then((qaData) => {
+      fnlRes.qa = qaData;
+      return module.exports.getRelated(pid)
+    })
+    .then((related) => {
+      fnlRes.related = related;
+      return fnlRes;
+    })
+    .catch((err) => {
+      console.log('Error getting all data for product', err);
+      return fnlRes;
     })
   },
 

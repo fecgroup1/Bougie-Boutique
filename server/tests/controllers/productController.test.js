@@ -1,4 +1,4 @@
-const _ = require('./../../controllers/Product.js');
+const _ = require('../../controllers/Product.js');
 
 test('getProductData retrieves name, slogan, description, category, and features', done => {
   function cb(data) {

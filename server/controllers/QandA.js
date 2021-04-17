@@ -1,6 +1,6 @@
 const axios = require('axios');
-const TOKEN = require('./../../config.js');
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo/'
+const TOKEN = process.env.TOKEN || require('../../config.js');
+const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo'
 
 module.exports = {
   qaController: (req, res) => {
@@ -25,7 +25,26 @@ module.exports = {
   },
 
   getQA: (productId) => {
-    return axios.get(`${url}/qa/questions/?product_id=${productId}`)
+    return axios({
+      method: 'GET',
+      url: `${url}/qa/questions/?product_id=${productId}`,
+      headers: {
+        'Authorization': `${TOKEN}`
+      }
+    })
+      .then((response) => {
+        return response.data.results
+      })
+  },
+
+  getAnswers: (questionId) => {
+    return axios({
+      method: 'GET',
+      url: `${url}/qa/questions/${questionId}/answers`,
+      headers: {
+        'Authorization': `${TOKEN}`
+      }
+    })
       .then((response) => {
         return response.data.results
       })
