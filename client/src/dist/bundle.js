@@ -393,113 +393,6 @@ eval("\n\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/
 
 /***/ }),
 
-/***/ "./client/src/Components/Nav/index.js":
-/*!********************************************!*\
-  !*** ./client/src/Components/Nav/index.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar Nav = function Nav() {\n  return {\n    /* <div>NavBar</div> */\n  };\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Nav);\n\n//# sourceURL=webpack://fec/./client/src/Components/Nav/index.js?");
-
-/***/ }),
-
-/***/ "./client/src/Components/Overview/index.js":
-/*!*************************************************!*\
-  !*** ./client/src/Components/Overview/index.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../styles */ \"./client/src/styles/index.js\");\n\n\n\nvar Layout = function Layout(_ref) {\n  var questions = _ref.questions;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_styles__WEBPACK_IMPORTED_MODULE_1__.default, null);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Layout);\n\n//# sourceURL=webpack://fec/./client/src/Components/Overview/index.js?");
-
-/***/ }),
-
-/***/ "./client/src/Components/QandA/Question.js":
-/*!*************************************************!*\
-  !*** ./client/src/Components/QandA/Question.js ***!
-  \*************************************************/
-/***/ (() => {
-
-eval("\n\n//# sourceURL=webpack://fec/./client/src/Components/QandA/Question.js?");
-
-/***/ }),
-
-/***/ "./client/src/Components/QandA/index.js":
-/*!**********************************************!*\
-  !*** ./client/src/Components/QandA/index.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../styles */ \"./client/src/styles/index.js\");\n/* harmony import */ var _Question_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Question.js */ \"./client/src/Components/QandA/Question.js\");\n/* harmony import */ var _Question_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Question_js__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nvar QandA = function QandA(_ref) {\n  var questions = _ref.questions;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_styles__WEBPACK_IMPORTED_MODULE_1__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((_Question_js__WEBPACK_IMPORTED_MODULE_2___default()) // loadMore={}\n  , null));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (QandA);\n\n//# sourceURL=webpack://fec/./client/src/Components/QandA/index.js?");
-
-/***/ }),
-
-/***/ "./client/src/Components/RatingsReviews/index.js":
-/*!*******************************************************!*\
-  !*** ./client/src/Components/RatingsReviews/index.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../styles */ \"./client/src/styles/index.js\");\n\n\n\nvar Layout = function Layout(_ref) {\n  var questions = _ref.questions;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_styles__WEBPACK_IMPORTED_MODULE_1__.default, null);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Layout);\n\n//# sourceURL=webpack://fec/./client/src/Components/RatingsReviews/index.js?");
-
-/***/ }),
-
-/***/ "./client/src/Components/RelatedProducts/ProductCard.js":
-/*!**************************************************************!*\
-  !*** ./client/src/Components/RelatedProducts/ProductCard.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _Styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Styles */ \"./client/src/Styles/index.js\");\n\n\n\nvar ProductCard = function ProductCard(_ref) {\n  var Product = _ref.Product;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(ProductCardContainer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Styles__WEBPACK_IMPORTED_MODULE_1__.default, null, \"title\"));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductCard);\n\n//# sourceURL=webpack://fec/./client/src/Components/RelatedProducts/ProductCard.js?");
-
-/***/ }),
-
-/***/ "./client/src/Components/RelatedProducts/index.js":
-/*!********************************************************!*\
-  !*** ./client/src/Components/RelatedProducts/index.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../styles */ \"./client/src/styles/index.js\");\n/* harmony import */ var _ProductCard_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProductCard.js */ \"./client/src/Components/RelatedProducts/ProductCard.js\");\n\n\n\n\nvar Layout = function Layout(_ref) {\n  var questions = _ref.questions;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_styles__WEBPACK_IMPORTED_MODULE_1__.default, null);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Layout);\n\n//# sourceURL=webpack://fec/./client/src/Components/RelatedProducts/index.js?");
-
-/***/ }),
-
-/***/ "./client/src/Styles/ProductCard.js":
-/*!******************************************!*\
-  !*** ./client/src/Styles/ProductCard.js ***!
-  \******************************************/
-/***/ (() => {
-
-eval("\n\n//# sourceURL=webpack://fec/./client/src/Styles/ProductCard.js?");
-
-/***/ }),
-
-/***/ "./client/src/Styles/WidgetContainer.js":
-/*!**********************************************!*\
-  !*** ./client/src/Styles/WidgetContainer.js ***!
-  \**********************************************/
-/***/ (() => {
-
-eval("\n\n//# sourceURL=webpack://fec/./client/src/Styles/WidgetContainer.js?");
-
-/***/ }),
-
-/***/ "./client/src/Styles/index.js":
-/*!************************************!*\
-  !*** ./client/src/Styles/index.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"WidgetContainer\": () => (/* reexport safe */ _WidgetContainer_js__WEBPACK_IMPORTED_MODULE_0__.WidgetContainer),\n/* harmony export */   \"ProductCard\": () => (/* reexport safe */ _ProductCard_js__WEBPACK_IMPORTED_MODULE_1__.ProductCard)\n/* harmony export */ });\n/* harmony import */ var _WidgetContainer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WidgetContainer.js */ \"./client/src/Styles/WidgetContainer.js\");\n/* harmony import */ var _WidgetContainer_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_WidgetContainer_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ProductCard_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductCard.js */ \"./client/src/Styles/ProductCard.js\");\n/* harmony import */ var _ProductCard_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ProductCard_js__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\n//# sourceURL=webpack://fec/./client/src/Styles/index.js?");
-
-/***/ }),
-
 /***/ "./client/src/Utils/ProductAPI.js":
 /*!****************************************!*\
   !*** ./client/src/Utils/ProductAPI.js ***!
@@ -542,16 +435,6 @@ eval("\n\n//# sourceURL=webpack://fec/./client/src/Utils/ReviewAPI.js?");
 
 /***/ }),
 
-/***/ "./client/src/Utils/SaveOutfit.js":
-/*!****************************************!*\
-  !*** ./client/src/Utils/SaveOutfit.js ***!
-  \****************************************/
-/***/ (() => {
-
-eval("\n\n//# sourceURL=webpack://fec/./client/src/Utils/SaveOutfit.js?");
-
-/***/ }),
-
 /***/ "./client/src/Utils/Store.js":
 /*!***********************************!*\
   !*** ./client/src/Utils/Store.js ***!
@@ -570,7 +453,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Store\": () => (/* reexport safe */ _Store_js__WEBPACK_IMPORTED_MODULE_0__.Store),\n/* harmony export */   \"ProductAPI\": () => (/* reexport safe */ _ProductAPI_js__WEBPACK_IMPORTED_MODULE_1__.ProductAPI),\n/* harmony export */   \"RelatedAPI\": () => (/* reexport safe */ _RelatedAPI_js__WEBPACK_IMPORTED_MODULE_2__.RelatedAPI),\n/* harmony export */   \"ReviewAPI\": () => (/* reexport safe */ _ReviewAPI_js__WEBPACK_IMPORTED_MODULE_3__.ReviewAPI),\n/* harmony export */   \"QuestionAPI\": () => (/* reexport safe */ _ProductAPI_js__WEBPACK_IMPORTED_MODULE_1__.QuestionAPI),\n/* harmony export */   \"SaveOutfit\": () => (/* reexport safe */ _SaveOutfit_js__WEBPACK_IMPORTED_MODULE_4__.SaveOutfit)\n/* harmony export */ });\n/* harmony import */ var _Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Store.js */ \"./client/src/Utils/Store.js\");\n/* harmony import */ var _ProductAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductAPI.js */ \"./client/src/Utils/ProductAPI.js\");\n/* harmony import */ var _RelatedAPI_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RelatedAPI.js */ \"./client/src/Utils/RelatedAPI.js\");\n/* harmony import */ var _RelatedAPI_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_RelatedAPI_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _ReviewAPI_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ReviewAPI.js */ \"./client/src/Utils/ReviewAPI.js\");\n/* harmony import */ var _ReviewAPI_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_ReviewAPI_js__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _SaveOutfit_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SaveOutfit.js */ \"./client/src/Utils/SaveOutfit.js\");\n/* harmony import */ var _SaveOutfit_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_SaveOutfit_js__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\n\n\n\n\n//# sourceURL=webpack://fec/./client/src/Utils/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Store\": () => (/* reexport safe */ _Store_js__WEBPACK_IMPORTED_MODULE_0__.Store),\n/* harmony export */   \"ProductAPI\": () => (/* reexport safe */ _ProductAPI_js__WEBPACK_IMPORTED_MODULE_1__.ProductAPI),\n/* harmony export */   \"RelatedAPI\": () => (/* reexport safe */ _RelatedAPI_js__WEBPACK_IMPORTED_MODULE_2__.RelatedAPI),\n/* harmony export */   \"ReviewAPI\": () => (/* reexport safe */ _ReviewAPI_js__WEBPACK_IMPORTED_MODULE_3__.ReviewAPI),\n/* harmony export */   \"QuestionAPI\": () => (/* reexport safe */ _ProductAPI_js__WEBPACK_IMPORTED_MODULE_1__.QuestionAPI)\n/* harmony export */ });\n/* empty/unused harmony star reexport */\n/* harmony import */ var _Store_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Store.js */ \"./client/src/Utils/Store.js\");\n/* harmony import */ var _ProductAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductAPI.js */ \"./client/src/Utils/ProductAPI.js\");\n/* harmony import */ var _RelatedAPI_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RelatedAPI.js */ \"./client/src/Utils/RelatedAPI.js\");\n/* harmony import */ var _RelatedAPI_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_RelatedAPI_js__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _ReviewAPI_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ReviewAPI.js */ \"./client/src/Utils/ReviewAPI.js\");\n/* harmony import */ var _ReviewAPI_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_ReviewAPI_js__WEBPACK_IMPORTED_MODULE_3__);\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './SaveOutfit.js'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\n\n\n\n\n\n\n//# sourceURL=webpack://fec/./client/src/Utils/index.js?");
 
 /***/ }),
 
@@ -581,38 +464,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ \"./node_modules/@babel/runtime/helpers/esm/classCallCheck.js\");\n/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ \"./node_modules/@babel/runtime/helpers/esm/createClass.js\");\n/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ \"./node_modules/@babel/runtime/helpers/esm/inherits.js\");\n/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ \"./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js\");\n/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ \"./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Utils */ \"./client/src/Utils/index.js\");\n/* harmony import */ var _Components_Nav__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Components/Nav */ \"./client/src/Components/Nav/index.js\");\n/* harmony import */ var _Components_Overview__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Components/Overview */ \"./client/src/Components/Overview/index.js\");\n/* harmony import */ var _Components_QandA__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Components/QandA */ \"./client/src/Components/QandA/index.js\");\n/* harmony import */ var _Components_RelatedProducts__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Components/RelatedProducts */ \"./client/src/Components/RelatedProducts/index.js\");\n/* harmony import */ var _Components_RatingsReviews__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Components/RatingsReviews */ \"./client/src/Components/RatingsReviews/index.js\");\n\n\n\n\n\n\nfunction _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__.default)(this, result); }; }\n\nfunction _isNativeReflectConstruct() { if (typeof Reflect === \"undefined\" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === \"function\") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }\n\n\n // import { Store, ProductAPI, QuestionAPI, ReviewAPI } from './Utils'\n\n\n\n\n\n\n\n\nvar App = /*#__PURE__*/function (_React$Component) {\n  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2__.default)(App, _React$Component);\n\n  var _super = _createSuper(App);\n\n  function App(props) {\n    var _this;\n\n    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__.default)(this, App);\n\n    _this = _super.call(this, props);\n    _this.state = {\n      theme: 'dark'\n    };\n    return _this;\n  }\n\n  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__.default)(App, [{\n    key: \"render\",\n    value: function render() {\n      {\n        /*#__PURE__*/\n        react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null);\n      }\n      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(\"h1\", null, \"Hola Mundo\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Components_Nav__WEBPACK_IMPORTED_MODULE_8__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Components_Overview__WEBPACK_IMPORTED_MODULE_9__.default, {\n        store: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null)\n      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Components_RelatedProducts__WEBPACK_IMPORTED_MODULE_11__.default, {\n        store: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null)\n      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Components_QandA__WEBPACK_IMPORTED_MODULE_10__.default, {\n        store: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null)\n      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Components_RatingsReviews__WEBPACK_IMPORTED_MODULE_12__.default, {\n        store: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null)\n      }));\n    }\n  }]);\n\n  return App;\n}(react__WEBPACK_IMPORTED_MODULE_5__.Component);\n\nreact_dom__WEBPACK_IMPORTED_MODULE_6__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(App, null), document.getElementById('app'));\n\n//# sourceURL=webpack://fec/./client/src/app.jsx?");
-
-/***/ }),
-
-/***/ "./client/src/styles/ProductCard.js":
-/*!******************************************!*\
-  !*** ./client/src/styles/ProductCard.js ***!
-  \******************************************/
-/***/ (() => {
-
-eval("\n\n//# sourceURL=webpack://fec/./client/src/styles/ProductCard.js?");
-
-/***/ }),
-
-/***/ "./client/src/styles/WidgetContainer.js":
-/*!**********************************************!*\
-  !*** ./client/src/styles/WidgetContainer.js ***!
-  \**********************************************/
-/***/ (() => {
-
-eval("\n\n//# sourceURL=webpack://fec/./client/src/styles/WidgetContainer.js?");
-
-/***/ }),
-
-/***/ "./client/src/styles/index.js":
-/*!************************************!*\
-  !*** ./client/src/styles/index.js ***!
-  \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"WidgetContainer\": () => (/* reexport safe */ _WidgetContainer_js__WEBPACK_IMPORTED_MODULE_0__.WidgetContainer),\n/* harmony export */   \"ProductCard\": () => (/* reexport safe */ _ProductCard_js__WEBPACK_IMPORTED_MODULE_1__.ProductCard)\n/* harmony export */ });\n/* harmony import */ var _WidgetContainer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./WidgetContainer.js */ \"./client/src/styles/WidgetContainer.js\");\n/* harmony import */ var _WidgetContainer_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_WidgetContainer_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ProductCard_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductCard.js */ \"./client/src/styles/ProductCard.js\");\n/* harmony import */ var _ProductCard_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ProductCard_js__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\n//# sourceURL=webpack://fec/./client/src/styles/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ \"./node_modules/@babel/runtime/helpers/esm/classCallCheck.js\");\n/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ \"./node_modules/@babel/runtime/helpers/esm/createClass.js\");\n/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ \"./node_modules/@babel/runtime/helpers/esm/inherits.js\");\n/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ \"./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js\");\n/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ \"./node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Utils */ \"./client/src/Utils/index.js\");\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/Nav'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/Overview'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/QandA'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/RelatedProducts'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/RatingsReviews'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\n\n\n\n\n\nfunction _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__.default)(this, result); }; }\n\nfunction _isNativeReflectConstruct() { if (typeof Reflect === \"undefined\" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === \"function\") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }\n\n\n // import { Store, ProductAPI, QuestionAPI, ReviewAPI } from './Utils'\n\n\n\n\n\n\n\n\nvar App = /*#__PURE__*/function (_React$Component) {\n  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_2__.default)(App, _React$Component);\n\n  var _super = _createSuper(App);\n\n  function App(props) {\n    var _this;\n\n    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__.default)(this, App);\n\n    _this = _super.call(this, props);\n    _this.state = {\n      theme: 'dark'\n    };\n    return _this;\n  }\n\n  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__.default)(App, [{\n    key: \"render\",\n    value: function render() {\n      {\n        /*#__PURE__*/\n        react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null);\n      }\n      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(\"h1\", null, \"Hola Mundo\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/Nav'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/Overview'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {\n        store: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null)\n      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/RelatedProducts'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {\n        store: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null)\n      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/QandA'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {\n        store: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null)\n      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './Components/RatingsReviews'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), {\n        store: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(_Utils__WEBPACK_IMPORTED_MODULE_7__.Store, null)\n      }));\n    }\n  }]);\n\n  return App;\n}(react__WEBPACK_IMPORTED_MODULE_5__.Component);\n\nreact_dom__WEBPACK_IMPORTED_MODULE_6__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_5__.createElement(App, null), document.getElementById('app'));\n\n//# sourceURL=webpack://fec/./client/src/app.jsx?");
 
 /***/ }),
 
