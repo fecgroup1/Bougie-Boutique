@@ -18,7 +18,6 @@ class App extends React.Component {
   }
 
   render() {
-    {<Store />}
     return (
       <div>
         <h1>Hola Mundo</h1>
