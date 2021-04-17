@@ -1,5 +1,5 @@
 import React from 'react'
-import WidgetContainer from '../../styles'
+import WidgetContainer from '../../Styles'
 
 const Layout = ({questions}) => (
   <WidgetContainer>
