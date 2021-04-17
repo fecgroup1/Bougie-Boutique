@@ -16,10 +16,11 @@ jobs:
       - run:
           name: install-npm
           command: 'npm install'
-  test:
+  test: 
     docker:
       - image: circleci/node
     steps:
+      - checkout
       - run:
-        name: jest-test
-        command: 'npm run test'
+          name: jest-test
+          command: 'npm run test'
