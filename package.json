@@ -1,10 +1,13 @@
 {
   "name": "fec",
+  "jest": {
+    "setupFiles": ["dotenv/config"]
+  },
   "version": "1.0.0",
   "description": "fec",
   "main": "index.js",
   "scripts": {
-    "test": "jest --setupFiles dotenv/config",
+    "test": "jest",
     "dev-react": "webpack --config ./webpack.config.js --mode development -w",
     "server": " nodemon ./server/index.js"
   },
