@@ -1,7 +1,7 @@
-const webpack = require('webpack');
+// const webpack = require('webpack');
 const path = require('path');
 
-const BUILD_DIR = path.resolve(__dirname, 'dist');
+const BUILD_DIR = path.resolve(__dirname, 'client/src/dist');
 const APP_DIR = path.resolve(__dirname, 'client/src');
 
 module.exports = {
@@ -14,7 +14,10 @@ module.exports = {
     rules: [
       {
         test:/\.(js|jsx)$/,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /\.test\./
+        ],
         use: {
           loader: 'babel-loader',
           options: {

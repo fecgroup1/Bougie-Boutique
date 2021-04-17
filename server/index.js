@@ -1,9 +1,22 @@
 const express = require('express');
-const App = express();
-const path =require('path')
+const app = express();
+const routers = require('./routers');
+const bodyParser = require('body-parser')
+const controller = require('./controllers')
 
-var port = 3321;
 
-app.use(express.static('../client/dist'));
+var port = 33212;
 
-App.listen(port, ()=>{ console.log(`listening on ${port}`)})
+app.use(bodyParser.json());
+
+app.use(express.static(__dirname + '/../client/dist'));
+
+app.use('/product', routers.productRouter);
+
+// app.use('/reviews', routers.reviewRouter);
+
+app.use('/qa', controller.qa.qaController);
+
+app.listen(port, ()=> {
+  console.log(`listening on ${port}`);
+})
