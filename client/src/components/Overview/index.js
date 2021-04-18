@@ -1,11 +1,9 @@
 import React from 'react'
 import WidgetContainer from '../../Styles'
 
-const Layout = ({questions}) => (
-  <WidgetContainer>
+const Overivew = ({store}) => (
+  <div>hello</div>
+  )
 
-  </WidgetContainer>
-
-)
-
-export default Layout;
+{/* <div>I am an overview thing {store.currentProduct_id}</div>   */}
+export default Overivew;

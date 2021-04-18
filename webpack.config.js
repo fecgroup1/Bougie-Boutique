@@ -1,7 +1,7 @@
 // const webpack = require('webpack');
 const path = require('path');
 
-const BUILD_DIR = path.resolve(__dirname, 'client/src/dist');
+const BUILD_DIR = path.resolve(__dirname, 'client/dist');
 const APP_DIR = path.resolve(__dirname, 'client/src');
 
 module.exports = {
@@ -13,10 +13,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test:/\.(js|jsx)$/,
+        test: /\.js$|jsx/,
         exclude: [
-          /node_modules/,
-          /\.test\./
+          /node_modules/
         ],
         use: {
           loader: 'babel-loader',
@@ -31,7 +30,8 @@ module.exports = {
                 {
                   "regenerator": true
                 }
-              ]
+              ], ["@babel/plugin-transform-react-jsx"],
+              ["@babel/plugin-syntax-jsx"]
             ]
           }
         }
@@ -39,7 +39,18 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
+    fallback: {
+      "path": false,
+      "url": false,
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "zlib": false,
+      "http": false,
+      "https": false,
+      "stream": false,
+    }
   },
 };
 

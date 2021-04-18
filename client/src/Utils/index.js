@@ -1,4 +1,4 @@
-export { Store } from './Store.js';
+export { AppStore } from './AppStore.js';
 export { ProductAPI } from './ProductAPI.js';
 export { RelatedAPI } from './RelatedAPI.js';
 export { ReviewAPI } from './ReviewAPI.js';
