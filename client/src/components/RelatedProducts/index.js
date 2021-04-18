@@ -1,12 +1,21 @@
 import React from 'react'
-import WidgetContainer from '../../Styles'
-import ProductCard from './ProductCard.js'
+// import WidgetContainer from '../../Styles'
+// import ProductCard from './ProductCard.js'
 
-const Layout = ({questions}) => (
-  <WidgetContainer>
+class RelatedProducts extends React.Component {
 
-  </WidgetContainer>
+  constructor(props) {
+    super(props);
+  }
 
-)
+  render() {
+    const appStore = this.props.store;
+    console.log('we have arrived', appStore)
+    return (
+      <div> btw I'm a Class related component {appStore.currentProduct_id}</div>
+    )
+  }
+}
 
-export default Layout;
+
+export default RelatedProducts;

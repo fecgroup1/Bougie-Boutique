@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDom from 'react-dom';
-// import { Store, ProductAPI, QuestionAPI, ReviewAPI } from './Utils'
-import { Store } from './Utils'
+import ReactDOM from 'react-dom';
+// import { AppStore, ProductAPI, QuestionAPI, ReviewAPI } from './Utils'
+import AppStore  from './Utils/AppStore.js'
 import Nav from './components/Nav';
 import Overview from './components/Overview';
 import QandA from './components/QandA';
@@ -12,29 +12,37 @@ class App extends React.Component {
 
   constructor (props) {
     super(props);
+
     this.state = {
       theme: 'dark',
     }
   }
 
   render() {
-    {<Store />}
+
+   {/*const store = this.props.store
+   console.log('this is the store: ', store)*/}
+
     return (
       <div>
-        <h1>Hola Mundo</h1>
-        <Nav />
-        <Overview
-          store={<Store />}
-        />
-        <RelatedProducts
-          store={<Store />}
-        />
-        <QandA
-          store={<Store />}
-        />
-        <RatingsReviews
-          store={<Store />}
-        />
+        <h1>Hola Mundo!!</h1>
+
+        <AppStore render={ store => (
+          <div>
+            <Overview
+              store={store}
+            />
+            <RelatedProducts
+              store={store}
+            />
+            <QandA
+              store={store}
+            />
+            <RatingsReviews
+              store={store}
+            />
+          </div>
+        )}/>
       </div>
     )
   }
@@ -42,4 +50,15 @@ class App extends React.Component {
 
 }
 
-ReactDom.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
+
+// ReactDom.render(
+//   <AppStore
+//     render={
+//       store => (
+//         <App store={store}/>
+//       )
+//     }
+//   />
+// , document.getElementById('app'));
+export default App;

@@ -11,7 +11,7 @@ module.exports = {
   // BATCH GETS
   // ******************************************
   getForRelated: (pid) => {
-    let fnlRes = {};
+    let fnlRes = {currentProductId: pid};
     return module.exports.getProductData(pid)
     .then((productData) => {
       fnlRes.product = productData;
