@@ -10,9 +10,9 @@ module.exports = {
   // ******************************************
   // BATCH GETS
   // ******************************************
-  getForRelated: (pid) => {
+  getDetails: (pid) => {
     let fnlRes = {currentProductId: pid};
-    return module.exports.getProductData(pid)
+    return module.exports.getProduct(pid)
     .then((productData) => {
       fnlRes.product = productData;
       return module.exports.getStyles(pid)
@@ -37,7 +37,7 @@ module.exports = {
 
   getAll: (pid) => {
     let fnlRes = {};
-    return module.exports.getForRelated(pid)
+    return module.exports.getDetails(pid)
     .then((resObj) => {
       fnlRes = resObj;
       return controllers.qa.getQA(pid)
@@ -59,7 +59,7 @@ module.exports = {
   // ******************************************
   // INDIVIDUAL GETS
   // ******************************************
-  getProductData: (pid) => {
+  getProduct: (pid) => {
     return axios.get(`${url}products/${pid}`)
       .then((response) => {
         let productData = {
