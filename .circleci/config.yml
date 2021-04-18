@@ -17,4 +17,6 @@ jobs:
             - /home/circleci/.npm
       - run:
           name: Run Tests
-          command: npm run circle-ci-test
+          command: jest --collectCoverage=true
+      -store_artifacts:
+        path: coverage

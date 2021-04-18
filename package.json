@@ -4,7 +4,6 @@
   "description": "fec",
   "main": "index.js",
   "scripts": {
-    "circle-ci-test": "jest",
     "test": "jest",
     "dev-react": "webpack --config ./webpack.config.js --mode development -w",
     "server": " nodemon ./server/index.js"
