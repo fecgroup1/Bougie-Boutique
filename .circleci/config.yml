@@ -17,6 +17,6 @@ jobs:
             - /home/circleci/.npm
       - run:
           name: Run Tests
-          command: npm test --collectCoverage=true
+          command: npm test
       - store_artifacts:
           path: coverage
