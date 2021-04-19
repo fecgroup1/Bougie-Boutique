@@ -9,10 +9,10 @@ class RelatedProducts extends React.Component {
   }
 
   render() {
-    const appStore = this.props.store;
+    const appStore = this.props.store.state;
     console.log('we have arrived', appStore)
     return (
-      <div> btw I'm a Class related component {appStore.currentProduct_id}</div>
+      <div> btw I'm a Class related component {appStore.currentProductId}</div>
     )
   }
 }

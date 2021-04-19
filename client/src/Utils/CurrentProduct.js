@@ -10,13 +10,19 @@ class CurrentProduct extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = dummyState
-
+    this.state = dummyState;
+    this.changeProduct = this.changeProduct.bind(this);
   }
 
 
   componentDidMount() {
     this.setProduct(this.state.currentProduct_id)
+  }
+
+  changeProduct() {
+    this.setState({
+      currentProductId: 9999
+    });
   }
 
   setProduct(id) {
@@ -39,7 +45,7 @@ class CurrentProduct extends React.Component {
   render() {
     return (
       <Fragment>
-        {this.props.render(this.state)}
+        {this.props.render(this)}
       </Fragment>
     )
   }
