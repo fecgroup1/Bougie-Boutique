@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const ProductAPI = {
   getProduct: (pid) => {
-    axios.get(`/product/:${pid}`)
+    return axios.get(`/product?pid=${pid}`)
     .then((results) => {
-      return results;
+      return results.data;
     })
     .catch((err) => {
       return err;

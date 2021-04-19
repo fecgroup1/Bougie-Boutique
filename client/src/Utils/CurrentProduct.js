@@ -10,15 +10,21 @@ class CurrentProduct extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = dummyState;
+    this.state = {
+      currentProductId: "13023"
+    };
+
+    // Test function
     this.changeProduct = this.changeProduct.bind(this);
+    this.setProduct = this.setProduct.bind(this);
   }
 
 
   componentDidMount() {
-    this.setProduct(this.state.currentProduct_id)
+    this.setProduct(this.state.currentProductId)
   }
 
+  // TEST FUNCTION TO DELETE
   changeProduct() {
     this.setState({
       currentProductId: 9999
@@ -26,11 +32,11 @@ class CurrentProduct extends React.Component {
   }
 
   setProduct(id) {
-    // ProductAPI.getProduct(id)
-    // .then((productData) => {
-    //   // console.log(productData);
-    //   this.setState({currentProduct: productData});
-    // })
+    ProductAPI.getProduct(id)
+    .then((productData) => {
+      // console.log(productData);
+      this.setState(productData);
+    })
   }
 
   setReviews(id) {
