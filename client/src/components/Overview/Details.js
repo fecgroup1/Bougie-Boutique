@@ -1,10 +1,15 @@
 import React from 'react';
 
+
 const Details = ({slogan, description, features}) => (
     <div id="Details">
-      <Stars rating={stars} />
-      <Select />
-      <AddToCart />
+      Slogan: {slogan}<br></br>
+      Description: {description}<br></br>
+      <ul>
+        {features.map((feature, index) => (
+          <li key={index}>{feature.feature}: {feature.value}</li>
+        ))}
+      </ul>
     </div>
 );
 
