@@ -7,17 +7,14 @@ const getRelatedAPI = (productIds) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
-  });
+  })
+  .then((data) => data.json());
 }
 
-getRelatedAPI([
-  13024,
-  13025,
-  13030,
-  13029
-])
-.then((data) => {
-  console.log(data)
-})
+//test getRelated API
+// getRelatedAPI([
+//   13024
+// ])
+// .then((data) => console.log(data))
 
 export default getRelatedAPI
