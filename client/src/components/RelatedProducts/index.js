@@ -1,4 +1,5 @@
 import React from 'react'
+import RelatedAPI from '../../Utils/RelatedAPI'
 // import WidgetContainer from '../../Styles'
 // import ProductCard from './ProductCard.js'
 
