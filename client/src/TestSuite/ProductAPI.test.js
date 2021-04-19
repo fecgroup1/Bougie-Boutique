@@ -1,26 +1,13 @@
-const _ = require('../Utils/ProductAPI.js');
+import ProductAPI from '../Utils/ProductAPI.js';
+import axios from 'axios';
 
-test('getProduct retrieves the reviews, meta data, and styles for a product and returns it as a product object', done => {
-  const cb = (data) => {
-    try {
-      // console.log('this is data.meta: ', data)
+jest.mock('axios');
 
-      expect(data.currentProductId).toBe(13023);
-      expect(data.product).toBeDefined();
-      expect(data.styles).toBeDefined();
+test('getProduct retrieves the reviews, meta data, and styles for a product and returns it as a product object', () => {
+  const related = {related: [13024, 13025, 13030, 13029]};
+  const resp = {data: related};
+  axios.get.mockResolvedValue(resp);
 
-      /* there is additional async behavior that may need to be accounted for need more reasearch on why the below aren't passing */
-
-      // expect(data.meta).toBeDefined();
-      // expect(data.reviews).toBeDefined();
-
-      done();
-    } catch(err) {
-      done(err);
-    }
-  }
-
-  _.getProduct(13023)
-  .then((data) => cb(data))
-  .catch((err) => cb(err));
+return ProductAPI.getProduct(13023)
+  .then(data => expect(data).toEqual(related));
 });
