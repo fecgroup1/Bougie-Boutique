@@ -50,8 +50,6 @@ class App extends React.Component {
 
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
-
 // ReactDom.render(
 //   <AppStore
 //     render={
