@@ -4,6 +4,7 @@ const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-sjo'
 
 module.exports = {
   qaController: (req, res) => {
+    console.log(req.body)
     const method = req.method;
     const path = req.url;
     const reqBody = req.body;
