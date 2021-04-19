@@ -5,7 +5,7 @@ import ReviewAPI from './ReviewAPI.js'
 import dummyState from './dummyState.json'
 // import { ProductAPI, QuestionAPI, ReviewAPI } from '../Utils'
 
-class AppStore extends React.Component {
+class CurrentProduct extends React.Component {
 
   constructor (props) {
     super(props);
@@ -45,8 +45,4 @@ class AppStore extends React.Component {
   }
 }
 
-// const AppStore = () => (
-//   <div>yes</div>
-// )
-
-export default AppStore;
+export default CurrentProduct;

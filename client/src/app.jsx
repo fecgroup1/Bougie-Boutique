@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { AppStore, ProductAPI, QuestionAPI, ReviewAPI } from './Utils'
-import AppStore  from './Utils/AppStore.js'
+import CurrentProduct  from './Utils/CurrentProduct.js'
 import Nav from './components/Nav';
 import Overview from './components/Overview';
 import QandA from './components/QandA';
@@ -27,7 +27,7 @@ class App extends React.Component {
       <div>
         <h1>Hola Mundo!!</h1>
 
-        <AppStore render={ store => (
+        <CurrentProduct render={ store => (
           <div>
             <Overview
               store={store}
