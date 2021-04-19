@@ -1,15 +1,16 @@
 const router = require('express').Router();
 const controllers = require('./../controllers');
 
-router.route('/:pid')
+router.route('/')
 .get((req, res) => {
-  var pid = req.params.pid;
+  let pid = req.query.pid;
+  console.log(pid);
   controllers.product.getAll(pid)
   .then((fnlRes) => {
     res.send(fnlRes);
   })
   .catch((err) => {
-    console.log('Error in product router getting all data', err);
+    // console.log('Error in product router getting all data', err);
     res.status(500)
     res.end();
   });
