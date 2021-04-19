@@ -1,0 +1,11 @@
+.qBody {
+  justify-content: right;
+  text-align: right;
+}
+
+.Question {
+  display: flex;
+  flex-direction: column;
+  width:70%;
+  overflow-y: scroll;
+}

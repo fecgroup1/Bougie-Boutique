@@ -12,7 +12,7 @@ class RelatedProducts extends React.Component {
     const appStore = this.props.store;
     console.log('we have arrived', appStore)
     return (
-      <div> btw I'm a Class related component {appStore.currentProduct_id}</div>
+      <div> btw I'm a Class related component {appStore.currentProductId}</div>
     )
   }
 }

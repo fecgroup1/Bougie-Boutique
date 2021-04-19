@@ -17,7 +17,7 @@ app.use('/product', routers.productRouter);
 
 app.use('/reviews', routers.reviewRouter);
 
-app.use('/qa', controller.qa.getQA);
+app.use('/qa', controller.qa.qaController);
 
 app.listen(port, ()=> {
   console.log(`listening on ${port}`);
