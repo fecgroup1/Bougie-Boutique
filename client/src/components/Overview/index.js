@@ -1,9 +1,18 @@
 import React from 'react'
 import WidgetContainer from '../../Styles'
 
-const Overivew = ({store}) => (
-  <div>hello</div>
-  )
+class Overview extends React.Component {
+  constructor (props) {
+    super(props);
+  }
 
-{/* <div>I am an overview thing {store.currentProduct_id}</div>   */}
-export default Overivew;
+  render () {
+    return (
+      <div>hello productID {this.props.store.state.currentProductId}
+      <button onClick={this.props.store.changeProduct}>changeProduct</button>
+      </div>
+    );
+  }
+}
+
+export default Overview;
