@@ -27,7 +27,7 @@ module.exports = {
   calculateAverage: (ratingsObj) => {
     let total = 0;
     let count = 0;
-    for (key in ratingsObj) {
+    for (var key in ratingsObj) {
       total += Number(ratingsObj[key]) * Number(key);
       count += Number(ratingsObj[key]);
     }

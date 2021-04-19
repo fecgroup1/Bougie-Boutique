@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 import ProductAPI from './ProductAPI.js';
 import QuestionAPI from './QuestionAPI.js';
-import ReviewAPI from './ReviewAPI.js'
-import dummyState from './dummyState.json'
+import ReviewAPI from './ReviewAPI.js';
+import dummyState from './dummyState.json';
 // import { ProductAPI, QuestionAPI, ReviewAPI } from '../Utils'
 
 class CurrentProduct extends React.Component {
@@ -40,7 +40,17 @@ class CurrentProduct extends React.Component {
   }
 
   setReviews(id) {
+    ReviewAPI.getReviews(id)
+      .then((reviews) => {
+        this.setState({ reviews: reviews });
+      });
+  }
 
+  setMeta(id) {
+    ReviewAPI.getMeta(id)
+      .then((meta) => {
+        this.setState({ meta: meta });
+      });
   }
 
   setQuestions(id) {
@@ -58,3 +68,4 @@ class CurrentProduct extends React.Component {
 }
 
 export default CurrentProduct;
+
