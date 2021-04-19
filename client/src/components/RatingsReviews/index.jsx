@@ -4,6 +4,7 @@ import Ratings from './Ratings';
 
 const Reviews = ({store}) => (
   <div>
+    <h5>Ratings and Reviews</h5>
     <Ratings meta={store.meta} />
   </div>
 );
