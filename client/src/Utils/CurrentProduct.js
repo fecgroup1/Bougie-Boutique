@@ -16,25 +16,31 @@ class CurrentProduct extends React.Component {
 
     // Test function
     this.changeProduct = this.changeProduct.bind(this);
+    this.changeStyle = this.changeStyle.bind(this);
     this.setProduct = this.setProduct.bind(this);
   }
 
 
   componentDidMount() {
-    this.setProduct(this.state.currentProductId)
+    this.setProduct(this.state.currentProductId);
   }
 
-  // TEST FUNCTION TO DELETE
-  changeProduct() {
+  changeProduct(pid) {
+    this.setProduct(pid);
+  }
+
+  changeStyle(index) {
     this.setState({
-      currentProductId: 9999
+      currStyle: index
     });
   }
 
   setProduct(id) {
     ProductAPI.getProduct(id)
-    .then((productData) => {
+    .then((resData) => {
       // console.log(productData);
+      let productData = resData;
+      productData.currStyle = 0;
       this.setState(productData);
     })
   }
