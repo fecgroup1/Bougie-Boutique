@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Answers from './Answers.js'
 
 class Questions extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class Questions extends React.Component {
             </p>
           </div>
         </div>
+        <Answers key={index} questionId={question.question_id} product={this.props.currentProductId}/>
       </div>
     )
   }
