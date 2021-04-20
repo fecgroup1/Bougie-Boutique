@@ -14,6 +14,7 @@ class App extends React.Component {
 
     this.state = {
       theme: 'dark',
+      outfits: [],
     }
   }
 
@@ -33,6 +34,7 @@ class App extends React.Component {
             />
             <RelatedProducts
               store={store}
+              outfits={this.state.outfits}
             />
             <QandA
               store={store}
