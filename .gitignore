@@ -7,4 +7,5 @@ config.js
 #env
 .env
 
-client/dist/bundle.js
+# coverage
+/coverage

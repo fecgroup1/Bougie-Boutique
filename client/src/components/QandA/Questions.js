@@ -40,7 +40,7 @@ class Questions extends React.Component {
           <div className='qBody'>
             <p>Helpful?
               <span> Yes </span>
-              {question.question_helpfulness}
+              ({question.question_helpfulness})
             </p>
           </div>
         </div>
