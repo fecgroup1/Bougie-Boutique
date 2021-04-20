@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, memo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
-import { RelatedContainer, ProductsContainer, CardContainer } from '../../Styles';
+import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper } from '../../Styles';
 import ProductCard from './ProductCard.js'
 
 const RelatedProducts = (props) => {
@@ -15,13 +15,18 @@ const RelatedProducts = (props) => {
     // }
   }, [props.store.state]);
 
-  const scroll = (container, direction) => {
+  const scroll = (container, direction, event) => {
     console.log(container)
-    let area = document.getElementById(container);
-    let cards = document.getElementsByClassName('productCard');
-    console.log('cards', cards)
-    // direction === 'left' ? area.scrollLeft = cards
+    let area = event.target.parentNode.children[1];
+    let cardWidth = event.target.parentNode.children[1].children[1].clientWidth;
+    console.log('cardwidth', cardWidth)
+    if(direction === 'left' ) {
+      console.log('lefttime', event.target.parentNode.children[1].scrollLeft)
+      area.scrollLeft += cardWidth
+    }
 
+    direction === 'left' ? area.scrollLeft += cardWidth : area.scrollLeft -= cardWidth
+    // console.log(event.target.parentNode.children[1].scrollLeft)
   }
 
     return (
@@ -34,9 +39,9 @@ const RelatedProducts = (props) => {
           ><div>
             <h3>RELATED PRODUCTS</h3>
           </div>
-          <div>
+          <CardsWrapper>
             <button
-              onClick={() => scroll('related', 'left')}
+              onClick={(event) => scroll('products', 'right', event)}
             >
               &#60;
             </button>
@@ -51,8 +56,10 @@ const RelatedProducts = (props) => {
                 ))
               }
             </CardContainer>
-              <button>&gt;</button>
-            </div>
+              <button
+                onClick={(event) => scroll('products', 'left', event)}
+              >&gt;</button>
+              </CardsWrapper>
 
           </ProductsContainer>
 
