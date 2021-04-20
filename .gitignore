@@ -7,9 +7,5 @@ config.js
 #env
 .env
 
-<<<<<<< HEAD
-client/dist/bundle.js
-=======
 # coverage
 /coverage
->>>>>>> ignore coverage folder
