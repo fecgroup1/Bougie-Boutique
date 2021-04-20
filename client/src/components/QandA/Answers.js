@@ -9,8 +9,11 @@ class Answers extends React.Component {
     this.state = {
       question: props.questionId,
       answers: [],
-      moreAnswers: false
+      moreAnswers: false,
+      helpful: false
     }
+    this.getMore = this.getMore.bind(this)
+    this.collapse = this.collapse.bind(this)
   }
 
   getAnswers () {
@@ -23,25 +26,42 @@ class Answers extends React.Component {
     })
   }
 
+  getMore() {
+    this.setState({moreAnswers: true})
+  }
+
+  collapse() {
+    this.setState({moreAnswers: false})
+  }
+
   componentDidMount() {
     this.getAnswers()
   }
   renderAnswer(answer, index) {
-
     const aDate = new Date(answer.date)
     return (
       <div className='Answer' key={index}>
         <div>
           <p> A: {answer.body}</p>
-          <div className='aBody'>
-            <p>Helpful?
-              <span> Yes </span>
-              ({answer.helpfulness})
-            </p>
-          </div>
           <div>
-            <AnswerPhotos answer={answer} key={index}/>
+           <AnswerPhotos answer={answer} key={index}/>
           </div>
+          {answer.answerer_name === 'Seller' ? (
+            <div>
+              <p>by {' '}
+              <span style={{fontWeight: 'bold'}}>{answer.answerer_name}</span>
+              ,{' '} {aDate.toDateString()}
+              </p>
+            </div>
+          )
+          :
+          (
+            <div>
+              <p>
+                by {' '} {answer.answerer_name}, {' '} {aDate.toDateString().substring(4)}
+              </p>
+              </div>
+          )}
         </div>
       </div>
     )
@@ -50,15 +70,22 @@ class Answers extends React.Component {
   render () {
     return(
       <div>
-        {this.state.answers.slice(0, 10).map((answer, index) =>
-        (this.renderAnswer(answer, index)))}
         {!this.state.moreAnswers ?
           (
             <div>
-              <button onClick={this.addMore}>More answers...</button>
+              {this.state.answers.slice(0, 2).map((answer, index) =>
+              (this.renderAnswer(answer, index)))}
+              {this.state.answers.length > 2 ? <button onClick={this.getMore}>More answers...</button> : null}
             </div>
-          ) :
-          <div></div>
+          )
+          :
+          (
+            <div>
+               {this.state.answers.map((answer, index) => (this.renderAnswer(answer, index)))}
+               {this.state.answers.length > 2 ? <button onClick={this.collapse}>Collapse answers</button> : null}
+            </div>
+          )
+
         }
       </div>
     )
