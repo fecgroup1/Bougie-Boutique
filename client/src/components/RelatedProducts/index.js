@@ -1,18 +1,18 @@
 import React, { Fragment, useState, useEffect, memo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
-import { RelatedContainer, ProductsContainer, ProductCard, CardContainer } from '../../Styles';
-// import ProductCard from './ProductCard.js'
+import { RelatedContainer, ProductsContainer, CardContainer } from '../../Styles';
+import ProductCard from './ProductCard.js'
 
 const RelatedProducts = (props) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
 
   useEffect(() => {
-    // if (props.store.state.related) {
-    //   ProductAPI.getRelatedProducts(props.store.state.related)
-    //     .then((results) => setProducts(results.data))
-    // }
+    if (props.store.state.related) {
+      ProductAPI.getRelatedProducts(props.store.state.related)
+        .then((results) => setProducts(results.data))
+    }
   }, [props.store.state]);
 
   const scroll = (container, direction) => {
@@ -39,6 +39,7 @@ const RelatedProducts = (props) => {
               products.map((product, index) => (
                 <ProductCard
                   key={index}
+                  product={product}
                 />
               ))
             }
