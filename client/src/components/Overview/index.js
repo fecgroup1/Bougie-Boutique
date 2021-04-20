@@ -16,6 +16,7 @@ class Overview extends React.Component {
   }
 
   changeStyle(index) {
+    console.log('changStyle index: ', index);
     this.setState({
       currImg: this.props.store.state.styles[index].photos[0]
     });
