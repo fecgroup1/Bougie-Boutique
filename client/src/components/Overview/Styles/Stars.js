@@ -5,17 +5,13 @@ const Stars = ({rating, reviews}) => {
     width: `${rating / 5 * 100}%`,
   };
 
-  const small = {
-    fontSize: '14px',
-  }
-
   return (
     <div>
       <div className="stars">
         <div className="outer">
           <div style={inner} className="inner"></div>
         </div>
-        &nbsp;<a style={small} href="">Read all {reviews} reviews</a>
+        &nbsp;<a className="small" href="">Read all {reviews} reviews</a>
       </div>
     </div>
   )

@@ -5,7 +5,7 @@ import AddToCart from './Styles/AddToCart.js';
 import React from 'react';
 
 const Styles = ({product, currStyle, changeStyle, styles, stars, reviews}) => (
-    <div id="styles">
+    <div id="styles" className="right">
       <Stars
         rating={stars}
         reviews={reviews}/>
