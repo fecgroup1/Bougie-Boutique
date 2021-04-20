@@ -32,7 +32,7 @@ const RelatedProducts = (props) => {
           ><div>
             <h3>RELATED PRODUCTS</h3>
           </div>
-          <button>&#60;</button>
+          {/* <button>&#60;</button> */}
           <CardContainer>
 
             {
@@ -44,7 +44,7 @@ const RelatedProducts = (props) => {
               ))
             }
           </CardContainer>
-            <button>&gt;</button>
+            {/* <button>&gt;</button> */}
 
           </ProductsContainer>
 

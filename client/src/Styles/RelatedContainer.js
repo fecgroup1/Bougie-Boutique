@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const RelatedContainer = styled.section`
+export const RelatedContainer = styled.div`
   display: grid;
   justify-content: center;
   height: 85vh;

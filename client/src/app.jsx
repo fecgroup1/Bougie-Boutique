@@ -16,7 +16,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      theme: 'dark',
+      theme: 'light',
       outfits: [],
     }
   }
