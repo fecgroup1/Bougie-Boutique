@@ -1,33 +1,25 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, memo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
-import { RelatedContainer, ProductsContainer, ProductCard } from '../../Styles';
+import { RelatedContainer, ProductsContainer, ProductCard, CardContainer } from '../../Styles';
 // import ProductCard from './ProductCard.js'
 
 const RelatedProducts = (props) => {
 
-  const [products, setProducts] = useState([1, 2, 3]);
+  const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     products: [1, 2, 3]
-  //   }
-  // }
+  useEffect(() => {
+    // if (props.store.state.related) {
+    //   ProductAPI.getRelatedProducts(props.store.state.related)
+    //     .then((results) => setProducts(results.data))
+    // }
+  }, [props.store.state]);
 
-  // componentDidMount() {
-  //   console.log('ln 17',this.props.store.state.related)
-  //   ProductAPI.getRelatedProducts(this.props.store.state.related)
-  //   .then((results) => console.log('I am the results', results))
-  // }
+  const scroll = (container, direction) => {
+    let area = document.getElementById(container);
 
-  // componentDidUpdate() {
-  //   console.log('ln 23', this.props.store.state.related)
-  // }
+  }
 
-
-
-    const store = props.state
     return (
       <Fragment>
         <RelatedContainer>
@@ -38,8 +30,9 @@ const RelatedProducts = (props) => {
           ><div>
             <h3>RELATED PRODUCTS</h3>
           </div>
+          {/* <button>&#60;</button> */}
+          <CardContainer>
 
-          <div>
             {
               products.map((product, index) => (
                 <ProductCard
@@ -47,7 +40,8 @@ const RelatedProducts = (props) => {
                 />
               ))
             }
-          </div>
+          </CardContainer>
+            {/* <button>&gt;</button> */}
 
           </ProductsContainer>
 
