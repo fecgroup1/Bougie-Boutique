@@ -6,19 +6,26 @@ var calculatePercent = (obj)=>{
   var pos =Number(obj.true);
   var neg = Number(obj.false);
   var total = pos + neg;
-  percent = (pos / total) * 100;
+  var percent = (pos / total) * 100;
+  percent= Math.round(percent);
+  return percent;
 
 }
 
 
-const Ratings = ({ meta }) => (
-  <div>
+const Ratings = ({ meta }) => {
+  if (!meta) {
+     return <div>loading...</div>
+   }
+  return (<div>
     <div>{meta.averageRating}</div>
     <StarRating stars={meta.starRating} />
     <p>{calculatePercent(meta.recommended)}% of reviews recomend this product</p>
     <Characteristics characteristics={meta.characteristics} />
-  </div>
-);
+  </div>);
+}
+
+
 
 export default Ratings;
 
