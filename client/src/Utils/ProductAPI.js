@@ -12,7 +12,8 @@ const ProductAPI = {
   },
 
   getRelatedProducts: (productIDs) => {
-    return axios.post(`/product`, {
+    console.log(productIDs)
+    return axios.post(`/product/related`, {
       pids: productIDs
     })
     .then((results) => {

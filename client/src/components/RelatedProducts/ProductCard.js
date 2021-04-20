@@ -1,11 +1,11 @@
 import React from 'react'
-import CardTitle from '../../Styles'
+// import { StyledProductCard } from '../../Styles/'
+
 
 const ProductCard = ({Product}) => (
-  <ProductCardContainer>
-    <CardTitle>title</CardTitle>
-  </ProductCardContainer>
-
+  // <StyledProductCard>
+    <h4>Product Name</h4>
+  {/* </StyledProductCard> */}
 )
 
 export default ProductCard;
