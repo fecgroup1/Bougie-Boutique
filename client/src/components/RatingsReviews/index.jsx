@@ -11,7 +11,6 @@ class Reviews extends React.Component {
     super(props);
   }
   render(){
-    console.log(this.props.store.state.meta)
     return (<div>
       <h5>Ratings and Reviews</h5>
       <Ratings meta={this.props.store.state.meta} />
