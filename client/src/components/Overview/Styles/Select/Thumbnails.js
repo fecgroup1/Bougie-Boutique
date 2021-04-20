@@ -1,15 +1,22 @@
 import React from 'react';
 
-// class Thumbnails extends React.Component {
-//   constructor(props) {
-//     super({styles, currStyle, changeStyle});
-//     this.state = {
-//       currStyle: currStyle
-//     }
-//     this.handleClick = this.handleClick.bind(this);
-//   }
-
-//   handleClick()
+const stylethumb = {
+  objectFit: 'cover',
+  objectPosition: '50% 50%',
+  width: '88px',
+  height: '88px',
+  margin: '3px',
+  border: '6px solid white',
+}
+const thumbhighlight = {
+  objectFit: 'cover',
+  objectPosition: '50% 50%',
+  width: '88px',
+  height: '88px',
+  margin: '6px',
+  border: '3px solid white',
+  outline: '3px solid #002a60'
+}
 
 const Thumbnails = ({styles, currStyle, changeStyle}) => (
   <div id="stylethumbs">
@@ -18,7 +25,7 @@ const Thumbnails = ({styles, currStyle, changeStyle}) => (
         return (
           <img
             key={index}
-            className="imghl stylethumb"
+            style={thumbhighlight}
             src={style.photos[0].thumbnail_url}/>
         );
       } else {
@@ -26,7 +33,7 @@ const Thumbnails = ({styles, currStyle, changeStyle}) => (
           <img
             key={index}
             onClick={() => changeStyle(index)}
-            className="stylethumb"
+            style={stylethumb}
             src={style.photos[0].thumbnail_url}/>
         );
       }
