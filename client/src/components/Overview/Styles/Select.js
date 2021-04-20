@@ -9,7 +9,7 @@ const small = {
 
 const titleFont = {
   fontFamily: '"Yeseva One", cursive',
-  fontSize: '20px'
+  fontSize: '24px'
 };
 
 const Select = ({title, category, currStyle, styles, changeStyle}) => (
@@ -21,7 +21,7 @@ const Select = ({title, category, currStyle, styles, changeStyle}) => (
         orig={styles[currStyle].original_price}
         sale={styles[currStyle].sale_price}/>
     </div>
-    <div className="stylename">Style: {styles[currStyle].name}</div>
+    <div className="stylename small">Style: {styles[currStyle].name}</div>
     <Thumbnails
       styles={styles}
       currStyle={currStyle}

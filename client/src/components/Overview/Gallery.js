@@ -16,7 +16,7 @@ class Gallery extends React.Component {
     };
 
     return (
-      <div id="gallery">
+      <div id="gallery" className="left">
         <img
           style={galImg}
           src={styles[currImg[0]].photos[currImg[1]].url}/>
