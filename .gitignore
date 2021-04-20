@@ -1,8 +1,17 @@
 # dependencies
 /node_modules
 
-#config file
+# config file
 config.js
 
-#env
+# env
 .env
+
+# test coverage files
+/coverage
+
+# webpack output bundle
+/client/dist/bundle.js
+
+# Random mac file
+.DS_Store
