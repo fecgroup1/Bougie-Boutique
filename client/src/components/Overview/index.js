@@ -18,7 +18,7 @@ class Overview extends React.Component {
   changeStyle(index) {
     console.log('changStyle index: ', index);
     this.setState({
-      currImg: this.props.store.state.styles[index].photos[0]
+      currImg: [index, 0]
     });
     this.props.store.changeStyle(index);
   }
@@ -26,7 +26,7 @@ class Overview extends React.Component {
   changeImg(style, index) {
     this.setState({
       currStyle: this.props.store.state.styles[style],
-      currImg: this.props.store.state.styles[style].photos[index]
+      currImg: [style, index]
     });
   }
 
@@ -36,22 +36,23 @@ class Overview extends React.Component {
       var store = this.props.store.state
       return (
         <div id="overview">
-          This is the overview component.
-          <Gallery
-            styles={store.styles}
-            currImg={this.state.currImg}
-            changeImg={this.changeImg} />
-          <Styles
-            product={store.product}
-            currStyle={store.currStyle}
-            changeStyle={this.changeStyle}
-            styles={store.styles}
-            stars={store.meta.starRating}
-            reviews={store.reviews.length} />
-          <Details
-            slogan={store.product.slogan}
-            description={store.product.description}
-            features={store.product.features}/>
+          <div className="flex">
+            <Gallery
+              styles={store.styles}
+              currImg={this.state.currImg}
+              changeImg={this.changeImg} />
+            <Styles
+              product={store.product}
+              currStyle={store.currStyle}
+              changeStyle={this.changeStyle}
+              styles={store.styles}
+              stars={store.meta.starRating}
+              reviews={store.reviews.length} />
+          </div>
+            <Details
+              slogan={store.product.slogan}
+              description={store.product.description}
+              features={store.product.features}/>
         </div>
       );
     }

@@ -6,8 +6,21 @@ class Gallery extends React.Component {
   }
 
   render() {
+    const styles = this.props.styles;
+    const currImg = this.props.currImg;
+    const galImg = {
+      objectFit: 'cover',
+      objectPosition: '50% 50%',
+      width: '500px',
+      height: '500px',
+    };
+
     return (
-      <div></div>
+      <div id="gallery">
+        <img
+          style={galImg}
+          src={styles[currImg[0]].photos[currImg[1]].url}/>
+      </div>
     );
   }
 }
