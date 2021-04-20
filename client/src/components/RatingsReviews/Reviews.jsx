@@ -1,4 +1,5 @@
 import React from 'react';
+import Review from './Review';
 
 const Reviews = ({reviews})=> {
   console.log('this is reviews', reviews)
@@ -7,7 +8,8 @@ const Reviews = ({reviews})=> {
   }
   return (
   <div>
-    <span>{reviews.length} reviews, sorted by </span><select> <option>Relevant</option></select>
+    <span>{reviews.length} reviews, sorted by </span><select> <option>Relevant</option><option>Helpful</option><option>Newest</option></select>
+    {reviews.map((review)=> <Review review={review}/>)}
   </div>
 
   )

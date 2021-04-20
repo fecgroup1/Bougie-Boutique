@@ -13,7 +13,7 @@ class RatingsReviews extends React.Component {
   }
   render(){
     return (<div>
-      <h5>Ratings and Reviews</h5>
+      <h4>Ratings and Reviews</h4>
       <Ratings meta={this.props.store.state.meta} />
       <Reviews reviews ={this.props.store.state.reviews}/>
     </div>);
