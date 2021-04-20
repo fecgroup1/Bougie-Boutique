@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import axios from 'axios';
 import WidgetContainer from '../../Styles'
 import Answers from './Answers.js'
@@ -52,7 +52,9 @@ class QandA extends React.Component {
     if (this.props.store.state.qa !== undefined) {
       var store = this.props.store.state
       return(
-        <div>
+        <Fragment>
+          <h2>Questions and Answers</h2>
+          <div>
           {store.qa.slice(0, 2).map((question, index) =>
           (this.renderQuestion(question, index)))}
           {!this.state.moreQuestions ?
@@ -63,10 +65,12 @@ class QandA extends React.Component {
             ) :
             <div></div>
           }
-        </div>
+         </div>
+        </Fragment>
+
       )
     } else {
-      return <div>Loading...</div>
+      return (<div>Loading...</div>)
     }
   }
 }
