@@ -9,7 +9,7 @@ const Review = ({ review }) => (
     <p>{review.body}</p>
     {review.recommended ? <p>I recomend this product</p> : <div></div>}
     {review.responseToReview ? <p>{review.responseToReview}</p> : <div></div>}
-    <span>Was this review helpful? <link>Yes({review.helpfulness})</link></span><span>Report</span>
+    <span>Was this review helpful? <span>Yes({review.helpfulness})</span></span><span>Report</span>
 
   </div>
 );
