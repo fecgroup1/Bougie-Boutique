@@ -9,16 +9,18 @@ const RelatedProducts = (props) => {
   const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
 
   useEffect(() => {
-    if (props.store.state.related) {
-      ProductAPI.getRelatedProducts(props.store.state.related)
-        .then((results) => setProducts(results.data))
-    }
+    // if (props.store.state.related) {
+    //   ProductAPI.getRelatedProducts(props.store.state.related)
+    //     .then((results) => setProducts(results.data))
+    // }
   }, [props.store.state]);
 
   const scroll = (container, direction) => {
+    console.log(container)
     let area = document.getElementById(container);
-    let cards = document.getElementsByClassName(productCard);
-    // direction === 'left' ? area.scrollLeft =
+    let cards = document.getElementsByClassName('productCard');
+    console.log('cards', cards)
+    // direction === 'left' ? area.scrollLeft = cards
 
   }
 
@@ -32,19 +34,25 @@ const RelatedProducts = (props) => {
           ><div>
             <h3>RELATED PRODUCTS</h3>
           </div>
-          {/* <button>&#60;</button> */}
-          <CardContainer>
-
-            {
-              products.map((product, index) => (
-                <ProductCard
-                  key={index}
-                  product={product}
-                />
-              ))
-            }
-          </CardContainer>
-            {/* <button>&gt;</button> */}
+          <div>
+            <button
+              onClick={() => scroll('related', 'left')}
+            >
+              &#60;
+            </button>
+            <CardContainer>
+              {
+                products.map((product, index) => (
+                  <ProductCard
+                    key={index}
+                    product={product}
+                    className={'productCard'}
+                  />
+                ))
+              }
+            </CardContainer>
+              <button>&gt;</button>
+            </div>
 
           </ProductsContainer>
 
