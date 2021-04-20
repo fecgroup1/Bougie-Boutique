@@ -1,12 +1,13 @@
 import React, { Fragment, useState, useEffect, memo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
-import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper } from '../../Styles';
+import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button } from '../../Styles';
 import ProductCard from './ProductCard.js'
 
 const RelatedProducts = (props) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
+  const [productsPosition, setProductsPosition] = useState(0);
 
   useEffect(() => {
     // if (props.store.state.related) {
@@ -23,10 +24,13 @@ const RelatedProducts = (props) => {
     if(direction === 'left' ) {
       console.log('lefttime', event.target.parentNode.children[1].scrollLeft)
       area.scrollLeft += cardWidth
+      setProductsPosition(productsPosition - 1)
+    } else {
+      area.scrollLeft -= cardWidth
+      setProductsPosition(productsPosition + 1)
     }
 
-    direction === 'left' ? area.scrollLeft += cardWidth : area.scrollLeft -= cardWidth
-    // console.log(event.target.parentNode.children[1].scrollLeft)
+    // direction === 'left' ? area.scrollLeft += cardWidth && setProductsPosition(productsPosition - 1) : area.scrollLeft -= cardWidth && setProductsPosition(productsPosition + 1)
   }
 
     return (
@@ -40,11 +44,12 @@ const RelatedProducts = (props) => {
             <h3>RELATED PRODUCTS</h3>
           </div>
           <CardsWrapper>
-            <button
+            <Button
               onClick={(event) => scroll('products', 'right', event)}
+              show={!!productsPosition}
             >
               &#60;
-            </button>
+            </Button>
             <CardContainer>
               {
                 products.map((product, index) => (
@@ -56,9 +61,10 @@ const RelatedProducts = (props) => {
                 ))
               }
             </CardContainer>
-              <button
+              <Button
                 onClick={(event) => scroll('products', 'left', event)}
-              >&gt;</button>
+                show={true}
+              >&gt;</Button>
               </CardsWrapper>
 
           </ProductsContainer>

@@ -24,3 +24,7 @@ export const CardContainer = styled.div`
 export const CardsWrapper = styled.div`
 
 `
+
+export const Button = styled.button`
+  display: ${props => props.show ? 'inline-block': 'none'}
+`
