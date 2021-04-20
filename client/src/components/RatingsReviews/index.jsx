@@ -1,12 +1,13 @@
 import React from 'react';
 // import WidgetContainer from '../../Styles'
 import Ratings from './Ratings';
+import Reviews from './Reviews';
 
 
 
 
 
-class Reviews extends React.Component {
+class RatingsReviews extends React.Component {
   constructor(props){
     super(props);
   }
@@ -14,6 +15,7 @@ class Reviews extends React.Component {
     return (<div>
       <h5>Ratings and Reviews</h5>
       <Ratings meta={this.props.store.state.meta} />
+      <Reviews reviews ={this.props.store.state.reviews}/>
     </div>);
 }
 }
@@ -23,7 +25,7 @@ class Reviews extends React.Component {
 
 
 
-export default Reviews;
+export default RatingsReviews;
 
 // const Reviews = ({store}) => (
 
