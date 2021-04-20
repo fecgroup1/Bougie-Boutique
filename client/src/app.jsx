@@ -1,11 +1,14 @@
 import React from 'react';
 
 import CurrentProduct  from './Utils/CurrentProduct.js'
-import Nav from './components/Nav';
+// import Nav from './components/Nav';
 import Overview from './components/Overview';
 import QandA from './components/QandA';
 import RelatedProducts from './components/RelatedProducts';
 import RatingsReviews from './components/RatingsReviews';
+
+import { ThemeProvider } from 'styled-components';
+import { Body, Title, dark, light } from './Styles';
 
 class App extends React.Component {
 
@@ -19,32 +22,33 @@ class App extends React.Component {
   }
 
   render() {
-
-   {/*const store = this.props.store
-   console.log('this is the store: ', store)*/}
+    const theme = this.state.theme === 'dark' ? dark: light;
 
     return (
-      <div>
-        <h1>Hola Mundo!!</h1>
-
-        <CurrentProduct render={ store => (
+      <ThemeProvider theme={theme}>
+        <Body />
           <div>
-            <Overview
-              store={store}
-            />
-            <RelatedProducts
-              store={store}
-              outfits={this.state.outfits}
-            />
-            <QandA
-              store={store}
-            />
-            <RatingsReviews
-              store={store}
-            />
+            <Title>Hola Mundo!!</Title>
+
+            <CurrentProduct render={ store => (
+              <div>
+                <Overview
+                  store={store}
+                />
+                <RelatedProducts
+                  store={store}
+                  outfits={this.state.outfits}
+                />
+                <QandA
+                  store={store}
+                />
+                <RatingsReviews
+                  store={store}
+                />
+              </div>
+            )}/>
           </div>
-        )}/>
-      </div>
+      </ThemeProvider>
     )
   }
 }
