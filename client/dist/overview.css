@@ -1,0 +1,77 @@
+.stars {
+  margin-bottom: 10px;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+  color: #002a60;
+}
+
+.outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.price {
+  margin: 5px 0px;
+}
+
+.stylename {
+  margin-top: 10px;
+}
+
+.inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #002a60;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#gallery {
+  height: 500px;
+}
+
+.left {
+  flex: 5 0 200px;
+  order: 1;
+  margin-right: 20px;
+}
+
+.right {
+  min-width: 400px;
+  flex: 1 0 400px;
+  order: 2;
+}
+
+#stylethumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+
+#details {
+  padding-top: 10px;
+}
+
+.topline {
+  border-top: 3px solid #002a60;
+  margin-top: 10px;
+  padding-top: 10px;
+}
