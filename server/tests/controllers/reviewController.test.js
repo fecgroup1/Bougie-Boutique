@@ -21,7 +21,6 @@ test('getMeta gets ratings, recommended, characteristics, averageRating, and sta
   .catch((err) => cb(err));
 });
 
-
 test('getReviews gets rating, date, summary, body, photos, reviewerName, responseToReview, and helpfulness ', done => {
   function cb(reviews) {
     try {
