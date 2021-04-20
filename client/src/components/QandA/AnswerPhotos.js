@@ -38,7 +38,7 @@ class AnswerPhotos extends React.Component {
         {this.props.answer.photos.length > 0 ? (
           <div className='images'>
             {this.props.answer.photos.map((image, index) => (
-              <div class='photos'>
+              <div key={index} className='photos'>
                 <Modal
                   ariaHideApp={false}
                   isOpen={this.state.clicked}
@@ -46,7 +46,7 @@ class AnswerPhotos extends React.Component {
                   className= 'answerModal'
                 >
                 <button onClick={this.changeClick}>X</button>
-                <img class='enlargedImage' src={this.current(image)}/>
+                <img key={index} className='enlargedImage' src={this.current(image)}/>
                 </Modal>
               <img key={index} onClick={() => {this.selectedPhoto(image)}} className='img' src={image.url}/>
               </div>

@@ -18,6 +18,7 @@ class CurrentProduct extends React.Component {
     this.changeProduct = this.changeProduct.bind(this);
     this.changeStyle = this.changeStyle.bind(this);
     this.setProduct = this.setProduct.bind(this);
+    this.setQuestions = this.setQuestions.bind(this);
   }
 
 
@@ -60,7 +61,11 @@ class CurrentProduct extends React.Component {
   }
 
   setQuestions(id) {
-
+    QuestionAPI.getQuestions(id)
+      .then((questions) => {
+        console.log('hello', questions)
+        this.setState({ questions: questions })
+      })
   }
 
 
