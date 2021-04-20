@@ -1,0 +1,23 @@
+.outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+  color: #002a60;
+}
+
+.outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #002a60;
+}

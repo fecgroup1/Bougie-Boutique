@@ -1,14 +1,22 @@
 import React from 'react';
 
-const Stars = ({rating, reviews}) => (
-  <div>
-    <div className="stars">
-      Star Rating: {rating}
-    </div>
+const Stars = ({rating, reviews}) => {
+  const inner = {
+    width: `${rating / 5 * 100}%`,
+  };
+
+  return (
     <div>
-      <a href="">Read all {reviews} reviews</a>
+      <div className="stars">
+        <div className="outer">
+          <div style={inner} className="inner"></div>
+        </div>
+      </div>
+      <div>
+        <a href="">Read all {reviews} reviews</a>
+      </div>
     </div>
-  </div>
-)
+  )
+};
 
 export default Stars;
