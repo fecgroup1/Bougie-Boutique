@@ -49,7 +49,7 @@ module.exports = {
           photos: currentReview.photos,
           recommended: currentReview.recommend,
           reviewerName: currentReview.reviewer_name,
-          responceToReview: currentReview.responce,
+          responseToReview: currentReview.response,
           helpfulness: currentReview.helpfulness,
         });
       }
