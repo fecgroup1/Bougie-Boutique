@@ -15,7 +15,7 @@ const Ratings = ({ meta }) => (
   <div>
     <div>{meta.averageRating}</div>
     <StarRating stars={meta.starRating} />
-    <p>{calculatePercent(meta.)}% of reviews recomend this product</p>
+    <p>{calculatePercent(meta.recommended)}% of reviews recomend this product</p>
     <Characteristics characteristics={meta.characteristics} />
   </div>
 );
