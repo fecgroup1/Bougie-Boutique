@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyledProductCard } from '../../Styles/'
+// import { StyledProductCard } from '../../Styles/'
 
 
 const ProductCard = ({Product}) => (
-  <StyledProductCard>
+  // <StyledProductCard>
     <h4>Product Name</h4>
-  </StyledProductCard>
+  {/* </StyledProductCard> */}
 )
 
 export default ProductCard;

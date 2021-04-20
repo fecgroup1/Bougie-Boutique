@@ -1,4 +1,4 @@
-import RelatedAPI from '..Utils/RelatedAPI';
+import RelatedAPI from '../Utils/RelatedAPI';
 import axios from 'axios'
 
 jest.mock('axios');

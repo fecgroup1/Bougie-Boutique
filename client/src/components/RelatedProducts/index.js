@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect, memo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
-import { RelatedContainer, ProductsContainer, StyledProductCard, CardContainer } from '../../Styles';
-import ProductCard from './ProductCard.js'
+import { RelatedContainer, ProductsContainer, ProductCard, CardContainer } from '../../Styles';
+// import ProductCard from './ProductCard.js'
 
 const RelatedProducts = (props) => {
 
@@ -32,7 +32,7 @@ const RelatedProducts = (props) => {
           ><div>
             <h3>RELATED PRODUCTS</h3>
           </div>
-          <button>&#60;</button>
+          {/* <button>&#60;</button> */}
           <CardContainer>
 
             {
