@@ -10,8 +10,7 @@ const Select = ({title, category, currStyle, styles, changeStyle}) => (
     <div className="price">
       <Price
         orig={styles[currStyle].original_price}
-        sale={styles[currStyle].sale_price}
-        noSale={styles[currStyle]['default?']}/>
+        sale={styles[currStyle].sale_price}/>
     </div>
     <div className="stylename">Style: {styles[currStyle].name}</div>
     <Thumbnails
