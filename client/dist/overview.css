@@ -21,3 +21,22 @@
   content: "\f005 \f005 \f005 \f005 \f005";
   color: #002a60;
 }
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+#gallery {
+  width: 500px;
+  order: 1;
+  margin-right: 10px;
+}
+#styles {
+  order: 2;
+}
+
+#stylethumbs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
