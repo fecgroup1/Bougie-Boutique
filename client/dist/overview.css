@@ -1,3 +1,7 @@
+.stars {
+  margin-bottom: 10px;
+}
+
 .outer {
   display: inline-block;
   position: relative;
@@ -25,13 +29,18 @@
 .flex {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
+
 #gallery {
-  width: 500px;
+  flex: 5 0 200px;
+  height: 500px;
   order: 1;
   margin-right: 10px;
 }
 #styles {
+  min-width: 400px;
+  flex: 1 0 400px;
   order: 2;
 }
 
