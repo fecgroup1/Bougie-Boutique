@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-// import { AppStore, ProductAPI, QuestionAPI, ReviewAPI } from './Utils'
+
 import CurrentProduct  from './Utils/CurrentProduct.js'
 import Nav from './components/Nav';
 import Overview from './components/Overview';
@@ -15,7 +14,6 @@ class App extends React.Component {
 
     this.state = {
       theme: 'dark',
-      outfits: []
     }
   }
 
@@ -35,7 +33,6 @@ class App extends React.Component {
             />
             <RelatedProducts
               store={store}
-              outfits={this.state.outfits}
             />
             <QandA
               store={store}
@@ -48,17 +45,6 @@ class App extends React.Component {
       </div>
     )
   }
-
-
 }
 
-// ReactDom.render(
-//   <AppStore
-//     render={
-//       store => (
-//         <App store={store}/>
-//       )
-//     }
-//   />
-// , document.getElementById('app'));
 export default App;

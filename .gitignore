@@ -4,13 +4,6 @@
 # config file
 config.js
 
-<<<<<<< HEAD
-#env
-.env
-
-# coverage
-/coverage
-=======
 # env
 .env
 
@@ -22,4 +15,3 @@ config.js
 
 # Random mac file
 .DS_Store
->>>>>>> Some small cleanup
