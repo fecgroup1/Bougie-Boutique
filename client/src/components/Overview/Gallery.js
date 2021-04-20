@@ -11,8 +11,8 @@ class Gallery extends React.Component {
     const galImg = {
       objectFit: 'cover',
       objectPosition: '50% 50%',
-      width: '500px',
-      height: '500px',
+      width: '100%',
+      height: '100%'
     };
 
     return (
