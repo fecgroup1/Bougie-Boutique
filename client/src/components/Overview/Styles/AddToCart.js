@@ -9,6 +9,7 @@ class AddToCart extends React.Component {
       quantity: 'Qty: --',
       max: 0,
       toAdd: 0,
+      warning: '',
     };
     this.handleSizeSelect = this.handleSizeSelect.bind(this);
     this.handleQtySelect = this.handleQtySelect.bind(this);
@@ -44,6 +45,7 @@ class AddToCart extends React.Component {
       quantity: 'Qty: 1',
       max: array,
       toAdd: skus[event.target.value].sku,
+      warning: '',
     });
   }
 
@@ -56,10 +58,14 @@ class AddToCart extends React.Component {
 
   render() {
     const skus = this.props.styles[this.props.currStyle].skus;
+    const grid = {
+      display: 'flex',
+      justifyContent: 'space-between',
+    }
 
     if (this.props.outOfStock) {
       return (
-        <form id="addcart">
+        <form id="addcart" style={grid}>
           <span style={red}>Out of Stock</span>
           <Select id="size">
             <option value='0' disabled selected>Size: --</option>
@@ -72,7 +78,7 @@ class AddToCart extends React.Component {
     } else if (this.state.currSize === 'Select a size') {
 
       return (
-        <form id="addcart">
+        <form id="addcart" style={grid}>
           <Select
             id="size"
             value={this.state.currSize}

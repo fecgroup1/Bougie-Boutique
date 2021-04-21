@@ -21,6 +21,10 @@ export const Body = createGlobalStyle`
   a: hover {
     color: ${props => props.theme.text};
   }
+  input {
+    -webkit-appearance: none;
+    appearance: none;
+  }
 `;
 
 export const ThemeToggle = styled.button`

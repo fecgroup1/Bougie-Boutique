@@ -24,6 +24,10 @@ class Thumbnails extends React.Component {
     const thumbsGrid = {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr 1fr 1fr',
+      gridAutoRows: '110px',
+      justifyContent: 'space-between',
+      alignContent: 'space-between',
+      margin: '5px 0px',
     }
 
     return (

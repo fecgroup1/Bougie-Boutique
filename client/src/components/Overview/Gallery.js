@@ -18,7 +18,7 @@ class Gallery extends React.Component {
 
     return (
       <Left>
-        <div id="gallery" style={{height: '500px'}}>
+        <div id="gallery" style={{height: '66vh'}}>
           <img
             style={galImg}
             src={styles[currImg[0]].photos[currImg[1]].url}/>
