@@ -1,7 +1,7 @@
 import React from 'react';
 import Review from './Review';
-import Modal from 'react-modal';
-Modal.setAppElement('#app');
+import NewReviewModal from './NewReviewModal';
+
 
 
 
@@ -9,12 +9,17 @@ Modal.setAppElement('#app');
 class Reviews extends React.Component {
   constructor(props){
     super(props);
+    this.closeModal= this.closeModal.bind(this)
     this.state={
       reviewsToShow: this.props.reviews,
       length:2,
       renderbutton: true,
       modalIsOpen: false,
     }
+  }
+
+  closeModal(){
+    this.setState({modalIsOpen:false})
   }
 
   sortReviews(index){
@@ -61,13 +66,7 @@ class Reviews extends React.Component {
       {reviews.map((review)=> <Review review={review}/>)}
       {reviews.length >0 ? (this.state.renderbutton ? <button onClick={(event)=>{this.showMore()}}> More Reviews </button> : <div></div>): <div></div> }
       <button onClick= {(event)=> this.setState({modalIsOpen:true})}>Add A Review</button>
-      <Modal isOpen= {this.state.modalIsOpen} onRequestClose= {()=> this.setState({modalIsOpen:false})}>
-        <span style={{'float': 'right', 'fontSize': '150%'}} onClick= {()=> this.setState({modalIsOpen:false})}>&#10006;</span>
-        <h2>this is in a modal</h2>
-      </Modal>
-
-
-
+      <NewReviewModal  close={this.closeModal} isOpen= {this.state.modalIsOpen} productName= {this.props.product.name}/>
     </div>)
   }
 
