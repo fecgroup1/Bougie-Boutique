@@ -26,41 +26,42 @@ module.exports = {
   },
 
   getQA: (productId) => {
+    const qaData = {}
     return axios({
       method: 'GET',
-      url: `${url}/qa/questions/?product_id=${productId}`,
+      url: `${url}/qa/questions/?product_id=${productId}&count=20`,
       headers: {
         'Authorization': `${TOKEN}`
       }
     })
       .then((response) => {
-        return response.data.results
-      })
-  },
-
-  getAnswers: (questionId) => {
-    return axios({
-      method: 'GET',
-      url: `${url}/qa/questions/${questionId}/answers`,
-      headers: {
-        'Authorization': `${TOKEN}`
-      }
+        const questionsArr = []
+        const qid = response.data.results.map(item => {
+          questionsArr.push(item.question_id.toString())
+        })
+        qaData.questions = response.data.results
+        let answerPromise = questionsArr.map((qid) => {
+          return axios({
+            method: 'GET',
+            url: `${url}/qa/questions/${qid}/answers?count=20`,
+            headers: {
+              'Authorization': `${TOKEN}`
+             }
+          })
+        })
+        return Promise.all(answerPromise)
+          .then((answers) => {
+            for (let i = 0; i < qaData.questions.length; i++) {
+              qaData.questions[i].answerArr = answers[i].data.results
+            }
+            return qaData
+          })
     })
-      .then((response) => {
-        return response.data.results
-      })
+      .then((data) => {
+        return data
+    })
+      .catch((err) => {
+        console.log(err)
+    })
   }
-
-
 }
-
-/*
-axios({
-  method: 'post',
-  url: '/user/12345',
-  data: {
-    firstName: 'Fred',
-    lastName: 'Flintstone'
-  }
-});
-*/
