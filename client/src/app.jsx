@@ -10,6 +10,7 @@ import RatingsReviews from './components/RatingsReviews';
 import { ThemeProvider } from 'styled-components';
 import { Body, dark, light } from './Styles';
 
+
 class App extends React.Component {
 
   constructor (props) {
