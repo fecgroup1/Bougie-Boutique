@@ -1,16 +1,71 @@
 import React from 'react';
+import Review from './Review';
 
-const Reviews = ({reviews})=> {
-  console.log('this is reviews', reviews)
-  if (!reviews) {
-    return <div>loading...</div>
+
+
+
+class Reviews extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      reviewsToShow: this.props.reviews,
+      length:2,
+      renderbutton: true,
+    }
   }
-  return (
-  <div>
-    <span>{reviews.length} reviews, sorted by </span><select> <option>Relevant</option></select>
-  </div>
 
-  )
+  sortReviews(index){
+    console.log(index)
+    var array = [...this.state.reviewsToShow];
+    if(index===0){
+      var storage={};
+      array.sort((a,b)=> (a.date<b.date) ? 1: -1)
+      for (var i=0; i<array.length; i++){
+        storage[array[i].reviewerName]= i;
+      }
+      console.log(array)
+      array= [...array]
+      array.sort((a,b)=> (a.helpfulness < b.helpfulness) ? 1: -1)
+      for (var i=0; i<array.length; i++){
+        storage[array[i].reviewerName]= storage[array[i].reviewerName]- (array[i].helpfulness/2)
+      }
+      console.log(array)
+      console.log(storage)
+      array.sort((a,b)=> (storage[a.reviewerName]> storage[b.reviewerName]) ? 1: -1)
+      this.setState({reviewsToShow: array})
+    }else if (index === 2){
+      array.sort((a,b)=> (a.date<b.date) ? 1: -1)
+      this.setState({reviewsToShow: array})
+    }else if(index ===1){
+      array.sort((a,b)=> (a.helpfulness<b.helpfulness) ? 1: -1)
+      this.setState({reviewsToShow: array})
+    }
+
+  }
+
+
+  showMore(){
+    this.setState({length: this.state.length + 2});
+    if (this.state.length>= this.props.reviews.length){
+      this.setState({renderbutton: false})
+    }
+  }
+
+  render(){
+     if (! this.props.reviews) {
+      return <div>loading...</div>
+    }
+    var reviews= this.state.reviewsToShow.slice(0,this.state.length)
+    return (
+    <div>
+      <span>{reviews.length} reviews, sorted by </span><select onChange= {(event)=> this.sortReviews(event.target.selectedIndex)}> <option>Relevant</option><option>Helpful</option><option>Newest</option></select>
+      {reviews.map((review)=> <Review review={review}/>)}
+      {this.state.renderbutton ? <button onClick={(event)=>{this.showMore()}}> More Reviews </button> : <div></div> }
+
+    </div>)
+  }
+
+
 }
 
 export default Reviews;
