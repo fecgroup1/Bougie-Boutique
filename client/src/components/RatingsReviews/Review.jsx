@@ -5,7 +5,7 @@ const Review = ({ review }) => (
   <div>
     <p>rating {review.rating}</p>
     <span>{review.date}</span>
-    <h5>{review.summary}</h5>
+    <h3>{review.summary}</h3>
     <p>{review.body}</p>
     {review.recommended ? <p>I recomend this product</p> : <div></div>}
     {review.responseToReview ? <p>{review.responseToReview}</p> : <div></div>}
