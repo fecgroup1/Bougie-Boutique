@@ -15,7 +15,7 @@ class RatingsReviews extends React.Component {
   render(){
     return (
     <section>
-      <h2 style={{'margin-bottom': '50px','margin-top': '100px'}}>Ratings and Reviews</h2>
+      <h2 style={{'marginBottom': '50px','marginTop': '100px'}}>Ratings and Reviews</h2>
       <RatingsAndReviewsContainer>
         <RatingsContainer>
           <Ratings meta={this.props.store.state.meta} />

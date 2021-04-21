@@ -18,9 +18,23 @@ class Reviews extends React.Component {
     console.log(index)
     var array = [...this.state.reviewsToShow];
     if(index===0){
-      console.log('should be sorted')
+      var storage={};
+      array.sort((a,b)=> (a.date<b.date) ? 1: -1)
+      for (var i=0; i<array.length; i++){
+        storage[array[i].reviewerName]= i;
+      }
+      console.log(array)
+      array= [...array]
+      array.sort((a,b)=> (a.helpfulness < b.helpfulness) ? 1: -1)
+      for (var i=0; i<array.length; i++){
+        storage[array[i].reviewerName]= storage[array[i].reviewerName]- (array[i].helpfulness/2)
+      }
+      console.log(array)
+      console.log(storage)
+      array.sort((a,b)=> (storage[a.reviewerName]> storage[b.reviewerName]) ? 1: -1)
+      this.setState({reviewsToShow: array})
     }else if (index === 2){
-      array.sort((a,b)=> (a.date>b.date) ? 1: -1)
+      array.sort((a,b)=> (a.date<b.date) ? 1: -1)
       this.setState({reviewsToShow: array})
     }else if(index ===1){
       array.sort((a,b)=> (a.helpfulness<b.helpfulness) ? 1: -1)
