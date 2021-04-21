@@ -1,14 +1,14 @@
 import React from 'react';
 
 import CurrentProduct  from './Utils/CurrentProduct.js'
-// import Nav from './components/Nav';
+import Nav from './components/Nav';
 import Overview from './components/Overview';
 import QandA from './components/QandA';
 import RelatedProducts from './components/RelatedProducts';
 import RatingsReviews from './components/RatingsReviews';
 
 import { ThemeProvider } from 'styled-components';
-import { Body, Title, dark, light } from './Styles';
+import { Body, dark, light } from './Styles';
 
 class App extends React.Component {
 
@@ -16,20 +16,28 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      theme: 'light',
+      dark: true,
       outfits: [],
     }
+    this.toggleTheme = this.toggleTheme.bind(this)
+  }
+
+  toggleTheme() {
+    this.setState({
+      dark: !this.state.dark,
+    });
   }
 
   render() {
-    const theme = this.state.theme === 'dark' ? dark: light;
+    const theme = this.state.dark ? dark: light;
 
     return (
       <ThemeProvider theme={theme}>
+        <Nav
+          dark={this.state.dark}
+          toggleTheme={this.toggleTheme}/>
         <Body />
-          <div>
-            <Title>Hola Mundo!!</Title>
-
+          <div id="content">
             <CurrentProduct render={ store => (
               <div>
                 <Overview
