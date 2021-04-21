@@ -5,5 +5,4 @@ export const ProductCard = styled.div`
   width: 275px;
   height 400px;
   border: 1px solid black;
-  margin-right: 2vw;
 `
