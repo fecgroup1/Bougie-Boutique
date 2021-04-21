@@ -8,9 +8,9 @@ const ProductCard = ({product}) => {
     prd
     ?
       <StyledProductCard>
-        { product.styles[0].default + '?'
+        { product.styles[0].photos[0].url !== null
           ? <CardImage src={`${product.styles[0].photos[0].url}`} />
-          : <i className="far fa-eye-slash" />
+          : <CardImage src={'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'} />
         }
         <div style={{alignSelf: 'end'}}>
           <p style={{margin: 0}}>{prd.category}</p>
