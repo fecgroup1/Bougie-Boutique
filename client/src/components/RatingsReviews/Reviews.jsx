@@ -17,12 +17,16 @@ class Reviews extends React.Component {
   sortReviews(index){
     console.log(index)
     var array = [...this.state.reviewsToShow];
-
-    if (index === 2){
+    if(index===0){
+      console.log('should be sorted')
+    }else if (index === 2){
       array.sort((a,b)=> (a.date>b.date) ? 1: -1)
       this.setState({reviewsToShow: array})
+    }else if(index ===1){
+      array.sort((a,b)=> (a.helpfulness<b.helpfulness) ? 1: -1)
+      this.setState({reviewsToShow: array})
     }
-    console.log(array)
+
   }
 
 
