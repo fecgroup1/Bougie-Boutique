@@ -12,3 +12,8 @@ export const RatingsContainer = styled.div`
 export const ReviewsContainer = styled.div`
 
 `;
+
+export const SingleReview = styled.div`
+  margin: 7%;
+  margin-left: 0px;
+`;
