@@ -28,3 +28,9 @@ export const CardsWrapper = styled.div`
 export const Button = styled.button`
   display: ${props => props.show ? 'inline-block': 'none'}
 `
+
+export const CardImage = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  place-self: center;
+`

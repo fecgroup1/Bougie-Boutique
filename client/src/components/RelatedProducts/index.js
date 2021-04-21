@@ -10,17 +10,17 @@ const RelatedProducts = (props) => {
   const [productsPosition, setProductsPosition] = useState(0);
 
   useEffect(() => {
-    // if (props.store.state.related) {
-    //   ProductAPI.getRelatedProducts(props.store.state.related)
-    //     .then((results) => setProducts(results.data))
-    // }
+    if (props.store.state.related) {
+      ProductAPI.getRelatedProducts(props.store.state.related)
+        .then((results) => setProducts(results.data))
+    }
   }, [props.store.state]);
 
   const scroll = (container, direction, event) => {
-    console.log(container)
+    // console.log(container)
     let area = event.target.parentNode.children[1];
     let cardWidth = event.target.parentNode.children[1].children[1].clientWidth;
-    console.log('cardwidth', cardWidth)
+    // console.log('cardwidth', cardWidth)
     if(direction === 'left' ) {
       console.log('lefttime', event.target.parentNode.children[1].scrollLeft)
       area.scrollLeft += cardWidth
@@ -29,8 +29,6 @@ const RelatedProducts = (props) => {
       area.scrollLeft -= cardWidth
       setProductsPosition(productsPosition + 1)
     }
-
-    // direction === 'left' ? area.scrollLeft += cardWidth && setProductsPosition(productsPosition - 1) : area.scrollLeft -= cardWidth && setProductsPosition(productsPosition + 1)
   }
 
     return (
@@ -74,8 +72,6 @@ const RelatedProducts = (props) => {
           >
             <h2>YOUR OUTFIT</h2>
           </ProductsContainer>
-
-        <div> btw I'm a Class related component {props.store.state.currentProductId}</div>
         </RelatedContainer>
     </Fragment>
     )
