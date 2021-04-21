@@ -59,8 +59,10 @@ class AddToCart extends React.Component {
   render() {
     const skus = this.props.styles[this.props.currStyle].skus;
     const grid = {
-      display: 'flex',
+      display: 'grid',
+      gridTemplateColumns: '100',
       justifyContent: 'space-between',
+      alignContent: 'space-between',
     }
 
     if (this.props.outOfStock) {
@@ -109,7 +111,7 @@ class AddToCart extends React.Component {
     } else {
 
       return(
-        <form id="addcart">
+        <form id="addcart" style={grid}>
           <Select
             id="size"
             value={this.state.currSize}

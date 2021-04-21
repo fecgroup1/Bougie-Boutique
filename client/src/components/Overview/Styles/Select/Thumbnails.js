@@ -23,7 +23,8 @@ class Thumbnails extends React.Component {
     const changeStyle = this.props.changeStyle;
     const thumbsGrid = {
       display: 'grid',
-      gridTemplateColumns: '1fr 1fr 1fr 1fr',
+      gridTemplateColumns: 'repeat(4, 100px)',
+      columnGap: '1fr',
       gridAutoRows: '110px',
       justifyContent: 'space-between',
       alignContent: 'space-between',
