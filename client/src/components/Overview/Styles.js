@@ -4,8 +4,10 @@ import AddToCart from './Styles/AddToCart.js';
 
 import React from 'react';
 
+import { Right } from './../../Styles';
+
 const Styles = ({product, currStyle, changeStyle, styles, stars, reviews}) => (
-    <div id="styles" className="right">
+    <Right>
       <Stars
         rating={stars}
         reviews={reviews}/>
@@ -18,7 +20,7 @@ const Styles = ({product, currStyle, changeStyle, styles, stars, reviews}) => (
       <AddToCart
         currStyle={currStyle}
         styles={styles}/>
-    </div>
+    </Right>
 );
 
 export default Styles;

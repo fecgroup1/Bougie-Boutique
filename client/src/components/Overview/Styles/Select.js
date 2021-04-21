@@ -1,11 +1,9 @@
 import React from 'react';
+import { Small } from './../../../Styles';
+
 
 import Price from './Select/Price.js';
 import Thumbnails from './Select/Thumbnails.js';
-
-const small = {
-  fontSize: '14px'
-};
 
 const titleFont = {
   fontFamily: '"Yeseva One", cursive',
@@ -14,14 +12,18 @@ const titleFont = {
 
 const Select = ({title, category, currStyle, styles, changeStyle}) => (
   <div id="select">
-    <div style={small}>{category}</div>
+    <Small>{category}</Small>
     <div style={titleFont}>{title}</div>
-    <div className="price">
+    <div className="price" style={{margin: '5px 0px'}}>
       <Price
         orig={styles[currStyle].original_price}
         sale={styles[currStyle].sale_price}/>
     </div>
-    <div className="stylename small">Style: {styles[currStyle].name}</div>
+    <div
+      className="stylename small"
+      style={{marginTop: '10px'}}>
+        Style: {styles[currStyle].name}
+    </div>
     <Thumbnails
       styles={styles}
       currStyle={currStyle}

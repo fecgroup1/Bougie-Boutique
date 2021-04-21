@@ -1,44 +1,48 @@
 import React from 'react';
 
-const stylethumb = {
-  objectFit: 'cover',
-  objectPosition: '50% 50%',
-  width: '88px',
-  height: '88px',
-  margin: '3px',
-  border: '6px solid white',
-}
-const thumbhighlight = {
-  objectFit: 'cover',
-  objectPosition: '50% 50%',
-  width: '88px',
-  height: '88px',
-  margin: '6px',
-  border: '3px solid white',
-  outline: '3px solid #002a60'
-}
+import { ThumbImg, CurrThumb } from './../../../../Styles';
 
-const Thumbnails = ({styles, currStyle, changeStyle}) => (
-  <div id="stylethumbs">
+class Thumbnails extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.currStyle !== nextProps.currStyle) {
+      return true;
+    }
+    if (this.props.styles[0].style_id != nextProps.styles[0].style_id) {
+      return true;
+    }
+    return false;
+  }
+
+  render() {
+    const styles = this.props.styles;
+    const currStyle = this.props.currStyle;
+    const changeStyle = this.props.changeStyle;
+
+    return (
+      <div id="stylethumbs">
     {styles.map((style, index) => {
       if (index === currStyle) {
         return (
-          <img
+          <CurrThumb
             key={index}
-            style={thumbhighlight}
             src={style.photos[0].thumbnail_url}/>
         );
       } else {
         return (
-          <img
+          <ThumbImg
             key={index}
             onClick={() => changeStyle(index)}
-            style={stylethumb}
             src={style.photos[0].thumbnail_url}/>
         );
       }
     })}
     </div>
-);
+    );
+  }
+}
 
 export default Thumbnails;
