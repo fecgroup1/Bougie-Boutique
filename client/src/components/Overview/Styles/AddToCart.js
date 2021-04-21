@@ -60,7 +60,8 @@ class AddToCart extends React.Component {
     const skus = this.props.styles[this.props.currStyle].skus;
     const grid = {
       display: 'grid',
-      gridTemplateColumns: '100',
+      gridTemplateColumns: 'repeat(2, 48%)',
+      columnGap: '1fr',
       justifyContent: 'space-between',
       alignContent: 'space-between',
     }
@@ -81,7 +82,7 @@ class AddToCart extends React.Component {
 
       return (
         <form id="addcart" style={grid}>
-          <Select
+          <select
             id="size"
             value={this.state.currSize}
             onChange={(event) => this.handleSizeSelect(event)}>
@@ -101,10 +102,11 @@ class AddToCart extends React.Component {
                   );
                 }
               })}
-          </Select>
-          <Select id="qty" disabled>
+          </select>
+          <select id="qty" disabled>
             <option value={this.state.quantity}>{this.state.quantity}</option>
-          </Select>
+          </select>
+          <button></button>
         </form>
       );
 

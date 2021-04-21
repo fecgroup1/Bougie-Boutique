@@ -94,5 +94,5 @@ export const Select = styled.select`
   color: ${props => props.theme.text};
   background: ${props => props.theme.bg};
   height: 5vh;
-  width: 212px;
+  outline: none;
 `;
