@@ -8,11 +8,16 @@ const ProductCard = ({product}) => {
     prd
     ?
       <StyledProductCard>
+        <i
+          className="fa fa-star-o fa-2x"
+          style={{position: 'absolute', right: '.25em', top: '.25em'}}
+          // onClick={() => }
+        />
         { product.styles[0].photos[0].url !== null
           ? <CardImage src={`${product.styles[0].photos[0].url}`} />
           : <CardImage src={'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'} />
         }
-        <div style={{alignSelf: 'end', borderTop: '1px solid black' }}>
+        <div style={{alignSelf: 'end', borderTop: '1px solid black', paddingLeft: '.5em' }}>
           <p style={{marginBottom: 0}}>{prd.category}</p>
           <h4 style={{margin: 0}}>{prd.name}</h4>
           <p style={{marginTop: 0}}>{`$${product.styles[0].original_price}`}</p>
@@ -27,6 +32,7 @@ const ProductCard = ({product}) => {
         </div>
       </StyledProductCard>
     :<StyledProductCard>
+      <i className="fa fa-star-o fa-4x" style={{position: 'absolute', right: '.25em', top: '.25em'}}></i>
       <div style={{alignSelf: 'center', placeSelf: 'center'}}>
         ...loading
       </div>
