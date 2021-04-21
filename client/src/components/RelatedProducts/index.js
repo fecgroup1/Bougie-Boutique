@@ -10,10 +10,10 @@ const RelatedProducts = (props) => {
   const [productsPosition, setProductsPosition] = useState(0);
 
   useEffect(() => {
-    // if (props.store.state.related) {
-    //   ProductAPI.getRelatedProducts(props.store.state.related)
-    //     .then((results) => setProducts(results.data))
-    // }
+    if (props.store.state.related) {
+      ProductAPI.getRelatedProducts(props.store.state.related)
+        .then((results) => setProducts(results.data))
+    }
   }, [props.store.state]);
 
   const scroll = (container, direction, event) => {
