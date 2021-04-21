@@ -25,10 +25,29 @@ export const Body = createGlobalStyle`
     -webkit-appearance: none;
     appearance: none;
   }
+
+  select {
+    border: 3px solid ${props => props.theme.text};
+    color: ${props => props.theme.text};
+    background: ${props => props.theme.bg};
+    outline: none;
+  }
+
+  button {
+    & {
+      border: 3px solid ${props => props.theme.text};
+    color: ${props => props.theme.text};
+    background: ${props => props.theme.bg};
+    outline: none;
+    transition: background 0.5s;
+    }
+    &: hover {
+      background: #002a60;
+    }
+  }
 `;
 
 export const ThemeToggle = styled.button`
-  border: white;
   color: #ccc;
   background: none;
   font-size: 20px;
