@@ -1,4 +1,5 @@
 import React from 'react';
+import { Left } from './../../Styles';
 
 class Gallery extends React.Component {
   constructor (props) {
@@ -16,11 +17,13 @@ class Gallery extends React.Component {
     };
 
     return (
-      <div id="gallery" className="left">
-        <img
-          style={galImg}
-          src={styles[currImg[0]].photos[currImg[1]].url}/>
-      </div>
+      <Left>
+        <div id="gallery" style={{height: '500px'}}>
+          <img
+            style={galImg}
+            src={styles[currImg[0]].photos[currImg[1]].url}/>
+        </div>
+      </Left>
     );
   }
 }
