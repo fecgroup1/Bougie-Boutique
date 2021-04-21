@@ -9,6 +9,14 @@ export const Body = createGlobalStyle`
     font-size: 18px;
     padding: 0px 20px;
   }
+
+  a {
+    color: #0056c5;
+    transition: color 0.5s;
+  }
+  a: hover {
+    color: ${props => props.theme.text};
+  }
 `;
 
 export const Title = styled.h1`

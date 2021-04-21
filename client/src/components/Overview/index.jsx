@@ -1,9 +1,9 @@
 import React from 'react';
-// import WidgetContainer from '../../Styles';
+import { Flex } from '../../Styles';
+
 import Gallery from './Gallery.js';
 import Styles from './Styles.js';
 import Details from './Details.js';
-
 
 class Overview extends React.Component {
   constructor (props) {
@@ -36,7 +36,7 @@ class Overview extends React.Component {
       var store = this.props.store.state
       return (
         <div id="overview">
-          <div className="flex">
+          <Flex>
             <Gallery
               styles={store.styles}
               currImg={this.state.currImg}
@@ -48,7 +48,7 @@ class Overview extends React.Component {
               styles={store.styles}
               stars={store.meta.starRating}
               reviews={store.reviews.length} />
-          </div>
+          </Flex>
             <Details
               slogan={store.product.slogan}
               description={store.product.description}

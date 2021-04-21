@@ -1,12 +1,34 @@
 import styled from 'styled-components';
 
-export const StyleThumbs = styled.img`
+export const StyleThumbs = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 `;
 
-export const Stars = styled.div`
-  margin-bottom: 10px;
+export const ThumbImg = styled.img`
+  & {
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 88px;
+    height: 88px;
+    margin: 3px;
+    border: 6px solid ${props => props.theme.bg};
+    opacity: 50%;
+    transition: opacity 0.5s;
+  }
+  &: hover {
+    opacity: 100%;
+  }
+`;
+
+export const CurrThumb = styled.img`
+  object-fit: cover;
+  object-position: 50% 50%;
+  width: 88px;
+  height: 88px;
+  margin: 6px;
+  border: 2px solid ${props => props.theme.border};
+  outline: 4px solid ${props => props.theme.outline};
 `;
 
 export const Small = styled.span`
@@ -21,7 +43,7 @@ export const OuterStars = styled.div`
     color: ${props => props.theme.outline};
   }
   &:before {
-    content: "\f006 \f006 \f006 \f006 \f006";
+    content: "\f006  \f006  \f006  \f006  \f006";
   }
 `;
 export const InnerStars = styled.div`
@@ -33,13 +55,9 @@ export const InnerStars = styled.div`
     overflow: hidden;
   }
   &:before {
-    content: "\f005 \f005 \f005 \f005 \f005";
+    content: "\f005  \f005  \f005  \f005  \f005";
     color: ${props => props.theme.outline}
   }
-`;
-
-export const Price = styled.span`
-  margin: 5px 0px;
 `;
 
 export const StyleName = styled.div`
@@ -50,26 +68,20 @@ export const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`;
-
-export const GalleryStyle = styled.div`
-  height: 500px;
+  margin: -10px;
 `;
 
 export const Left = styled.div`
   flex: 5 0 200px;
   order: 1;
-  margin-right: 20px;
+  margin: 10px;
 `;
 
 export const Right = styled.div`
   min-width: 400px;
   flex: 1 0 400px;
   order: 2;
-`;
-
-export const DetailStyling = styled.div`
-  padding-top: 10px;
+  margin: 10px;
 `;
 
 export const LinedTop = styled.div`

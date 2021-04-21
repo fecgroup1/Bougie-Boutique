@@ -1,4 +1,5 @@
 import React from 'react';
+import { Flex, LinedTop, Left, Right } from './../../Styles';
 
 const impact = {
   fontFamily: 'Yeseva One, cursive',
@@ -6,22 +7,26 @@ const impact = {
 }
 
 const Details = ({slogan, description, features}) => (
-    <div id="details">
+    <div id="details" style={{paddingTop: '10px'}}>
       <span style={impact}>{slogan}</span>
-      <div className="flex">
-        <div id="description" className="topline left">
-          <b>Description</b><br/>
-          {description}
-        </div>
-        <div id="features" className="topline right">
-          <b>Features</b>
-          <ul>
-            {features.map((feature, index) => (
-              <li key={index}>{feature.feature}: {feature.value}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <Flex>
+        <Left>
+          <LinedTop>
+            <b>Description</b><br/><br/>
+            {description}
+          </LinedTop>
+        </Left>
+        <Right>
+          <LinedTop>
+            <b>Features</b>
+            <ul>
+              {features.map((feature, index) => (
+                <li key={index}>{feature.feature}: {feature.value}</li>
+              ))}
+            </ul>
+          </LinedTop>
+        </Right>
+      </Flex>
     </div>
 );
 
