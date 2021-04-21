@@ -21,25 +21,29 @@ class Thumbnails extends React.Component {
     const styles = this.props.styles;
     const currStyle = this.props.currStyle;
     const changeStyle = this.props.changeStyle;
+    const thumbsGrid = {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr 1fr 1fr',
+    }
 
     return (
-      <div id="stylethumbs">
-    {styles.map((style, index) => {
-      if (index === currStyle) {
-        return (
-          <CurrThumb
-            key={index}
-            src={style.photos[0].thumbnail_url}/>
-        );
-      } else {
-        return (
-          <ThumbImg
-            key={index}
-            onClick={() => changeStyle(index)}
-            src={style.photos[0].thumbnail_url}/>
-        );
-      }
-    })}
+      <div id="stylethumbs" style={thumbsGrid}>
+        {styles.map((style, index) => {
+          if (index === currStyle) {
+            return (
+              <CurrThumb
+                key={index}
+                src={style.photos[0].thumbnail_url}/>
+            );
+          } else {
+            return (
+              <ThumbImg
+                key={index}
+                onClick={() => changeStyle(index)}
+                src={style.photos[0].thumbnail_url}/>
+            );
+          }
+        })}
     </div>
     );
   }
