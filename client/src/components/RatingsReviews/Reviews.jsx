@@ -20,6 +20,7 @@ class Reviews extends React.Component {
 
     if (index === 2){
       array.sort((a,b)=> (a.date>b.date) ? 1: -1)
+      this.setState({reviewsToShow: array})
     }
     console.log(array)
   }

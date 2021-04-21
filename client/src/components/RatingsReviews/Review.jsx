@@ -4,7 +4,7 @@ import React from 'react';
 const Review = ({ review }) => (
   <div>
     <p>rating {review.rating}</p>
-    <span>{review.date}</span>
+    <span>{new Date(review.date).toLocaleString('en-us', {month:'long', day: 'numeric', year: 'numeric'})}</span>
     <h3>{review.summary}</h3>
     <p>{review.body}</p>
     {review.recommended ? <p>I recomend this product</p> : <div></div>}
