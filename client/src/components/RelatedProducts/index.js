@@ -10,10 +10,10 @@ const RelatedProducts = (props) => {
   const [productsPosition, setProductsPosition] = useState(0);
 
   useEffect(() => {
-    if (props.store.state.related) {
-      ProductAPI.getRelatedProducts(props.store.state.related)
-        .then((results) => setProducts(results.data))
-    }
+    // if (props.store.state.related) {
+    //   ProductAPI.getRelatedProducts(props.store.state.related)
+    //     .then((results) => setProducts(results.data))
+    // }
   }, [props.store.state]);
 
   const scroll = (container, direction, event) => {
@@ -37,7 +37,6 @@ const RelatedProducts = (props) => {
           <ProductsContainer
             key={'relatedProductsContainer'}
             items={products.length}
-            // products={this.props.store.}
           ><div>
             <h3>RELATED PRODUCTS</h3>
           </div>
@@ -45,6 +44,7 @@ const RelatedProducts = (props) => {
             <Button
               onClick={(event) => scroll('products', 'right', event)}
               show={!!productsPosition}
+              position={'left'}
             >
               &#60;
             </Button>
@@ -62,6 +62,7 @@ const RelatedProducts = (props) => {
               <Button
                 onClick={(event) => scroll('products', 'left', event)}
                 show={true}
+                position={'right'}
               >&gt;</Button>
               </CardsWrapper>
 

@@ -2,8 +2,10 @@ import styled from 'styled-components'
 
 export const ProductsContainer = styled.div`
   display: grid;
-  width: 85vw;
+  width: 85%;
+  padding: 0 2vw;
   grid-template-rows: 10% 90%;
+  justify-content: start;
 `;
 
 export const CardContainer = styled.div`
@@ -15,6 +17,7 @@ export const CardContainer = styled.div`
   overflow-x: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 
   ::-webkit-scrollbar {
     display: none
@@ -22,11 +25,17 @@ export const CardContainer = styled.div`
 `;
 
 export const CardsWrapper = styled.div`
-
+  display: grid;
+  position: relative;
+  scroll-behavior: smooth;
 `
 
 export const Button = styled.button`
+  position: absolute !important;
+  top 35%;
+  ${props => props.position}: 0;
   display: ${props => props.show ? 'inline-block': 'none'}
+
 `
 
 export const CardImage = styled.img`
