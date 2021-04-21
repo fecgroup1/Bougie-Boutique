@@ -15,6 +15,7 @@ class Answers extends React.Component {
     this.getMore = this.getMore.bind(this)
     this.collapse = this.collapse.bind(this)
     this.reportAnswer = this.reportAnswer.bind(this)
+    this.escape = this.escape.bind(this)
   }
 
   getMore() {
@@ -45,14 +46,20 @@ class Answers extends React.Component {
     answer.reported = true;
   }
 
+  escape (html) {
+    return String(html)
+      .replace(new RegExp("&"+"#"+"x27;", "g"), "'")
+  }
+
   renderAnswer(answer, index) {
+    const tempBody = (this.escape(answer.body))
     const report = (this.state.aReported.includes(answer.answer_id))
     const aDate = new Date(answer.date)
     return (
       <div className='Answer' key={index}>
         <div>
-          <p className='answerText'> A: </p>
-          <p id='answerBody' className='answerText'> {answer.body}</p>
+          <p style={{fontWeight: 'bold'}}className='answerText'> A: </p>
+          <div id='answerBody' className='answerText'>{<>{tempBody}</>}</div>
           <div>
            <AnswerPhotos answer={answer} key={index}/>
           </div>
@@ -60,7 +67,7 @@ class Answers extends React.Component {
             <div>
               <p className='answererInfo'>by {' '}
               <span style={{fontWeight: 'bold'}}>{answer.answerer_name}</span>
-              ,{' '} {aDate.toDateString(4)}
+              ,{' '} {aDate.toDateString().substring(4)}
               </p>
               <p className='answererInfo'>| Helpful?
                 <span id='helpfulButton' onClick={() => this.markHelpful(answer)}> Yes </span>

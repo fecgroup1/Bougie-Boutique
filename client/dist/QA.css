@@ -1,7 +1,13 @@
+.QAWidget {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
 .QABody {
   overflow-y: auto;
-  max-height: 800px;
-  width: 70%
+  max-height: 85vh  ;
 }
 
 .QABody::-webkit-scrollbar-track {
@@ -29,6 +35,7 @@
 
 #qHelpful {
   float: right;
+  margin: 0px;
   font-size: 14px;
 }
 
@@ -39,6 +46,7 @@
 
 .questionLine1 {
   display: inline;
+  padding-bottom: 30px
 }
 
 .Answer {
@@ -59,6 +67,13 @@
   font-size: 14px;
   margin-left: 22px;
   margin-top: 20px;
+  display: inline;
+}
+
+.askerInfo {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   display: inline;
 }
 
@@ -90,6 +105,7 @@
   background-color: rgb(87, 86, 86);
   border: none;
   font-size: 16px;
+  margin-top: 20px;
   padding: 10px;
 }
 
