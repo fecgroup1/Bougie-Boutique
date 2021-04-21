@@ -6,7 +6,20 @@ import React from 'react';
 
 import { Right } from './../../Styles';
 
-const Styles = ({product, currStyle, changeStyle, styles, stars, reviews}) => (
+const checkStock = (stylesObj, styleIndex) => {
+  for (let i = 0; i < stylesObj[styleIndex].skus.length; i++) {
+    if (stylesObj[styleIndex].skus[i].quantity > 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+const Styles = ({product, currStyle, changeStyle, styles, stars, reviews}) => {
+
+  const outOfStock = checkStock(styles, currStyle);
+
+  return (
     <Right>
       <Stars
         rating={stars}
@@ -19,8 +32,10 @@ const Styles = ({product, currStyle, changeStyle, styles, stars, reviews}) => (
         changeStyle={changeStyle}/>
       <AddToCart
         currStyle={currStyle}
-        styles={styles}/>
+        styles={styles}
+        outOfStock={outOfStock}/>
     </Right>
-);
+  )
+};
 
 export default Styles;

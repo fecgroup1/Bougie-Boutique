@@ -89,3 +89,9 @@ export const LinedTop = styled.div`
   margin-top: 10px;
   padding-top: 10px;
 `;
+
+export const Select = styled.select`
+  border: 3px solid ${props => props.theme.text}
+  color: ${props => props.theme.text}
+  background: ${props => props.theme.bg}
+`;
