@@ -31,6 +31,7 @@ const Styles = ({product, currStyle, changeStyle, styles, stars, reviews}) => {
         styles={styles}
         changeStyle={changeStyle}/>
       <AddToCart
+        title={product.name}
         currStyle={currStyle}
         styles={styles}
         outOfStock={outOfStock}/>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Select } from './../../../Styles';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -8,11 +7,13 @@ class AddToCart extends React.Component {
       currSize: 'Select a size',
       quantity: 'Qty: --',
       max: 0,
+      totalStock: 0,
       toAdd: 0,
       warning: '',
     };
     this.handleSizeSelect = this.handleSizeSelect.bind(this);
     this.handleQtySelect = this.handleQtySelect.bind(this);
+    this.handleAddCart = this.handleAddCart.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -25,6 +26,9 @@ class AddToCart extends React.Component {
     if (this.state.quantity !== nextState.quantity) {
       return true;
     }
+    if (this.state.warning !== nextState.warning) {
+      return true;
+    }
     console.log('Did not re-render');
     return false;
   }
@@ -33,17 +37,18 @@ class AddToCart extends React.Component {
     event.preventDefault();
     let skus = this.props.styles[this.props.currStyle].skus;
     let quantity = skus[event.target.value].quantity;
-    let max = quantity > 15 ? 15: quantity;
+    let inCart = Number(window.localStorage.getItem(skus[event.target.value].sku));
+    let max = quantity - inCart > 15 ? 15: quantity - inCart;
     let array = [];
-    let i = 1;
-    while (array.length < max) {
+    for (let i = 1; i <= max; i++) {
       array.push(i);
-      i++;
     }
+    var string = array.length === 0 ? 'Qty: 0': 'Qty: 1';
     this.setState({
       currSize: `Size: ${skus[event.target.value].size}`,
-      quantity: 'Qty: 1',
+      quantity: string,
       max: array,
+      totalStock: quantity,
       toAdd: skus[event.target.value].sku,
       warning: '',
     });
@@ -56,6 +61,38 @@ class AddToCart extends React.Component {
     });
   }
 
+  handleAddCart() {
+    if (this.state.currSize === 'Select a size') {
+      this.setState({
+        warning: 'Please select a size',
+      })
+    } else if (this.state.quantity === 'Qty: 0') {
+      this.setState({
+        warning: 'All available stock in cart',
+      });
+    }else {
+      var cartQty = Number(window.localStorage.getItem(this.state.toAdd));
+      var addQty = Number(this.state.quantity.slice(5));
+      if ( (cartQty + addQty) >= this.state.totalStock) {
+        window.localStorage.setItem(this.state.toAdd, this.state.totalStock);
+      } else if (cartQty > 0) {
+        window.localStorage.setItem(this.state.toAdd, cartQty + addQty);
+      }  else {
+        window.localStorage.setItem(this.state.toAdd, addQty);
+      }
+      var size = this.state.currSize.slice(6);
+      var style = this.props.styles[this.props.currStyle].name
+      var title = this.props.title
+      this.setState({
+        currSize: 'Select a size',
+        quantity: 'Qty: --',
+        max: 0,
+        toAdd: 0,
+        warning: `${window.localStorage.getItem(this.state.toAdd)}x ${size} ${title} (${style}) in cart!`,
+      });
+    }
+  }
+
   render() {
     const skus = this.props.styles[this.props.currStyle].skus;
     const grid = {
@@ -65,22 +102,32 @@ class AddToCart extends React.Component {
       justifyContent: 'space-between',
       alignContent: 'space-between',
     }
+    const red = {
+      height: '0.6em',
+      color: 'red',
+      fontSize: '0.6em',
+      padding: '10px 5px',
+    }
 
     if (this.props.outOfStock) {
       return (
+        <>
         <form id="addcart" style={grid}>
-          <span style={red}>Out of Stock</span>
-          <Select id="size">
+          <select id="size">
             <option value='0' disabled selected>Size: --</option>
-          </Select>
-          <Select id="qty">
+          </select>
+          <select id="qty">
             <option value='0' disabled selected>Qty: --</option>
-          </Select>
+          </select>
         </form>
+        <div style={red}>{this.state.warning}</div><br/><br/>
+        <button onClick={this.handleAddCart}>Add To Cart</button>
+        </>
       );
     } else if (this.state.currSize === 'Select a size') {
 
       return (
+        <>
         <form id="addcart" style={grid}>
           <select
             id="size"
@@ -104,17 +151,22 @@ class AddToCart extends React.Component {
               })}
           </select>
           <select id="qty" disabled>
-            <option value={this.state.quantity}>{this.state.quantity}</option>
+            <option value={this.state.quantity}>
+              {this.state.quantity}
+            </option>
           </select>
-          <button></button>
         </form>
+        <div style={red}>{this.state.warning}</div>
+        <button onClick={this.handleAddCart}>Add To Cart</button>
+        </>
       );
 
     } else {
 
       return(
+        <>
         <form id="addcart" style={grid}>
-          <Select
+          <select
             id="size"
             value={this.state.currSize}
             onChange={(event) => this.handleSizeSelect(event)}>
@@ -134,8 +186,8 @@ class AddToCart extends React.Component {
                   );
                 }
               })}
-          </Select>
-          <Select
+          </select>
+          <select
             id="qty"
             value={this.state.quantity}
             onChange={(event) => this.handleQtySelect(event)}>
@@ -153,8 +205,11 @@ class AddToCart extends React.Component {
                     </option>
                 )
               })}
-          </Select>
+          </select>
         </form>
+        <div style={red}>{this.state.warning}</div>
+        <button onClick={this.handleAddCart}>Add To Cart</button>
+        </>
       );
     }
   }

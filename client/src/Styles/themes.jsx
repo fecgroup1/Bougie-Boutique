@@ -30,16 +30,21 @@ export const Body = createGlobalStyle`
     border: 3px solid ${props => props.theme.text};
     color: ${props => props.theme.text};
     background: ${props => props.theme.bg};
-    outline: none;
+    outline: #0056c5;
+    height: 4em;
+    padding: 1em 0em;
   }
 
   button {
     & {
       border: 3px solid ${props => props.theme.text};
-    color: ${props => props.theme.text};
-    background: ${props => props.theme.bg};
-    outline: none;
-    transition: background 0.5s;
+      color: ${props => props.theme.text};
+      background: ${props => props.theme.bg};
+      outline: #002a60;
+      transition: background 0.5s;
+      padding: 1em;
+      text-align: center;
+      height: 4em;
     }
     &: hover {
       background: #002a60;
@@ -47,13 +52,15 @@ export const Body = createGlobalStyle`
   }
 `;
 
-export const ThemeToggle = styled.button`
-  border: none;
-  color: #ccc;
-  background: none;
-  font-size: 20px;
-  outline: none;
-`;
+// export const ThemeToggle = styled.button`
+//   border: none;
+//   color: #ccc;
+//   background: none;
+//   font-size: 20px;
+//   outline: none;
+//   height: auto;
+//   padding: 0;
+// `;
 
 export const Title = styled.h1`
   font-family: 'Yeseva One', cursive;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, ThemeToggle } from './../../Styles';
+import { Title } from './../../Styles';
 
 const Nav = ({dark, toggleTheme}) => {
   const header = {
@@ -17,9 +17,16 @@ const Nav = ({dark, toggleTheme}) => {
   }
 
   const right = {
+    border: 'none',
+    color: '#ccc',
+    background: 'none',
+    fontSize: '20px',
+    outline: 'none',
+    height: 'auto',
+    padding: 0,
     position: 'absolute',
     top: '24px',
-    right: '20px',
+    right: '27px',
   }
 
   const label = {
@@ -38,11 +45,11 @@ const Nav = ({dark, toggleTheme}) => {
         Bougie Boutique
       </Title>
       <div style={label}>Theme</div>
-        <ThemeToggle
+        <button
           style={right}
           onClick={toggleTheme}>
             <span className={icon}></span>
-        </ThemeToggle>
+        </button>
     </div>
   );
 }
