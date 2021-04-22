@@ -29,7 +29,7 @@ module.exports = {
     const qaData = {}
     return axios({
       method: 'GET',
-      url: `${url}/qa/questions/?product_id=${productId}&count=20`,
+      url: `${url}/qa/questions/?product_id=${productId}&count=50`,
       headers: {
         'Authorization': `${TOKEN}`
       }
@@ -43,7 +43,7 @@ module.exports = {
         let answerPromise = questionsArr.map((qid) => {
           return axios({
             method: 'GET',
-            url: `${url}/qa/questions/${qid}/answers?count=20`,
+            url: `${url}/qa/questions/${qid}/answers?count=50`,
             headers: {
               'Authorization': `${TOKEN}`
              }
