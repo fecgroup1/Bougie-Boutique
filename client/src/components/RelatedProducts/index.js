@@ -3,18 +3,20 @@ import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
 import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button } from '../../Styles';
 import ProductCard from './ProductCard.js'
+import CompareModal from './CompareModal.js'
 
-const RelatedProducts = (props) => {
+const RelatedProducts = ({store}) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
   const [productsPosition, setProductsPosition] = useState(0);
+  const [comparisonProduct, setComparisonProduct] = useState(null);
 
   useEffect(() => {
-    if (props.store.state.related) {
-      ProductAPI.getRelatedProducts(props.store.state.related)
+    if (store.state.related) {
+      ProductAPI.getRelatedProducts(store.state.related)
         .then((results) => setProducts(results.data))
     }
-  }, [props.store.state]);
+  }, [store.state]);
 
   const scroll = (container, direction, event) => {
     // console.log(container)
@@ -65,6 +67,7 @@ const RelatedProducts = (props) => {
                     key={index}
                     product={product}
                     className={'productCard'}
+                    compareMe={setComparisonProduct}
                   />
                 ))
               }
@@ -91,6 +94,11 @@ const RelatedProducts = (props) => {
             <h2>YOUR OUTFIT</h2>
           </ProductsContainer>
         </RelatedContainer>
+        <CompareModal
+          product={store.product}
+          comparisonProduct={comparisonProduct}
+          resetCompare={setComparisonProduct}
+         />
     </Fragment>
     )
 }

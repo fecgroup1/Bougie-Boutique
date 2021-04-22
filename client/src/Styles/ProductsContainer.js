@@ -37,7 +37,7 @@ export const Button = styled.button`
   background-color: white;
   border: none;
   top 30%;
-  z-index: 99;
+  z-index: 1;
   ${props => props.position}: 0;
   display: ${props => props.show ? 'inline-block': 'none'}
 
@@ -50,30 +50,19 @@ export const CardImage = styled.div`
   background-position: center;
 `
 
-// export compareIcon() => {
-//   styled.i`
-
-//   `
-//   return (
-//     <i className="lni lni-32 lni-pagination" style={{position: 'absolute', right: '.25em', top: '.25em', backgroundColor: 'white',
-//     borderRadius: '50px',
-//     border: '1px solid'}}/>
-//   )
-// }
-
 const func = (props) => (
   `background-color: ${props.theme.bg};
-   color: ${props.theme.text};
+   color: ${props.theme.bluGry};
 
   button: hover {
-    background-color: ${props.theme.text};
+    background-color: ${props.theme.bluGry};
     color: ${props.theme.bg};
   };
 
   i: hover {
     border-radius: 1em;
     padding: .5 em;
-    background-color: ${props.theme.text};
+    background-color: ${props.theme.bluGry};
     color: ${props.theme.bg};
   }`
 )

@@ -74,6 +74,7 @@ export const light = {
   outline: '#002a60',
   text: 'black',
   bg: 'white',
+  bluGry: '#002a60'
 };
 
 export const dark = {
@@ -81,5 +82,6 @@ export const dark = {
   outline: '#cccccc',
   text: '#cccccc',
   bg: '#111111',
+  bluGry: '#cccccc'
 }
 
