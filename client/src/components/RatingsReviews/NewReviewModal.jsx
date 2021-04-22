@@ -14,16 +14,20 @@ var CharacteristicDeff = {
 
   };
 
+const AddCharRateing = (Characteristic, value) => {
+  document.getElementById(Characteristic).innerHTML = CharacteristicDeff[Characteristic][value-1]
+}
+
 const generateCharacteristic = (Characteristic)=> {
   return (
     <div style={{'marginTop': '25px'}}><br></br>
-      <span> * </span><u>{Characteristic}:</u> <br></br><br></br>
+      <span> * </span><u>{Characteristic}:</u> <span  style= {{'fontSize': '90%'}} id= {Characteristic}></span><br></br><br></br>
       <label style= {{'fontSize': '85%'}} >{CharacteristicDeff[Characteristic][0]} </label>
-      <input type="radio" name={Characteristic} value="1" id='least' ></input>
-      <input type="radio" name={Characteristic} value="2" ></input>
-      <input type="radio" name={Characteristic} value="3" ></input>
-      <input type="radio" name={Characteristic} value="4" ></input>
-      <input type="radio" name={Characteristic} value="5" ></input>
+      <input onClick= {(event)=> AddCharRateing( Characteristic, event.target.value) } type="radio" name={Characteristic} value="1" ></input>
+      <input onClick= {(event)=> AddCharRateing( Characteristic, event.target.value) } type="radio" name={Characteristic} value="2" ></input>
+      <input onClick= {(event)=> AddCharRateing( Characteristic, event.target.value) } type="radio" name={Characteristic} value="3" ></input>
+      <input onClick= {(event)=> AddCharRateing( Characteristic, event.target.value) } type="radio" name={Characteristic} value="4" ></input>
+      <input onClick= {(event)=> AddCharRateing( Characteristic, event.target.value) } type="radio" name={Characteristic} value="5" ></input>
       <label style= {{'fontSize': '85%'}} > {CharacteristicDeff[Characteristic][4]}</label>
     </div>
   )
