@@ -63,7 +63,7 @@ class AddAnswer extends React.Component {
 
   render() {
     const overlay = { overlay: {
-      backgroundColor: 'rgba(17, 17, 17, 0.75'
+      backgroundColor: 'rgba(17, 17, 17, 0.75)'
     }}
     return (
       <Fragment>
