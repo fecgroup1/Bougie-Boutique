@@ -66,7 +66,7 @@ class Reviews extends React.Component {
       {reviews.map((review)=> <Review review={review}/>)}
       {reviews.length >0 ? (this.state.renderbutton ? <button onClick={(event)=>{this.showMore()}}> More Reviews </button> : <div></div>): <div></div> }
       <button onClick= {(event)=> this.setState({modalIsOpen:true})}>Add A Review</button>
-      <NewReviewModal  close={this.closeModal} isOpen= {this.state.modalIsOpen} productName= {this.props.product.name}/>
+      <NewReviewModal  close={this.closeModal} isOpen= {this.state.modalIsOpen} productName= {this.props.product.name} characteristics= {this.props.meta.characteristics}/>
     </div>)
   }
 

@@ -21,7 +21,7 @@ class RatingsReviews extends React.Component {
           <Ratings meta={this.props.store.state.meta} />
         </RatingsContainer>
         <ReviewsContainer>
-          <Reviews key= {this.props.store.state.reviews} reviews ={this.props.store.state.reviews} product = {this.props.store.state.product}/>
+          <Reviews key= {this.props.store.state.reviews} reviews ={this.props.store.state.reviews} product = {this.props.store.state.product} meta= {this.props.store.state.meta}/>
         </ReviewsContainer>
       </RatingsAndReviewsContainer>
     </section>
