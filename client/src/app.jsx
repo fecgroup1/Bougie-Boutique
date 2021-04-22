@@ -16,7 +16,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      dark: true,
+      dark: false,
       outfits: [],
     }
     this.toggleTheme = this.toggleTheme.bind(this)
