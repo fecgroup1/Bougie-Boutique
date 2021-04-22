@@ -18,16 +18,21 @@ const RelatedProducts = (props) => {
 
   const scroll = (container, direction, event) => {
     // console.log(container)
-    let area = event.target.parentNode.children[1];
-    let cardWidth = event.target.parentNode.children[1].children[1].clientWidth;
+    let area = event.target.parentNode.parentNode.children[1];
+    let cardWidth = event.target.parentNode.parentNode.children[1].children[1].clientWidth;
     // console.log('cardwidth', cardWidth)
     if(direction === 'left' ) {
-      console.log('lefttime', event.target.parentNode.children[1].scrollLeft)
+      console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft += cardWidth
-      setProductsPosition(productsPosition - 1)
+      if (productsPosition === `${container}`.length - 3) {
+
+      } else {
+        setProductsPosition(productsPosition + 1);
+      }
     } else {
+      console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft -= cardWidth
-      setProductsPosition(productsPosition + 1)
+      setProductsPosition(productsPosition - 1)
     }
   }
 
@@ -42,11 +47,16 @@ const RelatedProducts = (props) => {
           </div>
           <CardsWrapper>
             <Button
-              onClick={(event) => scroll('products', 'right', event)}
+              // onClick={(event) => scroll('products', 'right', event)}
               show={!!productsPosition}
               position={'left'}
             >
-              &#60;
+              <i class="lni lni-32 lni-chevron-left-circle"
+              style={{padding: '30px 20px',
+                opacity: '.75',
+                backgroundColor: 'white'}}
+              onClick={(event) => scroll('products', 'right', event)}
+              ></i>
             </Button>
             <CardContainer>
               {
@@ -60,10 +70,17 @@ const RelatedProducts = (props) => {
               }
             </CardContainer>
               <Button
-                onClick={(event) => scroll('products', 'left', event)}
+                // onClick={(event) => scroll('products', 'left', event)}
                 show={true}
                 position={'right'}
-              >&gt;</Button>
+              >
+                <i class="lni lni-32 lni-chevron-right-circle"
+                style={{padding: '30px 20px',
+                opacity: '.75',
+                backgroundColor: 'white'}}
+                onClick={(event) => scroll('products', 'left', event)}
+                ></i>
+                </Button>
               </CardsWrapper>
 
           </ProductsContainer>

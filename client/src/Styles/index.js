@@ -1,5 +1,5 @@
 export { RelatedContainer } from './RelatedContainer.js';
-export { ProductsContainer, CardContainer, CardsWrapper, Button, CardImage } from './ProductsContainer.js';
+export { ProductsContainer, CardContainer, CardsWrapper, Button, CardImage, CompareButton } from './ProductsContainer.js';
 export { ProductCard } from './ProductCard.js';
 export { Body, ThemeToggle, Title, dark, light } from './themes.jsx';
 <<<<<<< HEAD
