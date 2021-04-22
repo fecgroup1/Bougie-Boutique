@@ -7,6 +7,7 @@ class Answers extends React.Component {
     super(props)
 
     this.state = {
+      answers: [],
       moreAnswers: false,
       helpful: false,
       answerMarkedHelpful: [],
@@ -16,6 +17,22 @@ class Answers extends React.Component {
     this.collapse = this.collapse.bind(this)
     this.reportAnswer = this.reportAnswer.bind(this)
     this.escape = this.escape.bind(this)
+    this.getAnswers = this.getAnswers.bind(this)
+  }
+
+  getAnswers() {
+    const id = this.props.questionId
+    axios.get(`/qa/questions/${id}/answers`)
+    .then ((answersArr) => {
+      this.setState({answers: answersArr.data.results})
+    })
+    .catch ((err) => {
+      console.log(err)
+    })
+  }
+
+  componentDidMount() {
+    this.getAnswers()
   }
 
   getMore() {
@@ -109,29 +126,31 @@ class Answers extends React.Component {
   }
 
   render () {
-    if (this.props.answers !== undefined) {
+    if (this.props.questionId !== undefined) {
       var storeAnswers = this.props.answers
       return (
         <div>
           {!this.state.moreAnswers ?
             (
               <div>
-                {storeAnswers.slice(0, 2).map((answer, index) =>
+                {this.state.answers.slice(0, 2).map((answer, index) =>
                 (this.renderAnswer(answer, index)))}
-                {storeAnswers.length > 2 ? <a id='moreAnswers' onClick={this.getMore}>More answers...</a> : null}
+                {this.state.answers.length > 2 ? <a id='moreAnswers' onClick={this.getMore}>More answers...</a> : null}
               </div>
             )
             :
             (
               <div>
-                  {storeAnswers.map((answer, index) => (this.renderAnswer(answer, index)))}
-                  {storeAnswers.length > 2 ? <a id='moreAnswers' onClick={this.collapse}>Collapse answers</a> : null}
+                  {this.state.answers.map((answer, index) => (this.renderAnswer(answer, index)))}
+                  {this.state.answers.length > 2 ? <a id='moreAnswers' onClick={this.collapse}>Collapse answers</a> : null}
               </div>
             )
 
           }
         </div>
       )
+    } else {
+      return (<div>Loading answers...</div>)
     }
   }
 }
