@@ -21,10 +21,6 @@ export const Body = createGlobalStyle`
   a: hover {
     color: ${props => props.theme.text};
   }
-  input {
-    -webkit-appearance: none;
-    appearance: none;
-  }
 
   select {
     border: 3px solid ${props => props.theme.text};
@@ -85,3 +81,9 @@ export const dark = {
   bluGry: '#cccccc'
 }
 
+
+
+// input {
+//   -webkit-appearance: none;
+//   appearance: none;
+// }

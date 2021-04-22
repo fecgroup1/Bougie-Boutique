@@ -1,5 +1,5 @@
 import React from 'react';
-import StarRating from './StarRatings';
+import { StarsOuter, StarsInner} from '../../Styles/';
 import Characteristics from './Characteristics';
 
 var calculatePercent = (obj)=>{
@@ -17,9 +17,15 @@ const Ratings = ({ meta }) => {
   if (!meta) {
      return <div>loading...</div>
    }
+   if(!meta.averageRating){
+     return (<div>This product has no reviews</div>)
+   }
   return (<div>
-    <div>{meta.averageRating}</div>
-    <StarRating stars={meta.starRating} />
+    <h3 style={{'fontSize': '200%'}}>{meta.averageRating}</h3>
+    <StarsOuter>
+            <StarsInner rating={meta.starRating}/>
+    </StarsOuter>
+
     <p>{calculatePercent(meta.recommended)}% of reviews recomend this product</p>
     <Characteristics characteristics={meta.characteristics} />
   </div>);
