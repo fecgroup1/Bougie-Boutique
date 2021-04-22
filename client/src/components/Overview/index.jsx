@@ -20,12 +20,12 @@ class Overview extends React.Component {
     this.setState({
       currImg: [index, 0]
     });
-    this.props.store.changeStyle(index);
+    // this.props.store.changeStyle(index);
   }
 
   changeImg(style, index) {
     this.setState({
-      currStyle: this.props.store.state.styles[style],
+      // currStyle: this.state.currImg[0],
       currImg: [style, index]
     });
   }
@@ -43,7 +43,7 @@ class Overview extends React.Component {
               changeImg={this.changeImg} />
             <Styles
               product={store.product}
-              currStyle={store.currStyle}
+              currStyle={this.state.currImg[0]}
               changeStyle={this.changeStyle}
               styles={store.styles}
               stars={store.meta.starRating}
