@@ -28,7 +28,7 @@ const Nav = ({cart, dark, toggleTheme}) => {
   }
 
   const toggle = {
-    right: '27px',
+    right: '22px',
   }
 
   const cartIcon = {
@@ -69,12 +69,16 @@ const Nav = ({cart, dark, toggleTheme}) => {
           style={cartIcon}>
           <span className="lni lni-tshirt"></span>
       </ThemeToggle>
-      <div style={label}>Theme</div>
-        <ThemeToggle
-          style={toggle}
-          onClick={toggleTheme}>
-            <span className={icon}></span>
-        </ThemeToggle>
+      <div
+        onClick={toggleTheme}
+        style={label}>
+          Theme
+      </div>
+      <ThemeToggle
+        style={toggle}
+        onClick={toggleTheme}>
+          <span className={icon}></span>
+      </ThemeToggle>
     </div>
   );
 }
