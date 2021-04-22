@@ -9,9 +9,11 @@ export const ThumbImg = styled.img`
   & {
     object-fit: cover;
     object-position: 50% 50%;
-    width: 86px;
-    height: 86px;
-    border: 7px solid transparent;
+    width: 10vh;
+    height: 10vh;
+    min-width: 80px;
+    min-height: 80px;
+    border: 1.25vh solid transparent;
     opacity: 50%;
     transition: opacity 0.5s;
   }
@@ -23,16 +25,18 @@ export const ThumbImg = styled.img`
 export const CurrThumb = styled.img`
   object-fit: cover;
   object-position: 50% 50%;
-  width: 86px;
-  height: 86px;
-  margin: 4px;
-  border: 3px solid ${props => props.theme.border};
-  outline: 4px solid ${props => props.theme.outline};
+  width: 10vh;
+  height: 10vh;
+  min-width: 80px;
+  min-height: 80px;
+  margin: 0.75vh;
+  border: 0.5vh solid ${props => props.theme.border};
+  outline: 0.75vh solid ${props => props.theme.outline};
 `;
 
 export const GallThumb = styled.img`
 & {
-  border: 7px solid transparent;
+  border: 0.75vh solid transparent;
   opacity: 50%;
   transition: opacity 0.5s;
 }
@@ -42,22 +46,49 @@ export const GallThumb = styled.img`
 `;
 
 export const CurrGallThumb = styled.img`
-  margin: 4px;
-  border: 3px solid ${props => props.theme.border};
-  outline: 4px solid ${props => props.theme.outline};
+  margin: 0.5vh;
+  border: 0.25vh solid ${props => props.theme.border};
+  outline: 0.5vh solid ${props => props.theme.outline};
 `;
 
 export const NoScrollBar = styled.div`
   &{
-    white-space: wrap;
-    display: grid;
-    grid-template -columns: 100%;
-    grid-template-rows: auto;
     scroll-snap-type: y mandatory;
-    overflow-y: auto;
     -ms-overflow-style: none;
+    transition: transform 0.5s;
+    position: relative;
+    top: 0.2vh;
+    width: 7.5vh;
   }
   &:: -webkit-scrollbar {
     display: none
   }
+`;
+
+export const GalleryScroll = styled.button`
+&{
+  margin: 0.5vh;
+  font-size: 2.5vh;
+  height: 3vh;
+  transition: color 0.5s;
+  color: ${props => props.theme.text};
+  border: none;
+  padding: 0.5vh;
+  background: none;
+  outline: none;
+}
+&:hover {
+  color: #002a60;
+}`;
+
+export const GallThumbContainer = styled.div`
+  overflow: hidden;
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  width: 7.5vh;
+  minWidth: 70px;
+  height: 64vh;
+  margin: 1vh 1vw;
+  background: ${props => props.theme.bg};
 `;

@@ -1,40 +1,21 @@
 import React from 'react';
-import { Left, GallThumb, CurrGallThumb, NoScrollBar} from './../../Styles';
+import { Left, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer} from './../../Styles';
 
 class Gallery extends React.Component {
   constructor (props) {
     super(props);
-    // this.state = {
-    //   currImg: this.props.currImg,
-    // }
-    // this.changeImg = this.changeImg.bind(this);
+    this.state = {
+      position: '0px',
+    };
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (this.props.currImg[0] !== nextProps.currImg[0]) {
-  //     return true;
-  //   }
-  //   if (this.props.styles[0].style_id !== nextProps.styles[0].style_id) {
-  //     return true;
-  //   }
-  //   if (this.state.currImg[0] !== nextState.currImg[0]){
-  //     return true;
-  //   }
-  //   if (this.state.currImg[1] !== nextState.currImg[1]){
-  //     return true;
-  //   }
-  //   return false;
-  // }
+  clickUp() {
 
-  // changeImg(style, index) {
-  //   if (this.state.currImg[0] !== style) {
-  //     this.props.changeImg(style, index);
-  //   } else {
-  //     this.setState({
-  //       currImg: [style, index]
-  //     });
-  //   }
-  // }
+  }
+
+  clickDown() {
+
+  }
 
   render() {
     const changeImg = this.props.changeImg;
@@ -56,17 +37,18 @@ class Gallery extends React.Component {
     //   cursor: 'all-scroll',
     //   -ms-overflow-style: 'none',
     // };
+    const position = {
+      transform: `translateY(${this.state.position})`,
+    }
     const container = {
-      appearance: 'none',
-      overflow: 'hidden',
       display: 'grid',
-      position: 'absolute',
-      top: '100px',
-      left: '20px',
-      width: '9vh',
-      height: '64vh',
-      margin: '1vh',
+      height: '56.5vh',
+      margin: '4.75vh 1vw',
       justifyItems: 'center',
+      background: 'none',
+    };
+    const bg = {
+      opacity: '0.5',
     };
     const thumb = {
       objectFit: 'cover',
@@ -75,15 +57,32 @@ class Gallery extends React.Component {
       height: '6vh',
       scrollSnapAlign: 'start',
     }
+    const buttonContainer = {
+      display: 'flex',
+      flexDirection: 'column',
+      background: 'none',
+      justifyContent: 'space-between',
+      alignContent: 'space-between',
+
+    }
 
     return (
-      <Left style={{alignContent: 'center'}}>
+      <Left style={{alignContent: 'center', minWidth: '400px'}}>
         <div id="gallery" style={{height: '66vh'}}>
           <img
             style={galImg}
             src={styles[currImg[0]].photos[currImg[1]].url}/>
-          <div style={container}>
-            <NoScrollBar>
+          <GallThumbContainer style={bg}></GallThumbContainer>
+          <GallThumbContainer style={buttonContainer}>
+            <GalleryScroll>
+              <i className="lni lni-chevron-up-circle"></i>
+            </GalleryScroll>
+            <GalleryScroll>
+              <i className="lni lni-chevron-down-circle"></i>
+            </GalleryScroll>
+          </GallThumbContainer>
+          <GallThumbContainer style={container}>
+            <NoScrollBar style={position}>
               {styles.map((style, sIndex) => {
                 return style.photos.map((photo, pIndex) => {
                   if ((sIndex === currImg[0]) &&
@@ -102,7 +101,7 @@ class Gallery extends React.Component {
                 })
               })}
             </NoScrollBar>
-          </div>
+          </GallThumbContainer>
         </div>
       </Left>
     );
