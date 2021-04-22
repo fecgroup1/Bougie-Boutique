@@ -2,7 +2,7 @@ import React, {useState}from 'react';
 import Modal from 'react-modal';
 import { StarsOuter, StarsInner} from '../../Styles/';
 import ClickableStars from './ClickableStars'
-Modal.setAppElement('#app');
+
 
 
 var CharacteristicDeff = {
