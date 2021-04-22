@@ -11,7 +11,7 @@ export const ThumbImg = styled.img`
     object-position: 50% 50%;
     width: 86px;
     height: 86px;
-    border: 7px solid ${props => props.theme.bg};
+    border: 7px solid transparent;
     opacity: 50%;
     transition: opacity 0.5s;
   }
@@ -28,4 +28,21 @@ export const CurrThumb = styled.img`
   margin: 4px;
   border: 3px solid ${props => props.theme.border};
   outline: 4px solid ${props => props.theme.outline};
+`;
+
+export const GallThumb = styled.img`
+& {
+  border: 7px solid transparent;
+  opacity: 50%;
+  transition: opacity 0.5s;
+}
+&: hover {
+  opacity: 100%;
+}
+`;
+
+export const CurrGallThumb = styled.img`
+margin: 4px;
+border: 3px solid ${props => props.theme.border};
+outline: 4px solid ${props => props.theme.outline};
 `;
