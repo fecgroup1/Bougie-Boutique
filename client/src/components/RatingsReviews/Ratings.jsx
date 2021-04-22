@@ -1,5 +1,4 @@
 import React from 'react';
-import StarRating from './StarRatings';
 import { StarsOuter, StarsInner} from '../../Styles/';
 import Characteristics from './Characteristics';
 

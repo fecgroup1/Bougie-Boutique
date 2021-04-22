@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useState}from 'react';
 import Modal from 'react-modal';
+import { StarsOuter, StarsInner} from '../../Styles/';
+import ClickableStars from './ClickableStars'
 Modal.setAppElement('#app');
-
 
 
 var CharacteristicDeff = {
@@ -13,6 +14,9 @@ var CharacteristicDeff = {
     Fit: ['Runs tight', 'Runs slightly tight', 'Perfect', 'Runs slightly long', 'Runs long']
 
   };
+
+
+
 
 const AddCharRateing = (Characteristic, value) => {
   document.getElementById(Characteristic).innerHTML = CharacteristicDeff[Characteristic][value-1]
@@ -34,6 +38,58 @@ const generateCharacteristic = (Characteristic)=> {
 }
 
 const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
+
+  const [starStyles, setstarStyles] = useState({
+    one: {},
+    two: {},
+    three: {},
+    four: {},
+    five: {}
+  })
+
+
+  const highlightStars= (value)=>{
+    if (value === '1'){
+      setstarStyles({
+        one: { 'color': '#FFD966'},
+        two: {},
+        three: {},
+        four: {},
+        five: {}
+      })
+    } else if(value === '2'){
+      setstarStyles({
+        one: { 'color': '#FFD966'},
+        two: {'color': '#FFD966'},
+        three: {},
+        four: {},
+        five: {}
+      })
+    }else if(value === '3'){
+      setstarStyles({
+        one: { 'color': '#FFD966'},
+        two: {'color': '#FFD966'},
+        three: {'color': '#FFD966'},
+        four: {},
+        five: {}
+      })
+    }else if(value === '4'){
+      setstarStyles({
+        one: { 'color': '#FFD966'},
+        two: {'color': '#FFD966'},
+        three: {'color': '#FFD966'},
+        four: {'color': '#FFD966'},
+        five: {}
+      })}else if(value === '5'){
+        setstarStyles({
+          one: { 'color': '#FFD966'},
+          two: {'color': '#FFD966'},
+          three: {'color': '#FFD966'},
+          four: {'color': '#FFD966'},
+          five: {'color': '#FFD966'}
+        })}
+  }
+
   return(
      <Modal isOpen= {isOpen} onRequestClose= {()=> close()} style={{
     'overlay': {'background':'grey'},
@@ -43,13 +99,8 @@ const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
     <h3>About the {productName}</h3>
     <form >
       <label style={{'marginTop': '40px'}} for='starRating'>* Overall Rating:  </label>
-      <span style={{'fontFamily': 'FontAwesome'}}id= 'starRating'>
-        <label><i class="far fa-star"></i><input required type="radio" name="overallRating" value="1"></input></label>
-        <label><i class="far fa-star"></i><input type="radio" name="overallRating" value="2"></input></label>
-        <label><i class="far fa-star"></i><input type="radio" name="overallRating" value="3"></input></label>
-        <label><i class="far fa-star"></i><input type="radio" name="overallRating" value="4"></input></label>
-        <label><i class="far fa-star"></i><input type="radio" name="overallRating" value="5"></input></label>
-      </span><br></br><br></br>
+      <ClickableStars starStyles= {starStyles} highlightStars= {highlightStars}/>
+      <br></br><br></br>
       <div style={{'marginTop': '25px'}}>  Would you recomended this product?</div>
       <input type="radio" name="recomended" value="Yes" id= 'yes'></input>
       <label for="yes">Yes</label><br></br>
@@ -59,7 +110,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
       <div style={{'marginTop': '40px'}} > Review Summary:  </div><br></br>
       <input type='text' size='50' maxLength= '60' id= 'summary' placeholder= 'Example: Best purchase ever!'></input>
       <div style={{'marginTop': '40px'}} >* Review:  </div><br></br>
-      <textarea required minlength= '50' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
+      <textarea required minLength= '50' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
       <div style={{'marginTop': '40px', 'marginBottom': '15px'}}> Upload your photos</div>
       <input type= 'file' accept="image/png, image/jpeg"></input>
       <div style={{'marginTop': '40px'}} >* What is your nickname?</div><br></br>
