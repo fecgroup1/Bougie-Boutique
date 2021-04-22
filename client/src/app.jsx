@@ -36,7 +36,7 @@ class App extends React.Component {
         <CurrentProduct render={ store => (
           <>
             <Nav
-              store={store}
+              cart={store.state.cart}
               dark={this.state.dark}
               toggleTheme={this.toggleTheme}/>
             <Body />

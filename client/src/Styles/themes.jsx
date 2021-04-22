@@ -56,10 +56,12 @@ export const ThemeToggle = styled.button`
   border: none;
   color: #ccc;
   background: none;
-  font-size: 20px;
+  font-size: 30px;
   outline: none;
   height: auto;
   padding: 0;
+  top: 22px;
+  position: absolute;
 `;
 
 export const Title = styled.h1`
