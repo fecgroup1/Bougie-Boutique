@@ -42,7 +42,22 @@ export const GallThumb = styled.img`
 `;
 
 export const CurrGallThumb = styled.img`
-margin: 4px;
-border: 3px solid ${props => props.theme.border};
-outline: 4px solid ${props => props.theme.outline};
+  margin: 4px;
+  border: 3px solid ${props => props.theme.border};
+  outline: 4px solid ${props => props.theme.outline};
+`;
+
+export const NoScrollBar = styled.div`
+  &{
+    white-space: wrap;
+    display: grid;
+    grid-template -columns: 100%;
+    grid-template-rows: auto;
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+  }
+  &:: -webkit-scrollbar {
+    display: none
+  }
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Left, GallThumb, CurrGallThumb} from './../../Styles';
+import { Left, GallThumb, CurrGallThumb, NoScrollBar} from './../../Styles';
 
 class Gallery extends React.Component {
   constructor (props) {
@@ -46,12 +46,16 @@ class Gallery extends React.Component {
       width: '100%',
       height: '100%'
     };
-    const gallerythumbs = {
-      whiteSpace: 'wrap',
-      display: 'grid',
-      gridTemplateColumns: '100%',
-      gridTemplateRows: 'auto',
-    };
+    // const gallerythumbs = {
+    //   whiteSpace: 'wrap',
+    //   display: 'grid',
+    //   gridTemplateColumns: '100%',
+    //   gridTemplateRows: 'auto',
+    //   scrollSnapType: 'y mandatory',
+    //   overflowY: 'auto',
+    //   cursor: 'all-scroll',
+    //   -ms-overflow-style: 'none',
+    // };
     const container = {
       appearance: 'none',
       overflow: 'hidden',
@@ -69,6 +73,7 @@ class Gallery extends React.Component {
       objectPosition: '50% 50%',
       width: '6vh',
       height: '6vh',
+      scrollSnapAlign: 'start',
     }
 
     return (
@@ -78,7 +83,7 @@ class Gallery extends React.Component {
             style={galImg}
             src={styles[currImg[0]].photos[currImg[1]].url}/>
           <div style={container}>
-            <div id="gallerythumbs" style={gallerythumbs}>
+            <NoScrollBar>
               {styles.map((style, sIndex) => {
                 return style.photos.map((photo, pIndex) => {
                   if ((sIndex === currImg[0]) &&
@@ -96,7 +101,7 @@ class Gallery extends React.Component {
                   }
                 })
               })}
-            </div>
+            </NoScrollBar>
           </div>
         </div>
       </Left>

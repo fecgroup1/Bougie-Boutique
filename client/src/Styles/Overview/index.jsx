@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export { AddToCartButton, CartDropdown} from './AddToCart';
-export { StyleThumbs, ThumbImg, CurrThumb , GallThumb, CurrGallThumb} from './Thumbnails';
+export { StyleThumbs, ThumbImg, CurrThumb , GallThumb, CurrGallThumb, NoScrollBar} from './Thumbnails';
 export { OuterStars, InnerStars } from './Stars';
 
 export const Small = styled.span`

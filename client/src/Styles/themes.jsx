@@ -8,6 +8,7 @@ export const Body = createGlobalStyle`
     font-weight: 500;
     font-size: 18px;
     margin: 0px;
+    scroll-behavior: smooth;
   }
 
   #content {
