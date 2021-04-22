@@ -26,6 +26,16 @@ router.route('/related')
     res.send(data);
   })
 
-});
+})
+
+router.route('/related')
+.get((req, res) => {
+  let pid = req.query.pid;
+  console.log('this is the pid', pid)
+  controllers.related.getRelatedProducts(pid)
+  .then((response) => {
+    res.send(response)
+  })
+})
 
 module.exports = router;

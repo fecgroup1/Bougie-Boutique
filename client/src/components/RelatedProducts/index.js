@@ -1,22 +1,24 @@
-import React, { Fragment, useState, useEffect, memo } from 'react';
+import React, { Fragment, useState, useEffect, useMemo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
 import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button } from '../../Styles';
 import ProductCard from './ProductCard.js'
 import CompareModal from './CompareModal.js'
 
-const RelatedProducts = ({store}) => {
+const RelatedProducts = ({store, outfits}) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
   const [productsPosition, setProductsPosition] = useState(0);
   const [comparisonProduct, setComparisonProduct] = useState(null);
 
   useEffect(() => {
-    if (store.state.related) {
-      ProductAPI.getRelatedProducts(store.state.related)
-        .then((results) => setProducts(results.data))
-    }
-  }, [store.state]);
+    RelatedAPI.getRelatedProducts(store.state.currentProductId)
+      .then((results) => {
+        console.log(results)
+        setProducts(results)
+      })
+
+  }, [store.state.currentProductId]);
 
   const scroll = (container, direction, event) => {
     // console.log(container)
@@ -38,61 +40,72 @@ const RelatedProducts = ({store}) => {
     }
   }
 
+  const realtedSection = useMemo(() =>
+    <ProductsContainer
+    key={'relatedProductsContainer'}
+    items={products.length}
+    >
+      <div>
+        <h3>RELATED PRODUCTS</h3>
+      </div>
+      <CardsWrapper>
+        <Button
+          // onClick={(event) => scroll('products', 'right', event)}
+          show={!!productsPosition}
+          position={'left'}
+        >
+          <i className="lni lni-32 lni-chevron-left-circle"
+          style={{padding: '30px 20px',
+            opacity: '.75',
+            backgroundColor: 'white'}}
+          onClick={(event) => scroll('products', 'right', event)}
+          ></i>
+        </Button>
+        <CardContainer>
+          {
+            products.map((product, index) => (
+              <ProductCard
+                key={index}
+                product={product}
+                className={'productCard'}
+                compareMe={setComparisonProduct}
+              />
+            ))
+          }
+        </CardContainer>
+          <Button
+            // onClick={(event) => scroll('products', 'left', event)}
+            show={true}
+            position={'right'}
+          >
+            <i className="lni lni-32 lni-chevron-right-circle"
+            style={{padding: '30px 20px',
+            opacity: '.75',
+            backgroundColor: 'white'}}
+            onClick={(event) => scroll('products', 'left', event)}
+            />
+          </Button>
+      </CardsWrapper>
+    </ProductsContainer>
+
+    , [store.state.currentProductId, products])
+
+  const outfitSection = useMemo(() =>
+    <ProductsContainer
+    key={'outfitProductsContainer'}
+    >
+      <h2>YOUR OUTFIT</h2>
+    </ProductsContainer>
+
+  , [outfits])
+
     return (
       <Fragment>
         <RelatedContainer>
-          <ProductsContainer
-            key={'relatedProductsContainer'}
-            items={products.length}
-          ><div>
-            <h3>RELATED PRODUCTS</h3>
-          </div>
-          <CardsWrapper>
-            <Button
-              // onClick={(event) => scroll('products', 'right', event)}
-              show={!!productsPosition}
-              position={'left'}
-            >
-              <i class="lni lni-32 lni-chevron-left-circle"
-              style={{padding: '30px 20px',
-                opacity: '.75',
-                backgroundColor: 'white'}}
-              onClick={(event) => scroll('products', 'right', event)}
-              ></i>
-            </Button>
-            <CardContainer>
-              {
-                products.map((product, index) => (
-                  <ProductCard
-                    key={index}
-                    product={product}
-                    className={'productCard'}
-                    compareMe={setComparisonProduct}
-                  />
-                ))
-              }
-            </CardContainer>
-              <Button
-                // onClick={(event) => scroll('products', 'left', event)}
-                show={true}
-                position={'right'}
-              >
-                <i class="lni lni-32 lni-chevron-right-circle"
-                style={{padding: '30px 20px',
-                opacity: '.75',
-                backgroundColor: 'white'}}
-                onClick={(event) => scroll('products', 'left', event)}
-                ></i>
-                </Button>
-              </CardsWrapper>
 
-          </ProductsContainer>
+         {realtedSection}
+         {outfitSection}
 
-          <ProductsContainer
-            key={'outfitProductsContainer'}
-          >
-            <h2>YOUR OUTFIT</h2>
-          </ProductsContainer>
         </RelatedContainer>
         <CompareModal
           product={store.product}
