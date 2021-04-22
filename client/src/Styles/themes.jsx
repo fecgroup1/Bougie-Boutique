@@ -48,6 +48,7 @@ export const Body = createGlobalStyle`
 `;
 
 export const ThemeToggle = styled.button`
+  border: none;
   color: #ccc;
   background: none;
   font-size: 20px;
