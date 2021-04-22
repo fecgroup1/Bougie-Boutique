@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { ThemeConsumer } from 'styled-components'
+import Chart from './Chart.js'
 
 const CompareModal = ({product, comparisonProduct, resetCompare}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -29,6 +30,10 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
           }}
         >
           {console.log(theme)}
+          <Chart
+            product={product}
+            comparison={comparisonProduct}
+           />
         </Modal>
       }
 

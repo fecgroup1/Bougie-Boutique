@@ -35,6 +35,27 @@ module.exports = {
     })
   },
 
+  getDetailsSlim: (pid) => {
+    let fnlRes = {currentProductId: pid};
+    return module.exports.getProduct(pid)
+    .then((productData) => {
+      fnlRes.product = productData;
+      return module.exports.getStyles(pid)
+    })
+    .then((stylesData) => {
+      fnlRes.styles = stylesData;
+      return controllers.review.getMeta(pid)
+    })
+    .then((metaData) => {
+      fnlRes.meta = metaData;
+      return fnlRes;
+    })
+    .catch((err) => {
+      console.log('Error getting data for related', err);
+      return fnlRes;
+    })
+  },
+
   getAll: (pid) => {
     let fnlRes = {};
     return module.exports.getDetails(pid)
