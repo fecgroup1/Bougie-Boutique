@@ -56,7 +56,7 @@ class Answers extends React.Component {
     const report = (this.state.aReported.includes(answer.answer_id))
     const aDate = new Date(answer.date)
     return (
-      <div className='Answer' key={index}>
+      <div className='answerContainer' key={index}>
         <div>
           <p style={{fontWeight: 'bold'}}className='answerText'> A: </p>
           <div id='answerBody' className='answerText'>{<>{tempBody}</>}</div>
@@ -69,7 +69,7 @@ class Answers extends React.Component {
               <span style={{fontWeight: 'bold'}}>{answer.answerer_name}</span>
               ,{' '} {aDate.toDateString().substring(4)}
               </p>
-              <p className='answererInfo'>| Helpful?
+              <p id='answerHelpful' className='answererInfo'>| Helpful?
                 <span id='helpfulButton' onClick={() => this.markHelpful(answer)}> Yes </span>
                 ({answer.helpfulness}) {' | '}
                 {!report ?
@@ -89,7 +89,7 @@ class Answers extends React.Component {
               <p className='answererInfo'>
                 by {' '} {answer.answerer_name}, {' '} {aDate.toDateString().substring(4)}
               </p>
-              <p className='answererInfo'>| Helpful?
+              <p id='answerHelpful' className='answererInfo'>| Helpful?
                 <span id='helpfulButton' onClick={() => this.markHelpful(answer)}> Yes </span>
                 ({answer.helpfulness}) {' | '}
                 {!report ?

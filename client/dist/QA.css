@@ -33,6 +33,13 @@
   width: 90%;
 }
 
+#addAnswerButton {
+  float: right;
+  margin: 0px;
+  font-size: 14px;
+  padding-left: 5px;
+}
+
 #qHelpful {
   float: right;
   margin: 0px;
@@ -46,13 +53,18 @@
 
 .questionLine1 {
   display: inline;
+  position: relative;
   padding-bottom: 30px
 }
 
-.Answer {
+.answerContainer {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
+}
+
+#answerHelpful {
+  margin-left: 5px;
 }
 
 .answerText {
@@ -106,7 +118,21 @@
   border: none;
   font-size: 16px;
   margin-top: 20px;
+  margin-right: 20px;
   padding: 10px;
+}
+
+#addQuestionButton {
+  color:#cccccc;
+  background-color: rgb(87, 86, 86);
+  border: none;
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#addQuestionButton:hover {
+  cursor: pointer
 }
 
 #moreAnswers {
@@ -118,6 +144,7 @@
   text-decoration: underline;
   padding-bottom: 20px
 }
+
 
 #moreQuestions:hover {
   cursor: pointer
@@ -135,4 +162,120 @@
 #reportButton:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+
+#addAnswerButton:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#answerInputText {
+  width: 100%;
+  height: 85px;
+}
+
+#charsLeft {
+  font-size: 14px;
+  margin-top: -5px;
+  margin-bottom: 30px;
+}
+
+.answerModalInput {
+  margin-bottom: 5px;
+}
+
+.answerModal {
+  display:grid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(0, 0, 0);
+  background: #cccccc;
+  color: black;
+  border-radius: 10px;
+  outline: none;
+  padding: 20px;
+}
+
+.answerModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: 500ms ease-in-out;
+}
+
+.answerModalOverlay-in {
+  opacity: 1;
+}
+
+.answerModalOverlay-out {
+  opacity: 0;
+}
+
+#required {
+  font-size: 14px;
+}
+
+#questionInputText {
+  width: 100%;
+  height: 85px;
+}
+
+#questionEmail {
+  width: 70%;
+}
+
+#answerEmail {
+  width: 70%;
+}
+
+.questionModalInput {
+  margin-bottom: 5px;
+}
+
+.questionModal {
+  display:grid;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(0, 0, 0);
+  background: #cccccc;
+  color: black;
+  border-radius: 10px;
+  outline: none;
+  padding: 20px;
+}
+
+.questionModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: 500ms ease-in-out;
+}
+
+.questionModalOverlay-in {
+  opacity: 1;
+}
+
+.questionModalOverlay-out {
+  opacity: 0;
+}
+
+.warning {
+  font-size: 13px;
 }

@@ -6,7 +6,7 @@ import Modal from 'react-modal'
 
 //Will implement photos later
 
-class AddAnswer extends React.Component {
+class AddQuestion extends React.Component {
   constructor(props) {
     super(props)
 
@@ -23,7 +23,6 @@ class AddAnswer extends React.Component {
   openModal(event) {
     event.preventDefault()
     this.setState({open: true})
-
   }
 
   cancelForm() {
@@ -37,20 +36,21 @@ class AddAnswer extends React.Component {
 
   submitForm(event) {
     event.preventDefault();
-    let answerBody = document.getElementById('answerInputText')
-    let nickname = document.getElementById('answerNickname')
-    let email = document.getElementById('answerEmail')
+    let questionBody = document.getElementById('questionInputText')
+    let nickname = document.getElementById('questionNickname')
+    let email = document.getElementById('questionEmail')
 
-    if ((answerBody.validity.valid) && (nickname.validity.valid)
+    if ((questionBody.validity.valid) && (nickname.validity.valid)
         && email.validity.valid) {
       const qid = this.props.question.question_id;
-      axios.post(`/qa/questions/${qid}/answers`, {
-        body: answerBody.value,
+      axios.post(`/qa/questions`, {
+        body: questionBody.value,
         name: nickname.value,
-        email: email.value
+        email: email.value,
+        product_id: props.product.id
       })
       .then(() => {
-        console.log('Successfully posted answer')
+        console.log('Successfully posted question')
       })
       .catch((err) => {
         console.log(err)
@@ -65,36 +65,37 @@ class AddAnswer extends React.Component {
     const overlay = { overlay: {
       backgroundColor: 'rgba(17, 17, 17, 0.75'
     }}
+    console.log(this.props.name)
     return (
       <Fragment>
         <Modal
          ariaHideApp={false}
          isOpen={this.state.open}
-         className='answerModal'
+         className='questionModal'
          style={overlay}
          overlayClassName={{
-           base: 'answerModalOverlay',
-           afterOpen: 'answerModalOverlay-in',
-           beforeClose: 'answerModalOverlay-out'
+           base: 'questionModalOverlay',
+           afterOpen: 'questionModalOverlay-in',
+           beforeClose: 'questionModalOverlay-out'
          }}
          onRequestClose={this.submitForm || this.cancelForm}
         >
         <form>
           <div>
-            <h2>Add an answer</h2>
-            {/* {WILL NEED TO ADD THE QUESTION AND ITEM} */}
-            <label>Answer *: </label>
-            <textarea id='answerInputText' className='answerModalInput' name='answer' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
+            <h2>Ask your question</h2>
+            <h4>About the {this.props.name}</h4>
+            <label>Your Question *: </label>
+            <textarea id='questionInputText' className='questionModalInput' name='question' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
             <p id='charsLeft'>{this.state.chars} characters remaining</p>
 
             <label>Nickname *: </label>
-            <input type="text" id="answerNickname" className='answerModalInput' name="nickname"
-             placeholder='Example: jack543!' maxLength='60'  required></input>
+            <input type="text" id="questionNickname" className='questionModalInput'
+             placeholder='Example: jackson11!' name="nickname" maxLength='60' required></input>
              <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
 
             <label>Email *: </label>
-            <input type="email" id="answerEmail" className='answerModalInput' name="email"
-             placeholder='Example: jack@email.com' maxLength='60'  required></input>
+            <input type="email" id="questionEmail" className='questionModalInput'
+             placeholder='Why did you like the product or not?' name="email" maxLength='60' required></input>
              <p className='warning'>For authentication reasons, you will not be emailed</p><br></br>
 
             <p id='required'>* Required</p>
@@ -104,11 +105,11 @@ class AddAnswer extends React.Component {
           </div>
         </form>
         </Modal>
-        <p id='addAnswerButton' onClick={this.openModal}>{' '}  Add Answer</p>
+        <button id='addQuestionButton' onClick={this.openModal}>ASK A QUESTION</button>
       </Fragment>
 
     )
   }
 }
 
-export default AddAnswer
+export default AddQuestion

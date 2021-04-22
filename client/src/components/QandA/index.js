@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import axios from 'axios';
 import WidgetContainer from '../../Styles'
 import Answers from './Answers.js'
+import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
 
 class QandA extends React.Component {
@@ -41,7 +42,7 @@ class QandA extends React.Component {
     const prevReported = this.state.qReported;
     const qid = question.question_id;
     this.setState({qReported: [...prevReported, question.question_id]})
-    // axios.put(`qa/questions/${qid}/report`, null)
+    axios.put(`qa/questions/${qid}/report`, null)
     console.log(question)
     question.reported = true;
   }
@@ -59,19 +60,11 @@ class QandA extends React.Component {
       <div className='Question' key={index}>
         <div>
           <p id='questionBody' className='questionLine1'> Q: {tempBody}</p>
-          <p id='qHelpful' className='questionLine1'>Helpful?
-            <span id='helpfulButton' onClick={() => this.markHelpful(question)}> Yes </span>
-            ({question.question_helpfulness}) {' | '}
-            {/* {!report ?
-              (
-              <span id='reportButton' onClick={() => this.reportQuestion(question)}>Report</span>
-              ) :
-              (
-              <span>Reported</span>
-              )
-            } */}
+          <span id='qHelpful' className='questionLine1'>Helpful?
+            <span id='helpfulButton' className='questionLine1' onClick={() => this.markHelpful(question)}> Yes </span>
+            ({question.question_helpfulness}) | <AddAnswer question={question}/>
+          </span>
 
-          </p>
         </div>
         <Answers key={index} questionId={question.question_id} answers={question.answerArr}/>
         <div className='askerInfo'>
@@ -112,14 +105,12 @@ class QandA extends React.Component {
               (
                 <div>
                   <button id='moreQuestions' onClick={this.addMore}>MORE ANSWERED QUESTIONS</button>
+                  <AddQuestion currentProductId={store.currentProductId } name={store.product.name}/>
+                  {console.log(store.currentProductId, store.product.name)}
                 </div>
               )
               :
-              (
-                <div>
-
-                </div>
-              )
+              <AddQuestion currentProductId={store.currentProductId} name={store.product.name}/>
             }
             </div>
         </div>
