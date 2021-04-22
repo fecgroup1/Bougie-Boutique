@@ -39,7 +39,7 @@ class App extends React.Component {
         <Body />
           <div id="content">
             <CurrentProduct render={ store => (
-              <div>
+              <>
                 <Overview
                   store={store}
                 />
@@ -53,7 +53,7 @@ class App extends React.Component {
                 <RatingsReviews
                   store={store}
                 />
-              </div>
+              </>
             )}/>
           </div>
       </ThemeProvider>
