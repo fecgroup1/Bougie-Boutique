@@ -1,7 +1,6 @@
 import React from 'react'
 import { ProductCard as StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, ThemeToggle } from '../../Styles/'
 
-
 const ProductCard = ({product, compareMe}, theme) => {
   let prd = product.product
   return (
@@ -9,9 +8,9 @@ const ProductCard = ({product, compareMe}, theme) => {
     ?
       <StyledProductCard>
           <CompareButton
-          onClick={() => compareMe(prd)}
+            onClick={() => compareMe(prd)}
           >
-           <i className="lni lni-32 lni-pagination" />
+            <i className="lni lni-32 lni-pagination" />
           </CompareButton>
 
         { product.styles[0].photos[0].url !== null
@@ -31,23 +30,23 @@ const ProductCard = ({product, compareMe}, theme) => {
         </div>
       </StyledProductCard>
     :<StyledProductCard>
-          <CompareButton>
-           <i className="lni lni-32 lni-pagination" />
-          </CompareButton>
+      <CompareButton>
+      <i className="lni lni-32 lni-pagination" />
+      </CompareButton>
       <div style={{alignSelf: 'center', placeSelf: 'center'}}>
         ...loading
       </div>
       <div style={{borderTop: `1px solid ${theme.bluGry}`, paddingLeft: '.25em' }}>
-          <div style={{marginTop: '.2em', marginBottom: 0, backgroundColor: '#cccccc', width: '80%', height: '1em'}}></div>
-          <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
-          <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
-          <StarsOuter
-          >
-            <StarsInner
-              rating={3}
-            />
-          </StarsOuter>
-        </div>
+        <div style={{marginTop: '.2em', marginBottom: 0, backgroundColor: '#cccccc', width: '80%', height: '1em'}}></div>
+        <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
+        <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
+        <StarsOuter
+        >
+          <StarsInner
+            rating={3}
+          />
+        </StarsOuter>
+      </div>
     </StyledProductCard>
 
  )

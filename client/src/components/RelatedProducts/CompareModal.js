@@ -21,7 +21,7 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
           style={{
             overlay: {
               backdropFilter: 'blur(5px)', backgroundColor: 'none',
-              zIndex: 1;
+              zIndex: '1'
             },
             content: {
               backgroundColor: theme.bg
