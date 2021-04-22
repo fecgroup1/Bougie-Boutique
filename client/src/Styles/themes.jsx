@@ -22,7 +22,6 @@ export const Body = createGlobalStyle`
     color: ${props => props.theme.text};
   }
 
-
   select {
     border: 3px solid ${props => props.theme.text};
     color: ${props => props.theme.text};
@@ -81,6 +80,8 @@ export const dark = {
   bg: '#111111',
   bluGry: '#cccccc'
 }
+
+
 
 // input {
 //   -webkit-appearance: none;
