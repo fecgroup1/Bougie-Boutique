@@ -71,24 +71,29 @@ class AddToCart extends React.Component {
         warning: 'All available stock in cart',
       });
     }else {
-      var cartQty = Number(window.localStorage.getItem(this.state.toAdd));
+      let cart = this.props.cart;
+      var cartQty = (cart[this.state.toAdd] === undefined)? 0: cart[this.state.toAdd];
       var addQty = Number(this.state.quantity.slice(5));
       if ( (cartQty + addQty) >= this.state.totalStock) {
-        window.localStorage.setItem(this.state.toAdd, this.state.totalStock);
+        cart[this.state.toAdd] = this.state.totalStock;
       } else if (cartQty > 0) {
-        window.localStorage.setItem(this.state.toAdd, cartQty + addQty);
+        cart[this.state.toAdd] = cartQty + addQty;
       }  else {
-        window.localStorage.setItem(this.state.toAdd, addQty);
+        cart[this.state.toAdd] = addQty;
       }
+      var newQty = cart[this.state.toAdd];
       var size = this.state.currSize.slice(6);
-      var style = this.props.styles[this.props.currStyle].name
-      var title = this.props.title
+      var style = this.props.styles[this.props.currStyle].name;
+      var title = this.props.title;
+      window.localStorage.setItem('cart', JSON.stringify(cart));
+      console.log(window.localStorage);
+      this.props.updateCart();
       this.setState({
         currSize: 'Select a size',
         quantity: 'Qty: --',
         max: 0,
         toAdd: 0,
-        warning: `${window.localStorage.getItem(this.state.toAdd)}x ${size} ${title} (${style}) in cart!`,
+        warning: `${newQty}x ${size} ${title} (${style}) now in cart`,
       });
     }
   }

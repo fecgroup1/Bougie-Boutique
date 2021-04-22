@@ -52,15 +52,15 @@ export const Body = createGlobalStyle`
   }
 `;
 
-// export const ThemeToggle = styled.button`
-//   border: none;
-//   color: #ccc;
-//   background: none;
-//   font-size: 20px;
-//   outline: none;
-//   height: auto;
-//   padding: 0;
-// `;
+export const ThemeToggle = styled.button`
+  border: none;
+  color: #ccc;
+  background: none;
+  font-size: 20px;
+  outline: none;
+  height: auto;
+  padding: 0;
+`;
 
 export const Title = styled.h1`
   font-family: 'Yeseva One', cursive;

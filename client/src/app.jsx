@@ -33,29 +33,31 @@ class App extends React.Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <Nav
-          dark={this.state.dark}
-          toggleTheme={this.toggleTheme}/>
-        <Body />
-          <div id="content">
-            <CurrentProduct render={ store => (
-              <>
-                <Overview
-                  store={store}
-                />
-                <RelatedProducts
-                  store={store}
-                  outfits={this.state.outfits}
-                />
-                <QandA
-                  store={store}
-                />
-                <RatingsReviews
-                  store={store}
-                />
-              </>
-            )}/>
-          </div>
+        <CurrentProduct render={ store => (
+          <>
+            <Nav
+              store={store}
+              dark={this.state.dark}
+              toggleTheme={this.toggleTheme}/>
+            <Body />
+            <div id="content">
+              <Overview
+                store={store}
+              />
+              <RelatedProducts
+                store={store}
+                outfits={this.state.outfits}
+              />
+              <QandA
+                store={store}
+              />
+              <RatingsReviews
+                store={store}
+              />
+            </div>
+          </>
+        )}/>
+
       </ThemeProvider>
     )
   }

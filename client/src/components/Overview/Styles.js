@@ -15,7 +15,7 @@ const checkStock = (stylesObj, styleIndex) => {
   return true;
 }
 
-const Styles = ({product, currStyle, changeStyle, styles, stars, reviews}) => {
+const Styles = ({product, currStyle, changeStyle, styles, stars, reviews, cart, updateCart}) => {
 
   const outOfStock = checkStock(styles, currStyle);
 
@@ -34,7 +34,9 @@ const Styles = ({product, currStyle, changeStyle, styles, stars, reviews}) => {
         title={product.name}
         currStyle={currStyle}
         styles={styles}
-        outOfStock={outOfStock}/>
+        outOfStock={outOfStock}
+        cart={cart}
+        updateCart={updateCart}/>
     </Right>
   )
 };

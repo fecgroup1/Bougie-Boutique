@@ -11,7 +11,8 @@ class CurrentProduct extends React.Component {
     super(props);
 
     this.state = {
-      currentProductId: "13025"
+      currentProductId: "13025",
+      cart: {},
     };
 
     // Test function
@@ -19,6 +20,8 @@ class CurrentProduct extends React.Component {
     this.changeStyle = this.changeStyle.bind(this);
     this.setProduct = this.setProduct.bind(this);
     this.setQuestions = this.setQuestions.bind(this);
+    this.checkCart = this.checkCart.bind(this);
+    this.updateCart = this.updateCart.bind(this);
   }
 
 
@@ -39,9 +42,9 @@ class CurrentProduct extends React.Component {
   setProduct(id) {
     ProductAPI.getProduct(id)
     .then((resData) => {
-      // console.log(productData);
       let productData = resData;
       productData.currStyle = 0;
+      productData.cart = this.checkCart(resData);
       this.setState(productData);
     })
   }
@@ -68,6 +71,31 @@ class CurrentProduct extends React.Component {
       })
   }
 
+  checkCart(productData) {
+    var cart = JSON.parse(window.localStorage.getItem('cart'));
+    var newCart = {};
+    for (let i = 0; i < productData.styles.length; i++) {
+      let style = productData.styles[i];
+      for (let j = 0; j < style.skus.length; j++) {
+        let sku = style.skus[j].sku;
+        let stock = style.skus[j].quantity;
+        if (cart[sku] <= stock) {
+          newCart[sku] = cart[sku];
+        } else if (cart[sku] > stock) {
+          newCart[sku] = stock;
+        }
+      }
+    }
+    window.localStorage.setItem('cart', JSON.stringify(newCart));
+    return newCart;
+  }
+
+  updateCart() {
+    let newCart = this.checkCart(this.state);
+    this.setState({
+      cart: newCart
+    });
+  }
 
   render() {
     return (
