@@ -74,19 +74,21 @@ class CurrentProduct extends React.Component {
   checkCart(productData) {
     var cart = JSON.parse(window.localStorage.getItem('cart'));
     var newCart = {};
-    for (let i = 0; i < productData.styles.length; i++) {
-      let style = productData.styles[i];
-      for (let j = 0; j < style.skus.length; j++) {
-        let sku = style.skus[j].sku;
-        let stock = style.skus[j].quantity;
-        if (cart[sku] <= stock) {
-          newCart[sku] = cart[sku];
-        } else if (cart[sku] > stock) {
-          newCart[sku] = stock;
+    if (cart !== null) {
+      for (let i = 0; i < productData.styles.length; i++) {
+        let style = productData.styles[i];
+        for (let j = 0; j < style.skus.length; j++) {
+          let sku = style.skus[j].sku;
+          let stock = style.skus[j].quantity;
+          if (cart[sku] <= stock) {
+            newCart[sku] = cart[sku];
+          } else if (cart[sku] > stock) {
+            newCart[sku] = stock;
+          }
         }
       }
+      window.localStorage.setItem('cart', JSON.stringify(newCart));
     }
-    window.localStorage.setItem('cart', JSON.stringify(newCart));
     return newCart;
   }
 
