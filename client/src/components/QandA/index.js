@@ -4,6 +4,7 @@ import WidgetContainer from '../../Styles'
 import Answers from './Answers.js'
 import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
+import { QuestionsContainer, QAContainer } from '../../Styles'
 
 class QandA extends React.Component {
   constructor(props) {
@@ -104,13 +105,13 @@ class QandA extends React.Component {
     if (this.props.store.state.product !== undefined) {
       var store = this.props.store.state
       return(
-        <div className='QAWidget'>
+        <QAContainer>
             <h2>Questions and Answers</h2>
-            <div className='QABody'>
+            <QuestionsContainer className='QABody'>
             {this.state.questions.slice(0, this.state.questionLength).map((question, index) =>
             (this.renderQuestion(question, index, store.product.name)))}
-            </div>
-            <div>
+            </QuestionsContainer>
+            <QuestionsContainer>
             {!this.state.moreQuestions ?
               (
                 <div>
@@ -121,8 +122,8 @@ class QandA extends React.Component {
               :
               <AddQuestion currentProductId={store.currentProductId} name={store.product.name}/>
             }
-            </div>
-        </div>
+            </QuestionsContainer>
+        </QAContainer>
       )
     } else {
       return (<div>Loading questions</div>)

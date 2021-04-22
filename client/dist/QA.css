@@ -1,4 +1,4 @@
-.QAWidget {
+/* .QAWidget {
   width: 70%;
   margin-left: auto;
   margin-right: auto;
@@ -25,7 +25,7 @@
   box-shadow: inset 0 0 6px rgba(0,0,0,.3);
   background-color: #737272;
   border: 1px solid #000;
-}
+} */
 
 .Question {
   display: flex;
@@ -158,7 +158,7 @@
 
 #answerInputText {
   width: 100%;
-  height: 85px;
+  height: 100px;
 }
 
 #charsLeft {
@@ -182,7 +182,7 @@
   border-radius: 10px;
   outline: none;
   padding: 20px;
-  max-width: 30%;
+  width: 25%;
 }
 
 .answerModalOverlay {
@@ -209,7 +209,7 @@
 
 #questionInputText {
   width: 100%;
-  height: 85px;
+  height: 100px;
 }
 
 .modalInput {
@@ -231,6 +231,7 @@
   border-radius: 10px;
   outline: none;
   padding: 20px;
+  width: 25%
 }
 
 .questionModalOverlay {
