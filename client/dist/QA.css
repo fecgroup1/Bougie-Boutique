@@ -7,7 +7,7 @@
 
 .QABody {
   overflow-y: auto;
-  max-height: 85vh  ;
+  max-height: 70vh  ;
 }
 
 .QABody::-webkit-scrollbar-track {
@@ -47,20 +47,22 @@
 }
 
 #questionBody {
+  display: inline-block;
+  max-width: 75%;
   font-weight: bold;
-  font-size: 18px
+  font-size: 18px;
 }
 
 .questionLine1 {
   display: inline;
   position: relative;
-  padding-bottom: 30px
+
 }
 
 .answerContainer {
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 #answerHelpful {
@@ -68,11 +70,16 @@
 }
 
 .answerText {
-  display: inline;
+  display: inline-block;
+
 }
 
 #answerBody {
   font-size: 15px;
+  max-width: 75%;
+  padding-top: 3px;
+  vertical-align: text-top;
+  margin-left: 10px;
 }
 
 .answererInfo {
@@ -89,26 +96,7 @@
   display: inline;
 }
 
-.img {
-  order:5;
-  border-radius: 6px;
-  padding: 5px;
-  width: 100px;
-  height: 100px;
-  margin-top: 10px;
-  line-height: 150px;
-}
-
-.enlargedImage {
-  padding: 5px;
-  border-radius: 6px;
-  width: 50%;
-  height: 50%;
-  margin-top: 10px;
-  line-height: 150px;
-}
-
-.photos {
+.qaPhotos {
   display: inline;
 }
 
@@ -136,10 +124,8 @@
 }
 
 #moreAnswers {
-  color:#cccccc;
-  background-color: transparent;
-  border: none;
-  font-size: 12px;
+  display: inline-block;
+  font-size: 13px;
   font-weight: bold;
   text-decoration: underline;
   padding-bottom: 20px
@@ -181,10 +167,6 @@
   margin-bottom: 30px;
 }
 
-.answerModalInput {
-  margin-bottom: 5px;
-}
-
 .answerModal {
   display:grid;
   position: absolute;
@@ -200,6 +182,7 @@
   border-radius: 10px;
   outline: none;
   padding: 20px;
+  max-width: 30%;
 }
 
 .answerModalOverlay {
@@ -229,16 +212,8 @@
   height: 85px;
 }
 
-#questionEmail {
-  width: 70%;
-}
-
-#answerEmail {
-  width: 70%;
-}
-
-.questionModalInput {
-  margin-bottom: 5px;
+.modalInput {
+  width: 17em;
 }
 
 .questionModal {
@@ -279,3 +254,81 @@
 .warning {
   font-size: 13px;
 }
+
+#closeModal {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 22px
+}
+
+#qaSubmit {
+  border: none;
+  color: inherit;
+  background-color: #a8a8a8;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 10px;
+}
+
+#closeQAImg {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  font-size: 22px
+}
+
+.qaImgModal {
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 90%;
+  height: 90%;
+  overflow: auto;
+  background-color: rgba(83, 60, 60, 0.75)
+}
+
+.img {
+  order:5;
+  border-radius: 6px;
+  padding: 5px;
+  width: 100px;
+  height: 100px;
+  margin-top: 5px;
+  line-height: 150px;
+}
+
+.enlargedImage {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%
+}
+
+

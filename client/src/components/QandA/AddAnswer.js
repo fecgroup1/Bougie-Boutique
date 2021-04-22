@@ -57,7 +57,7 @@ class AddAnswer extends React.Component {
       })
       this.setState({open: false})
     } else {
-      alert('Please make sure all fields have valid inputs.')
+      return;
     }
   }
 
@@ -81,26 +81,26 @@ class AddAnswer extends React.Component {
         >
         <form>
           <div>
+          <button id='closeModal' onClick={this.cancelForm}>X</button>
             <h2>Add an answer</h2>
-            {/* {WILL NEED TO ADD THE QUESTION AND ITEM} */}
+            <p styles={{fontWeight: 'bold'}}>{this.props.name} : {this.props.question.question_body}</p>
             <label>Answer *: </label>
-            <textarea id='answerInputText' className='answerModalInput' name='answer' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
+            <textarea id='answerInputText' name='answer' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
             <p id='charsLeft'>{this.state.chars} characters remaining</p>
 
             <label>Nickname *: </label>
-            <input type="text" id="answerNickname" className='answerModalInput' name="nickname"
+            <input type="text" id="answerNickname" className='modalInput' name="nickname"
              placeholder='Example: jack543!' maxLength='60'  required></input>
              <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
 
             <label>Email *: </label>
-            <input type="email" id="answerEmail" className='answerModalInput' name="email"
+            <input type="email" id="answerEmail" className='modalInput' name="email"
              placeholder='Example: jack@email.com' maxLength='60'  required></input>
              <p className='warning'>For authentication reasons, you will not be emailed</p><br></br>
 
             <p id='required'>* Required</p>
 
-            <button onClick={(event) => this.submitForm(event)}>Submit</button>
-            <button onClick={this.cancelForm}>Cancel</button>
+            <button id='qaSubmit' onClick={(event) => this.submitForm(event)}>Submit</button>
           </div>
         </form>
         </Modal>

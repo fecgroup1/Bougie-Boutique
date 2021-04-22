@@ -59,7 +59,7 @@ class Answers extends React.Component {
       <div className='answerContainer' key={index}>
         <div>
           <p style={{fontWeight: 'bold'}}className='answerText'> A: </p>
-          <div id='answerBody' className='answerText'>{<>{tempBody}</>}</div>
+          <div id='answerBody' className='answerText'>{tempBody}</div>
           <div>
            <AnswerPhotos answer={answer} key={index}/>
           </div>
@@ -118,14 +118,14 @@ class Answers extends React.Component {
               <div>
                 {storeAnswers.slice(0, 2).map((answer, index) =>
                 (this.renderAnswer(answer, index)))}
-                {storeAnswers.length > 2 ? <button id='moreAnswers' onClick={this.getMore}>More answers...</button> : null}
+                {storeAnswers.length > 2 ? <a id='moreAnswers' onClick={this.getMore}>More answers...</a> : null}
               </div>
             )
             :
             (
               <div>
                   {storeAnswers.map((answer, index) => (this.renderAnswer(answer, index)))}
-                  {storeAnswers.length > 2 ? <button id='moreAnswers' onClick={this.collapse}>Collapse answers</button> : null}
+                  {storeAnswers.length > 2 ? <a id='moreAnswers' onClick={this.collapse}>Collapse answers</a> : null}
               </div>
             )
 

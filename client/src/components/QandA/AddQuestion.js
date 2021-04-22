@@ -42,12 +42,12 @@ class AddQuestion extends React.Component {
 
     if ((questionBody.validity.valid) && (nickname.validity.valid)
         && email.validity.valid) {
-      const qid = this.props.question.question_id;
+      const pid = Number(this.props.currentProductId);
       axios.post(`/qa/questions`, {
         body: questionBody.value,
         name: nickname.value,
         email: email.value,
-        product_id: props.product.id
+        product_id: pid
       })
       .then(() => {
         console.log('Successfully posted question')
@@ -57,7 +57,7 @@ class AddQuestion extends React.Component {
       })
       this.setState({open: false})
     } else {
-      alert('Please make sure all fields have valid inputs.')
+      return;
     }
   }
 
@@ -65,7 +65,6 @@ class AddQuestion extends React.Component {
     const overlay = { overlay: {
       backgroundColor: 'rgba(17, 17, 17, 0.75'
     }}
-    console.log(this.props.name)
     return (
       <Fragment>
         <Modal
@@ -82,26 +81,26 @@ class AddQuestion extends React.Component {
         >
         <form>
           <div>
+            <button id='closeModal' onClick={this.cancelForm}>X</button>
             <h2>Ask your question</h2>
             <h4>About the {this.props.name}</h4>
             <label>Your Question *: </label>
-            <textarea id='questionInputText' className='questionModalInput' name='question' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
+            <textarea id='questionInputText' name='question' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
             <p id='charsLeft'>{this.state.chars} characters remaining</p>
 
             <label>Nickname *: </label>
-            <input type="text" id="questionNickname" className='questionModalInput'
+            <input type="text" id="questionNickname" className='modalInput'
              placeholder='Example: jackson11!' name="nickname" maxLength='60' required></input>
              <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
 
             <label>Email *: </label>
-            <input type="email" id="questionEmail" className='questionModalInput'
+            <input type="email" id="questionEmail" className='modalInput'
              placeholder='Why did you like the product or not?' name="email" maxLength='60' required></input>
              <p className='warning'>For authentication reasons, you will not be emailed</p><br></br>
 
             <p id='required'>* Required</p>
 
-            <button onClick={(event) => this.submitForm(event)}>Submit</button>
-            <button onClick={this.cancelForm}>Cancel</button>
+            <button id='qaSubmit' onClick={(event) => this.submitForm(event)}>Submit</button>
           </div>
         </form>
         </Modal>

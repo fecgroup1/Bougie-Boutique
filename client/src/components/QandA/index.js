@@ -52,7 +52,7 @@ class QandA extends React.Component {
       .replace(new RegExp("&"+"#"+"x27;", "g"), "'")
   }
 
-  renderQuestion(question, index) {
+  renderQuestion(question, index, product) {
     const tempBody = (this.escape(question.question_body))
     const report = (this.state.qReported.includes(question.question_id))
     const qDate = new Date(question.question_date)
@@ -62,7 +62,7 @@ class QandA extends React.Component {
           <p id='questionBody' className='questionLine1'> Q: {tempBody}</p>
           <span id='qHelpful' className='questionLine1'>Helpful?
             <span id='helpfulButton' className='questionLine1' onClick={() => this.markHelpful(question)}> Yes </span>
-            ({question.question_helpfulness}) | <AddAnswer question={question}/>
+            ({question.question_helpfulness}) | <AddAnswer question={question} name={product}/>
           </span>
 
         </div>
@@ -98,7 +98,7 @@ class QandA extends React.Component {
             <h2>Questions and Answers</h2>
             <div className='QABody'>
             {store.qa.questions.slice(0, this.state.questionLength).map((question, index) =>
-            (this.renderQuestion(question, index)))}
+            (this.renderQuestion(question, index, store.product.name)))}
             </div>
             <div>
             {!this.state.moreQuestions ?
@@ -106,7 +106,6 @@ class QandA extends React.Component {
                 <div>
                   <button id='moreQuestions' onClick={this.addMore}>MORE ANSWERED QUESTIONS</button>
                   <AddQuestion currentProductId={store.currentProductId } name={store.product.name}/>
-                  {console.log(store.currentProductId, store.product.name)}
                 </div>
               )
               :

@@ -27,25 +27,27 @@ class AnswerPhotos extends React.Component {
   }
 
   changeClick () {
-    if (this.state.clicked === true) {
-      this.setState({clicked: false})
-    }
+    this.setState({clicked: false})
   }
 
   render () {
+    const overlay = { overlay: {
+      backgroundColor: 'rgba(17, 17, 17, 0.75'
+    }}
     return (
       <div>
         {this.props.answer.photos.length > 0 ? (
-          <div className='images'>
+          <div className='qaImages'>
             {this.props.answer.photos.map((image, index) => (
-              <div key={index} className='photos'>
+              <div key={index} className='qaPhotos'>
                 <Modal
                   ariaHideApp={false}
                   isOpen={this.state.clicked}
-                  onRequestClose={() => this.changeClick}
-                  className= 'answerModal'
+                  onRequestClose={() => this.changeClick()}
+                  className= 'qaImgModal'
+                  style={overlay}
                 >
-                <button onClick={this.changeClick}>X</button>
+                <button id='closeQAImg' onClick={this.changeClick}>X</button>
                 <img key={index} className='enlargedImage' src={this.current(image)}/>
                 </Modal>
               <img key={index} onClick={() => {this.selectedPhoto(image)}} className='img' src={image.url}/>
