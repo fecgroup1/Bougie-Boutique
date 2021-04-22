@@ -21,14 +21,47 @@ export const Body = createGlobalStyle`
   a: hover {
     color: ${props => props.theme.text};
   }
+  input {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  select {
+    border: 3px solid ${props => props.theme.text};
+    color: ${props => props.theme.text};
+    background: ${props => props.theme.bg};
+    outline: #0056c5;
+    height: 4em;
+    padding: 1em 0em;
+  }
+
+  button {
+    & {
+      border: 3px solid ${props => props.theme.text};
+      color: ${props => props.theme.text};
+      background: ${props => props.theme.bg};
+      outline: #002a60;
+      transition: background 0.5s;
+      padding: 1em;
+      text-align: center;
+      height: 4em;
+    }
+    &: hover {
+      background: #002a60;
+    }
+  }
 `;
 
 export const ThemeToggle = styled.button`
-  border: white;
+  border: none;
   color: #ccc;
   background: none;
-  font-size: 20px;
+  font-size: 30px;
   outline: none;
+  height: auto;
+  padding: 0;
+  top: 22px;
+  position: absolute;
 `;
 
 export const Title = styled.h1`

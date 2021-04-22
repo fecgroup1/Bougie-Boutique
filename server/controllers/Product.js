@@ -80,7 +80,19 @@ module.exports = {
   getStyles: (pid) => {
     return axios.get(`${url}products/${pid}/styles`)
       .then((response) => {
-        return response.data.results;
+        let styleData = response.data.results;
+        let newData = [];
+        for (let i = 0; i < styleData.length; i++) {
+          newData.push(styleData[i]);
+          let skuArr = [];
+          for (let sku in styleData[i].skus) {
+            let skuData = styleData[i].skus[sku];
+            skuData.sku = sku;
+            skuArr.push(skuData);
+          }
+          newData[i].skus = skuArr;
+        }
+        return newData;
       })
       .catch((err) => {
         console.log('Error getting styles', err);

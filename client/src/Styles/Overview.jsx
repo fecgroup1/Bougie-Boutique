@@ -9,10 +9,9 @@ export const ThumbImg = styled.img`
   & {
     object-fit: cover;
     object-position: 50% 50%;
-    width: 88px;
-    height: 88px;
-    margin: 3px;
-    border: 6px solid ${props => props.theme.bg};
+    width: 86px;
+    height: 86px;
+    border: 7px solid ${props => props.theme.bg};
     opacity: 50%;
     transition: opacity 0.5s;
   }
@@ -24,10 +23,10 @@ export const ThumbImg = styled.img`
 export const CurrThumb = styled.img`
   object-fit: cover;
   object-position: 50% 50%;
-  width: 88px;
-  height: 88px;
-  margin: 6px;
-  border: 2px solid ${props => props.theme.border};
+  width: 86px;
+  height: 86px;
+  margin: 4px;
+  border: 3px solid ${props => props.theme.border};
   outline: 4px solid ${props => props.theme.outline};
 `;
 

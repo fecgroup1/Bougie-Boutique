@@ -47,7 +47,9 @@ class Overview extends React.Component {
               changeStyle={this.changeStyle}
               styles={store.styles}
               stars={store.meta.starRating}
-              reviews={store.reviews.length} />
+              reviews={store.reviews.length}
+              cart={store.cart}
+              updateCart={this.props.store.updateCart}/>
           </Flex>
             <Details
               slogan={store.product.slogan}
