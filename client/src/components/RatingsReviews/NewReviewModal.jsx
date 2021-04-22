@@ -36,6 +36,8 @@ const generateCharacteristic = (Characteristic)=> {
 const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
   return(
      <Modal isOpen= {isOpen} onRequestClose= {()=> close()} style={{
+    '-webkit-appearance': 'radio',
+    'appearance': 'radio',
     'overlay': {'background':'grey'},
     'content': {'color':'black', 'width': '450px', 'margin':'auto'} }}>
     <span style={{'float': 'right', 'fontSize': '150%'}} onClick= {()=> close()}>&#10006;</span>
