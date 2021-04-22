@@ -97,7 +97,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
     <span style={{'float': 'right', 'fontSize': '150%'}} onClick= {()=> close()}>&#10006;</span>
     <h2>Write Your Review</h2>
     <h3>About the {productName}</h3>
-    <form >
+    <form action= {`http://localhost:33212/reviews?product_id=13023`} method='POST'>
       <label style={{'marginTop': '40px'}} for='starRating'>* Overall Rating:  </label>
       <ClickableStars starStyles= {starStyles} highlightStars= {highlightStars}/>
       <br></br><br></br>
@@ -110,7 +110,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
       <div style={{'marginTop': '40px'}} > Review Summary:  </div><br></br>
       <input type='text' size='50' maxLength= '60' id= 'summary' placeholder= 'Example: Best purchase ever!'></input>
       <div style={{'marginTop': '40px'}} >* Review:  </div><br></br>
-      <textarea required minLength= '50' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
+      <textarea required minLength= '5' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
       <div style={{'marginTop': '40px', 'marginBottom': '15px'}}> Upload your photos</div>
       <input type= 'file' accept="image/png, image/jpeg"></input>
       <div style={{'marginTop': '40px'}} >* What is your nickname?</div><br></br>
@@ -119,7 +119,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
       <div style={{'marginTop': '40px'}} >* What is your email?</div><br></br>
       <input  required type='email' size='50' maxLength= '60' id= 'email' placeholder= 'jackson11@email.com'></input>
       <div style= {{'marginTop': '10px','fontSize': '77%'}}>For authentication reasons, you will not be emailed.</div>
-      <button  style={{'marginTop': '15px'}} type= 'submit'>Submit Review</button>
+      <button  style={{'marginTop': '15px'}} type='submit' >Submit Review</button>
     </form>
   </Modal>
   )

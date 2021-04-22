@@ -6,7 +6,12 @@ router.route('/')
     controllers.review.getReviews(req.query.product_id)
       .then((data) => res.send(data))
       .catch((err) => res.end(err));
+  })
+  .post((req, res) => {
+    console.log(req);
+    res.end()
   });
+
 
 router.route('/meta')
   .get((req, res) => {
