@@ -9,7 +9,9 @@ const countItems = (obj) => {
   return count;
 }
 
-const Nav = ({cart, dark, toggleTheme}) => {
+const Nav = ({cart, store, checkCart, dark, toggleTheme}) => {
+
+  checkCart(store);
 
   const cartCount = countItems(cart);
 
@@ -32,6 +34,15 @@ const Nav = ({cart, dark, toggleTheme}) => {
   }
 
   const cartIcon = {
+    border: 'none',
+    color: '#ccc',
+    background: 'none',
+    fontSize: '30px',
+    outline: 'none',
+    height: 'auto',
+    padding: 0,
+    top: '22px',
+    position: 'absolute',
     right: '70px',
   }
   const number = {

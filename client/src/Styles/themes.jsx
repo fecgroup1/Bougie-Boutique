@@ -75,6 +75,7 @@ export const ThemeToggle = styled.button`
   padding: 0;
   top: 22px;
   position: absolute;
+  transition: right 0.5s
 `;
 
 export const Title = styled.h1`

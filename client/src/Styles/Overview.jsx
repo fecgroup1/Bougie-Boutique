@@ -101,6 +101,7 @@ export const AddToCartButton = styled.button`
     height: 4em;
     font-size: 1em;
     font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
   }
   &: hover {
     background: #002a60;
@@ -116,4 +117,5 @@ export const CartDropdown = styled.select`
   padding: 1em 0em;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1em;
+  font-weight: bold;
 `;

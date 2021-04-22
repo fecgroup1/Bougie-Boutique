@@ -26,7 +26,9 @@ class CurrentProduct extends React.Component {
 
 
   componentDidMount() {
-    this.setProduct(this.state.currentProductId);
+    let productData = dummyState;
+    productData.currStyle = 0;
+    this.setState(productData);
   }
 
   changeProduct(pid) {

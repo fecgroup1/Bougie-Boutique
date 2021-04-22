@@ -38,6 +38,8 @@ class App extends React.Component {
           <>
             <Nav
               cart={store.state.cart}
+              store={store}
+              checkCart={store.checkCart}
               dark={this.state.dark}
               toggleTheme={this.toggleTheme}/>
             <Body />
