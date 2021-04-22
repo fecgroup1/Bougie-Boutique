@@ -25,11 +25,11 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
               zIndex: '1'
             },
             content: {
-              backgroundColor: theme.bg
+              backgroundColor: theme.bg,
+              inset: '10% 5%',
             }
           }}
         >
-          {console.log(theme)}
           <Chart
             product={product}
             comparison={comparisonProduct}
