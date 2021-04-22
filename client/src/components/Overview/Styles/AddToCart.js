@@ -71,7 +71,7 @@ class AddToCart extends React.Component {
       this.setState({
         warning: 'All available stock in cart',
       });
-    }else {
+    } else {
       let cart = this.props.cart;
       var cartQty = (cart[this.state.toAdd] === undefined)? 0: cart[this.state.toAdd];
       var addQty = Number(this.state.quantity.slice(5));
