@@ -4,7 +4,7 @@ import WidgetContainer from '../../Styles'
 import Answers from './Answers.js'
 import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
-import { QuestionsContainer, QAContainer } from '../../Styles'
+import { QuestionsContainer, QAContainer, QuestionCardsContainer } from '../../Styles'
 
 class QandA extends React.Component {
   constructor(props) {
@@ -104,26 +104,43 @@ class QandA extends React.Component {
   render () {
     if (this.props.store.state.product !== undefined) {
       var store = this.props.store.state
-      return(
-        <QAContainer>
-            <h2>Questions and Answers</h2>
-            <QuestionsContainer className='QABody'>
-            {this.state.questions.slice(0, this.state.questionLength).map((question, index) =>
-            (this.renderQuestion(question, index, store.product.name)))}
-            </QuestionsContainer>
-            <QuestionsContainer>
-            {!this.state.moreQuestions ?
-              (
-                <div>
-                  <button id='moreQuestions' onClick={this.addMore}>MORE ANSWERED QUESTIONS</button>
-                  <AddQuestion currentProductId={store.currentProductId } name={store.product.name}/>
-                </div>
-              )
-              :
-              <AddQuestion currentProductId={store.currentProductId} name={store.product.name}/>
-            }
-            </QuestionsContainer>
-        </QAContainer>
+      return (
+      <QAContainer>
+        {this.state.questions.length > 0 ?
+        (
+        <Fragment>
+        <QuestionsContainer>
+          <h2>Questions and Answers</h2>
+          <QuestionCardsContainer>
+          {this.state.questions.slice(0, this.state.questionLength).map((question, index) =>
+          (this.renderQuestion(question, index, store.product.name)))}
+          </QuestionCardsContainer>
+        </QuestionsContainer>
+        <QuestionsContainer>
+        {!this.state.moreQuestions && this.state.questions.length >  2 ?
+          (
+            <div>
+              <button id='moreQuestions' onClick={this.addMore}>MORE ANSWERED QUESTIONS</button>
+              <AddQuestion currentProductId={store.currentProductId } name={store.product.name}/>
+            </div>
+          )
+          :
+          <AddQuestion currentProductId={store.currentProductId} name={store.product.name}/>
+        }
+        </QuestionsContainer>
+        </Fragment>
+      )
+      :
+      (
+      <QuestionsContainer>
+        <h2>Questions and Answers</h2>
+        <h4>There are currently no questions... Please add a question!</h4>
+        <AddQuestion currentProductId={store.currentProductId} name={store.product.name}/>
+      </QuestionsContainer>
+
+      )
+      }
+      </QAContainer>
       )
     } else {
       return (<div>Loading questions</div>)

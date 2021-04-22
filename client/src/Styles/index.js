@@ -6,4 +6,4 @@ export { StyleThumbs, Small, OuterStars, InnerStars, StyleName, Flex, Left, Righ
 export { RatingsContainer, ReviewsContainer,  RatingsAndReviewsContainer, SingleReview} from './RatingsandReviews.js';
 export { StarsOuter, StarsInner } from './Stars.js'
 export { QAContainer } from './QAContainer.js'
-export { QuestionsContainer } from './QuestionsContainer.js'
+export { QuestionsContainer, QuestionCardsContainer } from './QuestionsContainer.js'

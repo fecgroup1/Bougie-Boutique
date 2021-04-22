@@ -1,10 +1,18 @@
 import styled from 'styled-components'
 
 export const QuestionsContainer = styled.div`
-  width: 85%;
-  padding: 0 2vw;
+  width: 70%;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const QuestionCardsContainer = styled.div`
   max-height: 70vh;
   overflow-y: auto;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 
   ::-webkit-scrollbar {
     width: 10px
@@ -16,7 +24,7 @@ export const QuestionsContainer = styled.div`
     background-color: #404040;
   }
 
-  .QABody::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #737272;
