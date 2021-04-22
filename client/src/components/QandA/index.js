@@ -10,6 +10,7 @@ class QandA extends React.Component {
     super(props)
 
     this.state = {
+      questions: [],
       questionLength: 2,
       moreQuestions: false,
       questionMarkedHelpful: [],
@@ -20,10 +21,19 @@ class QandA extends React.Component {
     this.markHelpful = this.markHelpful.bind(this)
     this.reportQuestion = this.reportQuestion.bind(this)
     this.escape = this.escape.bind(this)
+    this.getQuestions = this.getQuestions.bind(this)
   }
 
   getQuestions() {
     const qid = this.props.store.state.currentProductId
+    axios.get(`qa/questions?product_id=${qid}&count=50`)
+    .then((question) => {
+      this.setState({questions: question.data.results})
+    })
+  }
+
+  componentDidMount() {
+    this.getQuestions()
   }
 
   markHelpful(question) {
@@ -43,7 +53,6 @@ class QandA extends React.Component {
     const qid = question.question_id;
     this.setState({qReported: [...prevReported, question.question_id]})
     axios.put(`qa/questions/${qid}/report`, null)
-    console.log(question)
     question.reported = true;
   }
 
@@ -66,7 +75,7 @@ class QandA extends React.Component {
           </span>
 
         </div>
-        <Answers key={index} questionId={question.question_id} answers={question.answerArr}/>
+        <Answers key={index} questionId={question.question_id}/>
         <div className='askerInfo'>
           Asked by: {' '}{question.asker_name},{' '}{qDate.toDateString().substring(4)}{' '}|{' '}
           {!report ?
@@ -83,21 +92,22 @@ class QandA extends React.Component {
   }
 
   addMore() {
+    console.log(this.state.questionLength)
     const add = this.state.questionLength + 2
-    if (add >= this.props.store.state.qa.questions.length) {
+    if (add >= this.state.questions.length) {
       this.setState({moreQuestions: true, questionLength: add})
     } else
       this.setState({questionLength: add})
   }
 
   render () {
-    if (this.props.store.state.qa !== undefined) {
+    if (this.props.store.state.product !== undefined) {
       var store = this.props.store.state
       return(
         <div className='QAWidget'>
             <h2>Questions and Answers</h2>
             <div className='QABody'>
-            {store.qa.questions.slice(0, this.state.questionLength).map((question, index) =>
+            {this.state.questions.slice(0, this.state.questionLength).map((question, index) =>
             (this.renderQuestion(question, index, store.product.name)))}
             </div>
             <div>
@@ -115,7 +125,7 @@ class QandA extends React.Component {
         </div>
       )
     } else {
-      return (<div>Loading...</div>)
+      return (<div>Loading questions</div>)
     }
   }
 }

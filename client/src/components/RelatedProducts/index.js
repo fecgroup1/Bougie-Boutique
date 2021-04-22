@@ -53,7 +53,7 @@ const RelatedProducts = ({store}) => {
               show={!!productsPosition}
               position={'left'}
             >
-              <i class="lni lni-32 lni-chevron-left-circle"
+              <i className="lni lni-32 lni-chevron-left-circle"
               style={{padding: '30px 20px',
                 opacity: '.75',
                 backgroundColor: 'white'}}
@@ -77,7 +77,7 @@ const RelatedProducts = ({store}) => {
                 show={true}
                 position={'right'}
               >
-                <i class="lni lni-32 lni-chevron-right-circle"
+                <i className="lni lni-32 lni-chevron-right-circle"
                 style={{padding: '30px 20px',
                 opacity: '.75',
                 backgroundColor: 'white'}}

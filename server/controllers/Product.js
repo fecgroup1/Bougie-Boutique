@@ -40,10 +40,6 @@ module.exports = {
     return module.exports.getDetails(pid)
     .then((resObj) => {
       fnlRes = resObj;
-      return controllers.qa.getQA(pid)
-    })
-    .then((qaData) => {
-      fnlRes.qa = qaData;
       return module.exports.getRelated(pid)
     })
     .then((related) => {

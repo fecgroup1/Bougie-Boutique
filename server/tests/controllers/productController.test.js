@@ -39,7 +39,6 @@ test('getAll retrieves the product details, q and a data, and related products f
       // expect(data.meta).toBeDefined();
       // expect(data.reviews).toBeDefined();
 
-      expect(data.qa).toBeDefined();
       expect(data.related).toBeDefined();
 
 
