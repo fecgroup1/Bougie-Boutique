@@ -43,12 +43,12 @@ const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
     <h3>About the {productName}</h3>
     <form >
       <label style={{'marginTop': '40px'}} for='starRating'>* Overall Rating:  </label>
-      <span id= 'starRating'>
-        <input required type="radio" name="overallRating" value="1"></input>
-        <input type="radio" name="overallRating" value="2"></input>
-        <input type="radio" name="overallRating" value="3"></input>
-        <input type="radio" name="overallRating" value="4"></input>
-        <input type="radio" name="overallRating" value="5"></input>
+      <span style={{'fontFamily': 'FontAwesome'}}id= 'starRating'>
+        <label><i class="far fa-star"></i><input required type="radio" name="overallRating" value="1"></input></label>
+        <label><i class="far fa-star"></i><input type="radio" name="overallRating" value="2"></input></label>
+        <label><i class="far fa-star"></i><input type="radio" name="overallRating" value="3"></input></label>
+        <label><i class="far fa-star"></i><input type="radio" name="overallRating" value="4"></input></label>
+        <label><i class="far fa-star"></i><input type="radio" name="overallRating" value="5"></input></label>
       </span><br></br><br></br>
       <div style={{'marginTop': '25px'}}>  Would you recomended this product?</div>
       <input type="radio" name="recomended" value="Yes" id= 'yes'></input>

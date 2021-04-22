@@ -1,5 +1,6 @@
 import React from 'react';
 import StarRating from './StarRatings';
+import Stars from '../OverView/Styles/Stars.js';
 import Characteristics from './Characteristics';
 
 var calculatePercent = (obj)=>{
@@ -19,7 +20,7 @@ const Ratings = ({ meta }) => {
    }
   return (<div>
     <div>{meta.averageRating}</div>
-    <StarRating stars={meta.starRating} />
+    <Stars rating={meta.starRating} />
     <p>{calculatePercent(meta.recommended)}% of reviews recomend this product</p>
     <Characteristics characteristics={meta.characteristics} />
   </div>);
