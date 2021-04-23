@@ -3,8 +3,8 @@ import { StarsOuter, StarsInner} from '../../Styles/';
 import Characteristics from './Characteristics';
 
 var calculatePercent = (obj)=>{
-  var pos =Number(obj.true);
-  var neg = Number(obj.false);
+  var pos =Number(obj.true) || 0;
+  var neg = Number(obj.false) || 0;
   var total = pos + neg;
   var percent = (pos / total) * 100;
   percent= Math.round(percent);

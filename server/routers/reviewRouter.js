@@ -8,9 +8,10 @@ router.route('/')
       .catch((err) => res.end(err));
   })
   .post((req, res) => {
-    console.log(req.body);
-    res.end()
-  });
+    controllers.review.postReviews(req.body)
+    .then((response)=>console.log(response))
+  })
+
 
 
 router.route('/meta')

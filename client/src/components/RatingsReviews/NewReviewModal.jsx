@@ -98,7 +98,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId}
     let form = document.querySelector('form[name="NewReview"]');
     let obj= {};
     for (var key in characteristics){
-      obj[characteristics[key]['id']] = form.elements[key].value
+      obj[characteristics[key]['id']] = Number(form.elements[key].value)
     }
 
 
@@ -107,12 +107,16 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId}
         rating: Number(form.elements['overallRating'].value),
         summary: document.getElementById('summary').value,
         body: document.getElementById('body').value,
-        recomended: (form.elements['recomended'].value)=== "true"? true : false,
+        recommend: (form.elements['recomended'].value)=== "true"? true : false,
         name: document.getElementById('userName').value,
         email: document.getElementById('email').value,
         photos: [document.getElementById('photos').value],
         characteristics: obj
-      })
+      }, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
       .then(() => {
         console.log('posted')
       })

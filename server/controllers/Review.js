@@ -58,6 +58,16 @@ module.exports = {
     .catch((err) => {
       console.log(err);
     }),
+
+
+    postReviews: (postobj) => {
+      console.log(postobj)
+      return axios.post(`${url}reviews`, postobj)
+        .then((response) => response)
+        .catch((err) => {
+          console.log(err);
+        });
+      }
 };
 
-// module.exports.getReviews('13023').then((data)=> console.log('this is reviews', data))
+
