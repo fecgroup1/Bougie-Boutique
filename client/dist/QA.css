@@ -261,8 +261,6 @@
   background-color: rgba(17, 17, 17, 0.75);
   margin: auto;
   border: none;
-  z-index: 2
-
 }
 
 .qaImgModal::-webkit-scrollbar {
@@ -301,7 +299,6 @@
   transform: translateY(-50%);
   margin: auto;
   padding: 0;
-  z-index: 2
 }
 
 #searchQuestionInput {
@@ -311,13 +308,13 @@
   width: 85%;
   height: 40px;
   margin-bottom: 15px;
+  background-color: transparent;
 }
 
 .lni-search {
   margin-top: 7px;
   margin-left: 10px;
   position: absolute;
-  z-index: 1
 }
 
 
