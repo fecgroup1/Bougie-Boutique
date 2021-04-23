@@ -89,7 +89,7 @@ export const GallThumb = styled.img`
   objectPosition: 50% 50%;
   width: 6vh;
   height: 6vh;
-  scrollSnapAlign: center;
+  scroll-snap-align: center;
   border: 0.75vh solid transparent;
   opacity: 50%;
   transition: opacity 0.5s;
@@ -105,12 +105,11 @@ export const CurrGallThumb = styled.img`
   objectPosition: 50% 50%;
   width: 6vh;
   height: 6vh;
-  scrollSnapAlign: center;
+  scroll-snap-align: center;
   margin: 0.5vh;
   border: 0.25vh solid ${props => props.theme.border};
   outline: 0.5vh solid ${props => props.theme.outline};
   transition: border 0.5s, outline 0.5s;
-  z-index: 1;
 `;
 
 export const NoScrollBar = styled.div`

@@ -59,7 +59,8 @@ class Gallery extends React.Component {
       height: '100%'
     };
     const position = {
-      transform: `translateY(${this.state.position}vh)`
+      transform: `translateY(${this.state.position}vh)`,
+      zIndex: 1,
     }
     const container = {
       display: 'grid',
