@@ -257,7 +257,7 @@
   position: relative;
   width: 90%;
   height: 90%;
-  overflow: auto;
+  overflow: hidden;
   background-color: rgba(17, 17, 17, 0.75);
   margin: auto;
   border: none;
