@@ -49,32 +49,38 @@
                     "url": "https://images.unsplash.com/photo-1532543491484-63e29b3c1f5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
                 }
             ],
-            "skus": {
-                "370321": {
+            "skus": [
+                {
                     "quantity": 8,
-                    "size": "XS"
+                    "size": "XS",
+                    "sku": "370321"
                 },
-                "370322": {
+                {
                     "quantity": 16,
-                    "size": "S"
+                    "size": "S",
+                    "sku": "370322"
                 },
-                "370323": {
+                {
                     "quantity": 17,
-                    "size": "M"
+                    "size": "M",
+                    "sku": "370323"
                 },
-                "370324": {
+                {
                     "quantity": 10,
-                    "size": "L"
+                    "size": "L",
+                    "sku": "370324"
                 },
-                "370325": {
+                {
                     "quantity": 15,
-                    "size": "XL"
+                    "size": "XL",
+                    "sku": "370325"
                 },
-                "370326": {
+                {
                     "quantity": 4,
-                    "size": "XL"
+                    "size": "XL",
+                    "sku": "370326"
                 }
-            }
+            ]
         },
         {
             "style_id": 64132,
@@ -108,32 +114,38 @@
                     "url": "https://images.unsplash.com/photo-1447958272669-9c562446304f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2800&q=80"
                 }
             ],
-            "skus": {
-                "370327": {
+            "skus": [
+                {
                     "quantity": 8,
-                    "size": "XS"
+                    "size": "XS",
+                    "sku": "370327"
                 },
-                "370328": {
+                {
                     "quantity": 16,
-                    "size": "S"
+                    "size": "S",
+                    "sku": "370328"
                 },
-                "370329": {
+                {
                     "quantity": 17,
-                    "size": "M"
+                    "size": "M",
+                    "sku": "370329"
                 },
-                "370330": {
+                {
                     "quantity": 10,
-                    "size": "L"
+                    "size": "L",
+                    "sku": "370330"
                 },
-                "370331": {
+                {
                     "quantity": 15,
-                    "size": "XL"
+                    "size": "XL",
+                    "sku": "370331"
                 },
-                "370332": {
+                {
                     "quantity": 6,
-                    "size": "XXL"
+                    "size": "XXL",
+                    "sku": "370332"
                 }
-            }
+            ]
         },
         {
             "style_id": 64133,
@@ -167,32 +179,38 @@
                     "url": "https://images.unsplash.com/photo-1557394976-32cc983558ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
                 }
             ],
-            "skus": {
-                "370333": {
+            "skus": [
+                {
                     "quantity": 8,
-                    "size": "XS"
+                    "size": "XS",
+                    "sku": "370333"
                 },
-                "370334": {
+                {
                     "quantity": 16,
-                    "size": "S"
+                    "size": "S",
+                    "sku": "370334"
                 },
-                "370335": {
+                {
                     "quantity": 17,
-                    "size": "M"
+                    "size": "M",
+                    "sku": "370335"
                 },
-                "370336": {
+                {
                     "quantity": 10,
-                    "size": "L"
+                    "size": "L",
+                    "sku": "370336"
                 },
-                "370337": {
+                {
                     "quantity": 15,
-                    "size": "XL"
+                    "size": "XL",
+                    "sku": "370337"
                 },
-                "370338": {
+                {
                     "quantity": 6,
-                    "size": "XXL"
+                    "size": "XXL",
+                    "sku": "370338"
                 }
-            }
+            ]
         },
         {
             "style_id": 64134,
@@ -226,32 +244,38 @@
                     "url": "https://images.unsplash.com/photo-1517456837005-d757b959ae2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
                 }
             ],
-            "skus": {
-                "370339": {
+            "skus": [
+                {
                     "quantity": 8,
-                    "size": "XS"
+                    "size": "XS",
+                    "sku": "370339"
                 },
-                "370340": {
+                {
                     "quantity": 16,
-                    "size": "S"
+                    "size": "S",
+                    "sku": "370340"
                 },
-                "370341": {
+                {
                     "quantity": 17,
-                    "size": "M"
+                    "size": "M",
+                    "sku": "370341"
                 },
-                "370342": {
+                {
                     "quantity": 10,
-                    "size": "L"
+                    "size": "L",
+                    "sku": "370342"
                 },
-                "370343": {
+                {
                     "quantity": 15,
-                    "size": "XL"
+                    "size": "XL",
+                    "sku": "370343"
                 },
-                "370344": {
+                {
                     "quantity": 6,
-                    "size": "XXL"
+                    "size": "XXL",
+                    "sku": "370344"
                 }
-            }
+            ]
         },
         {
             "style_id": 64135,
@@ -285,32 +309,38 @@
                     "url": "https://images.unsplash.com/photo-1418985991508-e47386d96a71?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
                 }
             ],
-            "skus": {
-                "370345": {
+            "skus": [
+                {
                     "quantity": 8,
-                    "size": "XS"
+                    "size": "XS",
+                    "sku": "370345"
                 },
-                "370346": {
+                {
                     "quantity": 16,
-                    "size": "S"
+                    "size": "S",
+                    "sku": "370346"
                 },
-                "370347": {
+                {
                     "quantity": 17,
-                    "size": "M"
+                    "size": "M",
+                    "sku": "370347"
                 },
-                "370348": {
+                {
                     "quantity": 10,
-                    "size": "L"
+                    "size": "L",
+                    "sku": "370348"
                 },
-                "370349": {
+                {
                     "quantity": 15,
-                    "size": "XL"
+                    "size": "XL",
+                    "sku": "370349"
                 },
-                "370350": {
+                {
                     "quantity": 6,
-                    "size": "XXL"
+                    "size": "XXL",
+                    "sku": "370350"
                 }
-            }
+            ]
         },
         {
             "style_id": 64136,
@@ -344,32 +374,38 @@
                     "url": "https://images.unsplash.com/photo-1421941027568-40ab08ee5592?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
                 }
             ],
-            "skus": {
-                "370351": {
+            "skus": [
+                {
                     "quantity": 8,
-                    "size": "XS"
+                    "size": "XS",
+                    "sku": "370351"
                 },
-                "370352": {
+                {
                     "quantity": 16,
-                    "size": "S"
+                    "size": "S",
+                    "sku": "370352"
                 },
-                "370353": {
+                {
                     "quantity": 17,
-                    "size": "M"
+                    "size": "M",
+                    "sku": "370353"
                 },
-                "370354": {
+                {
                     "quantity": 10,
-                    "size": "L"
+                    "size": "L",
+                    "sku": "370354"
                 },
-                "370355": {
+                {
                     "quantity": 15,
-                    "size": "XL"
+                    "size": "XL",
+                    "sku": "370355"
                 },
-                "370356": {
+                {
                     "quantity": 6,
-                    "size": "XXL"
+                    "size": "XXL",
+                    "sku": "370356"
                 }
-            }
+            ]
         }
     ],
     "meta": {
@@ -418,6 +454,7 @@
             ],
             "recommended": true,
             "reviewerName": "SmilingSean",
+            "responseToReview": null,
             "helpfulness": 42
         },
         {
@@ -433,6 +470,7 @@
             ],
             "recommended": true,
             "reviewerName": "MonkeyShoeMatt",
+            "responseToReview": null,
             "helpfulness": 14
         },
         {
@@ -443,6 +481,7 @@
             "photos": [],
             "recommended": true,
             "reviewerName": "evan",
+            "responseToReview": null,
             "helpfulness": 2
         },
         {
@@ -458,6 +497,7 @@
             ],
             "recommended": true,
             "reviewerName": "LittleRoger",
+            "responseToReview": null,
             "helpfulness": 1
         },
         {
@@ -473,111 +513,211 @@
             ],
             "recommended": true,
             "reviewerName": "RainbowPls",
+            "responseToReview": null,
             "helpfulness": 0
         }
     ],
-    "qa": [
-        {
-            "question_id": 66299,
-            "question_body": "What fabric is the top made of?",
-            "question_date": "2018-01-04T00:00:00.000Z",
-            "asker_name": "yankeelover",
-            "question_helpfulness": 3,
-            "reported": false,
-            "answers": {
-                "630244": {
-                    "id": 630244,
-                    "body": "Something pretty soft but I can't be sure",
-                    "date": "2018-01-04T00:00:00.000Z",
-                    "answerer_name": "metslover",
-                    "helpfulness": 5,
-                    "photos": [
-                        "https://images.unsplash.com/photo-1530519729491-aea5b51d1ee1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80",
-                        "https://images.unsplash.com/photo-1511127088257-53ccfcc769fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
-                        "https://images.unsplash.com/photo-1500603720222-eb7a1f997356?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"
-                    ]
+    "qa": {
+        "questions": [
+            {
+                "question_id": 182884,
+                "question_body": "Will wearing this help me give better pep talks?",
+                "question_date": "2021-04-18T00:00:00.000Z",
+                "asker_name": "Mr. N",
+                "question_helpfulness": 10,
+                "reported": false,
+                "answers": {
+                    "1719367": {
+                        "id": 1719367,
+                        "body": "Sure, it might",
+                        "date": "2021-04-18T00:00:00.000Z",
+                        "answerer_name": "Me",
+                        "helpfulness": 4,
+                        "photos": []
+                    }
                 },
-                "630246": {
-                    "id": 630246,
-                    "body": "Its the best! Seriously magic fabric",
-                    "date": "2018-01-04T00:00:00.000Z",
-                    "answerer_name": "metslover",
-                    "helpfulness": 7,
-                    "photos": []
+                "answerArr": [
+                    {
+                        "answer_id": 1719367,
+                        "body": "Sure, it might",
+                        "date": "2021-04-18T00:00:00.000Z",
+                        "answerer_name": "Me",
+                        "helpfulness": 4,
+                        "photos": []
+                    }
+                ]
+            },
+            {
+                "question_id": 66299,
+                "question_body": "What fabric is the top made of?",
+                "question_date": "2018-01-04T00:00:00.000Z",
+                "asker_name": "yankeelover",
+                "question_helpfulness": 7,
+                "reported": false,
+                "answers": {
+                    "630244": {
+                        "id": 630244,
+                        "body": "Something pretty soft but I can't be sure",
+                        "date": "2018-01-04T00:00:00.000Z",
+                        "answerer_name": "metslover",
+                        "helpfulness": 5,
+                        "photos": [
+                            "https://images.unsplash.com/photo-1530519729491-aea5b51d1ee1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80",
+                            "https://images.unsplash.com/photo-1511127088257-53ccfcc769fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+                            "https://images.unsplash.com/photo-1500603720222-eb7a1f997356?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"
+                        ]
+                    },
+                    "630246": {
+                        "id": 630246,
+                        "body": "Its the best! Seriously magic fabric",
+                        "date": "2018-01-04T00:00:00.000Z",
+                        "answerer_name": "metslover",
+                        "helpfulness": 7,
+                        "photos": []
+                    },
+                    "630296": {
+                        "id": 630296,
+                        "body": "Suede",
+                        "date": "2018-11-04T00:00:00.000Z",
+                        "answerer_name": "metslover",
+                        "helpfulness": 7,
+                        "photos": []
+                    },
+                    "630334": {
+                        "id": 630334,
+                        "body": "Supposedly suede, but I think its synthetic",
+                        "date": "2018-12-04T00:00:00.000Z",
+                        "answerer_name": "metslover",
+                        "helpfulness": 3,
+                        "photos": []
+                    }
                 },
-                "630296": {
-                    "id": 630296,
-                    "body": "Suede",
-                    "date": "2018-11-04T00:00:00.000Z",
-                    "answerer_name": "metslover",
-                    "helpfulness": 7,
-                    "photos": []
+                "answerArr": [
+                    {
+                        "answer_id": 630246,
+                        "body": "Its the best! Seriously magic fabric",
+                        "date": "2018-01-04T00:00:00.000Z",
+                        "answerer_name": "metslover",
+                        "helpfulness": 7,
+                        "photos": []
+                    },
+                    {
+                        "answer_id": 630296,
+                        "body": "Suede",
+                        "date": "2018-11-04T00:00:00.000Z",
+                        "answerer_name": "metslover",
+                        "helpfulness": 7,
+                        "photos": []
+                    },
+                    {
+                        "answer_id": 630244,
+                        "body": "Something pretty soft but I can't be sure",
+                        "date": "2018-01-04T00:00:00.000Z",
+                        "answerer_name": "metslover",
+                        "helpfulness": 5,
+                        "photos": [
+                            {
+                                "id": 529294,
+                                "url": "https://images.unsplash.com/photo-1530519729491-aea5b51d1ee1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                            },
+                            {
+                                "id": 529295,
+                                "url": "https://images.unsplash.com/photo-1511127088257-53ccfcc769fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                            },
+                            {
+                                "id": 529296,
+                                "url": "https://images.unsplash.com/photo-1500603720222-eb7a1f997356?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"
+                            }
+                        ]
+                    },
+                    {
+                        "answer_id": 630334,
+                        "body": "Supposedly suede, but I think its synthetic",
+                        "date": "2018-12-04T00:00:00.000Z",
+                        "answerer_name": "metslover",
+                        "helpfulness": 3,
+                        "photos": []
+                    }
+                ]
+            },
+            {
+                "question_id": 153131,
+                "question_body": "Would I be able to match my green Tesla with this?",
+                "question_date": "2021-03-10T00:00:00.000Z",
+                "asker_name": "Elongated Muskrat",
+                "question_helpfulness": 2,
+                "reported": false,
+                "answers": {
+                    "1443869": {
+                        "id": 1443869,
+                        "body": "Yes.",
+                        "date": "2021-03-10T00:00:00.000Z",
+                        "answerer_name": "Elongated Muskrat",
+                        "helpfulness": 0,
+                        "photos": []
+                    }
                 },
-                "630334": {
-                    "id": 630334,
-                    "body": "Supposedly suede, but I think its synthetic",
-                    "date": "2018-12-04T00:00:00.000Z",
-                    "answerer_name": "metslover",
-                    "helpfulness": 3,
-                    "photos": []
-                }
+                "answerArr": [
+                    {
+                        "answer_id": 1443869,
+                        "body": "Yes.",
+                        "date": "2021-03-10T00:00:00.000Z",
+                        "answerer_name": "Elongated Muskrat",
+                        "helpfulness": 0,
+                        "photos": []
+                    }
+                ]
+            },
+            {
+                "question_id": 153557,
+                "question_body": "asdfasdfas",
+                "question_date": "2021-03-13T00:00:00.000Z",
+                "asker_name": "asdfasd",
+                "question_helpfulness": 0,
+                "reported": false,
+                "answers": {},
+                "answerArr": []
+            },
+            {
+                "question_id": 153132,
+                "question_body": "alskdfj",
+                "question_date": "2021-03-10T00:00:00.000Z",
+                "asker_name": "wilson",
+                "question_helpfulness": 0,
+                "reported": false,
+                "answers": {},
+                "answerArr": []
+            },
+            {
+                "question_id": 153129,
+                "question_body": "Do I need to hand wash it?",
+                "question_date": "2021-03-10T00:00:00.000Z",
+                "asker_name": "Tony Bark",
+                "question_helpfulness": 0,
+                "reported": false,
+                "answers": {
+                    "1443868": {
+                        "id": 1443868,
+                        "body": "Nope. You could just chuck it in a washing machine",
+                        "date": "2021-03-10T00:00:00.000Z",
+                        "answerer_name": "Tony Bark",
+                        "helpfulness": 0,
+                        "photos": []
+                    }
+                },
+                "answerArr": [
+                    {
+                        "answer_id": 1443868,
+                        "body": "Nope. You could just chuck it in a washing machine",
+                        "date": "2021-03-10T00:00:00.000Z",
+                        "answerer_name": "Tony Bark",
+                        "helpfulness": 0,
+                        "photos": []
+                    }
+                ]
             }
-        },
-        {
-            "question_id": 153131,
-            "question_body": "Would I be able to match my green Tesla with this?",
-            "question_date": "2021-03-10T00:00:00.000Z",
-            "asker_name": "Elongated Muskrat",
-            "question_helpfulness": 2,
-            "reported": false,
-            "answers": {
-                "1443869": {
-                    "id": 1443869,
-                    "body": "Yes.",
-                    "date": "2021-03-10T00:00:00.000Z",
-                    "answerer_name": "Elongated Muskrat",
-                    "helpfulness": 0,
-                    "photos": []
-                }
-            }
-        },
-        {
-            "question_id": 153557,
-            "question_body": "asdfasdfas",
-            "question_date": "2021-03-13T00:00:00.000Z",
-            "asker_name": "asdfasd",
-            "question_helpfulness": 0,
-            "reported": false,
-            "answers": {}
-        },
-        {
-            "question_id": 153132,
-            "question_body": "alskdfj",
-            "question_date": "2021-03-10T00:00:00.000Z",
-            "asker_name": "wilson",
-            "question_helpfulness": 0,
-            "reported": false,
-            "answers": {}
-        },
-        {
-            "question_id": 153129,
-            "question_body": "Do I need to hand wash it?",
-            "question_date": "2021-03-10T00:00:00.000Z",
-            "asker_name": "Tony Bark",
-            "question_helpfulness": 0,
-            "reported": false,
-            "answers": {
-                "1443868": {
-                    "id": 1443868,
-                    "body": "Nope. You could just chuck it in a washing machine",
-                    "date": "2021-03-10T00:00:00.000Z",
-                    "answerer_name": "Tony Bark",
-                    "helpfulness": 0,
-                    "photos": []
-                }
-            }
-        }
-    ],
+        ]
+    },
     "related": [
         13024,
         13025,
