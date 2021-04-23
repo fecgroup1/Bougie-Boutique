@@ -49,9 +49,9 @@ class Overview extends React.Component {
     this.changeImg = this.changeImg.bind(this);
   }
 
-  // componentDidMount() {
-  //   this.props.store.setProduct();
-  // }
+  componentDidMount() {
+    this.props.store.setProduct();
+  }
 
   changeStyle(index) {
     console.log('changStyle index: ', index);
