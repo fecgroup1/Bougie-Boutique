@@ -10,6 +10,7 @@ class Stars extends React.Component {
     if (this.props.rating !== nextProps.rating) {
       return true;
     }
+    console.log('Overview stars did not rerender')
     return false;
   }
 

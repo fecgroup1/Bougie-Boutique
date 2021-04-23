@@ -9,11 +9,14 @@ class Thumbnails extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.currStyle !== nextProps.currStyle) {
+      console.log('Overview thumbnails re-rendered')
       return true;
     }
     if (this.props.styles[0].style_id != nextProps.styles[0].style_id) {
+      console.log('Overview thumbnails re-rendered')
       return true;
     }
+    console.log('Overview thumbnails did not rerender')
     return false;
   }
 

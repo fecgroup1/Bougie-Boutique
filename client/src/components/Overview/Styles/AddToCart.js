@@ -30,7 +30,7 @@ class AddToCart extends React.Component {
     if (this.state.warning !== nextState.warning) {
       return true;
     }
-    console.log('Did not re-render');
+    console.log('AddToCart did not re-render');
     return false;
   }
 
@@ -125,8 +125,8 @@ class AddToCart extends React.Component {
     if (this.props.outOfStock) {
       return (
         <>
-        <form id="addcart" style={grid} style={disabled}>
-          <CartDropdown id="size">
+        <form id="addcart" style={grid}>
+          <CartDropdown id="size" style={disabled}>
             <option value='0' disabled selected>Size: --</option>
           </CartDropdown>
           <CartDropdown id="qty" style={disabled}>
