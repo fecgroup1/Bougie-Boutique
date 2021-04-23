@@ -26,9 +26,7 @@ class CurrentProduct extends React.Component {
 
 
   componentDidMount() {
-    let productData = dummyState;
-    // productData.currStyle = 0;
-    this.setState(productData);
+    this.setProduct(this.state.currentProductId);
   }
 
   changeProduct(pid) {
@@ -46,7 +44,7 @@ class CurrentProduct extends React.Component {
     .then((resData) => {
       let productData = resData;
       productData.currStyle = 0;
-      productData.cart = this.checkCart(resData);
+      // productData.cart = this.checkCart(resData);
       this.setState(productData);
     })
   }
