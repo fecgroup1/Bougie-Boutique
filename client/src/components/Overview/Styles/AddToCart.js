@@ -1,4 +1,5 @@
 import React from 'react';
+import { AddToCartButton, CartDropdown } from './../../../Styles';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -70,7 +71,7 @@ class AddToCart extends React.Component {
       this.setState({
         warning: 'All available stock in cart',
       });
-    }else {
+    } else {
       let cart = this.props.cart;
       var cartQty = (cart[this.state.toAdd] === undefined)? 0: cart[this.state.toAdd];
       var addQty = Number(this.state.quantity.slice(5));
@@ -118,15 +119,15 @@ class AddToCart extends React.Component {
       return (
         <>
         <form id="addcart" style={grid}>
-          <select id="size">
+          <CartDropdown id="size">
             <option value='0' disabled selected>Size: --</option>
-          </select>
-          <select id="qty">
+          </CartDropdown>
+          <CartDropdown id="qty">
             <option value='0' disabled selected>Qty: --</option>
-          </select>
+          </CartDropdown>
         </form>
         <div style={red}>{this.state.warning}</div><br/><br/>
-        <button onClick={this.handleAddCart}>Add To Cart</button>
+        <AddToCartButton onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
         </>
       );
     } else if (this.state.currSize === 'Select a size') {
@@ -134,7 +135,7 @@ class AddToCart extends React.Component {
       return (
         <>
         <form id="addcart" style={grid}>
-          <select
+          <CartDropdown
             id="size"
             value={this.state.currSize}
             onChange={(event) => this.handleSizeSelect(event)}>
@@ -154,15 +155,15 @@ class AddToCart extends React.Component {
                   );
                 }
               })}
-          </select>
-          <select id="qty" disabled>
+          </CartDropdown>
+          <CartDropdown id="qty" disabled>
             <option value={this.state.quantity}>
               {this.state.quantity}
             </option>
-          </select>
+          </CartDropdown>
         </form>
         <div style={red}>{this.state.warning}</div>
-        <button onClick={this.handleAddCart}>Add To Cart</button>
+        <AddToCartButton onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
         </>
       );
 
@@ -213,7 +214,7 @@ class AddToCart extends React.Component {
           </select>
         </form>
         <div style={red}>{this.state.warning}</div>
-        <button onClick={this.handleAddCart}>Add To Cart</button>
+        <AddToCartButton onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
         </>
       );
     }

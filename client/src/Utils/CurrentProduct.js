@@ -17,7 +17,7 @@ class CurrentProduct extends React.Component {
 
     // Test function
     this.changeProduct = this.changeProduct.bind(this);
-    this.changeStyle = this.changeStyle.bind(this);
+    // this.changeStyle = this.changeStyle.bind(this);
     this.setProduct = this.setProduct.bind(this);
     this.setQuestions = this.setQuestions.bind(this);
     this.checkCart = this.checkCart.bind(this);
@@ -33,18 +33,18 @@ class CurrentProduct extends React.Component {
     this.setProduct(pid);
   }
 
-  changeStyle(index) {
-    this.setState({
-      currStyle: index
-    });
-  }
+  // changeStyle(index) {
+  //   this.setState({
+  //     currStyle: index
+  //   });
+  // }
 
   setProduct(id) {
     ProductAPI.getProduct(id)
     .then((resData) => {
       let productData = resData;
       productData.currStyle = 0;
-      productData.cart = this.checkCart(resData);
+      // productData.cart = this.checkCart(resData);
       this.setState(productData);
     })
   }

@@ -9,7 +9,9 @@ const countItems = (obj) => {
   return count;
 }
 
-const Nav = ({cart, dark, toggleTheme}) => {
+const Nav = ({cart, store, checkCart, dark, toggleTheme}) => {
+
+  checkCart(store);
 
   const cartCount = countItems(cart);
 
@@ -28,10 +30,19 @@ const Nav = ({cart, dark, toggleTheme}) => {
   }
 
   const toggle = {
-    right: '27px',
+    right: '22px',
   }
 
   const cartIcon = {
+    border: 'none',
+    color: '#ccc',
+    background: 'none',
+    fontSize: '30px',
+    outline: 'none',
+    height: 'auto',
+    padding: 0,
+    top: '22px',
+    position: 'absolute',
     right: '70px',
   }
   const number = {
@@ -69,12 +80,16 @@ const Nav = ({cart, dark, toggleTheme}) => {
           style={cartIcon}>
           <span className="lni lni-tshirt"></span>
       </ThemeToggle>
-      <div style={label}>Theme</div>
-        <ThemeToggle
-          style={toggle}
-          onClick={toggleTheme}>
-            <span className={icon}></span>
-        </ThemeToggle>
+      <div
+        onClick={toggleTheme}
+        style={label}>
+          Theme
+      </div>
+      <ThemeToggle
+        style={toggle}
+        onClick={toggleTheme}>
+          <span className={icon}></span>
+      </ThemeToggle>
     </div>
   );
 }
