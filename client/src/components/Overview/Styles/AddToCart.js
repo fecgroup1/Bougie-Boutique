@@ -115,22 +115,28 @@ class AddToCart extends React.Component {
       height: '0.6em',
       color: 'red',
       fontSize: '0.6em',
-      padding: '10px 5px',
+      padding: '0px 5px',
+    }
+
+    const disabled = {
+      opacity: '50%',
     }
 
     if (this.props.outOfStock) {
       return (
         <>
-        <form id="addcart" style={grid}>
+        <form id="addcart" style={grid} style={disabled}>
           <CartDropdown id="size">
             <option value='0' disabled selected>Size: --</option>
           </CartDropdown>
-          <CartDropdown id="qty">
+          <CartDropdown id="qty" style={disabled}>
             <option value='0' disabled selected>Qty: --</option>
           </CartDropdown>
         </form>
-        <div style={red}>{this.state.warning}</div><br/><br/>
-        <AddToCartButton onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
+        <div style={red}>
+          {this.props.styles[0].name === null ? '': 'Out of Stock'}
+        </div>
+        <AddToCartButton style={disabled} onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
         </>
       );
     } else if (this.state.currSize === 'Select a size') {
