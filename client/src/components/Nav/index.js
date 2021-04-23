@@ -124,7 +124,8 @@ class Nav extends React.Component {
           <NavButton
             style={toggle}
             onClick={toggleTheme}
-            onMouseOver={this.handleMouseOver}>
+            onMouseOver={this.handleMouseOver}
+            onMouseLeave={this.handleMouseLeave}>
           </NavButton>
         </div>
       </div>
