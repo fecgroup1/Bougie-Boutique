@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const ProductsContainer = styled.div`
   display: grid;
-  width: 85%;
+  width: 95%;
   padding: 0 2vw;
   grid-template-rows: 10% 90%;
   justify-content: start;
@@ -50,7 +50,7 @@ export const CardImage = styled.div`
   background-position: center;
 `
 
-const func = (props) => (
+const compareButtonFunc = (props) => (
   `background-color: ${props.theme.bg};
    color: ${props.theme.bluGry};
 
@@ -74,5 +74,8 @@ export const CompareButton = styled.button`
   border-radius: 2em;
   padding: .25em;d
   border: 1px solid;
-  ${props => func(props)};
+  &:hover {
+    cursor: help;
+  }
+  ${props => compareButtonFunc(props)};
 `

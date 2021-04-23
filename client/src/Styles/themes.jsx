@@ -32,21 +32,42 @@ export const Body = createGlobalStyle`
   //   padding: 1em 0em;
   // }
 
-  .ReactModal__Content {
+  .compareModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     opacity: 0;
-    transition: all 500ms ease-in-out;
-  }
-
-  .ReactModal__Overlay {
+    transition: 500ms ease-in-out;
     transition: all 500ms ease-out;
   }
-
-  .ReactModal__Content--after-open {
-    opacity: 1;
+  .compareModalOverlay-in {
+    opacity: 1 ;
   }
 
-  .ReactModal__Content--before-close {
-    opacity: 0;
+  .compareModalOverlay-out {
+    opacity: 0 ;
+  }
+
+  .addOutfit {
+    box-shadow: none !important;
+    grid-template-rows: 100% !important;
+    button {
+      border-radius: 50px;
+      height: fit-content;
+      width: fit-content;
+      margin: auto;
+    }
+    button: active {
+      box-shadow: inset 10px 5px 15px #cccccc;
+      border-radius: 500px;
+      height: fit-content;
+      width: fit-content;
+    }
+    &: hover {
+      cursor: auto;
+    }
   }
 
   // button {

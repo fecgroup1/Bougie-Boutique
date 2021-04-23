@@ -1,32 +1,34 @@
 import React, { Fragment, useState, useEffect, useMemo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
-import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button } from '../../Styles';
+import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button, StarsInner, StarsOuter, StyledProductCard, AddOutfitButton } from '../../Styles';
 import ProductCard from './ProductCard.js'
 import CompareModal from './CompareModal.js'
 
-const RelatedProducts = ({store, outfits}) => {
+const RelatedProducts = ({store, theme}) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
   const [productsPosition, setProductsPosition] = useState(0);
   const [comparisonProduct, setComparisonProduct] = useState(null);
+  const [outfits, setOutfits] = useState()
 
   useEffect(() => {
     RelatedAPI.getRelatedProducts(store.state.currentProductId)
       .then((results) => {
-        console.log(results)
         setProducts(results)
       })
 
   }, [store.state.currentProductId]);
 
+  useEffect(() => {
+
+  }, [outfits])
+
   const scroll = (container, direction, event) => {
-    // console.log(container)
     let area = event.target.parentNode.parentNode.children[1];
     let cardWidth = event.target.parentNode.parentNode.children[1].children[1].clientWidth;
-    // console.log('cardwidth', cardWidth)
     if(direction === 'left' ) {
-      console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
+      // console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft += cardWidth
       if (productsPosition === `${container}`.length - 3) {
 
@@ -34,13 +36,17 @@ const RelatedProducts = ({store, outfits}) => {
         setProductsPosition(productsPosition + 1);
       }
     } else {
-      console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
+      // console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft -= cardWidth
       setProductsPosition(productsPosition - 1)
     }
   }
 
-  const realtedSection = useMemo(() =>
+  const handleSaveOutfit = () => {
+
+  }
+
+  const relatedSection = useMemo(() =>
     <ProductsContainer
     key={'relatedProductsContainer'}
     items={products.length}
@@ -69,6 +75,7 @@ const RelatedProducts = ({store, outfits}) => {
                 product={product}
                 className={'productCard'}
                 compareMe={setComparisonProduct}
+                changeProduct={store.changeProduct}
               />
             ))
           }
@@ -94,7 +101,39 @@ const RelatedProducts = ({store, outfits}) => {
     <ProductsContainer
     key={'outfitProductsContainer'}
     >
-      <h2>YOUR OUTFIT</h2>
+      <div>
+        <h3>YOUR OUTFIT</h3>
+      </div>
+      <CardsWrapper>
+      <CardContainer>
+        <StyledProductCard
+          className={'addOutfit'}
+        >
+        <AddOutfitButton
+        onClick={handleSaveOutfit}
+        >
+          <i
+            style={{
+              fontSize: '9em',
+              color: theme.bluGry
+            }}
+            className="lni lni-circle-plus plus"
+          />
+        </AddOutfitButton>
+        </StyledProductCard>
+          {/* {
+            products.map((product, index) => (
+              <ProductCard
+                key={index}
+                product={product}
+                className={'productCard'}
+                compareMe={setComparisonProduct}
+              />
+            ))
+          } */}
+        </CardContainer>
+      </CardsWrapper>
+
     </ProductsContainer>
 
   , [outfits])
@@ -102,10 +141,8 @@ const RelatedProducts = ({store, outfits}) => {
     return (
       <Fragment>
         <RelatedContainer>
-
-         {realtedSection}
-         {outfitSection}
-
+          {relatedSection}
+          {outfitSection}
         </RelatedContainer>
         <CompareModal
           product={store.state.product}

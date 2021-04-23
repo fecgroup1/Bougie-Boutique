@@ -1,6 +1,6 @@
 export { RelatedContainer } from './RelatedContainer.js';
 export { ProductsContainer, CardContainer, CardsWrapper, Button, CardImage, CompareButton } from './ProductsContainer.js';
-export { ProductCard } from './ProductCard.js';
+export { StyledProductCard, AddOutfitButton } from './StyledProductCard.js';
 export { CompareTable } from './CompareTable.js'
 export { Body, NavButton, Title, dark, light } from './themes.jsx';
 export { StyleThumbs, Small, OuterStars, InnerStars, StyleName, Flex, Left, Right, LinedTop, ThumbImg, CurrThumb, AddToCartButton, CartDropdown, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer } from './Overview'

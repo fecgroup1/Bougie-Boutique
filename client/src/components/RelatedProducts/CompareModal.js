@@ -16,6 +16,7 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
     <ThemeConsumer>
       { theme =>
           <Modal
+          ariaHideApp={false}
           isOpen={modalIsOpen}
           onRequestClose = {() => {setModalIsOpen(false); resetCompare(null)}}
           style={{
@@ -34,6 +35,11 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
               border: `15px solid ${theme.bluGry}`,
               boxShadow: `10px 15px 15px #cccccc`
             }
+          }}
+          overlayClassName={{
+            base: 'compareModalOverlay',
+            afterOpen: 'compareModalOverlay-in',
+            beforeClose: 'compareModalOverlay-out'
           }}
         >
           <Chart

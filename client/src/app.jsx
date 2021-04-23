@@ -50,6 +50,7 @@ class App extends React.Component {
               <RelatedProducts
                 store={store}
                 outfits={this.state.outfits}
+                theme={theme}
               />
               <QandA
                 store={store}

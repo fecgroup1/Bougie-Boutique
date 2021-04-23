@@ -1,7 +1,7 @@
-import React from 'react'
-import { ProductCard as StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, NavButton } from '../../Styles/'
+import React, {Fragment} from 'react'
+import { StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, NavButton } from '../../Styles/'
 
-const ProductCard = ({product, compareMe}, theme) => {
+const ProductCard = ({product, compareMe, changeProduct}, theme) => {
   let prd = product.product
   return (
     prd
@@ -13,9 +13,16 @@ const ProductCard = ({product, compareMe}, theme) => {
             <i className="lni lni-32 lni-pagination" />
           </CompareButton>
 
-        { product.styles[0].photos[0].url !== null
-          ? <CardImage src={`${product.styles[0].photos[0].url}`} />
-          : <CardImage src={'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'} />
+        {
+          product.styles[0].photos[0].url !== null
+          ? <CardImage
+              src={`${product.styles[0].photos[0].url}`}
+              onClick={()=> changeProduct(product.currentProductId)}
+            />
+          : <CardImage
+              src={'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'}
+              onClick={()=> changeProduct(product.currentProductId)}
+            />
         }
         <div style={{borderTop: `1px solid ${theme.bluGry}`, paddingLeft: '.5em' }}>
           <p style={{marginBottom: 0}}>{prd.category}</p>
@@ -34,10 +41,13 @@ const ProductCard = ({product, compareMe}, theme) => {
       <i className="lni lni-32 lni-pagination" />
       </CompareButton>
       <div style={{alignSelf: 'center', placeSelf: 'center'}}>
-        ...loading
+      <i
+        className="lni lni-spinner-arrow lni-is-spinning"
+        style={{color: `${theme.bluGry}`, fontSize:'5em'}}
+      />
       </div>
-      <div style={{borderTop: `1px solid ${theme.bluGry}`, paddingLeft: '.25em' }}>
-        <div style={{marginTop: '.2em', marginBottom: 0, backgroundColor: '#cccccc', width: '80%', height: '1em'}}></div>
+      <div style={{borderTop: `1px solid ${theme.bluGry}`, paddingLeft: '.25em', transition: 'background 0.5s'}}>
+        <div style={{marginTop: '2em', marginBottom: 0, backgroundColor: '#cccccc', width: '80%', height: '1em'}}></div>
         <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
         <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
         <StarsOuter
