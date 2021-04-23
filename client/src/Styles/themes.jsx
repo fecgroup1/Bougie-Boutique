@@ -31,6 +31,23 @@ export const Body = createGlobalStyle`
     padding: 1em 0em;
   }
 
+  .ReactModal__Content {
+    opacity: 0;
+    transition: all 500ms ease-in-out;
+  }
+
+  .ReactModal__Overlay {
+    transition: all 500ms ease-out;
+  }
+
+  .ReactModal__Content--after-open {
+    opacity: 1;
+  }
+
+  .ReactModal__Content--before-close {
+    opacity: 0;
+  }
+
 //   button {
 //     & {
 //       border: 3px solid ${props => props.theme.text};
@@ -70,7 +87,8 @@ export const light = {
   outline: '#002a60',
   text: 'black',
   bg: 'white',
-  bluGry: '#002a60'
+  bluGry: '#002a60',
+  blkGry: 'black'
 };
 
 export const dark = {
@@ -78,7 +96,8 @@ export const dark = {
   outline: '#cccccc',
   text: '#cccccc',
   bg: '#111111',
-  bluGry: '#cccccc'
+  bluGry: '#cccccc',
+  blkGry: '#cccccc'
 }
 
 

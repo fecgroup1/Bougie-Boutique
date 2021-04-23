@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react';
+import { CompareTable } from '../../Styles';
 
-const Chart = ({product, comparison}) => {
+const Chart = ({product, comparison, theme}) => {
 
   const [features, setFeatures] = useState(null)
 
   useEffect(() => {
-    createComparison(product, comparison)
+    if (!!comparison) {
+      createComparison(product, comparison)
+    }
   }, [comparison])
 
   const createComparison = (curr, comp) => {
@@ -25,40 +28,37 @@ const Chart = ({product, comparison}) => {
     setFeatures(result)
   }
 
-  return (
-    <StyledTable>
-      <table>
-        <thead>
-          <tr>
-            <th>Current Product</th>
-            <th>Feature</th>
-            <th>Comparison Product</th>
-          </tr>
-        </thead>
-        <thead>
-          <tr>
-            <th>{product.name}</th>
-            <th></th>
-            <th>{comparison.name}</th>
-          </tr>
-        </thead>
-        <tbody>
-          { !!features
-            ?
-              Object.keys(features).map((feature, i) => (
-                <tr key={i}>
-                  <td>{features[feature][0]}</td>
-                  <td>{feature}</td>
-                  <td>{features[feature][1]}</td>
-                </tr>
-              ))
-            :
-            null
-          }
-        </tbody>
-      </table>
-    </StyledTable>
-  )
+
+    if (!!comparison) {
+      return (
+        <Fragment>
+          <h2 style={{textAlign: 'center', marginTop: '.25em', color: theme.bluGry}}>Compare Products</h2>
+          <CompareTable>
+              <thead>
+                <th className={'title'}>{product.name}</th>
+                <th className={'inner title'}></th>
+                <th className={'title'}>{comparison.name}</th>
+              </thead>
+              <tbody>
+                { !!features
+                  ?
+                    Object.keys(features).map((feature, i) => (
+                      <tr key={i}>
+                        <td>{features[feature][0]}</td>
+                        <td className={'inner'}>{feature}</td>
+                        <td>{features[feature][1]}</td>
+                      </tr>
+                    ))
+                  :
+                  null
+                }
+              </tbody>
+          </CompareTable>
+        </Fragment>
+      )
+    } else {
+      return null
+    }
 }
 
 export default Chart;

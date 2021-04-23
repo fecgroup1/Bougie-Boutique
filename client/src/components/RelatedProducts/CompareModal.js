@@ -8,7 +8,6 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
 
   useEffect(() => {
     if (comparisonProduct) {
-      console.log('i fired')
       setModalIsOpen(true);
     }
   }, [comparisonProduct])
@@ -21,18 +20,26 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
           onRequestClose = {() => {setModalIsOpen(false); resetCompare(null)}}
           style={{
             overlay: {
-              backdropFilter: 'blur(5px)', backgroundColor: 'none',
+              backdropFilter: 'blur(5px)',
+              backgroundColor: 'rgba(0,0,0, 0.5)',
               zIndex: '1'
             },
             content: {
+              position: 'relative',
               backgroundColor: theme.bg,
-              inset: '10% 5%',
+              inset: 'unset',
+              width: 'max-content',
+              margin: 'auto',
+              marginTop: '15vh',
+              border: `15px solid ${theme.bluGry}`,
+              boxShadow: `10px 15px 15px #cccccc`
             }
           }}
         >
           <Chart
             product={product}
             comparison={comparisonProduct}
+            theme={theme}
            />
         </Modal>
       }
