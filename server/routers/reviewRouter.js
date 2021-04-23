@@ -8,7 +8,7 @@ router.route('/')
       .catch((err) => res.end(err));
   })
   .post((req, res) => {
-    console.log(req);
+    console.log(req.body);
     res.end()
   });
 

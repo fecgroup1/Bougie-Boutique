@@ -2,6 +2,7 @@ import React, {useState}from 'react';
 import Modal from 'react-modal';
 import { StarsOuter, StarsInner} from '../../Styles/';
 import ClickableStars from './ClickableStars'
+import axios from 'axios';
 
 
 
@@ -37,7 +38,7 @@ const generateCharacteristic = (Characteristic)=> {
   )
 }
 
-const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
+const NewReviewModal = ({close, isOpen, productName, characteristics, productId})=> {
 
   const [starStyles, setstarStyles] = useState({
     one: {},
@@ -90,6 +91,39 @@ const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
         })}
   }
 
+
+  const submitReview = (currentProductId) => {
+    currentProductId=currentProductId.productId
+    event.preventDefault();
+    let form = document.querySelector('form[name="NewReview"]');
+    let obj= {};
+    for (var key in characteristics){
+      obj[characteristics[key]['id']] = form.elements[key].value
+    }
+
+
+      axios.post(`/reviews`, {
+        product_id: Number(currentProductId),
+        rating: Number(form.elements['overallRating'].value),
+        summary: document.getElementById('summary').value,
+        body: document.getElementById('body').value,
+        recomended: (form.elements['recomended'].value)=== "true"? true : false,
+        name: document.getElementById('userName').value,
+        email: document.getElementById('email').value,
+        photos: [document.getElementById('photos').value],
+        characteristics: obj
+      })
+      .then(() => {
+        console.log('posted')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      close();
+
+  }
+
+
   return(
      <Modal isOpen= {isOpen} onRequestClose= {()=> close()} style={{
     'overlay': {'background':'grey'},
@@ -97,27 +131,27 @@ const NewReviewModal = ({close, isOpen, productName, characteristics})=> {
     <span style={{'float': 'right', 'fontSize': '150%'}} onClick= {()=> close()}>&#10006;</span>
     <h2>Write Your Review</h2>
     <h3>About the {productName}</h3>
-    <form action= {`http://localhost:33212/reviews?product_id=13023`} method='POST'>
+    <form name = 'NewReview' onSubmit= {()=> submitReview({productId})}>
       <label style={{'marginTop': '40px'}} for='starRating'>* Overall Rating:  </label>
       <ClickableStars starStyles= {starStyles} highlightStars= {highlightStars}/>
       <br></br><br></br>
       <div style={{'marginTop': '25px'}}>  Would you recomended this product?</div>
-      <input type="radio" name="recomended" value="Yes" id= 'yes'></input>
+      <input type="radio" name="recomended" value='true' id= 'yes'></input>
       <label for="yes">Yes</label><br></br>
-      <input type="radio" name="recomended" value="No" id= 'no'></input>
+      <input type="radio" name="recomended" value='false' id= 'no'></input>
       <label for="no">No</label>
       {Object.keys(characteristics).map((key)=> generateCharacteristic(key))}
       <div style={{'marginTop': '40px'}} > Review Summary:  </div><br></br>
-      <input type='text' size='50' maxLength= '60' id= 'summary' placeholder= 'Example: Best purchase ever!'></input>
+      <input name = 'surmmary' type='text' size='50' maxLength= '60' id= 'summary' placeholder= 'Example: Best purchase ever!'></input>
       <div style={{'marginTop': '40px'}} >* Review:  </div><br></br>
-      <textarea required minLength= '5' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
+      <textarea id='body' required minLength= '5' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
       <div style={{'marginTop': '40px', 'marginBottom': '15px'}}> Upload your photos</div>
-      <input type= 'file' accept="image/png, image/jpeg"></input>
+      <input id='photos' type= 'file' accept="image/png, image/jpeg"></input>
       <div style={{'marginTop': '40px'}} >* What is your nickname?</div><br></br>
-      <input  required type='text' size='50' maxLength= '60' id= 'userName' placeholder= 'jackson11!'></input>
+      <input name= 'userName' required type='text' size='50' maxLength= '60' id= 'userName' placeholder= 'jackson11!'></input>
       <div style= {{'marginTop': '10px','fontSize': '77%'}}>For privacy reasons, do not use your full name or email address.</div>
       <div style={{'marginTop': '40px'}} >* What is your email?</div><br></br>
-      <input  required type='email' size='50' maxLength= '60' id= 'email' placeholder= 'jackson11@email.com'></input>
+      <input name= 'email' required type='email' size='50' maxLength= '60' id= 'email' placeholder= 'jackson11@email.com'></input>
       <div style= {{'marginTop': '10px','fontSize': '77%'}}>For authentication reasons, you will not be emailed.</div>
       <button  style={{'marginTop': '15px'}} type='submit' >Submit Review</button>
     </form>

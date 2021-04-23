@@ -12,6 +12,8 @@ class RatingsReviews extends React.Component {
   constructor(props){
     super(props);
   }
+
+
   render(){
     return (
     <section>
@@ -21,7 +23,7 @@ class RatingsReviews extends React.Component {
           <Ratings meta={this.props.store.state.meta} />
         </RatingsContainer>
         <ReviewsContainer>
-          <Reviews key= {this.props.store.state.reviews} reviews ={this.props.store.state.reviews} product = {this.props.store.state.product} meta= {this.props.store.state.meta}/>
+          <Reviews key= {this.props.store.state.reviews} reviews ={this.props.store.state.reviews} product = {this.props.store.state.product} productId = {this.props.store.state.currentProductId} meta= {this.props.store.state.meta}/>
         </ReviewsContainer>
       </RatingsAndReviewsContainer>
     </section>
