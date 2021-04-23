@@ -34,11 +34,9 @@ const Chart = ({product, comparison, theme}) => {
         <Fragment>
           <h2 style={{textAlign: 'center', marginTop: '.25em', color: theme.bluGry}}>Compare Products</h2>
           <CompareTable>
-              <thead>
-                <th className={'title'}>{product.name}</th>
-                <th className={'inner title'}></th>
-                <th className={'title'}>{comparison.name}</th>
-              </thead>
+              <th className={'title'}>{product.name}</th>
+              <th className={'inner title'}></th>
+              <th className={'title'}>{comparison.name}</th>
               <tbody>
                 { !!features
                   ?

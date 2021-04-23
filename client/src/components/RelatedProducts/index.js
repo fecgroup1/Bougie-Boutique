@@ -14,7 +14,6 @@ const RelatedProducts = ({store, outfits, theme}) => {
   useEffect(() => {
     RelatedAPI.getRelatedProducts(store.state.currentProductId)
       .then((results) => {
-        console.log(results)
         setProducts(results)
       })
 
@@ -26,7 +25,7 @@ const RelatedProducts = ({store, outfits, theme}) => {
     let cardWidth = event.target.parentNode.parentNode.children[1].children[1].clientWidth;
     // console.log('cardwidth', cardWidth)
     if(direction === 'left' ) {
-      console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
+      // console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft += cardWidth
       if (productsPosition === `${container}`.length - 3) {
 
@@ -34,7 +33,7 @@ const RelatedProducts = ({store, outfits, theme}) => {
         setProductsPosition(productsPosition + 1);
       }
     } else {
-      console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
+      // console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft -= cardWidth
       setProductsPosition(productsPosition - 1)
     }

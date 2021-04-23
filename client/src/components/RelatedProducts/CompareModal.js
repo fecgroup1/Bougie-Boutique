@@ -16,6 +16,7 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
     <ThemeConsumer>
       { theme =>
           <Modal
+          ariaHideApp={false}
           isOpen={modalIsOpen}
           onRequestClose = {() => {setModalIsOpen(false); resetCompare(null)}}
           style={{
