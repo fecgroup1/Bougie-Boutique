@@ -32,6 +32,7 @@ export const CurrThumb = styled.img`
   margin: 0.75vh;
   border: 0.5vh solid ${props => props.theme.border};
   outline: 0.75vh solid ${props => props.theme.outline};
+  transition: border 0.5s, outline 0.5s;
 `;
 
 export const GallThumb = styled.img`
@@ -49,6 +50,7 @@ export const CurrGallThumb = styled.img`
   margin: 0.5vh;
   border: 0.25vh solid ${props => props.theme.border};
   outline: 0.5vh solid ${props => props.theme.outline};
+  transition: border 0.5s, outline 0.5s;
 `;
 
 export const NoScrollBar = styled.div`
@@ -77,6 +79,7 @@ export const GalleryScroll = styled.button`
   background: none;
   outline: none;
   opacity: 50%;
+  transition: color 0.5s;
 }
 &:hover {
   opacity: 100%
@@ -91,4 +94,5 @@ export const GallThumbContainer = styled.div`
   background: ${props => props.theme.bg};
   height: 56.5vh;
   margin: 4.75vh 1vw;
+  transition: background 0.5s;
 `;

@@ -4,7 +4,7 @@ import Answers from './Answers.js'
 import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
 import SearchQuestions from './SearchQuestions.js'
-import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle } from '../../Styles'
+import { QuestionsContainer, QAContainer, QuestionCardsContainer, NavButton } from '../../Styles'
 
 class QandA extends React.Component {
   constructor(props) {

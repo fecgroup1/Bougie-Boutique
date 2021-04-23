@@ -67,22 +67,22 @@ export const Body = createGlobalStyle`
   // }
 `;
 
-export const ThemeToggle = styled.button`
+export const NavButton = styled.button`
   border: none;
   color: #ccc;
   background: none;
-  font-size: 30px;
+  font-size: 2em;
   outline: none;
-  height: auto;
   padding: 0;
-  top: 22px;
-  position: absolute;
-  transition: right 0.5s
+  height: 1em;
+  width: 1em;
 `;
 
 export const Title = styled.h1`
   font-family: 'Yeseva One', cursive;
-  margin: 0px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  line-height: 1em;
 `;
 
 export const light = {

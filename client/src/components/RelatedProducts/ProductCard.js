@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProductCard as StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, ThemeToggle } from '../../Styles/'
+import { ProductCard as StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, NavButton } from '../../Styles/'
 
 const ProductCard = ({product, compareMe}, theme) => {
   let prd = product.product
