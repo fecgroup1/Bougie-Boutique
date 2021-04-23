@@ -82,6 +82,19 @@ export const NoScrollBar = styled.div`
   }
 `;
 
+export const ScrollBg = styled.button`
+  border: none;
+  color: #ccc;
+  background: ${props => props.theme.bg};
+  font-size: 2em;
+  outline: none;
+  padding: 0;
+  width: 2.5vh;
+  height: 2.5vh;
+  border-radius: 50%;
+  margin: 1vh;
+`;
+
 export const GalleryScroll = styled.button`
 &{
   margin: 0.5vh;
@@ -93,7 +106,7 @@ export const GalleryScroll = styled.button`
   background: none;
   outline: none;
   opacity: 50%;
-  transition: color 0.5s;
+  transition: color 0.5s, opacity 0.5s;
 }
 &:hover {
   opacity: 100%

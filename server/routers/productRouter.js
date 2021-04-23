@@ -5,7 +5,7 @@ router.route('/')
 .get((req, res) => {
   let pid = req.query.pid;
   console.log(pid);
-  controllers.product.getAll(pid)
+  controllers.product.getOverviewData(pid)
   .then((fnlRes) => {
     res.send(fnlRes);
   })

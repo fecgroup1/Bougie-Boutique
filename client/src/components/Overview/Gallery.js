@@ -1,5 +1,5 @@
 import React from 'react';
-import { Left, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, Loading} from './../../Styles/Overview';
+import { Left, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, Loading, ScrollBg } from './../../Styles/Overview';
 
 class Gallery extends React.Component {
   constructor (props) {
@@ -93,6 +93,11 @@ class Gallery extends React.Component {
             src={styles[currImg[0]].photos[currImg[1]].url}/>}
 
           <GallThumbContainer style={bg}></GallThumbContainer>
+
+          <GallThumbContainer style={buttonContainer}>
+            <ScrollBg style={bg}></ScrollBg>
+            <ScrollBg style={bg}></ScrollBg>
+            </GallThumbContainer>
 
           <GallThumbContainer style={buttonContainer}>
             {this.state.scrollTop > 0 ? <GalleryScroll onClick={() => this.scroll('up')}>

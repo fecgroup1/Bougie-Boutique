@@ -10,7 +10,7 @@ module.exports = {
   // ******************************************
   // BATCH GETS
   // ******************************************
-  getDetails: (pid) => {
+  getOverviewData: (pid) => {
     let fnlRes = {currentProductId: pid};
     return module.exports.getProduct(pid)
     .then((productData) => {
@@ -19,15 +19,16 @@ module.exports = {
     })
     .then((stylesData) => {
       fnlRes.styles = stylesData;
-      return controllers.review.getMeta(pid)
-    })
-    .then((metaData) => {
-      fnlRes.meta = metaData;
-      return controllers.review.getReviews(pid)
-    })
-    .then((reviewsData) => {
-      fnlRes.reviews = reviewsData;
       return fnlRes;
+    //   return controllers.review.getMeta(pid)
+    // })
+    // .then((metaData) => {
+    //   fnlRes.meta = metaData;
+    //   return controllers.review.getReviews(pid)
+    // })
+    // .then((reviewsData) => {
+    //   fnlRes.reviews = reviewsData;
+    //   return fnlRes;
     })
     .catch((err) => {
       console.log('Error getting data for related', err);

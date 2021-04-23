@@ -20,7 +20,7 @@ test('getDetails retrieves the reviews, meta data, and styles for a product and 
     }
   }
 
-  _.getDetails(13023)
+  _.getOverviewData(13023)
   .then((data) => cb(data))
   .catch((err) => cb(err));
 });
