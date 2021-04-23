@@ -53,6 +53,8 @@ export const CurrGallThumb = styled.img`
 
 export const NoScrollBar = styled.div`
   &{
+    overflow-x: hidden;
+    overflow-y: auto;
     scroll-snap-type: y mandatory;
     -ms-overflow-style: none;
     transition: transform 0.5s;
@@ -78,7 +80,7 @@ export const GalleryScroll = styled.button`
   outline: none;
 }
 &:hover {
-  color: #002a60;
+  color: ${props => props.theme.bluHighlight};
 }`;
 
 export const GallThumbContainer = styled.div`
@@ -87,7 +89,6 @@ export const GallThumbContainer = styled.div`
   top: 100px;
   left: 20px;
   width: 7.5vh;
-  minWidth: 70px;
   height: 64vh;
   margin: 1vh 1vw;
   background: ${props => props.theme.bg};
