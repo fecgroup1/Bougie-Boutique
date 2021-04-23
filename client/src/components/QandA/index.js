@@ -4,7 +4,11 @@ import Answers from './Answers.js'
 import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
 import SearchQuestions from './SearchQuestions.js'
+<<<<<<< HEAD
 import { QuestionsContainer, QAContainer, QuestionCardsContainer, NavButton } from '../../Styles'
+=======
+import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead } from '../../Styles'
+>>>>>>> added some more styled components
 
 class QandA extends React.Component {
   constructor(props) {
@@ -85,14 +89,14 @@ class QandA extends React.Component {
     const qDate = new Date(question.question_date)
     return (
       <div className='Question' key={index}>
-        <div>
-          <p id='questionBody' className='questionLine1'> Q: {tempBody}</p>
-          <span id='qHelpful' className='questionLine1'>Helpful?
-            <span id='helpfulButton' className='questionLine1' onClick={() => this.markHelpful(question)}> Yes </span>
+        <QuestionHead>
+          <p id='questionBody'> Q: {tempBody}</p>
+          <span id='qHelpful'>Helpful?
+            <span id='helpfulButton' onClick={() => this.markHelpful(question)}> Yes </span>
             ({question.question_helpfulness}) | <AddAnswer question={question} name={product}/>
           </span>
+        </QuestionHead>
 
-        </div>
         <Answers key={index} questionId={question.question_id}/>
         <div className='askerInfo'>
           Asked by: {' '}{question.asker_name},{' '}{qDate.toDateString().substring(4)}{' '}|{' '}
@@ -139,7 +143,6 @@ class QandA extends React.Component {
           <QuestionCardsContainer>
             {this.state.searchQuery.length >= 3 ? (
               <Fragment>
-                {console.log(this.state.searchResults)}
                 {this.state.searchResults.slice(0, this.state.searchQuestionLength).map((question, index) =>
                 (this.renderQuestion(question, index, store.product.name)))}
               </Fragment>
