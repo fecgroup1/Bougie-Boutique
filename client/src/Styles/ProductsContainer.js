@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const ProductsContainer = styled.div`
   display: grid;
-  width: 85%;
+  width: 95%;
   padding: 0 2vw;
   grid-template-rows: 10% 90%;
   justify-content: start;

@@ -1,11 +1,11 @@
 import React, { Fragment, useState, useEffect, useMemo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
-import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button } from '../../Styles';
+import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button, StyledProductCard, StarsInner, StarsOuter } from '../../Styles';
 import ProductCard from './ProductCard.js'
 import CompareModal from './CompareModal.js'
 
-const RelatedProducts = ({store, outfits}) => {
+const RelatedProducts = ({store, outfits, theme}) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
   const [productsPosition, setProductsPosition] = useState(0);
@@ -94,7 +94,43 @@ const RelatedProducts = ({store, outfits}) => {
     <ProductsContainer
     key={'outfitProductsContainer'}
     >
-      <h2>YOUR OUTFIT</h2>
+      <div>
+        <h2>YOUR OUTFIT</h2>
+      </div>
+      <CardsWrapper>
+      <CardContainer>
+        {/* <StyledProductCard>
+
+          <i className="lni lni-32 lni-pagination" />
+
+          <div style={{alignSelf: 'center', placeSelf: 'center'}}>
+            ...loading
+          </div>
+          <div style={{borderTop: `1px solid green`, paddingLeft: '.25em', transition: 'background 0.5s'}}>
+            <div style={{marginTop: '.2em', marginBottom: 0, backgroundColor: '#cccccc', width: '80%', height: '1em'}}></div>
+            <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
+            <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
+            <StarsOuter
+            >
+              <StarsInner
+                rating={3}
+              />
+            </StarsOuter>
+          </div>
+        </StyledProductCard> */}
+          {/* {
+            products.map((product, index) => (
+              <ProductCard
+                key={index}
+                product={product}
+                className={'productCard'}
+                compareMe={setComparisonProduct}
+              />
+            ))
+          } */}
+        </CardContainer>
+      </CardsWrapper>
+
     </ProductsContainer>
 
   , [outfits])

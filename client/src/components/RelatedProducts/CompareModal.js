@@ -35,6 +35,11 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
               boxShadow: `10px 15px 15px #cccccc`
             }
           }}
+          overlayClassName={{
+            base: 'compareModalOverlay',
+            afterOpen: 'compareModalOverlay-in',
+            beforeClose: 'compareModalOverlay-out'
+          }}
         >
           <Chart
             product={product}
