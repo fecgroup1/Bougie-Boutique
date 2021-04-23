@@ -28,13 +28,20 @@ export const Body = createGlobalStyle`
     to { transform: rotate(360deg) }
   }
 
-  // select {
+  // #cart > select {
   //   border: 3px solid ${props => props.theme.text};
   //   color: ${props => props.theme.text};
   //   background: ${props => props.theme.bg};
   //   outline: #0056c5;
   //   height: 4em;
   //   padding: 1em 0em;
+  //   font-family: 'Josefin Sans', sans-serif;
+  //   font-size: 1em;
+  //   font-weight: bold;
+  //   transition: background 0.5s;
+  // }
+  // #cart > select: hover {
+  //   background: #002a60;
   // }
 
   .compareModalOverlay {

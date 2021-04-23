@@ -176,7 +176,7 @@ class AddToCart extends React.Component {
       return(
         <>
         <form id="addcart" style={grid}>
-          <select
+          <CartDropdown
             id="size"
             value={this.state.currSize}
             onChange={(event) => this.handleSizeSelect(event)}>
@@ -196,8 +196,8 @@ class AddToCart extends React.Component {
                   );
                 }
               })}
-          </select>
-          <select
+          </CartDropdown>
+          <CartDropdown
             id="qty"
             value={this.state.quantity}
             onChange={(event) => this.handleQtySelect(event)}>
@@ -215,7 +215,7 @@ class AddToCart extends React.Component {
                     </option>
                 )
               })}
-          </select>
+          </CartDropdown>
         </form>
         <div style={red}>{this.state.warning}</div>
         <AddToCartButton onClick={this.handleAddCart}>Add To Cart</AddToCartButton>

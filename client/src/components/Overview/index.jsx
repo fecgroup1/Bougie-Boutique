@@ -43,7 +43,7 @@ class Overview extends React.Component {
         starRating: 0,
       },
       reviews: [],
-      cart: {},
+      cart: this.props.store.state.cart,
     }
     this.changeStyle = this.changeStyle.bind(this);
     this.changeImg = this.changeImg.bind(this);
