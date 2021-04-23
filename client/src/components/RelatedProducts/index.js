@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, useMemo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
-import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button, StyledProductCard, StarsInner, StarsOuter } from '../../Styles';
+import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button, StarsInner, StarsOuter, StyledProductCard, AddOutfitButton } from '../../Styles';
 import ProductCard from './ProductCard.js'
 import CompareModal from './CompareModal.js'
 
@@ -92,29 +92,23 @@ const RelatedProducts = ({store, outfits, theme}) => {
     key={'outfitProductsContainer'}
     >
       <div>
-        <h2>YOUR OUTFIT</h2>
+        <h3>YOUR OUTFIT</h3>
       </div>
       <CardsWrapper>
       <CardContainer>
-        {/* <StyledProductCard>
-
-          <i className="lni lni-32 lni-pagination" />
-
-          <div style={{alignSelf: 'center', placeSelf: 'center'}}>
-            ...loading
-          </div>
-          <div style={{borderTop: `1px solid green`, paddingLeft: '.25em', transition: 'background 0.5s'}}>
-            <div style={{marginTop: '.2em', marginBottom: 0, backgroundColor: '#cccccc', width: '80%', height: '1em'}}></div>
-            <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
-            <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
-            <StarsOuter
-            >
-              <StarsInner
-                rating={3}
-              />
-            </StarsOuter>
-          </div>
-        </StyledProductCard> */}
+        <StyledProductCard
+          className={'addOutfit'}
+        >
+        <AddOutfitButton>
+          <i
+            style={{
+              fontSize: '9em',
+              color: theme.bluGry
+            }}
+            className="lni lni-circle-plus plus"
+          />
+        </AddOutfitButton>
+        </StyledProductCard>
           {/* {
             products.map((product, index) => (
               <ProductCard
@@ -135,10 +129,8 @@ const RelatedProducts = ({store, outfits, theme}) => {
     return (
       <Fragment>
         <RelatedContainer>
-
-         {relatedSection}
-         {outfitSection}
-
+          {relatedSection}
+          {outfitSection}
         </RelatedContainer>
         <CompareModal
           product={store.state.product}

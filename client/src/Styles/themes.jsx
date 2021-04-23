@@ -50,6 +50,23 @@ export const Body = createGlobalStyle`
     opacity: 0 ;
   }
 
+  .addOutfit {
+    box-shadow: none !important;
+    grid-template-rows: 100% !important;
+    button {
+      border-radius: 50px;
+      height: fit-content;
+      width: fit-content;
+      margin: auto;
+    }
+    button: active {
+      box-shadow: inset 10px 5px 15px #cccccc;
+      border-radius: 500px;
+      height: fit-content;
+      width: fit-content;
+    }
+  }
+
   // button {
   //   & {
   //     border: 3px solid ${props => props.theme.text};
