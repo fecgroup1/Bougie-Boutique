@@ -48,6 +48,7 @@ class Gallery extends React.Component {
     const changeImg = this.props.changeImg;
     const styles = this.props.styles;
     const currImg = this.props.currImg;
+
     const galImg = {
       objectFit: 'cover',
       objectPosition: '50% 50%',
@@ -59,8 +60,6 @@ class Gallery extends React.Component {
     }
     const container = {
       display: 'grid',
-      height: '56.5vh',
-      margin: '4.75vh 1vw',
       justifyItems: 'center',
       background: 'none',
     };
@@ -79,7 +78,9 @@ class Gallery extends React.Component {
       flexDirection: 'column',
       background: 'none',
       justifyContent: 'space-between',
-      alignContent: 'space-between',
+      alignItems: 'center',
+      height: '65vh',
+      margin: '0.5vh 1vw',
     }
 
     return (
@@ -93,8 +94,8 @@ class Gallery extends React.Component {
           <GallThumbContainer style={buttonContainer}>
             {this.state.scrollTop > 0 ? <GalleryScroll onClick={() => this.scroll('up')}>
               <i className="lni lni-chevron-up-circle"></i>
-              </GalleryScroll> : <GalleryScroll></GalleryScroll>}
-            {this.state.scrollBtm ? <GalleryScroll>
+              </GalleryScroll> : <GalleryScroll style={{background: 'none'}}></GalleryScroll>}
+            {this.state.scrollBtm ? <GalleryScroll style={{background: 'none'}}>
             </GalleryScroll>: <GalleryScroll onClick={() => this.scroll('down')}>
             <i className="lni lni-chevron-down-circle"></i>
             </GalleryScroll>}

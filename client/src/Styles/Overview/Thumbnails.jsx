@@ -59,7 +59,6 @@ export const NoScrollBar = styled.div`
     -ms-overflow-style: none;
     transition: transform 0.5s;
     position: relative;
-    top: 0.2vh;
     width: 7.5vh;
   }
   &:: -webkit-scrollbar {
@@ -71,16 +70,16 @@ export const GalleryScroll = styled.button`
 &{
   margin: 0.5vh;
   font-size: 2.5vh;
-  height: 3vh;
-  transition: color 0.5s;
+  text-align: center;
+  transition: opacity 0.5s;
   color: ${props => props.theme.text};
   border: none;
-  padding: 0.5vh;
   background: none;
   outline: none;
+  opacity: 50%;
 }
 &:hover {
-  color: ${props => props.theme.bluHighlight};
+  opacity: 100%
 }`;
 
 export const GallThumbContainer = styled.div`
@@ -89,7 +88,7 @@ export const GallThumbContainer = styled.div`
   top: 100px;
   left: 20px;
   width: 7.5vh;
-  height: 64vh;
-  margin: 1vh 1vw;
   background: ${props => props.theme.bg};
+  height: 56.5vh;
+  margin: 4.75vh 1vw;
 `;
