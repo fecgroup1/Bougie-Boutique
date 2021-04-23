@@ -8,7 +8,7 @@ export const OuterStars = styled.div`
     color: ${props => props.theme.outline};
   }
   &:before {
-    content: "\f006  \f006  \f006  \f006  \f006";
+    content: "\f006 \f006 \f006 \f006 \f006";
   }
 `;
 export const InnerStars = styled.div`
@@ -20,7 +20,7 @@ export const InnerStars = styled.div`
     overflow: hidden;
   }
   &:before {
-    content: "\f005  \f005  \f005  \f005  \f005";
+    content: "\f005 \f005 \f005 \f005 \f005";
     color: ${props => props.theme.outline}
   }
 `;

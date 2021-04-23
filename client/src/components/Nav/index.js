@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, ThemeToggle } from './../../Styles';
+import { Title, NavButton } from './../../Styles';
 
 const countItems = (obj) => {
   let count = 0;
@@ -16,11 +16,13 @@ const Nav = ({cart, store, checkCart, dark, toggleTheme}) => {
   const cartCount = countItems(cart);
 
   const header = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     width: '100%',
     background: '#002a60',
     color: '#cccccc',
-    height: '80',
-    lineHeight: '80px',
+    height: '80px',
     marginBottom: '20px',
   }
 
@@ -29,44 +31,62 @@ const Nav = ({cart, store, checkCart, dark, toggleTheme}) => {
     paddingLeft: '20px'
   }
 
+  const right = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  }
+
+  const track = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignContent: 'center',
+    background: `#${dark ? '001a3c':'003E8D'}`,
+    height: '1.5em',
+    width: '3em',
+    borderRadius: '25%/50%',
+    fontSize: '1.25em',
+    padding: '0.25em',
+    textAlign: 'justify',
+    marginLeft: '10px',
+    transition: 'background 0.5s',
+  }
+
   const toggle = {
-    right: '22px',
+    position: 'relative',
+    right: '30px',
+    transform: `translateX(${dark ? -0.95: 0}em)`,
+    transition: 'transform 0.5s',
+    background: '#ccc',
+    width: '0.75em',
+    height: '0.75em',
+    borderRadius: '50%',
   }
 
   const cartIcon = {
-    border: 'none',
-    color: '#ccc',
-    background: 'none',
-    fontSize: '30px',
-    outline: 'none',
-    height: 'auto',
-    padding: 0,
-    top: '22px',
-    position: 'absolute',
     right: '70px',
   }
   const number = {
-    position: 'absolute',
+    position: 'relative',
+    top: '0.25em',
+    left: '2em',
     fontFamily:"'Josefin Sans', sans-serif",
-    fontSize: '12px',
-    top: '0px',
-    right: '75px',
+    fontSize: '0.75em',
     textAlign: 'center',
     width: '20px',
   }
-  const label = {
-    position: 'absolute',
-    fontFamily:"'Josefin Sans', sans-serif",
-    fontSize: '12px',
-    top: '-2px',
-    right: '20px',
-    textShadow:
-    `-1px -1px 0 #002a60,
-      1px -1px 0 #002a60,
-      -1px 1px 0 #002a60,
-      1px 1px 0 #002a60`,
-    zIndex: 1,
-  }
+  // const label = {
+  //   position: 'absolute',
+  //   fontFamily:"'Josefin Sans', sans-serif",
+  //   fontSize: '12px',
+  //   right: '20px',
+  //   textShadow:
+  //   `-1px -1px 0 #002a60,
+  //     1px -1px 0 #002a60,
+  //     -1px 1px 0 #002a60,
+  //     1px 1px 0 #002a60`,
+  //   zIndex: 1,
+  // }
 
   const icon = dark ? 'lni lni-night': 'lni lni-sun'
 
@@ -75,23 +95,32 @@ const Nav = ({cart, store, checkCart, dark, toggleTheme}) => {
       <Title style={title}>
         Bougie Boutique
       </Title>
-      <div style={number}>{cartCount}</div>
-      <ThemeToggle
-          style={cartIcon}>
-          <span className="lni lni-tshirt"></span>
-      </ThemeToggle>
-      <div
-        onClick={toggleTheme}
-        style={label}>
-          Theme
+      <div className="headerRight" style={right}>
+        <div style={number}>{cartCount}</div>
+        <NavButton
+            style={cartIcon}>
+            <span className="lni lni-tshirt"></span>
+        </NavButton>
+        <NavButton
+          style={track}
+          onClick={toggleTheme}>
+            <span className="lni lni-sun"></span>
+            <span> </span>
+            <span className="lni lni-night"></span>
+        </NavButton>
+        <NavButton
+          style={toggle}
+          onClick={toggleTheme}>
+        </NavButton>
       </div>
-      <ThemeToggle
-        style={toggle}
-        onClick={toggleTheme}>
-          <span className={icon}></span>
-      </ThemeToggle>
     </div>
   );
 }
 
+
+{/* <div
+onClick={toggleTheme}
+style={label}>
+  Theme
+</div> */}
 export default Nav;
