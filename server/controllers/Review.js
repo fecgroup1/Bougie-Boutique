@@ -35,7 +35,7 @@ module.exports = {
     return Math.round(10 * average) / 10;
   },
 
-  getReviews: (productId) => axios.get(`${url}reviews?product_id=${productId}`)
+  getReviews: (productId) => axios.get(`${url}reviews?product_id=${productId}&count=50&sort='relevant`)
     .then((response) => {
       const reviews = [];
       const listOfReviews = response.data.results;
