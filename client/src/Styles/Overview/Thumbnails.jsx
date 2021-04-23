@@ -5,6 +5,18 @@ export const StyleThumbs = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
 `;
 
+export const Loading = styled.img`
+border: none;
+width: 50%;
+height: 50%;
+opacity: 30%;
+object-position: 50% 50%;
+animation-name: loadspin;
+animation-duration: 3s;
+animation-iteration-count: infinite;
+animation-timing-function: cubic-bezier(0.42, 0.6, 0.58, 0.1);
+`;
+
 export const ThumbImg = styled.img`
   & {
     object-fit: cover;

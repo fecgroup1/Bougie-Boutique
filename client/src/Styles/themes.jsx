@@ -23,6 +23,11 @@ export const Body = createGlobalStyle`
     color: ${props => props.theme.text};
   }
 
+  @keyframes loadspin {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+  }
+
   // select {
   //   border: 3px solid ${props => props.theme.text};
   //   color: ${props => props.theme.text};

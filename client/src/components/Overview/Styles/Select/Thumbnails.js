@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ThumbImg, CurrThumb } from './../../../../Styles';
+import { ThumbImg, CurrThumb, Loading } from './../../../../Styles/Overview';
 
 class Thumbnails extends React.Component {
   constructor(props) {
@@ -34,6 +34,13 @@ class Thumbnails extends React.Component {
     return (
       <div id="stylethumbs" style={thumbsGrid}>
         {styles.map((style, index) => {
+          if (style.name === null) {
+            return (
+              <Loading
+                key={index}
+                src={style.photos[0].thumbnail_url}/>
+            )
+          }
           if (index === currStyle) {
             return (
               <CurrThumb

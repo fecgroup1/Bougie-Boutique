@@ -12,27 +12,22 @@ class Overview extends React.Component {
       currImg: [0, 0],
       currentProductID: this.props.store.state.currentProductId,
       product: {
-        name: null,
-        slogan: null,
-        description: null,
-        category: null,
-        features: [
-          {
-            feature: null,
-            value: null,
-          }
-        ]
+        name: 'Loading...',
+        slogan: 'Loading...',
+        description: 'Loading...',
+        category: '',
+        features: []
       },
       styles: [
         {
           style_id: null,
           name: null,
-          original_price: null,
+          original_price: '0.00',
           sale_price: null,
           photos: [
             {
-              thumbnail_url: null,
-              url: null,
+              thumbnail_url: 'https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/spinner.svg',
+              url: 'https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/spinner.svg',
             }
           ],
           skus: [
@@ -54,9 +49,9 @@ class Overview extends React.Component {
     this.changeImg = this.changeImg.bind(this);
   }
 
-  componentDidMount() {
-    this.props.store.setProduct();
-  }
+  // componentDidMount() {
+  //   this.props.store.setProduct();
+  // }
 
   changeStyle(index) {
     console.log('changStyle index: ', index);
@@ -79,9 +74,11 @@ class Overview extends React.Component {
     var metaStore = store.meta === undefined ? this.state.meta: store.meta;
     var reviewsStore = store.reviews === undefined? this.state.reviews: store.reviews;
 
+    var loading = this.props.store.state.styles === undefined ? {color: '#ccc'}: {};
+
     return (
       <div id="overview">
-        <Flex>
+        <Flex style={loading}>
           <Gallery
             styles={store.styles}
             currImg={this.state.currImg}
