@@ -10,8 +10,9 @@ const RelatedProducts = ({store, theme}) => {
   const [products, setProducts] = useState([1, 2, 3, 4]);
   const [productsPosition, setProductsPosition] = useState(0);
   const [comparisonProduct, setComparisonProduct] = useState(null);
-  const [outfits, setOutfits] = useState()
+  const [outfits, setOutfits] = useState([])
 
+  //grabs related products when the current productId is initally set/changed
   useEffect(() => {
     RelatedAPI.getRelatedProducts(store.state.currentProductId)
       .then((results) => {
@@ -20,9 +21,14 @@ const RelatedProducts = ({store, theme}) => {
 
   }, [store.state.currentProductId]);
 
+  //check local storage on initial render
   useEffect(() => {
-
-  }, [outfits])
+    const saved = JSON.parse(window.localStorage.getItem('bougieBoutiqueOutfits'))
+    console.log('saved outfits', saved)
+    if (saved) {
+      setOutfits(saved);
+    }
+  }, [])
 
   const scroll = (container, direction, event) => {
     let area = event.target.parentNode.parentNode.children[1];
@@ -42,10 +48,14 @@ const RelatedProducts = ({store, theme}) => {
     }
   }
 
-  const handleSaveOutfit = () => {
-
+  const handleSaveOutfit = (product) => {
+    outfits.push(product)
+    console.log('outfits?', outfits)
+    window.localStorage.removeItem('bougieBoutiqueOutfits');
+    window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(outfits));
   }
 
+  //memoizes the props in this componenet and only updates them when the array values are updated [currentProdID, products]
   const relatedSection = useMemo(() =>
     <ProductsContainer
     key={'relatedProductsContainer'}
@@ -74,8 +84,9 @@ const RelatedProducts = ({store, theme}) => {
                 key={index}
                 product={product}
                 className={'productCard'}
-                compareMe={setComparisonProduct}
                 changeProduct={store.changeProduct}
+                buttonAction={setComparisonProduct}
+                buttonType={'lni-pagination'}
               />
             ))
           }
@@ -97,6 +108,7 @@ const RelatedProducts = ({store, theme}) => {
 
     , [store.state.currentProductId, products])
 
+  //memoizes the props in this componenet and only updates them when the array values are updated [outfits]
   const outfitSection = useMemo(() =>
     <ProductsContainer
     key={'outfitProductsContainer'}
@@ -110,7 +122,7 @@ const RelatedProducts = ({store, theme}) => {
           className={'addOutfit'}
         >
         <AddOutfitButton
-        onClick={handleSaveOutfit}
+        onClick={() => handleSaveOutfit(store.state)}
         >
           <i
             style={{
@@ -121,16 +133,17 @@ const RelatedProducts = ({store, theme}) => {
           />
         </AddOutfitButton>
         </StyledProductCard>
-          {/* {
-            products.map((product, index) => (
+          {
+            outfits.map((product, index) => (
               <ProductCard
                 key={index}
                 product={product}
                 className={'productCard'}
-                compareMe={setComparisonProduct}
+                buttonAction={removeOutfit}
+                button={'outfit'}
               />
             ))
-          } */}
+          }
         </CardContainer>
       </CardsWrapper>
 
