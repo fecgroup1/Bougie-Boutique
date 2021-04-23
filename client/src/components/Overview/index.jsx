@@ -33,7 +33,8 @@ class Overview extends React.Component {
   render () {
 
     if (this.props.store.state.styles !== undefined) {
-      var store = this.props.store.state
+      var store = this.props.store.state;
+
       return (
         <div id="overview">
           <Flex>

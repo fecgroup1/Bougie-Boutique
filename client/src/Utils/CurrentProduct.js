@@ -71,7 +71,8 @@ class CurrentProduct extends React.Component {
       })
   }
 
-  checkCart(productData) {
+  checkCart(data) {
+    let productData = data === undefined? this.state: data;
     var cart = JSON.parse(window.localStorage.getItem('cart'));
     var newCart = {};
     if (cart !== null) {
@@ -89,6 +90,7 @@ class CurrentProduct extends React.Component {
       }
       window.localStorage.setItem('cart', JSON.stringify(newCart));
     }
+    console.log(window.localStorage);
     return newCart;
   }
 
