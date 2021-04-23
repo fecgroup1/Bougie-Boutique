@@ -56,6 +56,7 @@ class App extends React.Component {
               />
               <RatingsReviews
                 store={store}
+                key= {store.state.reviews}
               />
             </div>
           </>
