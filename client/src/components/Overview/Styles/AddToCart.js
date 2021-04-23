@@ -34,6 +34,10 @@ class AddToCart extends React.Component {
     return false;
   }
 
+  componentDidMount() {
+    this.props.updateCart();
+  }
+
   handleSizeSelect(event) {
     event.preventDefault();
     let skus = this.props.styles[this.props.currStyle].skus;

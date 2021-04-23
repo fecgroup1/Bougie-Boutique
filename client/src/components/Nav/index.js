@@ -32,7 +32,6 @@ class Nav extends React.Component {
   }
 
   render() {
-    this.props.checkCart(store);
 
     const cart = this.props.cart;
     const store = this.props.store;
