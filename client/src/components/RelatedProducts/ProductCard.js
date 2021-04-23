@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import { StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, NavButton } from '../../Styles/'
 
-const ProductCard = ({product, compareMe}, theme) => {
+const ProductCard = ({product, compareMe, changeProduct}, theme) => {
   let prd = product.product
   return (
     prd
@@ -13,9 +13,16 @@ const ProductCard = ({product, compareMe}, theme) => {
             <i className="lni lni-32 lni-pagination" />
           </CompareButton>
 
-        { product.styles[0].photos[0].url !== null
-          ? <CardImage src={`${product.styles[0].photos[0].url}`} />
-          : <CardImage src={'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'} />
+        {
+          product.styles[0].photos[0].url !== null
+          ? <CardImage
+              src={`${product.styles[0].photos[0].url}`}
+              onClick={()=> changeProduct(product.currentProductId)}
+            />
+          : <CardImage
+              src={'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png'}
+              onClick={()=> changeProduct(product.currentProductId)}
+            />
         }
         <div style={{borderTop: `1px solid ${theme.bluGry}`, paddingLeft: '.5em' }}>
           <p style={{marginBottom: 0}}>{prd.category}</p>

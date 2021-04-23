@@ -74,5 +74,8 @@ export const CompareButton = styled.button`
   border-radius: 2em;
   padding: .25em;d
   border: 1px solid;
+  &:hover {
+    cursor: help;
+  }
   ${props => compareButtonFunc(props)};
 `

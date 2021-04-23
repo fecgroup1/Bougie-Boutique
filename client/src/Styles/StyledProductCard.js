@@ -9,11 +9,19 @@ export const StyledProductCard = styled.div`
   grid-template-rows: 70% 30%;
   box-shadow: 10px 5px 15px #cccccc;
 
+  &: hover {
+    cursor: pointer;
+  }
+
   .plus: focus {
     &::before {
       box-shadow: inset 10px 15px 15px #cccccc;
       border-radius: 50px;
     };
+  }
+
+  .plus: hover {
+    cursor: pointer;
   }
 
   .lni-spinner-arrow::before {

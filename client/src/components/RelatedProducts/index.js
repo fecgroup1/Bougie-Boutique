@@ -5,11 +5,12 @@ import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Butto
 import ProductCard from './ProductCard.js'
 import CompareModal from './CompareModal.js'
 
-const RelatedProducts = ({store, outfits, theme}) => {
+const RelatedProducts = ({store, theme}) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
   const [productsPosition, setProductsPosition] = useState(0);
   const [comparisonProduct, setComparisonProduct] = useState(null);
+  const [outfits, setOutfits] = useState()
 
   useEffect(() => {
     RelatedAPI.getRelatedProducts(store.state.currentProductId)
@@ -18,6 +19,10 @@ const RelatedProducts = ({store, outfits, theme}) => {
       })
 
   }, [store.state.currentProductId]);
+
+  useEffect(() => {
+
+  }, [outfits])
 
   const scroll = (container, direction, event) => {
     let area = event.target.parentNode.parentNode.children[1];
@@ -35,6 +40,10 @@ const RelatedProducts = ({store, outfits, theme}) => {
       area.scrollLeft -= cardWidth
       setProductsPosition(productsPosition - 1)
     }
+  }
+
+  const handleSaveOutfit = () => {
+
   }
 
   const relatedSection = useMemo(() =>
@@ -66,6 +75,7 @@ const RelatedProducts = ({store, outfits, theme}) => {
                 product={product}
                 className={'productCard'}
                 compareMe={setComparisonProduct}
+                changeProduct={store.changeProduct}
               />
             ))
           }
@@ -99,7 +109,9 @@ const RelatedProducts = ({store, outfits, theme}) => {
         <StyledProductCard
           className={'addOutfit'}
         >
-        <AddOutfitButton>
+        <AddOutfitButton
+        onClick={handleSaveOutfit}
+        >
           <i
             style={{
               fontSize: '9em',

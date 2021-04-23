@@ -65,6 +65,9 @@ export const Body = createGlobalStyle`
       height: fit-content;
       width: fit-content;
     }
+    &: hover {
+      cursor: auto;
+    }
   }
 
   // button {

@@ -30,7 +30,9 @@ class CurrentProduct extends React.Component {
   }
 
   changeProduct(pid) {
+    this.setState({currentProductId: pid})
     this.setProduct(pid);
+    window.scrollTo(0,0)
   }
 
   // changeStyle(index) {
