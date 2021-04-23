@@ -12,84 +12,14 @@ class CurrentProduct extends React.Component {
 
     this.state = {
       currentProductId: "13023",
-      product: {
-        name: null,
-        slogan: null,
-        description: null,
-        category: null,
-        features: [
-          {
-            feature: null,
-            value: null,
-          }
-        ]
-      },
-      styles: [
-        {
-          style_id: null,
-          name: null,
-          original_price: null,
-          sale_price: null,
-          photos: [
-            {
-              thumbnail_url: null,
-              url: null,
-            }
-          ],
-          skus: [
-            {
-              quantity: 0,
-              size: null,
-              sku: null,
-            }
-          ]
-        }
-      ],
-      meta: {
-        ratings: {
-        },
-        recommended: {
-          false: 0,
-          true: 0,
-        },
-        characteristics: {
-          Fit: {}
-        },
-        averageRating: 0,
-        starRating: 0,
-      },
-      reviews: [
-        {
-          rating: 0,
-          date: null,
-          summary: null,
-          body: null,
-          photos: [
-            {
-              id: null,
-              url: null,
-            }
-          ],
-          recommended: null,
-          reviewerName: null,
-          responseToReview: null,
-          helpfulness: 0,
-        }
-      ],
-      cart: {},
     };
 
     this.changeProduct = this.changeProduct.bind(this);
     // this.changeStyle = this.changeStyle.bind(this);
     this.setProduct = this.setProduct.bind(this);
     this.setQuestions = this.setQuestions.bind(this);
-    this.checkCart = this.checkCart.bind(this);
-    this.updateCart = this.updateCart.bind(this);
-  }
-
-
-  componentDidMount() {
-    this.setProduct(this.state.currentProductId);
+    this.setCart = this.setCart.bind(this);
+    // this.updateCart = this.updateCart.bind(this);
   }
 
   changeProduct(pid) {
@@ -104,7 +34,8 @@ class CurrentProduct extends React.Component {
   //   });
   // }
 
-  setProduct(id) {
+  setProduct(pid) {
+    let id = pid === undefined ? this.state.currentProductId: pid;
     ProductAPI.getProduct(id)
     .then((resData) => {
       let productData = resData;
@@ -136,7 +67,7 @@ class CurrentProduct extends React.Component {
       })
   }
 
-  checkCart(data) {
+  setCart(data) {
     let productData = data === undefined? this.state: data;
     var cart = JSON.parse(window.localStorage.getItem('cart'));
     var newCart = {};
@@ -159,12 +90,12 @@ class CurrentProduct extends React.Component {
     return newCart;
   }
 
-  updateCart() {
-    let newCart = this.checkCart(this.state);
-    this.setState({
-      cart: newCart
-    });
-  }
+  // updateCart() {
+  //   let newCart = this.checkCart(this.state);
+  //   this.setState({
+  //     cart: newCart
+  //   });
+  // }
 
   render() {
     return (

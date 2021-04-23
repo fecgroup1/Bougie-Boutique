@@ -35,7 +35,7 @@ class AddToCart extends React.Component {
   }
 
   componentDidMount() {
-    this.props.updateCart();
+    this.props.setCart(this.props.store);
   }
 
   handleSizeSelect(event) {
