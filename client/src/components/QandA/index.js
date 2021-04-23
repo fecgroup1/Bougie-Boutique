@@ -4,11 +4,7 @@ import Answers from './Answers.js'
 import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
 import SearchQuestions from './SearchQuestions.js'
-<<<<<<< HEAD
-import { QuestionsContainer, QAContainer, QuestionCardsContainer, NavButton } from '../../Styles'
-=======
 import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead } from '../../Styles'
->>>>>>> added some more styled components
 
 class QandA extends React.Component {
   constructor(props) {
