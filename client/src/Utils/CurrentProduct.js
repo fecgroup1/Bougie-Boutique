@@ -12,10 +12,73 @@ class CurrentProduct extends React.Component {
 
     this.state = {
       currentProductId: "13023",
+      product: {
+        name: null,
+        slogan: null,
+        description: null,
+        category: null,
+        features: [
+          {
+            feature: null,
+            value: null,
+          }
+        ]
+      },
+      styles: [
+        {
+          style_id: null,
+          name: null,
+          original_price: null,
+          sale_price: null,
+          photos: [
+            {
+              thumbnail_url: null,
+              url: null,
+            }
+          ],
+          skus: [
+            {
+              quantity: 0,
+              size: null,
+              sku: null,
+            }
+          ]
+        }
+      ],
+      meta: {
+        ratings: {
+        },
+        recommended: {
+          false: 0,
+          true: 0,
+        },
+        characteristics: {
+          Fit: {}
+        },
+        averageRating: 0,
+        starRating: 0,
+      },
+      reviews: [
+        {
+          rating: 0,
+          date: null,
+          summary: null,
+          body: null,
+          photos: [
+            {
+              id: null,
+              url: null,
+            }
+          ],
+          recommended: null,
+          reviewerName: null,
+          responseToReview: null,
+          helpfulness: 0,
+        }
+      ],
       cart: {},
     };
 
-    // Test function
     this.changeProduct = this.changeProduct.bind(this);
     // this.changeStyle = this.changeStyle.bind(this);
     this.setProduct = this.setProduct.bind(this);
