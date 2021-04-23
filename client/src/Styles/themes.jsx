@@ -23,14 +23,14 @@ export const Body = createGlobalStyle`
     color: ${props => props.theme.text};
   }
 
-  select {
-    border: 3px solid ${props => props.theme.text};
-    color: ${props => props.theme.text};
-    background: ${props => props.theme.bg};
-    outline: #0056c5;
-    height: 4em;
-    padding: 1em 0em;
-  }
+  // select {
+  //   border: 3px solid ${props => props.theme.text};
+  //   color: ${props => props.theme.text};
+  //   background: ${props => props.theme.bg};
+  //   outline: #0056c5;
+  //   height: 4em;
+  //   padding: 1em 0em;
+  // }
 
   .ReactModal__Content {
     opacity: 0;
@@ -49,22 +49,22 @@ export const Body = createGlobalStyle`
     opacity: 0;
   }
 
-//   button {
-//     & {
-//       border: 3px solid ${props => props.theme.text};
-//       color: ${props => props.theme.text};
-//       background: ${props => props.theme.bg};
-//       outline: #002a60;
-//       transition: background 0.5s;
-//       padding: 1em;
-//       text-align: center;
-//       height: 4em;
-//     }
-//     &: hover {
-//       background: #002a60;
-//     }
-//   }
-// `;
+  // button {
+  //   & {
+  //     border: 3px solid ${props => props.theme.text};
+  //     color: ${props => props.theme.text};
+  //     background: ${props => props.theme.bg};
+  //     outline: #002a60;
+  //     transition: background 0.5s;
+  //     padding: 1em;
+  //     text-align: center;
+  //     height: 4em;
+  //   }
+  //   &: hover {
+  //     background: #002a60;
+  //   }
+  // }
+`;
 
 export const ThemeToggle = styled.button`
   border: none;
