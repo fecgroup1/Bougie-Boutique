@@ -16,18 +16,19 @@ class AddAnswer extends React.Component {
     }
     this.submitForm = this.submitForm.bind(this)
     this.openModal = this.openModal.bind(this)
-    this.cancelForm = this.cancelForm.bind(this)
+    this.closeForm = this.closeForm.bind(this)
     this.charsLeft = this.charsLeft.bind(this)
   }
 
   openModal(event) {
     event.preventDefault()
     this.setState({open: true})
-
+    document.body.style.overflow = 'hidden';
   }
 
-  cancelForm() {
+  closeForm() {
     this.setState({open: false})
+    document.body.style.overflow = 'unset'
   }
 
   charsLeft (e) {
@@ -55,7 +56,7 @@ class AddAnswer extends React.Component {
       .catch((err) => {
         console.log(err)
       })
-      this.setState({open: false})
+      this.closeForm()
     } else {
       return;
     }
@@ -77,11 +78,11 @@ class AddAnswer extends React.Component {
            afterOpen: 'answerModalOverlay-in',
            beforeClose: 'answerModalOverlay-out'
          }}
-         onRequestClose={this.submitForm || this.cancelForm}
+         onRequestClose={() => this.closeForm()}
         >
         <form>
           <div>
-          <button id='closeModal' onClick={this.cancelForm}>X</button>
+          <button id='closeModal' onClick={this.closeForm}>X</button>
             <h2>Add an answer</h2>
             <p styles={{fontWeight: 'bold'}}>{this.props.name} : {this.props.question.question_body}</p>
             <label>Answer *: </label>
