@@ -20,10 +20,8 @@ const RelatedProducts = ({store, outfits, theme}) => {
   }, [store.state.currentProductId]);
 
   const scroll = (container, direction, event) => {
-    // console.log(container)
     let area = event.target.parentNode.parentNode.children[1];
     let cardWidth = event.target.parentNode.parentNode.children[1].children[1].clientWidth;
-    // console.log('cardwidth', cardWidth)
     if(direction === 'left' ) {
       // console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft += cardWidth
@@ -39,7 +37,7 @@ const RelatedProducts = ({store, outfits, theme}) => {
     }
   }
 
-  const realtedSection = useMemo(() =>
+  const relatedSection = useMemo(() =>
     <ProductsContainer
     key={'relatedProductsContainer'}
     items={products.length}
@@ -138,7 +136,7 @@ const RelatedProducts = ({store, outfits, theme}) => {
       <Fragment>
         <RelatedContainer>
 
-         {realtedSection}
+         {relatedSection}
          {outfitSection}
 
         </RelatedContainer>
