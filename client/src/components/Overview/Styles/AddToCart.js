@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddToCartButton, CartDropdown } from './../../../Styles';
+import { AddToCartButton, CartDropdown } from './../../../Styles/Overview';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -91,8 +91,7 @@ class AddToCart extends React.Component {
       var style = this.props.styles[this.props.currStyle].name;
       var title = this.props.title;
       window.localStorage.setItem('cart', JSON.stringify(cart));
-      console.log(window.localStorage);
-      this.props.updateCart();
+      this.props.setCart();
       this.setState({
         currSize: 'Select a size',
         quantity: 'Qty: --',

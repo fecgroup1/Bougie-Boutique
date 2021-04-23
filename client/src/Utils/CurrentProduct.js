@@ -12,6 +12,7 @@ class CurrentProduct extends React.Component {
 
     this.state = {
       currentProductId: "13023",
+      cart: null,
     };
 
     this.changeProduct = this.changeProduct.bind(this);
@@ -67,27 +68,37 @@ class CurrentProduct extends React.Component {
       })
   }
 
-  setCart(data) {
-    let productData = data === undefined? this.state: data;
+  setCart() {
+    let productData = this.state;
     var cart = JSON.parse(window.localStorage.getItem('cart'));
-    var newCart = {};
-    if (cart !== null) {
-      for (let i = 0; i < productData.styles.length; i++) {
-        let style = productData.styles[i];
-        for (let j = 0; j < style.skus.length; j++) {
-          let sku = style.skus[j].sku;
-          let stock = style.skus[j].quantity;
-          if (cart[sku] <= stock) {
-            newCart[sku] = cart[sku];
-          } else if (cart[sku] > stock) {
-            newCart[sku] = stock;
+    console.log('current cart', cart);
+    if (this.state.cart !== null) {
+      console.log('shouldn\'t be here');
+      var newCart = {};
+      if (cart !== null) {
+        for (let i = 0; i < productData.styles.length; i++) {
+          let style = productData.styles[i];
+          for (let j = 0; j < style.skus.length; j++) {
+            let sku = style.skus[j].sku;
+            let stock = style.skus[j].quantity;
+            if (cart[sku] <= stock) {
+              newCart[sku] = cart[sku];
+            } else if (cart[sku] > stock) {
+              newCart[sku] = stock;
+            }
           }
         }
+        window.localStorage.setItem('cart', JSON.stringify(newCart));
       }
-      window.localStorage.setItem('cart', JSON.stringify(newCart));
+      console.log(window.localStorage);
+      this.setState({
+        cart: newCart
+      });
+    } else {
+      this.setState({
+        cart: cart,
+      });
     }
-    console.log(window.localStorage);
-    return newCart;
   }
 
   // updateCart() {
