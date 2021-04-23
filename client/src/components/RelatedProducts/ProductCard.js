@@ -1,17 +1,32 @@
 import React, {Fragment} from 'react'
 import { StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, NavButton } from '../../Styles/'
 
-const ProductCard = ({product, compareMe, changeProduct}, theme) => {
+const ProductCard = ({product, buttonAction, buttonType, changeProduct, button}, theme) => {
   let prd = product.product
   return (
     prd
     ?
       <StyledProductCard>
-          <CompareButton
-            onClick={() => compareMe(prd)}
-          >
-            <i className="lni lni-32 lni-pagination" />
-          </CompareButton>
+        {
+          button === 'product'
+          ? <CompareButton
+              onClick={() => buttonAction(product)}
+            >
+              <i className={`lni lni-32 ${buttonType}`} />
+            </CompareButton>
+
+          :<CompareButton
+              onClick={() => (prd)}
+            >
+              <i className="lni lni-32 lni-trash" />
+            </CompareButton>
+        }
+
+            <CompareButton
+              onClick={() => buttonAction(prd)}
+            >
+              <i className="lni lni-32 lni-trash" />
+            </CompareButton>
 
         {
           product.styles[0].photos[0].url !== null
@@ -30,6 +45,9 @@ const ProductCard = ({product, compareMe, changeProduct}, theme) => {
           <p style={{marginTop: 0}}>{`$${product.styles[0].original_price}`}</p>
           <StarsOuter
           >
+            {
+              console.log('product', product)
+            }
             <StarsInner
               rating={product.meta.starRating}
             />
