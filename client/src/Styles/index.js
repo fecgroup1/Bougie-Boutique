@@ -5,3 +5,5 @@ export { Body, ThemeToggle, Title, dark, light } from './themes.jsx';
 export { StyleThumbs, Small, OuterStars, InnerStars, StyleName, Flex, Left, Right, LinedTop, ThumbImg, CurrThumb } from './Overview.jsx'
 export { RatingsContainer, ReviewsContainer,  RatingsAndReviewsContainer, SingleReview} from './RatingsandReviews.js';
 export { StarsOuter, StarsInner } from './Stars.js'
+export { QAContainer } from './QAContainer.js'
+export { QuestionsContainer, QuestionCardsContainer } from './QuestionsContainer.js'
