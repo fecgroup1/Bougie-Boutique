@@ -11,6 +11,13 @@ var calculatePercent = (obj)=>{
   return percent;
 
 }
+var calulateTotalReviews = (ratings) => {
+  var total = 0
+  for (var key in ratings){
+    total += Number(ratings[key]);
+  }
+  return total;
+}
 
 
 const Ratings = ({ meta }) => {
@@ -20,13 +27,21 @@ const Ratings = ({ meta }) => {
    if(!meta.averageRating){
      return (<div>This product has no reviews</div>)
    }
+   var totalReviews = calulateTotalReviews(meta.ratings)
+   console.log(totalReviews)
+   console.log(meta.ratings['5'])
   return (<div>
     <h3 style={{'fontSize': '200%'}}>{meta.averageRating}</h3>
     <StarsOuter>
             <StarsInner rating={meta.starRating}/>
     </StarsOuter>
-
     <p>{calculatePercent(meta.recommended)}% of reviews recomend this product</p>
+    <a onClick= {()=> console.log('clicked')}>5 stars</a><meter min= '0' max= '100' value= {meta.ratings['5']? (meta.ratings['5'] / totalReviews)* 100 : 0}></meter><br></br>
+    <a onClick= {()=> console.log('clicked')}>4 stars</a><meter min= '0' max= '100' value= {meta.ratings['4']? (meta.ratings['4'] / totalReviews)* 100 : 0}></meter><br></br>
+    <a onClick= {()=> console.log('clicked')}>3 stars</a><meter min= '0' max= '100' value= {meta.ratings['3']? (meta.ratings['3'] / totalReviews)* 100 : 0}></meter><br></br>
+    <a onClick= {()=> console.log('clicked')}>2 stars</a><meter min= '0' max= '100' value= {meta.ratings['2']? (meta.ratings['2'] / totalReviews)* 100 : 0}></meter><br></br>
+    <a onClick= {()=> console.log('clicked')}>1 stars</a><meter min= '0' max= '100' value= {meta.ratings['1']? (meta.ratings['1'] / totalReviews)* 100 : 0}></meter><br></br>
+
     <Characteristics characteristics={meta.characteristics} />
   </div>);
 }
@@ -36,8 +51,3 @@ const Ratings = ({ meta }) => {
 export default Ratings;
 
 
-
-// //recommended": {
-//   "false": "3",
-//   "true": "20"
-// },
