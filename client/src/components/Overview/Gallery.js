@@ -1,5 +1,5 @@
 import React from 'react';
-import { Left, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer} from './../../Styles';
+import { Left, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, Loading} from './../../Styles/Overview';
 
 class Gallery extends React.Component {
   constructor (props) {
@@ -64,7 +64,7 @@ class Gallery extends React.Component {
       background: 'none',
     };
     const bg = {
-      opacity: '0.5',
+      opacity: `${styles[0].name === null ? '0': '0.5'}`,
     };
     const thumb = {
       objectFit: 'cover',
@@ -86,16 +86,19 @@ class Gallery extends React.Component {
     return (
       <Left style={{alignContent: 'center', minWidth: '400px'}}>
         <div id="gallery" style={{height: '66vh'}}>
-          <img
+          {styles[0].name === null ? <Loading
+            src={styles[currImg[0]].photos[currImg[1]].url} />:
+            <img
             style={galImg}
-            src={styles[currImg[0]].photos[currImg[1]].url}/>
+            src={styles[currImg[0]].photos[currImg[1]].url}/>}
+
           <GallThumbContainer style={bg}></GallThumbContainer>
 
           <GallThumbContainer style={buttonContainer}>
             {this.state.scrollTop > 0 ? <GalleryScroll onClick={() => this.scroll('up')}>
               <i className="lni lni-chevron-up-circle"></i>
               </GalleryScroll> : <GalleryScroll style={{background: 'none'}}></GalleryScroll>}
-            {this.state.scrollBtm ? <GalleryScroll style={{background: 'none'}}>
+            {this.state.scrollBtm || styles[0].name === null ? <GalleryScroll style={{background: 'none'}}>
             </GalleryScroll>: <GalleryScroll onClick={() => this.scroll('down')}>
             <i className="lni lni-chevron-down-circle"></i>
             </GalleryScroll>}
@@ -108,7 +111,9 @@ class Gallery extends React.Component {
               onScroll={this.handleScroll}>
                 {styles.map((style, sIndex) => {
                   return style.photos.map((photo, pIndex) => {
-                    if ((sIndex === currImg[0]) &&
+                    if (styles[0].name === null) {
+                      return null;
+                    } else if ((sIndex === currImg[0]) &&
                         (pIndex === currImg[1])) {
                         return <CurrGallThumb
                           style={thumb}

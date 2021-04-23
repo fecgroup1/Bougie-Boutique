@@ -9,7 +9,9 @@ export const Loading = styled.img`
 border: none;
 width: 50%;
 height: 50%;
+margin: 25%;
 opacity: 30%;
+filter: invert(${props => props.theme.invertWht});
 object-position: 50% 50%;
 animation-name: loadspin;
 animation-duration: 3s;

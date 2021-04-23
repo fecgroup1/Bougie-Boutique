@@ -14,8 +14,8 @@ class Overview extends React.Component {
       product: {
         name: 'Loading...',
         slogan: 'Loading...',
-        description: 'Loading...',
-        category: '',
+        description: null,
+        category: null,
         features: []
       },
       styles: [
@@ -74,7 +74,7 @@ class Overview extends React.Component {
     var metaStore = store.meta === undefined ? this.state.meta: store.meta;
     var reviewsStore = store.reviews === undefined? this.state.reviews: store.reviews;
 
-    var loading = this.props.store.state.styles === undefined ? {color: '#ccc'}: {};
+    var loading = this.props.store.state.styles === undefined ? {opacity: '50%'}: {};
 
     return (
       <div id="overview">

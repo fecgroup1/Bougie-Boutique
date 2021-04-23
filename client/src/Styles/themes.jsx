@@ -116,7 +116,8 @@ export const light = {
   text: 'black',
   bg: 'white',
   bluGry: '#002a60',
-  blkGry: 'black'
+  blkGry: 'black',
+  invertWht: 0,
 };
 
 export const dark = {
@@ -125,7 +126,8 @@ export const dark = {
   text: '#cccccc',
   bg: '#111111',
   bluGry: '#cccccc',
-  blkGry: '#cccccc'
+  blkGry: '#cccccc',
+  invertWht: 1,
 }
 
 
