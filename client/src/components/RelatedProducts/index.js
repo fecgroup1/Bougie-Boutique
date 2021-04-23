@@ -108,7 +108,7 @@ const RelatedProducts = ({store, outfits}) => {
 
         </RelatedContainer>
         <CompareModal
-          product={store.product}
+          product={store.state.product}
           comparisonProduct={comparisonProduct}
           resetCompare={setComparisonProduct}
          />

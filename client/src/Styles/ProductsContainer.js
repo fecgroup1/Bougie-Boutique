@@ -72,7 +72,7 @@ export const CompareButton = styled.button`
   right: .25em;
   top: .25em;
   border-radius: 2em;
-  padding: .25em;
+  padding: .25em;d
   border: 1px solid;
   ${props => func(props)};
 `
