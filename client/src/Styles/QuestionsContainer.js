@@ -8,7 +8,7 @@ export const QuestionsContainer = styled.div`
 `;
 
 export const QuestionCardsContainer = styled.div`
-  max-height: 70vh;
+  max-height: 65vh;
   overflow-y: auto;
   justify-content: center;
   margin-left: auto;

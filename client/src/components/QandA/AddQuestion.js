@@ -104,7 +104,7 @@ class AddQuestion extends React.Component {
           </div>
         </form>
         </Modal>
-        <button id='addQuestionButton' onClick={this.openModal}>ASK A QUESTION</button>
+        <button id='addQuestionButton' onClick={this.openModal}>ASK A QUESTION +</button>
       </Fragment>
 
     )

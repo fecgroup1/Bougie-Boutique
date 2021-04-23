@@ -1,10 +1,10 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
-import WidgetContainer from '../../Styles'
 import Answers from './Answers.js'
 import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
-import { QuestionsContainer, QAContainer, QuestionCardsContainer } from '../../Styles'
+import SearchQuestions from './SearchQuestions.js'
+import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle } from '../../Styles'
 
 class QandA extends React.Component {
   constructor(props) {
@@ -13,9 +13,13 @@ class QandA extends React.Component {
     this.state = {
       questions: [],
       questionLength: 2,
+      searchQuestionLength: 2,
       moreQuestions: false,
+      moreSearchedQuestions: false,
       questionMarkedHelpful: [],
-      qReported: []
+      qReported: [],
+      searchQuery: '',
+      searchResults: []
     }
     this.addMore = this.addMore.bind(this)
     this.renderQuestion = this.renderQuestion.bind(this)
@@ -23,6 +27,7 @@ class QandA extends React.Component {
     this.reportQuestion = this.reportQuestion.bind(this)
     this.escape = this.escape.bind(this)
     this.getQuestions = this.getQuestions.bind(this)
+    this.filterQuestions = this.filterQuestions.bind(this)
   }
 
   getQuestions() {
@@ -46,6 +51,18 @@ class QandA extends React.Component {
       this.setState({questionMarkedHelpful: [...prevMarked, question.question_id]})
       axios.put(`qa/questions/${qid}/helpful`, null)
       question.question_helpfulness += 1
+    }
+  }
+
+  filterQuestions(event) {
+    const queryString = event.target.value
+    this.setState({searchQuery: queryString, moreSearchedQuestions: false, searchQuestionLength: 2})
+    if (queryString.length >= 3) {
+      const match = this.state.questions.filter ((question) =>
+        question.question_body.toLowerCase().includes(queryString.toLowerCase()))
+        this.setState({searchResults: match})
+    } else {
+      this.setState({searchResults: this.state.questions})
     }
   }
 
@@ -92,8 +109,15 @@ class QandA extends React.Component {
     )
   }
 
-  addMore() {
-    console.log(this.state.questionLength)
+  addMore(event) {
+    if (event.target.value === 'search') {
+      const addSearch = this.state.searchQuestionLength + 2
+      if (addSearch >= this.state.searchResults.length) {
+        this.setState({moreSearchQuestions: true, searchQuestionLength: addSearch})
+      } else {
+        this.setState({searchQuestionLength: addSearch})
+      }
+    }
     const add = this.state.questionLength + 2
     if (add >= this.state.questions.length) {
       this.setState({moreQuestions: true, questionLength: add})
@@ -111,22 +135,55 @@ class QandA extends React.Component {
         <Fragment>
         <QuestionsContainer>
           <h2>Questions and Answers</h2>
+          <SearchQuestions filterQuestions={this.filterQuestions}/>
           <QuestionCardsContainer>
-          {this.state.questions.slice(0, this.state.questionLength).map((question, index) =>
-          (this.renderQuestion(question, index, store.product.name)))}
+            {this.state.searchQuery.length >= 3 ? (
+              <Fragment>
+                {console.log(this.state.searchResults)}
+                {this.state.searchResults.slice(0, this.state.searchQuestionLength).map((question, index) =>
+                (this.renderQuestion(question, index, store.product.name)))}
+              </Fragment>
+            )
+            :
+            (<Fragment>
+                {this.state.questions.slice(0, this.state.questionLength).map((question, index) =>
+                (this.renderQuestion(question, index, store.product.name)))}
+            </Fragment>
+
+            )}
           </QuestionCardsContainer>
         </QuestionsContainer>
         <QuestionsContainer>
-        {!this.state.moreQuestions && this.state.questions.length >  2 ?
-          (
-            <div>
-              <button id='moreQuestions' onClick={this.addMore}>MORE ANSWERED QUESTIONS</button>
-              <AddQuestion currentProductId={store.currentProductId } name={store.product.name}/>
-            </div>
+        {this.state.searchResults.length > 0 && this.state.searchQuery.length >=3 ? (
+          <Fragment>
+            {!this.state.moreSearchedQuestions && this.state.searchResults.length >  2 ?
+            (
+              <div>
+                <button id='moreQuestions' value={'search'} onClick={this.addMore}>MORE ANSWERED QUESTIONS</button>
+                <AddQuestion currentProductId={store.currentProductId } name={store.product.name}/>
+              </div>
+            )
+            :
+            <AddQuestion currentProductId={store.currentProductId} name={store.product.name}/>
+           }
+          </Fragment>
           )
           :
-          <AddQuestion currentProductId={store.currentProductId} name={store.product.name}/>
-        }
+          (
+          <Fragment>
+            {!this.state.moreQuestions && this.state.questions.length >  2?
+            (
+              <div>
+                <button id='moreQuestions' onClick={this.addMore}>MORE ANSWERED QUESTIONS</button>
+                <AddQuestion currentProductId={store.currentProductId } name={store.product.name}/>
+              </div>
+            )
+            :
+            <AddQuestion currentProductId={store.currentProductId} name={store.product.name}/>
+          }
+            </Fragment>
+        )}
+
         </QuestionsContainer>
         </Fragment>
       )

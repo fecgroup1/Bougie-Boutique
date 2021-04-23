@@ -17,8 +17,10 @@ class AnswerPhotos extends React.Component {
   selectedPhoto (image) {
     if (this.state.clicked === false) {
       this.setState({currentPicture: image, clicked: true});
+      document.body.style.overflow = 'hidden';
     } else if (this.state.clicked === true) {
       this.setState({currentPicture: image, clicked: false});
+      document.body.style.overflow = 'unset'
     }
   };
 
@@ -28,6 +30,7 @@ class AnswerPhotos extends React.Component {
 
   changeClick () {
     this.setState({clicked: false})
+     document.body.style.overflow = 'unset'
   }
 
   render () {
@@ -47,7 +50,6 @@ class AnswerPhotos extends React.Component {
                   className= 'qaImgModal'
                   style={overlay}
                 >
-                <button id='closeQAImg' onClick={this.changeClick}>X</button>
                 <img key={index} className='enlargedImage' src={this.current(image)}/>
                 </Modal>
               <img key={index} onClick={() => {this.selectedPhoto(image)}} className='img' src={image.url}/>
