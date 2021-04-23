@@ -93,6 +93,7 @@ export const GallThumb = styled.img`
   border: 0.75vh solid transparent;
   opacity: 50%;
   transition: opacity 0.5s;
+  z-index: 1;
 }
 &: hover {
   opacity: 100%;
@@ -109,6 +110,7 @@ export const CurrGallThumb = styled.img`
   border: 0.25vh solid ${props => props.theme.border};
   outline: 0.5vh solid ${props => props.theme.outline};
   transition: border 0.5s, outline 0.5s;
+  z-index: 1;
 `;
 
 export const NoScrollBar = styled.div`
@@ -137,6 +139,7 @@ export const ScrollBg = styled.button`
   height: 2.5vh;
   border-radius: 50%;
   margin: 1vh;
+  transition: opacity 0.5s;
 `;
 
 export const GalleryScroll = styled.button`
