@@ -67,11 +67,8 @@ class Gallery extends React.Component {
       opacity: `${styles[0].name === null ? '0': '0.5'}`,
     };
     const thumb = {
-      objectFit: 'cover',
-      objectPosition: '50% 50%',
       width: '6vh',
       height: '6vh',
-      scrollSnapAlign: 'center',
     }
     const buttonContainer = {
       display: 'flex',
@@ -103,7 +100,9 @@ class Gallery extends React.Component {
             {this.state.scrollTop > 0 ? <GalleryScroll onClick={() => this.scroll('up')}>
               <i className="lni lni-chevron-up-circle"></i>
               </GalleryScroll> : <GalleryScroll style={{background: 'none'}}></GalleryScroll>}
-            {this.state.scrollBtm || styles[0].name === null ? <GalleryScroll style={{background: 'none'}}>
+            {this.state.scrollBtm ||
+             styles[0].name === null ||
+             document.getElementById("galleryscroll").scrollHeight <= document.getElementById("galleryscroll").clientHeight ? <GalleryScroll style={{background: 'none'}}>
             </GalleryScroll>: <GalleryScroll onClick={() => this.scroll('down')}>
             <i className="lni lni-chevron-down-circle"></i>
             </GalleryScroll>}
@@ -121,12 +120,10 @@ class Gallery extends React.Component {
                     } else if ((sIndex === currImg[0]) &&
                         (pIndex === currImg[1])) {
                         return <CurrGallThumb
-                          style={thumb}
                           key={[sIndex, pIndex]}
                           src={photo.thumbnail_url} />
                     } else {
                       return <GallThumb
-                        style={thumb}
                         key={[sIndex, pIndex]}
                         src={photo.thumbnail_url}
                         onClick={() => {changeImg(sIndex, pIndex)}} />

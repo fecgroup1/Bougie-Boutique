@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ThumbImg, CurrThumb, Loading } from './../../../../Styles/Overview';
+import { ThumbImg, CurrThumb, Loading, StylePlaceholder, SelectedStylePlaceholder, PlaceholderBorder } from './../../../../Styles/Overview';
 
 class Thumbnails extends React.Component {
   constructor(props) {
@@ -43,12 +43,29 @@ class Thumbnails extends React.Component {
                 key={index}
                 src={style.photos[0].thumbnail_url}/>
             )
-          }
-          if (index === currStyle) {
+          } else if (index === currStyle) {
+            if (style.photos[0].thumbnail_url === null) {
+              return (
+                <PlaceholderBorder>
+                <SelectedStylePlaceholder
+                  key={index}
+                  onClick={() => changeStyle(index)}
+                  src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
+                </PlaceholderBorder>
+              );
+            } else {
+              return (
+                <CurrThumb
+                  key={index}
+                  src={style.photos[0].thumbnail_url}/>
+              );
+            }
+          } else if (style.photos[0].thumbnail_url === null) {
             return (
-              <CurrThumb
+              <StylePlaceholder
                 key={index}
-                src={style.photos[0].thumbnail_url}/>
+                onClick={() => changeStyle(index)}
+                src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
             );
           } else {
             return (

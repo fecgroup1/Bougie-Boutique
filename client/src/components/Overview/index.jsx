@@ -77,7 +77,7 @@ class Overview extends React.Component {
     var loading = this.props.store.state.styles === undefined ? {opacity: '50%'}: {};
 
     return (
-      <div id="overview">
+      <div id="overview" style={{marginBottom: '10px'}}>
         <Flex style={loading}>
           <Gallery
             styles={store.styles}

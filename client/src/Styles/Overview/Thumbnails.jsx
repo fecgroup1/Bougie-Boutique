@@ -19,14 +19,48 @@ animation-iteration-count: infinite;
 animation-timing-function: cubic-bezier(0.42, 0.6, 0.58, 0.1);
 `;
 
+
+export const StylePlaceholder = styled.img`
+  & {
+    border: 1.25vh solid transparent;
+    width: 5vh;
+    height: 5vh;
+    padding: 2.5vh;
+    opacity: 30%;
+    object-position: 50% 50%;
+    filter: invert(${props => props.theme.invertWht});
+  }
+  &: hover {
+    opacity: 50%;
+  }
+`;
+
+export const PlaceholderBorder = styled.div`
+  border: 0.5vh solid ${props => props.theme.border};
+  outline: 0.75vh solid ${props => props.theme.outline};
+`;
+
+export const SelectedStylePlaceholder = styled.img`
+  & {
+    width: 5vh;
+    height: 5vh;
+    padding: 2.5vh;
+    opacity: 30%;
+    object-position: 50% 50%;
+    margin: 0.75vh;
+    filter: invert(${props => props.theme.invertWht});
+  }
+  &: hover {
+    opacity: 50%;
+  }
+`;
+
 export const ThumbImg = styled.img`
   & {
     object-fit: cover;
     object-position: 50% 50%;
     width: 10vh;
     height: 10vh;
-    min-width: 80px;
-    min-height: 80px;
     border: 1.25vh solid transparent;
     opacity: 50%;
     transition: opacity 0.5s;
@@ -51,6 +85,11 @@ export const CurrThumb = styled.img`
 
 export const GallThumb = styled.img`
 & {
+  objectFit: cover;
+  objectPosition: 50% 50%;
+  width: 6vh;
+  height: 6vh;
+  scrollSnapAlign: center;
   border: 0.75vh solid transparent;
   opacity: 50%;
   transition: opacity 0.5s;
@@ -61,6 +100,11 @@ export const GallThumb = styled.img`
 `;
 
 export const CurrGallThumb = styled.img`
+  objectFit: cover;
+  objectPosition: 50% 50%;
+  width: 6vh;
+  height: 6vh;
+  scrollSnapAlign: center;
   margin: 0.5vh;
   border: 0.25vh solid ${props => props.theme.border};
   outline: 0.5vh solid ${props => props.theme.outline};
