@@ -6,7 +6,6 @@ class Gallery extends React.Component {
     super(props);
     this.state = {
       position: 0,
-      numImgs: 0,
       scrollTop: 0,
       scrollBtm: false,
     };
@@ -27,28 +26,18 @@ class Gallery extends React.Component {
 
   scroll(direction) {
     let pos = this.state.position;
-    let dist = 8.25;
-    console.log('scroll', direction, 'clicked');
     if (direction === 'up') {
       document.getElementById("galleryscroll").scrollBy({
         top: '-100',
         left: 0,
         behavior: 'smooth'
       });
-      // pos += dist;
-      // if (pos > 0) {
-      //   pos = 0;
-      // }
     } else if (direction === 'down') {
       document.getElementById("galleryscroll").scrollBy({
         top: '100',
         left: 0,
         behavior: 'smooth'
       });
-      // pos -= dist;
-      // if (pos < (this.state.numImgs - 7) * -dist) {
-      //   pos = (this.state.numImgs - 7) * -dist;
-      // }
     }
     this.setState({
       position: pos,
@@ -65,19 +54,8 @@ class Gallery extends React.Component {
       width: '100%',
       height: '100%'
     };
-    // const gallerythumbs = {
-    //   whiteSpace: 'wrap',
-    //   display: 'grid',
-    //   gridTemplateColumns: '100%',
-    //   gridTemplateRows: 'auto',
-    //   scrollSnapType: 'y mandatory',
-    //   overflowY: 'auto',
-    //   cursor: 'all-scroll',
-    //   -ms-overflow-style: 'none',
-    // };
     const position = {
       transform: `translateY(${this.state.position}vh)`
-      ,
     }
     const container = {
       display: 'grid',
@@ -111,6 +89,7 @@ class Gallery extends React.Component {
             style={galImg}
             src={styles[currImg[0]].photos[currImg[1]].url}/>
           <GallThumbContainer style={bg}></GallThumbContainer>
+
           <GallThumbContainer style={buttonContainer}>
             {this.state.scrollTop > 0 ? <GalleryScroll onClick={() => this.scroll('up')}>
               <i className="lni lni-chevron-up-circle"></i>
@@ -120,6 +99,7 @@ class Gallery extends React.Component {
             <i className="lni lni-chevron-down-circle"></i>
             </GalleryScroll>}
           </GallThumbContainer>
+
           <GallThumbContainer style={container}>
             <NoScrollBar
               id="galleryscroll"
@@ -127,7 +107,6 @@ class Gallery extends React.Component {
               onScroll={this.handleScroll}>
                 {styles.map((style, sIndex) => {
                   return style.photos.map((photo, pIndex) => {
-                    this.state.numImgs++;
                     if ((sIndex === currImg[0]) &&
                         (pIndex === currImg[1])) {
                         return <CurrGallThumb
