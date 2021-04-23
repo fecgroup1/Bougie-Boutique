@@ -8,7 +8,10 @@ const Details = ({slogan, description, features}) => {
     fontSize: '20px',
   }
 
-  var loading = description === null ? {paddingTop: '10px', opacity: '50%'}: {paddingTop: '10px'};
+  var loading = {
+    paddingTop: '10px',
+    opacity: `${description === null ? '50%': '100%'}`,
+  };
 
   return (
     <div id="details" style={loading}>
