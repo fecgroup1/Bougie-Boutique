@@ -7,7 +7,7 @@ import CompareModal from './CompareModal.js'
 
 const RelatedProducts = ({store, theme}) => {
 
-  const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
+  const [products, setProducts] = useState([1, 2, 3, 4]);
   const [productsPosition, setProductsPosition] = useState(0);
   const [comparisonProduct, setComparisonProduct] = useState(null);
   const [outfits, setOutfits] = useState()
