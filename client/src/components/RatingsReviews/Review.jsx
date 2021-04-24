@@ -3,6 +3,7 @@ import { SingleReview} from '../../Styles'
 import { StarsOuter, StarsInner} from '../../Styles/'
 import Stars from '../Overview/Styles/Stars.js'
 import axios from 'axios';
+import ReviewPhoto from './ReviewPhoto'
 
 const reportReview = (reviewId)=>{
   axios.put(`/reviews/${reviewId}/report`)
@@ -14,7 +15,7 @@ const markHelpful = (reviewId)=>{
 const Review =({ review })=> {
 const[reported, setReported]= useState(false);
 const[helpful, setHelpful]= useState(false);
-
+const[modalOpen, setModalOpen]= useState(false)
 
 return(
   <SingleReview>
@@ -24,6 +25,7 @@ return(
     <span style={{float: 'right'}}>{review.reviewerName},   {new Date(review.date).toLocaleString('en-us', {month:'long', day: 'numeric', year: 'numeric'})}</span>
     <h3>{review.summary}</h3>
     <p>{review.body}</p>
+    {review.photos.map((photo)=> <ReviewPhoto photo= {photo}/>)}
     {review.recommended ? <p style={{fontSize:'90%'}}> &#10003; I recomend this product</p> : <div></div>}
     {review.responseToReview ? <p>{review.responseToReview}</p> : <div></div>}
     <div style={{fontSize:'90%'}}>
