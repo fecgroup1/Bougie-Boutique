@@ -9,7 +9,14 @@ router.route('/')
   })
   .post((req, res) => {
     controllers.review.postReviews(req.body)
-    .then((response)=>console.log(response))
+    .then((response)=>res.end(response))
+    .catch((err) => res.end(err));
+  })
+  .put((req, res)=> {
+    controllers.review.reportReview(req.body.reviewId)
+    res.end()
+    // .then((response)=>res.end(response))
+    // .catch((err) => res.end(err));
   })
 
 

@@ -66,8 +66,16 @@ module.exports = {
         .then((response) => response)
         .catch((err) => {
           console.log(err);
-        });
-      }
+        })
+      },
+
+    reportReview: (reviewId) => {
+        return axios.put(`${url}reviews/${reviewId}/report`)
+          .then((response) => response)
+          .catch((err) => {
+            console.log(err);
+          });
+        }
 };
 
 
