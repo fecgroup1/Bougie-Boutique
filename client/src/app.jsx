@@ -8,7 +8,7 @@ import RelatedProducts from './components/RelatedProducts';
 import RatingsReviews from './components/RatingsReviews';
 
 import { ThemeProvider } from 'styled-components';
-import { Body, dark, light } from './Styles';
+import { Body, dark, light, ThemeContext } from './Styles';
 
 import TrackingAPI from './Utils/TrackingAPI.js'
 
@@ -61,8 +61,8 @@ class App extends React.Component {
 
   render() {
     const theme = this.state.dark ? dark: light;
-
     return (
+      <ThemeContext.Provider value={theme}>
       <ThemeProvider theme={theme}>
         <CurrentProduct
           render={ store => (
@@ -101,8 +101,8 @@ class App extends React.Component {
               </div>
             </>
         )}/>
-
       </ThemeProvider>
+      </ThemeContext.Provider>
     )
   }
 }
