@@ -15,3 +15,6 @@ config.js
 
 # Random mac file
 .DS_Store
+
+# form
+/form

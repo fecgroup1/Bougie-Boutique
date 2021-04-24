@@ -175,7 +175,20 @@
 }
 
 .modalInput {
-  width: 17em;
+  width: 16em;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid black
+}
+
+.modalInput::placeholder{
+  color: rgb(58, 58, 58)
+}
+
+.modalInput:focus {
+  border-bottom: 1px solid black;
+  outline: none;
 }
 
 .questionModal {

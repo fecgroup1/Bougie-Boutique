@@ -12,12 +12,14 @@ class AddAnswer extends React.Component {
 
     this.state = {
       open: false,
-      chars: 1000
+      chars: 1000,
+      images: []
     }
     this.submitForm = this.submitForm.bind(this)
     this.openModal = this.openModal.bind(this)
     this.closeForm = this.closeForm.bind(this)
     this.charsLeft = this.charsLeft.bind(this)
+    this.addPhotos = this.addPhotos.bind(this)
   }
 
   openModal(event) {
@@ -36,6 +38,26 @@ class AddAnswer extends React.Component {
     this.setState({chars: remaining })
   }
 
+  addPhotos (e) {
+    this.setState({images: []})
+    const test = [...e.target.files].map((file) => {
+      const bodyFormData = new FormData();
+      bodyFormData.append('image', file);
+      const options = {
+          'Content-Type': 'multipart/form-data'
+      }
+      return axios.post('/addPhoto', bodyFormData, options)
+    })
+    Promise.all(test)
+      .then((data) => {
+        const urlArray = [];
+        data.map((url) => {
+          urlArray.push(url.data)
+        })
+        this.setState({images: urlArray})
+      })
+  }
+
   submitForm(event) {
     event.preventDefault();
     let answerBody = document.getElementById('answerInputText')
@@ -48,7 +70,8 @@ class AddAnswer extends React.Component {
       axios.post(`/qa/questions/${qid}/answers`, {
         body: answerBody.value,
         name: nickname.value,
-        email: email.value
+        email: email.value,
+        photos: this.state.images
       })
       .then(() => {
         console.log('Successfully posted answer')
@@ -85,19 +108,22 @@ class AddAnswer extends React.Component {
           <button id='closeModal' onClick={this.closeForm}>X</button>
             <h2>Add an answer</h2>
             <p styles={{fontWeight: 'bold'}}>{this.props.name} : {this.props.question.question_body}</p>
-            <label>Answer *: </label>
+            <label>* Your Answer: </label>
             <textarea id='answerInputText' name='answer' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
             <p id='charsLeft'>{this.state.chars} characters remaining</p>
 
-            <label>Nickname *: </label>
+            <label>* What is your nickname? </label>
             <input type="text" id="answerNickname" className='modalInput' name="nickname"
              placeholder='Example: jack543!' maxLength='60'  required></input>
              <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
 
-            <label>Email *: </label>
+            <label>* Your email: </label>
             <input type="email" id="answerEmail" className='modalInput' name="email"
              placeholder='Example: jack@email.com' maxLength='60'  required></input>
              <p className='warning'>For authentication reasons, you will not be emailed</p><br></br>
+
+            <label> Photos: </label>
+            <input type='file' id='qaPhotoUpload' name='image' accept='image/png, image/jpeg' onChange={this.addPhotos} multiple/>
 
             <p id='required'>* Required</p>
 
