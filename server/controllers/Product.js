@@ -57,23 +57,6 @@ module.exports = {
     })
   },
 
-  getAll: (pid) => {
-    let fnlRes = {};
-    return module.exports.getDetails(pid)
-    .then((resObj) => {
-      fnlRes = resObj;
-      return module.exports.getRelated(pid)
-    })
-    .then((related) => {
-      fnlRes.related = related;
-      return fnlRes;
-    })
-    .catch((err) => {
-      console.log('Error getting all data for product', err);
-      return fnlRes;
-    })
-  },
-
   // ******************************************
   // INDIVIDUAL GETS
   // ******************************************

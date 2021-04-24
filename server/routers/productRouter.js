@@ -17,18 +17,6 @@ router.route('/')
 });
 
 router.route('/related')
-.post((req, res) => {
-  let promises = req.body.pids.map((pid) => {
-    return controllers.product.getDetails(pid);
-  });
-  Promise.all(promises)
-  .then((data) => {
-    res.send(data);
-  })
-
-})
-
-router.route('/related')
 .get((req, res) => {
   let pid = req.query.pid;
   console.log('this is the pid', pid)
