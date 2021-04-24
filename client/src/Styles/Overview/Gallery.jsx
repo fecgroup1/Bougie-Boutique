@@ -47,7 +47,6 @@ export const GallThumb = styled.img`
   border: 0.75vh solid transparent;
   opacity: 50%;
   transition: opacity 0.5s;
-  z-index: 1;
 }
 &: hover {
   opacity: 100%;
@@ -86,7 +85,6 @@ export const NoScrollBar = styled.div`
 
 export const ScrollBg = styled.button`
   border: none;
-  color: #ccc;
   background: ${props => props.theme.bg};
   font-size: 2em;
   outline: none;
@@ -94,8 +92,9 @@ export const ScrollBg = styled.button`
   width: 2.5vh;
   height: 2.5vh;
   border-radius: 50%;
-  margin: 1vh;
-  transition: opacity 0.5s;
+  margin: 0.5vh;
+  transition: background 0.5s;
+  z-index: 0;
 `;
 
 export const GalleryScroll = styled.button`
@@ -110,9 +109,10 @@ export const GalleryScroll = styled.button`
   outline: none;
   opacity: 50%;
   transition: color 0.5s, opacity 0.5s;
+  z-index: 1;
 }
 &:hover {
-  opacity: 100%
+  opacity: 100%;
 }`;
 
 export const GallThumbContainer = styled.div`

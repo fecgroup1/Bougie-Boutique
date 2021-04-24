@@ -67,7 +67,7 @@ class Gallery extends React.Component {
     };
     const position = {
       transform: `translateY(${this.state.position}vh)`,
-      zIndex: 1,
+      zIndex: 2,
     }
     const container = {
       display: 'grid',
@@ -88,6 +88,18 @@ class Gallery extends React.Component {
       alignItems: 'center',
       height: '65vh',
       margin: '0.5vh 1vw',
+      zIndex: 0,
+    }
+
+    const scrollBtnContainer = {
+      display: 'flex',
+      flexDirection: 'column',
+      background: 'none',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      height: '65vh',
+      margin: '0.5vh 1vw',
+      zIndex: 1,
     }
 
     return (
@@ -163,23 +175,21 @@ class Gallery extends React.Component {
             }></ScrollBg>
             </GallThumbContainer>
 
-          <GallThumbContainer style={buttonContainer}>
-            <GalleryScroll
-              style={upOpacity}
-              onClick={() => this.scroll('up')}>
-              <i className="lni lni-chevron-up-circle"></i>
-            </GalleryScroll>
-            <GalleryScroll
-              style={
-                {
-                  opacity: `${this.state.scrollBtm ||
-                    (styles[0].name === null) ||
-                    (this.state.numImgs <= 7) ? '0': '0.5'}`,
-                }
-              }
-              onClick={() => this.scroll('down')}>
-            <i className="lni lni-chevron-down-circle"></i>
-            </GalleryScroll>
+          <GallThumbContainer style={scrollBtnContainer}>
+            <div>
+              <GalleryScroll
+                onClick={() => this.scroll('up')}>
+                  {(styles[0].name === null) || (this.state.scrollTop <= 0) ? null: <i className="lni lni-chevron-up-circle"></i>}
+              </GalleryScroll>
+            </div>
+            <div style={{ zIndex: 1 }}>
+              <GalleryScroll
+                onClick={() => this.scroll('down')}>
+                  {this.state.scrollBtm ||
+                  (styles[0].name === null) ||
+                  (this.state.numImgs <= 7) ? null: <i className="lni lni-chevron-down-circle"></i>}
+              </GalleryScroll>
+            </div>
           </GallThumbContainer>
 
         </div>
