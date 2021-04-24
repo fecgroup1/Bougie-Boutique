@@ -61,7 +61,6 @@ module.exports = {
 
 
     postReviews: (postobj) => {
-      console.log(postobj)
       return axios.post(`${url}reviews`, postobj)
         .then((response) => response)
         .catch((err) => {

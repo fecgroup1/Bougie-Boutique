@@ -12,14 +12,14 @@ router.route('/')
     .then((response)=>res.end(response))
     .catch((err) => res.end(err));
   })
-  .put((req, res)=> {
-    controllers.review.reportReview(req.body.reviewId)
-    res.end()
-    // .then((response)=>res.end(response))
-    // .catch((err) => res.end(err));
+
+
+router.route('/:review_id/report')
+ .put((req, res)=> {
+    controllers.review.reportReview(req.params.reviewId)
+    .then((response)=>res.end(response))
+    .catch((err) => res.end(err));
   })
-
-
 
 router.route('/meta')
   .get((req, res) => {
