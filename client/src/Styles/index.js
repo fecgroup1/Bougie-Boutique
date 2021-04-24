@@ -1,5 +1,5 @@
 export { RelatedContainer } from './RelatedContainer.js';
-export { ProductsContainer, CardContainer, CardsWrapper, Button, CardImage, CompareButton } from './ProductsContainer.js';
+export { ProductsContainer, CardContainer, CardsWrapper, Button, CardImage, ActionButton } from './ProductsContainer.js';
 export { StyledProductCard, AddOutfitButton } from './StyledProductCard.js';
 export { CompareTable } from './CompareTable.js'
 export { Body, NavButton, Title, dark, light } from './themes.jsx';

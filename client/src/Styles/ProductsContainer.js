@@ -50,7 +50,7 @@ export const CardImage = styled.div`
   background-position: center;
 `
 
-const compareButtonFunc = (props) => (
+const actionButtonFunc = (props) => (
   `background-color: ${props.theme.bg};
    color: ${props.theme.bluGry};
 
@@ -67,7 +67,7 @@ const compareButtonFunc = (props) => (
   }`
 )
 
-export const CompareButton = styled.button`
+export const ActionButton = styled.button`
   position: absolute;
   right: .25em;
   top: .25em;
@@ -77,5 +77,5 @@ export const CompareButton = styled.button`
   &:hover {
     cursor: help;
   }
-  ${props => compareButtonFunc(props)};
+  ${props => actionButtonFunc(props)};
 `

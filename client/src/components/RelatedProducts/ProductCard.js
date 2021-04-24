@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import { StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, NavButton } from '../../Styles/'
+import { StyledProductCard, CardImage,  StarsOuter, StarsInner, ActionButton, NavButton } from '../../Styles/'
 
 const ProductCard = ({product, buttonAction, buttonType, changeProduct, button}, theme) => {
   let prd = product.product
@@ -7,26 +7,11 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button},
     prd
     ?
       <StyledProductCard>
-        {
-          button === 'product'
-          ? <CompareButton
-              onClick={() => buttonAction(product)}
-            >
-              <i className={`lni lni-32 ${buttonType}`} />
-            </CompareButton>
-
-          :<CompareButton
-              onClick={() => (prd)}
-            >
-              <i className="lni lni-32 lni-trash" />
-            </CompareButton>
-        }
-
-            <CompareButton
-              onClick={() => buttonAction(prd)}
-            >
-              <i className="lni lni-32 lni-trash" />
-            </CompareButton>
+        <ActionButton
+          onClick={() => buttonAction(product)}
+        >
+          <i className={`lni lni-32 ${buttonType}`} />
+        </ActionButton>
 
         {
           product.styles[0].photos[0].url !== null
@@ -55,9 +40,9 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button},
         </div>
       </StyledProductCard>
     :<StyledProductCard>
-      <CompareButton>
+      <ActionButton>
       <i className="lni lni-32 lni-pagination" />
-      </CompareButton>
+      </ActionButton>
       <div style={{alignSelf: 'center', placeSelf: 'center'}}>
       <i
         className="lni lni-spinner-arrow lni-is-spinning"
