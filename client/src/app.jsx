@@ -35,7 +35,7 @@ class App extends React.Component {
 
 
   handleTracking(event) {
-
+    console.log(event.target.outerHTML)
     let timeStamp = new Date();
     let data = {}
     for (let i = 0; i < event.path.length; i++) {
@@ -46,7 +46,7 @@ class App extends React.Component {
           let code = event.path[i].attributes.getNamedItem('tracking');
           if (code) {
             console.log('this is the temp', code)
-            data = code.value ? {element: event.target, widget: code.value, time: timeStamp } : {};
+            data = code.value ? {element: event.target.outerHTML, widget: code.value, time: timeStamp } : {};
             i = event.path.length;
             console.log('new data', data)
           }
