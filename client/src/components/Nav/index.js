@@ -101,7 +101,7 @@ class Nav extends React.Component {
       width: '20px',
     }
     return(
-      <div id="top" style={header}>
+      <div tracking={'nav'} id="top" style={header}>
         <Title style={title}>
           Bougie Boutique
         </Title>

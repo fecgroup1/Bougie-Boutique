@@ -6,7 +6,6 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
   const [actionProduct, setActionProduct] = useState()
 
   useEffect(() => {
-    console.log('ln 9', product.product || product)
     if (relatedProduct) {
       setActionProduct(product.product)
     } else {
@@ -45,9 +44,6 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
           <p style={{marginTop: 0}}>{`$${product.styles[0].original_price}`}</p>
           <StarsOuter
           >
-            {
-              console.log('product', product)
-            }
             <StarsInner
               rating={product.meta.starRating}
             />

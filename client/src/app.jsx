@@ -35,7 +35,35 @@ class App extends React.Component {
 
 
   handleTracking(event) {
+
+    let timeStamp = new Date();
+    let widget = -1;
+    let data = {}
+
+    while ( typeof widget === 'number') {
+      widget++
+      let temp = event.path[widget].attributes
+      if(temp) {
+        let code = temp.getNamedItem('tracking');
+        if (code) {
+          console.log('this is the temp', code)
+          data = code.value ? {element: event.target, widget: code.value, time: timeStamp } : {};
+          widget = code.value;
+          console.log('new data', data)
+        }
+      }
+
+      if (widget === event.path.length) {
+        data.element = event.target
+        data.widget = `no parent tracking code, path: ${event.path}`
+        data.time = timeStamp
+      }
+
+    }
+
+    console.log(data)
     console.log(event);
+    console.log(event.path);
   }
 
   render() {
@@ -51,7 +79,8 @@ class App extends React.Component {
                 store={store}
                 checkCart={store.checkCart}
                 dark={this.state.dark}
-                toggleTheme={this.toggleTheme}/>
+                toggleTheme={this.toggleTheme}
+              />
               <Body />
               <div id="content">
                 <Overview
@@ -64,10 +93,12 @@ class App extends React.Component {
                 />
                 <QandA
                   store={store}
+                  tracking={'Questions and Answers'}
                 />
                 <RatingsReviews
                   store={store}
                   key= {store.state.reviews}
+                  tracking={'Ratings and Reviews'}
                 />
               </div>
             </>
