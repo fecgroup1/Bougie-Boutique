@@ -101,11 +101,13 @@ class ExpandedView extends React.Component {
               style={scrollImg}
               src={styles[currImg[0]].photos[currImg[1]].url} />
           </div>
-          <GalleryThumbnails
+          {this.state.zoom ? null:
+            <GalleryThumbnails
             styles={styles}
             currImg={currImg}
             handleImgClick={handleImgClick}
             id="expandedThumbs"/>
+          }
       </Modal>
     );
   }
