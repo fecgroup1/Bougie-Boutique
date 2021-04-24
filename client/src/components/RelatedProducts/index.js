@@ -49,16 +49,19 @@ const RelatedProducts = ({store, theme}) => {
   }
 
   const handleSaveOutfit = (product) => {
-    outfits[product.currentProductId] = product;
-    console.log('outfits?', outfits)
+    let newState = {...outfits};
+    newState[product.currentProductId] = product;
+    setOutfits(newState);
     window.localStorage.removeItem('bougieBoutiqueOutfits');
-    window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(outfits));
+    window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(newState));
   }
 
   const handleRemoveOutfit = (product) => {
-    delete outfits[product.currentProductId];
+    let newState = {...outfits};
+    delete newState[product.currentProductId];
+    setOutfits(newState);
     window.localStorage.removeItem('bougieBoutiqueOutfits');
-    window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(outfits));
+    window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(newState));
   }
 
   //memoizes the props in this componenet and only updates them when the array values are updated [currentProdID, products]
