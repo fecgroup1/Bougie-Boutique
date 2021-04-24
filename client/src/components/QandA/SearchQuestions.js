@@ -1,6 +1,10 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 
 const SearchQuestions = (props) => {
+
+  useEffect(() => {
+    document.getElementById('searchQuestionInput').value = '';
+  }, [props.currentProductId])
     return (
       <Fragment>
         <form className='searchQuestion'>

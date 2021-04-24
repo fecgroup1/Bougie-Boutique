@@ -85,7 +85,7 @@ class AddQuestion extends React.Component {
           <div>
             <button id='closeModal' onClick={this.closeForm}>X</button>
             <h2>Ask your question</h2>
-            <h4>About the {this.props.name}</h4>
+            <h4>About the Product</h4>
             <label>* Your Question: </label>
             <textarea id='questionInputText' name='question' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
             <p id='charsLeft'>{this.state.chars} characters remaining</p>

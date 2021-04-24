@@ -107,7 +107,7 @@ class AddAnswer extends React.Component {
           <div>
           <button id='closeModal' onClick={this.closeForm}>X</button>
             <h2>Add an answer</h2>
-            <p styles={{fontWeight: 'bold'}}>{this.props.name} : {this.props.question.question_body}</p>
+            <p styles={{fontWeight: 'bold'}}>Product: {this.props.question.question_body}</p>
             <label>* Your Answer: </label>
             <textarea id='answerInputText' name='answer' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
             <p id='charsLeft'>{this.state.chars} characters remaining</p>

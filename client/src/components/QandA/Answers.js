@@ -1,76 +1,67 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AnswerPhotos from './AnswerPhotos.js'
 
-class Answers extends React.Component {
-  constructor(props) {
-    super(props)
+const Answers = (props) => {
+  const [answers, setAnswers] = useState([]);
+  const [moreAnswers, setMoreAnswers] = useState(false);
+  const [helpful, setHelpful] = useState(false);
+  const [answerMarkedHelpful, setAnswerMarkedHelpful] = useState([]);
+  const [aReported, setAReported] = useState([]);
 
-    this.state = {
-      answers: [],
-      moreAnswers: false,
-      helpful: false,
-      answerMarkedHelpful: [],
-      aReported: []
-    }
-    this.getMore = this.getMore.bind(this)
-    this.collapse = this.collapse.bind(this)
-    this.reportAnswer = this.reportAnswer.bind(this)
-    this.escape = this.escape.bind(this)
-    this.getAnswers = this.getAnswers.bind(this)
-  }
+  useEffect(() => {
+    setMoreAnswers(false)
+    getAnswers();
+  }, [props.questionId])
 
-  getAnswers() {
-    const id = this.props.questionId
+
+  const getAnswers = () => {
+    const id = props.questionId
     axios.get(`/qa/questions/${id}/answers`)
     .then ((answersArr) => {
-      this.setState({answers: answersArr.data.results})
+      setAnswers(answersArr.data.results)
     })
     .catch ((err) => {
       console.log(err)
     })
   }
 
-  componentDidMount() {
-    this.getAnswers()
+  const getMore = () => {
+    setMoreAnswers(true)
   }
 
-  getMore() {
-    this.setState({moreAnswers: true})
+  const collapse = () => {
+    setMoreAnswers(false)
   }
 
-  collapse() {
-    this.setState({moreAnswers: false})
-  }
-
-  markHelpful(answer) {
-    const prevMarked = this.state.answerMarkedHelpful
+  const markHelpful = (answer) => {
+    const prevMarked = answerMarkedHelpful
     const id = answer.answer_id;
     if (prevMarked.includes(answer.answer_id)) {
       return;
     } else {
-      this.setState({answerMarkedHelpful: [...prevMarked, answer.answer_id]})
+      setAnswerMarkedHelpful([...prevMarked, answer.answer_id])
       axios.put(`qa/answers/${id}/helpful`, null)
       answer.helpfulness += 1
     }
   }
 
-  reportAnswer(answer) {
-    const prevReported = this.state.aReported;
+  const reportAnswer = (answer) => {
+    const prevReported = aReported;
     const id = answer.answer_id;
-    this.setState({aReported: [...prevReported, answer.answer_id]})
+    setAReported([...prevReported, answer.answer_id])
     axios.put(`qa/answers/${id}/report`, null)
     answer.reported = true;
   }
 
-  escape (html) {
+  const escape = (html) => {
     return String(html)
       .replace(new RegExp("&"+"#"+"x27;", "g"), "'")
   }
 
-  renderAnswer(answer, index) {
-    const tempBody = (this.escape(answer.body))
-    const report = (this.state.aReported.includes(answer.answer_id))
+  const renderAnswer = (answer, index) => {
+    const tempBody = (escape(answer.body))
+    const report = (aReported.includes(answer.answer_id))
     const aDate = new Date(answer.date)
     return (
       <div className='answerContainer' key={index}>
@@ -87,11 +78,11 @@ class Answers extends React.Component {
               ,{' '} {aDate.toDateString().substring(4)}
               </p>
               <p id='answerHelpful' className='answererInfo'>| Helpful?
-                <span id='helpfulButton' onClick={() => this.markHelpful(answer)}> Yes </span>
+                <span id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </span>
                 ({answer.helpfulness}) {' | '}
                 {!report ?
                   (
-                  <span id='reportButton' onClick={() => this.reportAnswer(answer)}>Report</span>
+                  <span id='reportButton' onClick={() => reportAnswer(answer)}>Report</span>
                   ) :
                   (
                   <span>Reported</span>
@@ -107,11 +98,11 @@ class Answers extends React.Component {
                 by {' '} {answer.answerer_name}, {' '} {aDate.toDateString().substring(4)}
               </p>
               <p id='answerHelpful' className='answererInfo'>| Helpful?
-                <span id='helpfulButton' onClick={() => this.markHelpful(answer)}> Yes </span>
+                <span id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </span>
                 ({answer.helpfulness}) {' | '}
                 {!report ?
                   (
-                  <span id='reportButton' onClick={() => this.reportAnswer(answer)}>Report</span>
+                  <span id='reportButton' onClick={() => reportAnswer(answer)}>Report</span>
                   ) :
                   (
                   <span>Reported</span>
@@ -125,34 +116,34 @@ class Answers extends React.Component {
     )
   }
 
-  render () {
-    if (this.props.questionId !== undefined) {
-      var storeAnswers = this.props.answers
-      return (
-        <div>
-          {!this.state.moreAnswers ?
-            (
-              <div>
-                {this.state.answers.slice(0, 2).map((answer, index) =>
-                (this.renderAnswer(answer, index)))}
-                {this.state.answers.length > 2 ? <a id='moreAnswers' onClick={this.getMore}>More answers...</a> : null}
-              </div>
-            )
-            :
-            (
-              <div>
-                  {this.state.answers.map((answer, index) => (this.renderAnswer(answer, index)))}
-                  {this.state.answers.length > 2 ? <a id='moreAnswers' onClick={this.collapse}>Collapse answers</a> : null}
-              </div>
-            )
 
-          }
-        </div>
-      )
-    } else {
-      return (<div>Loading answers...</div>)
-    }
+  if (props.questionId !== undefined) {
+    var storeAnswers = props.answers
+    return (
+      <div>
+        {!moreAnswers ?
+          (
+            <div>
+              {answers.slice(0, 2).map((answer, index) =>
+              (renderAnswer(answer, index)))}
+              {answers.length > 2 ? <a id='moreAnswers' onClick={getMore}>More answers...</a> : null}
+            </div>
+          )
+          :
+          (
+            <div>
+                {answers.map((answer, index) => (renderAnswer(answer, index)))}
+                {answers.length > 2 ? <a id='moreAnswers' onClick={collapse}>Collapse answers</a> : null}
+            </div>
+          )
+
+        }
+      </div>
+    )
+  } else {
+    return (<div>Loading answers...</div>)
   }
+
 }
 
 export default Answers
