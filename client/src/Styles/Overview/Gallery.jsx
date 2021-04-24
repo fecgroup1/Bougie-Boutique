@@ -84,32 +84,35 @@ export const NoScrollBar = styled.div`
 `;
 
 export const ScrollBg = styled.button`
-  border: none;
   background: ${props => props.theme.bg};
-  font-size: 2em;
+  border: none;
+  border-radius: 50%;
+  height: 3vh;
+  margin: 0vh;
   outline: none;
   padding: 0;
-  width: 2.5vh;
-  height: 2.5vh;
-  border-radius: 50%;
-  margin: 0.5vh;
   transition: background 0.5s;
-  z-index: 0;
+  width: 3vh;
 `;
 
 export const GalleryScroll = styled.button`
 &{
-  margin: 0.5vh;
-  font-size: 2.5vh;
-  text-align: center;
-  transition: opacity 0.5s;
-  color: ${props => props.theme.text};
-  border: none;
+  align-items: center;
   background: none;
-  outline: none;
+  border: 0.5vh solid transparent;
+  border-radius: 50%;
+  color: ${props => props.theme.text};
+  display: flex;
+  font-size: 2.5vh;
+  height: 3vh;
+  justify-content: center;
+  line-height: 3vh;
   opacity: 50%;
+  outline: none;
+  padding: 0;
+  text-align: center;
   transition: color 0.5s, opacity 0.5s;
-  z-index: 1
+  width: 3vh;
 }
 &:hover {
   opacity: 100%;

@@ -86,8 +86,8 @@ class Gallery extends React.Component {
       background: 'none',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: '65vh',
-      margin: '0.5vh 1vw',
+      height: '64vh',
+      margin: '1vh 1vw',
       zIndex: 0,
     }
 
