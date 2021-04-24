@@ -46,26 +46,16 @@ class Overview extends React.Component {
       cart: this.props.store.state.cart,
     }
     this.changeStyle = this.changeStyle.bind(this);
-    this.changeImg = this.changeImg.bind(this);
   }
 
   componentDidMount() {
-    this.props.store.setProduct();
+    console.log('calling componentDidMount');
+    this.props.store.setProduct()
   }
 
   changeStyle(index) {
     console.log('changStyle index: ', index);
-    this.setState({
-      currImg: [index, 0]
-    });
-    // this.props.store.changeStyle(index);
-  }
-
-  changeImg(style, index) {
-    this.setState({
-      // currStyle: this.state.currImg[0],
-      currImg: [style, index]
-    });
+    this.props.store.changeImg(index, 0);
   }
 
   render () {
@@ -81,12 +71,12 @@ class Overview extends React.Component {
         <Flex style={loading}>
           <Gallery
             styles={store.styles}
-            currImg={this.state.currImg}
-            changeImg={this.changeImg} />
+            currImg={store.currImg}
+            changeImg={this.props.store.changeImg} />
           <Styles
             store={store}
             product={store.product}
-            currStyle={this.state.currImg[0]}
+            currStyle={store.currImg[0]}
             changeStyle={this.changeStyle}
             styles={store.styles}
             stars={metaStore.starRating}

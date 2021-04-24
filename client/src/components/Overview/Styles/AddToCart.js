@@ -166,7 +166,7 @@ class AddToCart extends React.Component {
               })}
           </CartDropdown>
           <CartDropdown id="qty" disabled>
-            <option value={this.state.quantity}>
+            <option defaultValue value={this.state.quantity}>
               {this.state.quantity}
             </option>
           </CartDropdown>
@@ -207,7 +207,7 @@ class AddToCart extends React.Component {
             value={this.state.quantity}
             onChange={(event) => this.handleQtySelect(event)}>
               <option
-              defaultValue
+                defaultValue
                 value={this.state.quantity}>
                   {this.state.quantity}
               </option>

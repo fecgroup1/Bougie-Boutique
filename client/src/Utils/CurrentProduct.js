@@ -21,6 +21,7 @@ class CurrentProduct extends React.Component {
     this.setQuestions = this.setQuestions.bind(this);
     this.setCart = this.setCart.bind(this);
     // this.updateCart = this.updateCart.bind(this);
+    this.changeImg = this.changeImg.bind(this);
   }
 
   changeProduct(pid) {
@@ -40,8 +41,9 @@ class CurrentProduct extends React.Component {
     ProductAPI.getProduct(id)
     .then((resData) => {
       let productData = resData;
-      productData.currStyle = 0;
+      // productData.currStyle = 0;
       // productData.cart = this.checkCart(resData);
+      productData.currImg = [0, 0];
       this.setState(productData);
     })
   }
@@ -107,6 +109,13 @@ class CurrentProduct extends React.Component {
   //     cart: newCart
   //   });
   // }
+
+  changeImg(style, index) {
+    this.setState({
+      // currStyle: this.state.currImg[0],
+      currImg: [style, index]
+    });
+  }
 
   render() {
     return (
