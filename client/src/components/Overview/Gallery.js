@@ -1,5 +1,5 @@
 import React from 'react';
-import { Left, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, Loading, ScrollBg } from './../../Styles/Overview';
+import { Left, GallPlaceholder, GallergyBorder, SelectedGallPlaceholder, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, Loading, ScrollBg } from './../../Styles/Overview';
 
 class Gallery extends React.Component {
   constructor (props) {
@@ -12,6 +12,14 @@ class Gallery extends React.Component {
     };
     this.scroll = this.scroll.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  handleImgClick(x, y) {
+    // FUTURE IMPLEMENTATION: Scroll to thumbnail
+    let id = `img${x}-${y}`;
+    // let dist = (x + 1) * (y + 1);
+    document.getElementById("galleryscroll").scrollTo(document.getElementById(id));
+    this.props.changeImg(x, y);
   }
 
   handleScroll() {
@@ -48,7 +56,6 @@ class Gallery extends React.Component {
   render() {
     this.state.numImgs = 0;
 
-    const changeImg = this.props.changeImg;
     const styles = this.props.styles;
     const currImg = this.props.currImg;
 
@@ -71,13 +78,8 @@ class Gallery extends React.Component {
       opacity: `${styles[0].name === null ? '0': '0.5'}`,
     };
     const upOpacity = {
-      opacity: `${styles[0].name === null ||
-                  this.state.scrollTop >= 0? '0': '0.5'}`,
+      opacity: (styles[0].name === null) || (this.state.scrollTop <= 0) ? 0: 0.5,
     };
-    const thumb = {
-      width: '6vh',
-      height: '6vh',
-    }
     const buttonContainer = {
       display: 'flex',
       flexDirection: 'column',
@@ -111,14 +113,39 @@ class Gallery extends React.Component {
                       return null;
                     } else if ((sIndex === currImg[0]) &&
                         (pIndex === currImg[1])) {
-                        return <CurrGallThumb
+                        if (photo.thumbnail_url === null) {
+                          return (
+                            <GallergyBorder>
+                              <SelectedGallPlaceholder
+                                key={[sIndex, pIndex]}
+                                id={`img${sIndex}-${pIndex}`}
+                                src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
+                            </GallergyBorder>
+                          );
+                        } else {
+                          return (
+                            <CurrGallThumb
+                              key={[sIndex, pIndex]}
+                              id={`img${sIndex}-${pIndex}`}
+                              src={photo.thumbnail_url} />
+                          );
+                        }
+                    } else if (photo.thumbnail_url === null) {
+                      return (
+                        <GallPlaceholder
                           key={[sIndex, pIndex]}
-                          src={photo.thumbnail_url} />
+                          id={`img${sIndex}-${pIndex}`}
+                          onClick={() => {this.handleImgClick(sIndex, pIndex)}}
+                          src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
+                      );
                     } else {
-                      return <GallThumb
-                        key={[sIndex, pIndex]}
-                        src={photo.thumbnail_url}
-                        onClick={() => {changeImg(sIndex, pIndex)}} />
+                      return (
+                        <GallThumb
+                          key={[sIndex, pIndex]}
+                          id={`img${sIndex}-${pIndex}`}
+                          src={photo.thumbnail_url}
+                          onClick={() => {this.handleImgClick(sIndex, pIndex)}} />
+                      );
                     }
                   })
                 })}
