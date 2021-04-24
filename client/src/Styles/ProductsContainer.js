@@ -51,20 +51,25 @@ export const CardImage = styled.div`
 `
 
 const actionButtonFunc = (props) => (
-  `background-color: ${props.theme.bg};
-   color: ${props.theme.bluGry};
+  ` background-color: ${props.theme.bg};
+    color: ${props.theme.bluGry};
 
-  button: hover {
-    background-color: ${props.theme.bluGry};
-    color: ${props.theme.bg};
-  };
+    &:hover {
+      cursor: ${props.cursor === 'compare' ? 'help' : ''};
+    }
 
-  i: hover {
-    border-radius: 1em;
-    padding: .5 em;
-    background-color: ${props.theme.bluGry};
-    color: ${props.theme.bg};
-  }`
+    button: hover {
+      background-color: ${props.theme.bluGry};
+      color: ${props.theme.bg};
+    };
+
+    i: hover {
+      border-radius: 1em;
+      padding: .5 em;
+      background-color: ${props.theme.bluGry};
+      color: ${props.theme.bg};
+    }
+  `
 )
 
 export const ActionButton = styled.button`
@@ -74,8 +79,5 @@ export const ActionButton = styled.button`
   border-radius: 2em;
   padding: .25em;d
   border: 1px solid;
-  &:hover {
-    cursor: help;
-  }
   ${props => actionButtonFunc(props)};
 `
