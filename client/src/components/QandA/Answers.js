@@ -12,7 +12,7 @@ const Answers = (props) => {
   useEffect(() => {
     setMoreAnswers(false)
     getAnswers();
-  }, [props.questionId])
+  }, [props.questionId, props.newAnswer])
 
 
   const getAnswers = () => {
