@@ -48,6 +48,11 @@ const RelatedProducts = ({store, theme}) => {
     }
   }
 
+  const handleComparison = (product) => {
+    console.log('im invoked, heres my product to compare:', product)
+    setComparisonProduct(product)
+  }
+
   const handleSaveOutfit = (product) => {
     let newState = {...outfits};
     newState[product.currentProductId] = product;
@@ -90,13 +95,15 @@ const RelatedProducts = ({store, theme}) => {
           {
             products.map((product, index) => (
               <ProductCard
-                key={index}
+                key={'relatedproduct' + index}
+                theme={theme}
                 product={product}
                 className={'productCard'}
                 changeProduct={store.changeProduct}
                 buttonAction={setComparisonProduct}
                 buttonType={'lni-pagination'}
                 cursor={'compare'}
+                relatedProduct={true}
               />
             ))
           }
@@ -146,12 +153,15 @@ const RelatedProducts = ({store, theme}) => {
           {
             Object.keys(outfits).map((product, index) => (
               <ProductCard
-                key={index}
+                key={'outfit' + index}
+                theme={theme}
                 product={outfits[product]}
                 className={'productCard'}
                 buttonAction={handleRemoveOutfit}
                 buttonType={'lni-cross-circle'}
                 cursor={'delete'}
+                addedClasses={'outfit'}
+                relatedProduct={false}
               />
             ))
           }
@@ -161,6 +171,7 @@ const RelatedProducts = ({store, theme}) => {
     </ProductsContainer>
 
   , [outfits])
+
 
     return (
       <Fragment>

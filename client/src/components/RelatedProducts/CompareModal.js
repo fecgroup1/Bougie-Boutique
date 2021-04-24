@@ -5,11 +5,9 @@ import Chart from './Chart.js'
 
 const CompareModal = ({product, comparisonProduct, resetCompare}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
-  let prd;
 
   useEffect(() => {
     if (comparisonProduct) {
-      prd = product.product
       setModalIsOpen(true);
     }
   }, [comparisonProduct])
@@ -45,7 +43,7 @@ const CompareModal = ({product, comparisonProduct, resetCompare}) => {
           }}
         >
           <Chart
-            product={prd}
+            product={product}
             comparison={comparisonProduct}
             theme={theme}
            />
