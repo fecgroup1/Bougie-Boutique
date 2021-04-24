@@ -173,17 +173,17 @@ const RelatedProducts = ({store, theme}) => {
 
     return (
       <Fragment>
-        <RelatedContainer
-          tracking={'Related Products'}
-        >
-          {relatedSection}
-          {outfitSection}
-        </RelatedContainer>
-        <CompareModal
-          product={store.state.product}
-          comparisonProduct={comparisonProduct}
-          resetCompare={setComparisonProduct}
-         />
+        <section tracking={'Related Products'}>
+          <RelatedContainer>
+            {relatedSection}
+            {outfitSection}
+          </RelatedContainer>
+          <CompareModal
+            product={store.state.product}
+            comparisonProduct={comparisonProduct}
+            resetCompare={setComparisonProduct}
+          />
+         </section>
     </Fragment>
     )
 }

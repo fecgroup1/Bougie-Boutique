@@ -37,33 +37,22 @@ class App extends React.Component {
   handleTracking(event) {
 
     let timeStamp = new Date();
-    let widget = -1;
     let data = {}
-
-    while ( typeof widget === 'number') {
-      widget++
-      let temp = event.path[widget].attributes
-      if(temp) {
-        let code = temp.getNamedItem('tracking');
-        if (code) {
-          console.log('this is the temp', code)
-          data = code.value ? {element: event.target, widget: code.value, time: timeStamp } : {};
-          widget = code.value;
-          console.log('new data', data)
+    for (let i = 0; i < event.path.length; i++) {
+      if(event.path[i]) {
+        console.log('event.path[i] exists', event.path[i].type)
+        if (event.path[i].attributes) {
+          console.log('event attributes exist', event.path[i].attributes)
+          let code = event.path[i].attributes.getNamedItem('tracking');
+          if (code) {
+            console.log('this is the temp', code)
+            data = code.value ? {element: event.target, widget: code.value, time: timeStamp } : {};
+            i = event.path.length;
+            console.log('new data', data)
+          }
         }
       }
-
-      if (widget === event.path.length) {
-        data.element = event.target
-        data.widget = `no parent tracking code, path: ${event.path}`
-        data.time = timeStamp
-      }
-
     }
-
-    console.log(data)
-    console.log(event);
-    console.log(event.path);
   }
 
   render() {
@@ -83,18 +72,23 @@ class App extends React.Component {
               />
               <Body />
               <div id="content">
-                <Overview
-                  store={store}
-                />
-                <RelatedProducts
-                  store={store}
-                  outfits={this.state.outfits}
-                  theme={theme}
-                />
-                <QandA
-                  store={store}
-                  tracking={'Questions and Answers'}
-                />
+                <section tracking="Overview">
+                  <Overview
+                    store={store}
+                  />
+                </section>
+                <section tracking="Related Products">
+                  <RelatedProducts
+                    store={store}
+                    outfits={this.state.outfits}
+                    theme={theme}
+                  />
+                </section>
+                <section tracking='Questions and Answers'>
+                  <QandA
+                    store={store}
+                  />
+                </section>
                 <RatingsReviews
                   store={store}
                   key= {store.state.reviews}
