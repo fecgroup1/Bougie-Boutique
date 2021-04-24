@@ -6,17 +6,18 @@ export const StyleThumbs = styled.div`
 `;
 
 export const Loading = styled.img`
-border: none;
-width: 50%;
-height: 50%;
-margin: 25%;
-opacity: 30%;
-filter: invert(${props => props.theme.invertWht});
-object-position: 50% 50%;
-animation-name: loadspin;
-animation-duration: 3s;
-animation-iteration-count: infinite;
-animation-timing-function: cubic-bezier(0.42, 0.6, 0.58, 0.1);
+  border: none;
+  width: 50%;
+  height: 50%;
+  margin: 25%;
+  opacity: 30%;
+  filter: invert(${props => props.theme.invertWht});
+  transition: filter 0.5s;
+  object-position: 50% 50%;
+  animation-name: loadspin;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.42, 0.6, 0.58, 0.1);
 `;
 
 export const StylePlaceholder = styled.img`
@@ -50,6 +51,7 @@ export const SelectedStylePlaceholder = styled.img`
     object-position: 50% 50%;
     margin: 0.75vh;
     filter: invert(${props => props.theme.invertWht});
+    transition: filter 0.5s;
   }
   &: hover {
     opacity: 50%;

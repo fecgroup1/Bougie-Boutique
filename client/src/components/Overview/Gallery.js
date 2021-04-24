@@ -1,5 +1,6 @@
 import React from 'react';
-import { Left, GallPlaceholder, GallergyBorder, SelectedGallPlaceholder, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, Loading, ScrollBg } from './../../Styles/Overview';
+import DefaultView from './Gallery/DefaultView.js';
+import { Left, GallPlaceholder, GallergyBorder, SelectedGallPlaceholder, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, ScrollBg } from './../../Styles/Overview';
 
 class Gallery extends React.Component {
   constructor (props) {
@@ -59,12 +60,6 @@ class Gallery extends React.Component {
     const styles = this.props.styles;
     const currImg = this.props.currImg;
 
-    const galImg = {
-      objectFit: 'cover',
-      objectPosition: '50% 50%',
-      width: '100%',
-      height: '100%'
-    };
     const position = {
       transform: `translateY(${this.state.position}vh)`,
       zIndex: 2,
@@ -93,13 +88,10 @@ class Gallery extends React.Component {
 
     return (
       <Left style={{alignContent: 'center', minWidth: '400px'}}>
-        <div id="gallery" style={{height: '66vh'}}>
-          {styles[0].name === null ? <Loading
-            src={styles[currImg[0]].photos[currImg[1]].url} />:
-            <img
-            style={galImg}
-            src={styles[currImg[0]].photos[currImg[1]].url}/>}
-
+        <div id="gallery" style={{ height: '66vh', overflow: 'hidden' }}>
+          <DefaultView
+            styles={styles}
+            currImg={currImg}/>
           <GallThumbContainer style={bg}></GallThumbContainer>
 
           <GallThumbContainer style={container}>

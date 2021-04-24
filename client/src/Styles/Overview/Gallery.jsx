@@ -1,5 +1,28 @@
 import styled from 'styled-components';
 
+export const MainImg = styled.img`
+& {
+  object-fit: cover;
+  object-position: 50% 50%;
+  width: 100%;
+  height: 100%;
+}
+&: hover {
+  cursor: zoom-in;
+}
+`;
+
+export const MainNull = styled.img`
+  border: none;
+  width: 50%;
+  height: 50%;
+  margin: 25%;
+  opacity: 30%;
+  filter: invert(${props => props.theme.invertWht});
+  object-position: 50% 50%;
+  transition: filter 0.5s;
+`;
+
 export const GallPlaceholder = styled.img`
   & {
     border: 0.75vh solid transparent;
