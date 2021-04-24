@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
-import WidgetContainer from '../../Styles'
+import { ThemeToggle, QuestionsButtons } from '../../Styles'
 import Modal from 'react-modal'
 
 
@@ -120,7 +120,7 @@ const AddQuestion = (props) => {
           </div>
         </form>
         </Modal>
-        <button id='addQuestionButton' onClick={openModal}>ASK A QUESTION +</button>
+        <QuestionsButtons onClick={openModal}>ASK A QUESTION +</QuestionsButtons>
       </Fragment>
     )
   } else {

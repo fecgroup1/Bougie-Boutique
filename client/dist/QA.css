@@ -4,12 +4,6 @@
   width: 90%;
 }
 
-#addAnswerButton {
-  float: right;
-  margin: 0px;
-  font-size: 14px;
-  padding-left: 5px;
-}
 
 #qHelpful {
   float: right;
@@ -31,7 +25,7 @@
 }
 
 #answerHelpful {
-  margin-left: 5px;
+  margin-left: 15px;
 }
 
 .answerText {
@@ -64,27 +58,6 @@
   display: inline;
 }
 
-#moreQuestions {
-  border: 2px solid rgb(0, 0, 0);
-  font-size: 16px;
-  margin-top: 20px;
-  margin-right: 20px;
-  padding: 10px;
-  font-weight: bold;
-}
-
-#addQuestionButton {
-  border: 2px solid rgb(0, 0, 0);
-  font-size: 16px;
-  margin-top: 20px;
-  padding: 10px;
-  font-weight: bold;
-}
-
-#addQuestionButton:hover {
-  cursor: pointer
-}
-
 #moreAnswers {
   display: inline-block;
   font-size: 13px;
@@ -102,9 +75,16 @@
   cursor: pointer
 }
 
+#helpfulButton {
+  text-decoration: underline;
+}
+
 #helpfulButton:hover {
   cursor: pointer;
-  text-decoration: underline;
+}
+
+#reportButton {
+  margin-left: 15px;
 }
 
 #reportButton:hover {
@@ -112,10 +92,16 @@
     text-decoration: underline;
 }
 
+#addAnswerButton {
+  float: right;
+  margin: 0px;
+  font-size: 14px;
+  padding-left: 5px;
+  text-decoration: underline;
+}
 
 #addAnswerButton:hover {
   cursor: pointer;
-  text-decoration: underline;
 }
 
 #answerInputText {
@@ -321,18 +307,6 @@
   transform: translateY(-50%);
   margin: auto;
   padding: 0;
-}
-
-#searchQuestionInput {
-  position: relative;
-  padding-left: 60px;
-  border: 2px solid rgb(0, 0, 0);
-  font-size: 16px;
-  width: 85%;
-  height: 40px;
-  margin-bottom: 15px;
-  background-color: transparent;
-
 }
 
 .lni-search {

@@ -5,7 +5,7 @@ import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
 import SearchQuestions from './SearchQuestions.js'
 import ProductAPI from '../../Utils/ProductAPI';
-import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead } from '../../Styles'
+import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead, QuestionsButtons } from '../../Styles'
 
 const Questions = (props) => {
   const [questions, setQuestions] = useState([]);
@@ -164,7 +164,7 @@ const Questions = (props) => {
         {!moreSearchedQuestions && searchResults.length >  2 ?
         (
           <div>
-            <button id='moreQuestions' value={'search'} onClick={addMore}>MORE ANSWERED QUESTIONS</button>
+            <QuestionsButtons value={'search'} onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
             <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
           </div>
         )
@@ -179,7 +179,7 @@ const Questions = (props) => {
         {!moreQuestions && questions.length >  2?
         (
           <div>
-            <button id='moreQuestions' onClick={addMore}>MORE ANSWERED QUESTIONS</button>
+            <QuestionsButtons onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
             <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
           </div>
         )
