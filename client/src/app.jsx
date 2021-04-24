@@ -10,6 +10,8 @@ import RatingsReviews from './components/RatingsReviews';
 import { ThemeProvider } from 'styled-components';
 import { Body, dark, light } from './Styles';
 
+import TrackingAPI from './Utils/TrackingAPI.js'
+
 
 class App extends React.Component {
 
@@ -35,24 +37,26 @@ class App extends React.Component {
 
 
   handleTracking(event) {
-    console.log(event.target.outerHTML)
     let timeStamp = new Date();
     let data = {}
     for (let i = 0; i < event.path.length; i++) {
       if(event.path[i]) {
-        console.log('event.path[i] exists', event.path[i].type)
         if (event.path[i].attributes) {
-          console.log('event attributes exist', event.path[i].attributes)
           let code = event.path[i].attributes.getNamedItem('tracking');
           if (code) {
-            console.log('this is the temp', code)
             data = code.value ? {element: event.target.outerHTML, widget: code.value, time: timeStamp } : {};
             i = event.path.length;
-            console.log('new data', data)
+            // console.log('tracking data', data)
           }
         }
       }
     }
+    TrackingAPI.sendTrackingData(data)
+    .then((response) => {
+      // console.log(response)
+    })
+    .catch((err) => console.log(err))
+
   }
 
   render() {
