@@ -10,7 +10,7 @@ const RelatedProducts = ({store, theme}) => {
   const [products, setProducts] = useState([1, 2, 3, 4]);
   const [productsPosition, setProductsPosition] = useState(0);
   const [comparisonProduct, setComparisonProduct] = useState(null);
-  const [outfits, setOutfits] = useState([])
+  const [outfits, setOutfits] = useState({})
 
   //grabs related products when the current productId is initally set/changed
   useEffect(() => {
@@ -49,8 +49,14 @@ const RelatedProducts = ({store, theme}) => {
   }
 
   const handleSaveOutfit = (product) => {
-    outfits.push(product)
+    outfits[product.currentProductId] = product;
     console.log('outfits?', outfits)
+    window.localStorage.removeItem('bougieBoutiqueOutfits');
+    window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(outfits));
+  }
+
+  const handleRemoveOutfit = (product) => {
+    delete outfits[product.currentProductId];
     window.localStorage.removeItem('bougieBoutiqueOutfits');
     window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(outfits));
   }
@@ -87,6 +93,7 @@ const RelatedProducts = ({store, theme}) => {
                 changeProduct={store.changeProduct}
                 buttonAction={setComparisonProduct}
                 buttonType={'lni-pagination'}
+                cursor={'compare'}
               />
             ))
           }
@@ -134,13 +141,14 @@ const RelatedProducts = ({store, theme}) => {
         </AddOutfitButton>
         </StyledProductCard>
           {
-            outfits.map((product, index) => (
+            Object.keys(outfits).map((product, index) => (
               <ProductCard
                 key={index}
-                product={product}
+                product={outfits[product]}
                 className={'productCard'}
-                buttonAction={removeOutfit}
-                button={'outfit'}
+                buttonAction={handleRemoveOutfit}
+                buttonType={'lni-cross-circle'}
+                cursor={'delete'}
               />
             ))
           }

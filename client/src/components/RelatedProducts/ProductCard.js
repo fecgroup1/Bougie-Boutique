@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import { StyledProductCard, CardImage,  StarsOuter, StarsInner, ActionButton, NavButton } from '../../Styles/'
 
-const ProductCard = ({product, buttonAction, buttonType, changeProduct, button}, theme) => {
+const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor}, theme) => {
   let prd = product.product
   return (
     prd
@@ -9,6 +9,7 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button},
       <StyledProductCard>
         <ActionButton
           onClick={() => buttonAction(product)}
+          cursor={cursor}
         >
           <i className={`lni lni-32 ${buttonType}`} />
         </ActionButton>
