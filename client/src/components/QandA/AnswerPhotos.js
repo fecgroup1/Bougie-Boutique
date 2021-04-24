@@ -1,66 +1,62 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Modal from 'react-modal'
 
-class AnswerPhotos extends React.Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      currentPicture: [],
-      clicked: false,
-    }
-    this.selectedPhoto = this.selectedPhoto.bind(this)
-    this.current = this.current.bind(this)
-    this.changeClick = this.changeClick.bind(this)
-  }
+const AnswerPhotos = (props) => {
+  const [currentPicture, setCurrentPicture] = useState([]);
+  const [clicked, setClicked] = useState(false);
 
-  selectedPhoto (image) {
-    if (this.state.clicked === false) {
-      this.setState({currentPicture: image, clicked: true});
+  useEffect(() => {
+    setCurrentPicture([])
+    setClicked(false)
+  }, [props.answer])
+
+  const selectedPhoto = (image) => {
+    if (clicked === false) {
+      setClicked(true)
+      setCurrentPicture(image)
       document.body.style.overflow = 'hidden';
-    } else if (this.state.clicked === true) {
-      this.setState({currentPicture: image, clicked: false});
+    } else if (clicked === true) {
+      setClicked(false)
       document.body.style.overflow = 'unset'
     }
   };
 
-  current () {
-    return this.state.currentPicture.url;
-  }
+  const getUrl = () => currentPicture.url;
 
-  changeClick () {
-    this.setState({clicked: false})
+
+  const changeClick = () => {
+     setClicked(false)
      document.body.style.overflow = 'unset'
   }
 
-  render () {
-    const overlay = { overlay: {
-      backgroundColor: 'rgba(17, 17, 17, 0.75'
-    }}
-    return (
-      <div>
-        {this.props.answer.photos.length > 0 ? (
-          <div className='qaImages'>
-            {this.props.answer.photos.map((image, index) => (
-              <div key={index} className='qaPhotos'>
-                <Modal
-                  ariaHideApp={false}
-                  isOpen={this.state.clicked}
-                  onRequestClose={() => this.changeClick()}
-                  className= 'qaImgModal'
-                  style={overlay}
-                >
-                <img key={index} className='enlargedImage' src={this.current(image)}/>
-                </Modal>
-              <img key={index} onClick={() => {this.selectedPhoto(image)}} className='img' src={image.url}/>
-              </div>
-            ))}
-          </div>
-        )
-        : null}
-      </div>
-    )
-  }
+  const overlay = { overlay: {
+    backgroundColor: 'rgba(17, 17, 17, 0.75'
+  }}
+
+  return (
+    <div>
+      {props.answer.photos.length > 0 ? (
+        <div className='qaImages'>
+          {props.answer.photos.map((image, index) => (
+            <div key={index} className='qaPhotos'>
+              <Modal
+                ariaHideApp={false}
+                isOpen={clicked}
+                onRequestClose={() => changeClick()}
+                className= 'qaImgModal'
+                style={overlay}
+              >
+              <img key={index} className='enlargedImage' src={getUrl(image)}/>
+              </Modal>
+            <img key={index} onClick={() => {selectedPhoto(image)}} className='img' src={image.url}/>
+            </div>
+          ))}
+        </div>
+      )
+      : null}
+    </div>
+  )
 }
 
 export default AnswerPhotos
