@@ -45,19 +45,6 @@ const Questions = (props) => {
     })
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (this.props.productId !== nextProps.productId) {
-  //     console.log('qa Re')
-  //     return true;
-  //   } if (this.props.name !== nextProps.name) {
-  //     return true;
-  //   }
-  //   console.log('qa NO RErender');
-  //   console.log(this.props.productId)
-  //   console.log(this.props.name)
-  //   return false;
-  // }
-
   const markHelpful = (question) => {
     const prevMarked = questionMarkedHelpful
     const qid = question.question_id;
@@ -145,7 +132,6 @@ const Questions = (props) => {
       setQuestionLength(add)
   }
 
-    // if (this.state.name !== '') {
   return (
   <QAContainer
     tracking={'Questions and Answers'}
@@ -218,9 +204,6 @@ const Questions = (props) => {
   }
   </QAContainer>
   )
-// } else {
-//   return (<div>Loading questions</div>)
-// }
 }
 
 

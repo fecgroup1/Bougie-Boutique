@@ -9,8 +9,6 @@ const QandA = ({store}) => {
   useEffect(() => {
     ProductAPI.getProduct(store.state.currentProductId)
       .then((results) => {
-        console.log(store.state.currentProductId)
-        console.log(results)
         setProductId(results.currentProductId)
         // setName(results.product.name)
       })

@@ -3,10 +3,9 @@ import axios from 'axios';
 import WidgetContainer from '../../Styles'
 import Modal from 'react-modal'
 
-
-//Will implement photos later
-
 const AddAnswer = (props) => {
+  const [failedPhotoUpload, setFailedPhotoUpload] = useState(false);
+  const [invalidPhoto, setInvalidPhoto] = useState(false);
   const [overPhotoLimit, setOverPhotoLimit] = useState(false);
   const [textBodyInvalid, setTextBodyInvalid] = useState(false);
   const [emailInvalid, setEmailInvalid] = useState(false);
@@ -24,35 +23,47 @@ const AddAnswer = (props) => {
   }, [props.currentProductId])
 
   const openModal = (event) => {
-    event.preventDefault()
-    setOpen(true)
+    event.preventDefault();
+    setOpen(true);
     document.body.style.overflow = 'hidden';
   }
 
   const closeForm = () => {
-    setOpen(false)
-    setImgToUpload(false)
-    document.body.style.overflow = 'unset'
-    setEmailInvalid(false)
-    setNicknameInvalid(false)
-    setTextBodyInvalid(false)
+    setOpen(false);
+    setImgToUpload(false);
+    document.body.style.overflow = 'unset';
+    setEmailInvalid(false);
+    setNicknameInvalid(false);
+    setTextBodyInvalid(false);
+    setInvalidPhoto(false);
+    setFailedPhotoUpload(false);
   }
 
   const charsLeft = (e) => {
     const remaining = 1000 - e.target.value.length;
-    setChars(remaining)
+    setChars(remaining);
   }
 
   const addPhotos = (e) => {
     if (e.target.files.length > 5) {
-      setOverPhotoLimit(true)
+      setOverPhotoLimit(true);
+      setImages([]);
       e.target.value = null
     } else {
-      setOverPhotoLimit(false)
-      setImages([])
-      setImgToUpload(true)
-      setImgUploading(true)
+      setFailedPhotoUpload(false);
+      setInvalidPhoto(false);
+      setOverPhotoLimit(false);
+      setImages([]);
+      setImgToUpload(true);
+      setImgUploading(true);
       const test = [...e.target.files].map((file) => {
+        if (!file.name.match(/\.(jpg|jpeg|png)$/)) {
+          e.target.value = null;
+          setInvalidPhoto(true);
+          setImgUploading(false);
+          setImgToUpload(false);
+          return;
+        }
         const bodyFormData = new FormData();
         bodyFormData.append('image', file);
         const options = {
@@ -69,6 +80,13 @@ const AddAnswer = (props) => {
           setImages(urlArray)
           setImgUploading(false)
         })
+        .catch((err) => {
+          console.log(err)
+          e.target.value = null;
+          setFailedPhotoUpload(true)
+          setImgUploading(false);
+          setImgToUpload(false);
+        })
     }
   }
 
@@ -82,7 +100,7 @@ const AddAnswer = (props) => {
     let email = document.getElementById('answerEmail')
 
     if ((answerBody.validity.valid) && (nickname.validity.valid)
-        && email.validity.valid) {
+        && email.validity.valid && !failedPhotoUpload) {
       const qid = props.question.question_id;
       axios.post(`/qa/questions/${qid}/answers`, {
         body: answerBody.value,
@@ -152,13 +170,15 @@ const AddAnswer = (props) => {
             placeholder='Example: jack@email.com' maxLength='60'  required></input>
           <p className='warning'>For authentication reasons, you will not be emailed</p><br></br>
 
-          <label> Photos: </label>
+          <label> Photos: </label><br></br>
           <input type='file' id='qaPhotoUpload' name='image' accept='image/png, image/jpeg' onChange={addPhotos} multiple/>
           {!overPhotoLimit ?
             <p className='warning'>Choose up to 5 photos</p>
             :
             <p style={{color: 'red'}} className='warning'>Too many photos, try again!</p>
           }
+          {invalidPhoto ? <p style={{color: 'red'}} className='invalidWarning'>Invalid photo type included</p> : null}
+          {failedPhotoUpload ? <p style={{color: 'red'}} className='invalidWarning'>One or more images failed to upload</p> : null}
 
           {!imgToUpload ?
           <Fragment>
