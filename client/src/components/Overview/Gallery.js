@@ -91,17 +91,6 @@ class Gallery extends React.Component {
       zIndex: 0,
     }
 
-    const scrollBtnContainer = {
-      display: 'flex',
-      flexDirection: 'column',
-      background: 'none',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      height: '65vh',
-      margin: '0.5vh 1vw',
-      zIndex: 1,
-    }
-
     return (
       <Left style={{alignContent: 'center', minWidth: '400px'}}>
         <div id="gallery" style={{height: '66vh'}}>
@@ -175,21 +164,17 @@ class Gallery extends React.Component {
             }></ScrollBg>
             </GallThumbContainer>
 
-          <GallThumbContainer style={scrollBtnContainer}>
-            <div>
+          <GallThumbContainer style={buttonContainer}>
               <GalleryScroll
                 onClick={() => this.scroll('up')}>
                   {(styles[0].name === null) || (this.state.scrollTop <= 0) ? null: <i className="lni lni-chevron-up-circle"></i>}
               </GalleryScroll>
-            </div>
-            <div style={{ zIndex: 1 }}>
               <GalleryScroll
                 onClick={() => this.scroll('down')}>
                   {this.state.scrollBtm ||
                   (styles[0].name === null) ||
                   (this.state.numImgs <= 7) ? null: <i className="lni lni-chevron-down-circle"></i>}
               </GalleryScroll>
-            </div>
           </GallThumbContainer>
 
         </div>

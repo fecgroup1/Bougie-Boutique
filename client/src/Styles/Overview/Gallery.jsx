@@ -39,8 +39,8 @@ export const SelectedGallPlaceholder = styled.img`
 
 export const GallThumb = styled.img`
 & {
-  objectFit: cover;
-  objectPosition: 50% 50%;
+  object-fit: cover;
+  object-position: 50% 50%;
   width: 6vh;
   height: 6vh;
   scroll-snap-align: center;
@@ -54,8 +54,8 @@ export const GallThumb = styled.img`
 `;
 
 export const CurrGallThumb = styled.img`
-  objectFit: cover;
-  objectPosition: 50% 50%;
+  object-fit: cover;
+  object-position: 50% 50%;
   width: 6vh;
   height: 6vh;
   scroll-snap-align: center;
@@ -109,7 +109,7 @@ export const GalleryScroll = styled.button`
   outline: none;
   opacity: 50%;
   transition: color 0.5s, opacity 0.5s;
-  z-index: 1;
+  z-index: 1
 }
 &:hover {
   opacity: 100%;
