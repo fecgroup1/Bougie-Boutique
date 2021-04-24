@@ -21,23 +21,26 @@ class ExpandedView extends React.Component {
     if (this.state.zoom) {
       let y = event.clientY;
       let x = event.clientX;
-      let height = document.getElementById("expandedGallery").clientHeight;
-      let width = document.getElementById("expandedGallery").clientWidth;
-      // 0 -> 50%
-      // 50 -> 0
-      // 100 -> -50%
+      let height = document.getElementById("gallerymodal").clientHeight;
+      let width = document.getElementById("gallerymodal").clientWidth;
+      let top = y / height * 100 * -1
+      let left = x / width * 100 * -1
+      let cappedTop = top < -100 ? -100: top
+      let cappedLeft = left < -100 ? -100: left;
 
-      console.log(`${y / height * 100 - 50}, ${x / width * 100 -50}`);
+      console.log(`${top}, ${left}`);
       this.setState({
-        imgTop: y / height * 100 * -1 + 50,
-        imgLeft: x / width * 100 * -1 + 50,
+        imgTop: cappedTop,
+        imgLeft: cappedLeft,
       });
     }
   }
 
   handleZoom() {
     this.setState({
-      zoom: !this.state.zoom
+      zoom: !this.state.zoom,
+      imgTop: 0,
+      imgLeft: 0,
     });
   }
 
@@ -52,26 +55,36 @@ class ExpandedView extends React.Component {
       zIndex: 10,
     }
     const contentStyles = {
+      display: 'grid',
+      gridAutoRows: '100%',
+      gridAutoColumns: '100%',
+      // gridTemplate: '"a" 100%',
+      justifyContent: 'center',
+      alignContent: 'center',
       margin: 0,
       padding: 0,
       overflow: 'hidden',
     }
     const container = {
       display: 'grid',
-      gridTemplate: '"a" 100%',
-      justifyItems: 'center',
+      gridAutoRows: '100%',
+      gridAutoColumns: '100%',
       alignItems: 'center',
-      width: '100%',
-      height: '100%',
+      width: `${100 * (this.state.zoom + 1)}%`,
+      height: `${100 * (this.state.zoom + 1)}%`,
       margin: 0,
       padding: 0,
-      overflow: 'hidden',
-    };
-    const scrollImg = {
       position: 'relative',
       top: `${this.state.imgTop}%`,
       left: `${this.state.imgLeft}%`,
-      transform: `scale(${this.state.zoom + 1})`,
+    };
+    const scrollImg = {
+      // top: `${this.state.imgTop}%`,
+      // left: `${this.state.imgLeft}%`,
+      objectFit: 'cover',
+      width: '100%',
+      height: '100%',
+      objectPosition: '50% 50%',
     };
 
     return (
