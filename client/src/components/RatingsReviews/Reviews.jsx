@@ -30,7 +30,7 @@ class Reviews extends React.Component {
   }
 
   render(){
-     if (!this.props.meta) {
+     if (! this.props.reviewsToShow) {
       return <div>loading...</div>
     }
     var reviews= this.props.reviewsToShow.slice(0,this.state.length)
@@ -41,11 +41,12 @@ class Reviews extends React.Component {
       {reviews.length >0 ? (this.state.renderbutton ? <button onClick={(event)=>{this.showMore()}}> More Reviews </button> : <div></div>): <div></div> }
       <button onClick= {(event)=> this.setState({modalIsOpen:true})}>Add A Review</button>
       <NewReviewModal
+      key={this.props.product}
       close={this.closeModal}
       isOpen= {this.state.modalIsOpen}
-      productName= 'product goes here'
+      productName= {this.props.product? this.props.product.name : 'the product'}
       productId= {this.props.productId}
-      characteristics= {this.props.meta.characteristics}/>
+      characteristics= {this.props.meta? this.props.meta.characteristics: {}}/>
     </div>)
   }
 
