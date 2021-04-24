@@ -22,6 +22,8 @@ class CurrentProduct extends React.Component {
     this.setCart = this.setCart.bind(this);
     // this.updateCart = this.updateCart.bind(this);
     this.changeImg = this.changeImg.bind(this);
+    this.setReviews=this.setReviews.bind(this);
+    this.setMeta=this.setMeta.bind(this);
   }
 
   changeProduct(pid) {
@@ -51,14 +53,14 @@ class CurrentProduct extends React.Component {
   setReviews(id) {
     ReviewAPI.getReviews(id)
       .then((reviews) => {
-        this.setState({ reviews: reviews });
+        this.setState({ reviews: reviews.data });
       });
   }
 
   setMeta(id) {
     ReviewAPI.getMeta(id)
       .then((meta) => {
-        this.setState({ meta: meta });
+        this.setState({ meta: meta.data })
       });
   }
 

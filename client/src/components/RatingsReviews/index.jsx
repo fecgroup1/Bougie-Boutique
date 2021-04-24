@@ -27,6 +27,11 @@ class RatingsReviews extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.props.store.setMeta(this.props.store.state.currentProductId)
+    this.props.store.setReviews(this.props.store.state.currentProductId)
+  }
+
   filterReviews(numberOfStars){
     var changeTo;
     var filteredFor = {...this.state.filteredFor};
@@ -82,6 +87,9 @@ class RatingsReviews extends React.Component {
   }
 
   render(){
+    if (this.state.reviewsToShow === undefined){
+      return<div></div>
+    }
     return (
     <section>
       <h2 style={{'marginBottom': '50px','marginTop': '100px'}}>Ratings and Reviews</h2>
@@ -118,11 +126,4 @@ class RatingsReviews extends React.Component {
 
 export default RatingsReviews;
 
-// const Reviews = ({store}) => (
 
-//   <div>
-//
-//     <Reviews ratings= {store.ratings}/>
-//   </div>
-
-// )
