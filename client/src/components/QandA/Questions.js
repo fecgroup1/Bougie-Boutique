@@ -9,6 +9,8 @@ import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, Q
 
 const Questions = (props) => {
   const [questions, setQuestions] = useState([]);
+  const [newAnswer, setNewAnswer] = useState(null)
+  const [newQuestion, setNewQuestion] = useState(null)
   const [questionLength, setQuestionLength] = useState(2);
   const [searchQuestionLength, setSearchQuestionLength] = useState(2);
   const [moreQuestions, setMoreQuestions] = useState(false);
@@ -27,6 +29,11 @@ const Questions = (props) => {
     setSearchResults([])
     getQuestions();
   }, [props.productId])
+
+  useEffect(() => {
+    console.log('i got a new question')
+    getQuestions()
+  }, [newQuestion])
 
 
   const getQuestions = () => {
@@ -100,11 +107,11 @@ const Questions = (props) => {
           <p id='questionBody'> Q: {tempBody}</p>
           <span id='qHelpful'>Helpful?
             <span id='helpfulButton' onClick={() => markHelpful(question)}> Yes </span>
-            ({question.question_helpfulness}) | <AddAnswer question={question}/>
+            ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer}/>
           </span>
         </QuestionHead>
 
-        <Answers key={index} questionId={question.question_id}/>
+        <Answers key={index} questionId={question.question_id} newAnswer={newAnswer}/>
         <div className='askerInfo'>
           Asked by: {' '}{question.asker_name},{' '}{qDate.toDateString().substring(4)}{' '}|{' '}
           {!report ?
@@ -170,11 +177,11 @@ const Questions = (props) => {
         (
           <div>
             <button id='moreQuestions' value={'search'} onClick={addMore}>MORE ANSWERED QUESTIONS</button>
-            <AddQuestion currentProductId={props.productId}/>
+            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
           </div>
         )
         :
-        <AddQuestion currentProductId={props.productId}/>
+        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
         }
       </Fragment>
       )
@@ -185,11 +192,11 @@ const Questions = (props) => {
         (
           <div>
             <button id='moreQuestions' onClick={addMore}>MORE ANSWERED QUESTIONS</button>
-            <AddQuestion currentProductId={props.productId }/>
+            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
           </div>
         )
         :
-        <AddQuestion currentProductId={props.productId}/>
+        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
       }
         </Fragment>
     )}
@@ -202,7 +209,7 @@ const Questions = (props) => {
   <QuestionsContainer>
     <h2>Questions and Answers</h2>
     <h4>There are currently no questions... Please add a question!</h4>
-    <AddQuestion currentProductId={props.productId}/>
+    <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
   </QuestionsContainer>
 
   )

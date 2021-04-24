@@ -45,7 +45,7 @@ const AddQuestion = (props) => {
         product_id: pid
       })
       .then(() => {
-        console.log('Successfully posted question')
+        props.setNewQuestion(event)
       })
       .catch((err) => {
         console.log(err)
