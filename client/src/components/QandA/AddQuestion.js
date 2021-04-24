@@ -86,16 +86,16 @@ class AddQuestion extends React.Component {
             <button id='closeModal' onClick={this.closeForm}>X</button>
             <h2>Ask your question</h2>
             <h4>About the {this.props.name}</h4>
-            <label>Your Question *: </label>
+            <label>* Your Question: </label>
             <textarea id='questionInputText' name='question' type='text' onChange={(e) => {this.charsLeft(e)}} maxLength='1000' required />
             <p id='charsLeft'>{this.state.chars} characters remaining</p>
 
-            <label>Nickname *: </label>
+            <label>* What is your nickname? </label>
             <input type="text" id="questionNickname" className='modalInput'
              placeholder='Example: jackson11!' name="nickname" maxLength='60' required></input>
              <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
 
-            <label>Email *: </label>
+            <label>* Your email: </label>
             <input type="email" id="questionEmail" className='modalInput'
              placeholder='Why did you like the product or not?' name="email" maxLength='60' required></input>
              <p className='warning'>For authentication reasons, you will not be emailed</p><br></br>

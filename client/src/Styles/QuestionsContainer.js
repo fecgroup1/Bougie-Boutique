@@ -32,3 +32,8 @@ export const QuestionCardsContainer = styled.div`
   }
 
 `;
+
+export const QuestionHead = styled.div`
+  display: inline;
+  position: relative;
+`;

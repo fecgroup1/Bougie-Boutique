@@ -24,11 +24,6 @@
   font-size: 18px;
 }
 
-.questionLine1 {
-  display: inline;
-  position: relative;
-}
-
 .answerContainer {
   display: flex;
   flex-direction: column;
@@ -180,7 +175,20 @@
 }
 
 .modalInput {
-  width: 17em;
+  width: 16em;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid black
+}
+
+.modalInput::placeholder{
+  color: rgb(58, 58, 58)
+}
+
+.modalInput:focus {
+  border-bottom: 1px solid black;
+  outline: none;
 }
 
 .questionModal {
@@ -304,11 +312,13 @@
 #searchQuestionInput {
   position: relative;
   padding-left: 60px;
+  border: 2px solid rgb(0, 0, 0);
   font-size: 16px;
   width: 85%;
   height: 40px;
   margin-bottom: 15px;
   background-color: transparent;
+
 }
 
 .lni-search {
