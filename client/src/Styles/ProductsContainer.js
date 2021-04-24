@@ -50,32 +50,34 @@ export const CardImage = styled.div`
   background-position: center;
 `
 
-const compareButtonFunc = (props) => (
-  `background-color: ${props.theme.bg};
-   color: ${props.theme.bluGry};
+const actionButtonFunc = (props) => (
+  ` background-color: ${props.theme.bg};
+    color: ${props.theme.bluGry};
 
-  button: hover {
-    background-color: ${props.theme.bluGry};
-    color: ${props.theme.bg};
-  };
+    &:hover {
+      cursor: ${props.cursor === 'compare' ? 'help' : ''};
+    }
 
-  i: hover {
-    border-radius: 1em;
-    padding: .5 em;
-    background-color: ${props.theme.bluGry};
-    color: ${props.theme.bg};
-  }`
+    button: hover {
+      background-color: ${props.theme.bluGry};
+      color: ${props.theme.bg};
+    };
+
+    i: hover {
+      border-radius: 1em;
+      padding: .5 em;
+      background-color: ${props.theme.bluGry};
+      color: ${props.theme.bg};
+    }
+  `
 )
 
-export const CompareButton = styled.button`
+export const ActionButton = styled.button`
   position: absolute;
   right: .25em;
   top: .25em;
   border-radius: 2em;
   padding: .25em;d
   border: 1px solid;
-  &:hover {
-    cursor: help;
-  }
-  ${props => compareButtonFunc(props)};
+  ${props => actionButtonFunc(props)};
 `

@@ -1,17 +1,31 @@
-import React, {Fragment} from 'react'
-import { StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, NavButton } from '../../Styles/'
+import React, { useState, useEffect, Fragment} from 'react'
+import { StyledProductCard, CardImage,  StarsOuter, StarsInner, ActionButton, NavButton } from '../../Styles/'
 
-const ProductCard = ({product, compareMe, changeProduct}, theme) => {
+const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor, addedClasses, relatedProduct, theme}) => {
   let prd = product.product
+  const [actionProduct, setActionProduct] = useState()
+
+  useEffect(() => {
+    console.log('ln 9', product.product || product)
+    if (relatedProduct) {
+      setActionProduct(product.product)
+    } else {
+      setActionProduct(product)
+    }
+  }, [product])
+
   return (
     prd
     ?
-      <StyledProductCard>
-          <CompareButton
-            onClick={() => compareMe(prd)}
-          >
-            <i className="lni lni-32 lni-pagination" />
-          </CompareButton>
+      <StyledProductCard
+        className={addedClasses}
+      >
+        <ActionButton
+          onClick={() => buttonAction(actionProduct)}
+          cursor={cursor}
+        >
+          <i className={`lni lni-32 ${buttonType}`} />
+        </ActionButton>
 
         {
           product.styles[0].photos[0].url !== null
@@ -24,12 +38,16 @@ const ProductCard = ({product, compareMe, changeProduct}, theme) => {
               onClick={()=> changeProduct(product.currentProductId)}
             />
         }
+
         <div style={{borderTop: `1px solid ${theme.bluGry}`, paddingLeft: '.5em' }}>
           <p style={{marginBottom: 0}}>{prd.category}</p>
           <h4 style={{margin: 0}}>{prd.name}</h4>
           <p style={{marginTop: 0}}>{`$${product.styles[0].original_price}`}</p>
           <StarsOuter
           >
+            {
+              console.log('product', product)
+            }
             <StarsInner
               rating={product.meta.starRating}
             />
@@ -37,9 +55,9 @@ const ProductCard = ({product, compareMe, changeProduct}, theme) => {
         </div>
       </StyledProductCard>
     :<StyledProductCard>
-      <CompareButton>
+      <ActionButton>
       <i className="lni lni-32 lni-pagination" />
-      </CompareButton>
+      </ActionButton>
       <div style={{alignSelf: 'center', placeSelf: 'center'}}>
       <i
         className="lni lni-spinner-arrow lni-is-spinning"

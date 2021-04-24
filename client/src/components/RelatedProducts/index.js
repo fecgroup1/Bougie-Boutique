@@ -7,11 +7,12 @@ import CompareModal from './CompareModal.js'
 
 const RelatedProducts = ({store, theme}) => {
 
-  const [products, setProducts] = useState([1, 2, 3, 4, 5, 6, 7, 9]);
+  const [products, setProducts] = useState([1, 2, 3, 4]);
   const [productsPosition, setProductsPosition] = useState(0);
   const [comparisonProduct, setComparisonProduct] = useState(null);
-  const [outfits, setOutfits] = useState()
+  const [outfits, setOutfits] = useState({})
 
+  //grabs related products when the current productId is initally set/changed
   useEffect(() => {
     RelatedAPI.getRelatedProducts(store.state.currentProductId)
       .then((results) => {
@@ -20,9 +21,14 @@ const RelatedProducts = ({store, theme}) => {
 
   }, [store.state.currentProductId]);
 
+  //check local storage on initial render
   useEffect(() => {
-
-  }, [outfits])
+    const saved = JSON.parse(window.localStorage.getItem('bougieBoutiqueOutfits'))
+    console.log('saved outfits', saved)
+    if (saved) {
+      setOutfits(saved);
+    }
+  }, [])
 
   const scroll = (container, direction, event) => {
     let area = event.target.parentNode.parentNode.children[1];
@@ -42,10 +48,28 @@ const RelatedProducts = ({store, theme}) => {
     }
   }
 
-  const handleSaveOutfit = () => {
-
+  const handleComparison = (product) => {
+    console.log('im invoked, heres my product to compare:', product)
+    setComparisonProduct(product)
   }
 
+  const handleSaveOutfit = (product) => {
+    let newState = {...outfits};
+    newState[product.currentProductId] = product;
+    setOutfits(newState);
+    window.localStorage.removeItem('bougieBoutiqueOutfits');
+    window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(newState));
+  }
+
+  const handleRemoveOutfit = (product) => {
+    let newState = {...outfits};
+    delete newState[product.currentProductId];
+    setOutfits(newState);
+    window.localStorage.removeItem('bougieBoutiqueOutfits');
+    window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(newState));
+  }
+
+  //memoizes the props in this componenet and only updates them when the array values are updated [currentProdID, products]
   const relatedSection = useMemo(() =>
     <ProductsContainer
     key={'relatedProductsContainer'}
@@ -71,11 +95,15 @@ const RelatedProducts = ({store, theme}) => {
           {
             products.map((product, index) => (
               <ProductCard
-                key={index}
+                key={'relatedproduct' + index}
+                theme={theme}
                 product={product}
                 className={'productCard'}
-                compareMe={setComparisonProduct}
                 changeProduct={store.changeProduct}
+                buttonAction={setComparisonProduct}
+                buttonType={'lni-pagination'}
+                cursor={'compare'}
+                relatedProduct={true}
               />
             ))
           }
@@ -97,6 +125,7 @@ const RelatedProducts = ({store, theme}) => {
 
     , [store.state.currentProductId, products])
 
+  //memoizes the props in this componenet and only updates them when the array values are updated [outfits]
   const outfitSection = useMemo(() =>
     <ProductsContainer
     key={'outfitProductsContainer'}
@@ -110,7 +139,7 @@ const RelatedProducts = ({store, theme}) => {
           className={'addOutfit'}
         >
         <AddOutfitButton
-        onClick={handleSaveOutfit}
+        onClick={() => handleSaveOutfit(store.state)}
         >
           <i
             style={{
@@ -121,22 +150,28 @@ const RelatedProducts = ({store, theme}) => {
           />
         </AddOutfitButton>
         </StyledProductCard>
-          {/* {
-            products.map((product, index) => (
+          {
+            Object.keys(outfits).map((product, index) => (
               <ProductCard
-                key={index}
-                product={product}
+                key={'outfit' + index}
+                theme={theme}
+                product={outfits[product]}
                 className={'productCard'}
-                compareMe={setComparisonProduct}
+                buttonAction={handleRemoveOutfit}
+                buttonType={'lni-cross-circle'}
+                cursor={'delete'}
+                addedClasses={'outfit'}
+                relatedProduct={false}
               />
             ))
-          } */}
+          }
         </CardContainer>
       </CardsWrapper>
 
     </ProductsContainer>
 
   , [outfits])
+
 
     return (
       <Fragment>

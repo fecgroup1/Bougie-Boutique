@@ -9,6 +9,12 @@ export const StyledProductCard = styled.div`
   grid-template-rows: 70% 30%;
   box-shadow: 10px 5px 15px #cccccc;
 
+  .outfit {
+    transition: 500ms ease-in-out;
+    transition: 1s;
+    left: 0;
+  }
+
   &: hover {
     cursor: pointer;
   }
