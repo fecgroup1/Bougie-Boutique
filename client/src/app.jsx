@@ -23,11 +23,16 @@ class App extends React.Component {
     this.toggleTheme = this.toggleTheme.bind(this)
   }
 
+  componentDidMount() {
+    document.body.addEventListener('click', this.handleTracking)
+  }
+
   toggleTheme() {
     this.setState({
       dark: !this.state.dark,
     });
   }
+
 
   handleTracking(event) {
     console.log(event);
@@ -39,7 +44,6 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <CurrentProduct
-          onClick={() => handleTracking()}
           render={ store => (
             <>
               <Nav
