@@ -1,4 +1,5 @@
 import React from 'react';
+import ExpandedView from './ExpandedView.js';
 import { Loading, MainImg, MainNull } from './../../../Styles/Overview';
 
 class DefaultView extends React.Component {
@@ -6,13 +7,24 @@ class DefaultView extends React.Component {
     super(props);
     this.state={
       modalOpen: false,
+      scrollY: 0,
     }
-    this.handleModel = this.handleModel.bind(this);
+    this.handleModalOpen = this.handleModalOpen.bind(this);
   }
 
-  handleModel(bool) {
+  handleModalOpen(bool) {
+    if (bool) {
+      var pos = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${pos}px`;
+    } else {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      window.scroll({ top: this.state.scrollY })
+    }
     this.setState({
       modalOpen: bool,
+      scrollY: pos,
     });
   }
 
@@ -24,26 +36,24 @@ class DefaultView extends React.Component {
     return (
       <Loading
         src={styles[currImg[0]].photos[currImg[1]].url} />
-      <ExpandedView
-        isOpen={this.state.modalOpen}
-        handleModel={this.handleModel} />
     );
     } else if ( styles[currImg[0]].photos[currImg[1]].url === null) {
       return (
         <MainNull
-          onClick={() => this.handleModel(true)}
           src='https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg'/>
-        <ExpandedView
-          isOpen={this.state.modalOpen}
-          handleModel={this.handleModel} />
       );
     } else {
       return (
-        <MainImg
-          src={styles[currImg[0]].photos[currImg[1]].url}/>
-        <ExpandedView
-          isOpen={this.state.modalOpen}
-          handleModel={this.handleModel} />
+        <>
+          <MainImg
+            onClick={() => this.handleModalOpen(true)}
+            src={styles[currImg[0]].photos[currImg[1]].url}/>
+          <ExpandedView
+            isOpen={this.state.modalOpen}
+            styles={styles}
+            currImg={currImg}
+            handleModalOpen={this.handleModalOpen} />
+      </>
       );
     }
   }
