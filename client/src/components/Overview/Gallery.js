@@ -1,16 +1,26 @@
 import React from 'react';
-import { Left, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer} from './../../Styles';
+import DefaultView from './Gallery/DefaultView.js';
+import { Left, GallPlaceholder, GallergyBorder, SelectedGallPlaceholder, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, ScrollBg } from './../../Styles/Overview';
 
 class Gallery extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
+      numImgs: 0,
       position: 0,
       scrollTop: 0,
       scrollBtm: false,
     };
     this.scroll = this.scroll.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  handleImgClick(x, y) {
+    // FUTURE IMPLEMENTATION: Scroll to thumbnail
+    let id = `img${x}-${y}`;
+    // let dist = (x + 1) * (y + 1);
+    document.getElementById("galleryscroll").scrollTo(document.getElementById(id));
+    this.props.changeImg(x, y);
   }
 
   handleScroll() {
@@ -45,18 +55,14 @@ class Gallery extends React.Component {
   }
 
   render() {
-    const changeImg = this.props.changeImg;
+    this.state.numImgs = 0;
+
     const styles = this.props.styles;
     const currImg = this.props.currImg;
 
-    const galImg = {
-      objectFit: 'cover',
-      objectPosition: '50% 50%',
-      width: '100%',
-      height: '100%'
-    };
     const position = {
-      transform: `translateY(${this.state.position}vh)`
+      transform: `translateY(${this.state.position}vh)`,
+      zIndex: 2,
     }
     const container = {
       display: 'grid',
@@ -64,42 +70,29 @@ class Gallery extends React.Component {
       background: 'none',
     };
     const bg = {
-      opacity: '0.5',
+      opacity: `${styles[0].name === null ? '0': '0.5'}`,
     };
-    const thumb = {
-      objectFit: 'cover',
-      objectPosition: '50% 50%',
-      width: '6vh',
-      height: '6vh',
-      scrollSnapAlign: 'center',
-    }
+    const upOpacity = {
+      opacity: (styles[0].name === null) || (this.state.scrollTop <= 0) ? 0: 0.5,
+    };
     const buttonContainer = {
       display: 'flex',
       flexDirection: 'column',
       background: 'none',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: '65vh',
-      margin: '0.5vh 1vw',
+      height: '64vh',
+      margin: '1vh 1vw',
+      zIndex: 0,
     }
 
     return (
       <Left style={{alignContent: 'center', minWidth: '400px'}}>
-        <div id="gallery" style={{height: '66vh'}}>
-          <img
-            style={galImg}
-            src={styles[currImg[0]].photos[currImg[1]].url}/>
+        <div id="gallery" style={{ height: '66vh', overflow: 'hidden' }}>
+          <DefaultView
+            styles={styles}
+            currImg={currImg}/>
           <GallThumbContainer style={bg}></GallThumbContainer>
-
-          <GallThumbContainer style={buttonContainer}>
-            {this.state.scrollTop > 0 ? <GalleryScroll onClick={() => this.scroll('up')}>
-              <i className="lni lni-chevron-up-circle"></i>
-              </GalleryScroll> : <GalleryScroll style={{background: 'none'}}></GalleryScroll>}
-            {this.state.scrollBtm ? <GalleryScroll style={{background: 'none'}}>
-            </GalleryScroll>: <GalleryScroll onClick={() => this.scroll('down')}>
-            <i className="lni lni-chevron-down-circle"></i>
-            </GalleryScroll>}
-          </GallThumbContainer>
 
           <GallThumbContainer style={container}>
             <NoScrollBar
@@ -108,23 +101,74 @@ class Gallery extends React.Component {
               onScroll={this.handleScroll}>
                 {styles.map((style, sIndex) => {
                   return style.photos.map((photo, pIndex) => {
-                    if ((sIndex === currImg[0]) &&
+                    this.state.numImgs++;
+                    if (styles[0].name === null) {
+                      return null;
+                    } else if ((sIndex === currImg[0]) &&
                         (pIndex === currImg[1])) {
-                        return <CurrGallThumb
-                          style={thumb}
+                        if (photo.thumbnail_url === null) {
+                          return (
+                            <GallergyBorder>
+                              <SelectedGallPlaceholder
+                                key={[sIndex, pIndex]}
+                                id={`img${sIndex}-${pIndex}`}
+                                src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
+                            </GallergyBorder>
+                          );
+                        } else {
+                          return (
+                            <CurrGallThumb
+                              key={[sIndex, pIndex]}
+                              id={`img${sIndex}-${pIndex}`}
+                              src={photo.thumbnail_url} />
+                          );
+                        }
+                    } else if (photo.thumbnail_url === null) {
+                      return (
+                        <GallPlaceholder
                           key={[sIndex, pIndex]}
-                          src={photo.thumbnail_url} />
+                          id={`img${sIndex}-${pIndex}`}
+                          onClick={() => {this.handleImgClick(sIndex, pIndex)}}
+                          src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
+                      );
                     } else {
-                      return <GallThumb
-                        style={thumb}
-                        key={[sIndex, pIndex]}
-                        src={photo.thumbnail_url}
-                        onClick={() => {changeImg(sIndex, pIndex)}} />
+                      return (
+                        <GallThumb
+                          key={[sIndex, pIndex]}
+                          id={`img${sIndex}-${pIndex}`}
+                          src={photo.thumbnail_url}
+                          onClick={() => {this.handleImgClick(sIndex, pIndex)}} />
+                      );
                     }
                   })
                 })}
             </NoScrollBar>
           </GallThumbContainer>
+
+          <GallThumbContainer style={buttonContainer}>
+            <ScrollBg style={upOpacity}></ScrollBg>
+            <ScrollBg style={
+              {
+                opacity: `${this.state.scrollBtm ||
+                  (styles[0].name === null) ||
+                  (this.state.numImgs <= 7) ? '0': '0.5'}`,
+              }
+            }></ScrollBg>
+            </GallThumbContainer>
+
+          <GallThumbContainer style={buttonContainer}>
+              <GalleryScroll
+                onClick={() => this.scroll('up')}>
+                  {(styles[0].name === null) || (this.state.scrollTop <= 0) ? null: <i className="lni lni-chevron-up-circle"></i>}
+              </GalleryScroll>
+              <GalleryScroll
+                onClick={() => this.scroll('down')}>
+                  {this.state.scrollBtm ||
+                  (styles[0].name === null) ||
+                  (this.state.numImgs <= 7) ? null: <i className="lni lni-chevron-down-circle"></i>}
+              </GalleryScroll>
+          </GallThumbContainer>
+
         </div>
       </Left>
     );

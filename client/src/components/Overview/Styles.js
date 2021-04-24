@@ -1,10 +1,12 @@
 import Stars from './Styles/Stars.js';
 import Select from './Styles/Select.js';
 import AddToCart from './Styles/AddToCart.js';
+import Price from './Styles/Select/Price.js';
+import Thumbnails from './Styles/Select/Thumbnails.js';
 
 import React from 'react';
 
-import { Right } from './../../Styles';
+import { Right, Small } from './../../Styles/Overview';
 
 const checkStock = (stylesObj, styleIndex) => {
   for (let i = 0; i < stylesObj[styleIndex].skus.length; i++) {
@@ -15,28 +17,60 @@ const checkStock = (stylesObj, styleIndex) => {
   return true;
 }
 
-const Styles = ({product, currStyle, changeStyle, styles, stars, reviews, cart, updateCart}) => {
+const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews, cart, setCart}) => {
 
   const outOfStock = checkStock(styles, currStyle);
+  const container = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+    alignContent: 'space-between',
+    height: '66vh',
+  }
+
+  var title = product.name;
+  var category = product.category;
+
+  const titleFont = {
+    fontFamily: '"Yeseva One", cursive',
+    fontSize: '24px'
+  };
 
   return (
-    <Right>
+    <Right style={container}>
       <Stars
         rating={stars}
         reviews={reviews}/>
-      <Select
-        title={product.name}
-        category={product.category}
-        currStyle={currStyle}
-        styles={styles}
-        changeStyle={changeStyle}/>
+
+    <Small>{category}</Small>
+    <div style={titleFont}>{title}</div>
+    <div className="price" style={{margin: '5px 0px'}}>
+      <Price
+        orig={styles[currStyle].original_price}
+        sale={styles[currStyle].sale_price}/>
+    </div>
+    <div
+      className="stylename small"
+      style={{marginTop: '10px'}}>
+        Style: {styles[currStyle].name}
+    </div>
+    <Thumbnails
+      styles={styles}
+      currStyle={currStyle}
+      changeStyle={changeStyle} />
+
+
+
+
       <AddToCart
+        store={store}
         title={product.name}
         currStyle={currStyle}
         styles={styles}
         outOfStock={outOfStock}
         cart={cart}
-        updateCart={updateCart}/>
+        setCart={setCart}/>
     </Right>
   )
 };

@@ -12,21 +12,16 @@ class CurrentProduct extends React.Component {
 
     this.state = {
       currentProductId: "13023",
-      cart: {},
+      cart: null,
     };
 
-    // Test function
     this.changeProduct = this.changeProduct.bind(this);
     // this.changeStyle = this.changeStyle.bind(this);
     this.setProduct = this.setProduct.bind(this);
     this.setQuestions = this.setQuestions.bind(this);
-    this.checkCart = this.checkCart.bind(this);
-    this.updateCart = this.updateCart.bind(this);
-  }
-
-
-  componentDidMount() {
-    this.setProduct(this.state.currentProductId);
+    this.setCart = this.setCart.bind(this);
+    // this.updateCart = this.updateCart.bind(this);
+    this.changeImg = this.changeImg.bind(this);
   }
 
   changeProduct(pid) {
@@ -41,12 +36,14 @@ class CurrentProduct extends React.Component {
   //   });
   // }
 
-  setProduct(id) {
+  setProduct(pid) {
+    let id = pid === undefined ? this.state.currentProductId: pid;
     ProductAPI.getProduct(id)
     .then((resData) => {
       let productData = resData;
-      productData.currStyle = 0;
+      // productData.currStyle = 0;
       // productData.cart = this.checkCart(resData);
+      productData.currImg = [0, 0];
       this.setState(productData);
     })
   }
@@ -73,33 +70,50 @@ class CurrentProduct extends React.Component {
       })
   }
 
-  checkCart(data) {
-    let productData = data === undefined? this.state: data;
+  setCart() {
+    let productData = this.state;
     var cart = JSON.parse(window.localStorage.getItem('cart'));
-    var newCart = {};
-    if (cart !== null) {
-      for (let i = 0; i < productData.styles.length; i++) {
-        let style = productData.styles[i];
-        for (let j = 0; j < style.skus.length; j++) {
-          let sku = style.skus[j].sku;
-          let stock = style.skus[j].quantity;
-          if (cart[sku] <= stock) {
-            newCart[sku] = cart[sku];
-          } else if (cart[sku] > stock) {
-            newCart[sku] = stock;
+    console.log('current cart', cart);
+    if (this.state.cart !== null) {
+      console.log('shouldn\'t be here');
+      var newCart = {};
+      if (cart !== null) {
+        for (let i = 0; i < productData.styles.length; i++) {
+          let style = productData.styles[i];
+          for (let j = 0; j < style.skus.length; j++) {
+            let sku = style.skus[j].sku;
+            let stock = style.skus[j].quantity;
+            if (cart[sku] <= stock) {
+              newCart[sku] = cart[sku];
+            } else if (cart[sku] > stock) {
+              newCart[sku] = stock;
+            }
           }
         }
+        window.localStorage.setItem('cart', JSON.stringify(newCart));
       }
-      window.localStorage.setItem('cart', JSON.stringify(newCart));
+      console.log(window.localStorage);
+      this.setState({
+        cart: newCart
+      });
+    } else {
+      this.setState({
+        cart: cart,
+      });
     }
-    console.log(window.localStorage);
-    return newCart;
   }
 
-  updateCart() {
-    let newCart = this.checkCart(this.state);
+  // updateCart() {
+  //   let newCart = this.checkCart(this.state);
+  //   this.setState({
+  //     cart: newCart
+  //   });
+  // }
+
+  changeImg(style, index) {
     this.setState({
-      cart: newCart
+      // currStyle: this.state.currImg[0],
+      currImg: [style, index]
     });
   }
 

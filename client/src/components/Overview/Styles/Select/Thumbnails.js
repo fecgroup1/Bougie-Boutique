@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ThumbImg, CurrThumb } from './../../../../Styles';
+import { ThumbImg, CurrThumb, Loading, StylePlaceholder, SelectedStylePlaceholder, PlaceholderBorder } from './../../../../Styles/Overview';
 
 class Thumbnails extends React.Component {
   constructor(props) {
@@ -9,11 +9,14 @@ class Thumbnails extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.currStyle !== nextProps.currStyle) {
+      console.log('Overview thumbnails re-rendered')
       return true;
     }
     if (this.props.styles[0].style_id != nextProps.styles[0].style_id) {
+      console.log('Overview thumbnails re-rendered')
       return true;
     }
+    console.log('Overview thumbnails did not rerender')
     return false;
   }
 
@@ -25,7 +28,7 @@ class Thumbnails extends React.Component {
       display: 'grid',
       gridTemplateColumns: 'repeat(4, 100px)',
       columnGap: '1fr',
-      gridAutoRows: '110px',
+      gridAutoRows: '100px',
       justifyContent: 'space-between',
       alignContent: 'space-between',
       margin: '5px 0px',
@@ -34,11 +37,35 @@ class Thumbnails extends React.Component {
     return (
       <div id="stylethumbs" style={thumbsGrid}>
         {styles.map((style, index) => {
-          if (index === currStyle) {
+          if (style.name === null) {
             return (
-              <CurrThumb
+              <Loading
                 key={index}
                 src={style.photos[0].thumbnail_url}/>
+            )
+          } else if (index === currStyle) {
+            if (style.photos[0].thumbnail_url === null) {
+              return (
+                <PlaceholderBorder>
+                <SelectedStylePlaceholder
+                  key={index}
+                  onClick={() => changeStyle(index)}
+                  src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
+                </PlaceholderBorder>
+              );
+            } else {
+              return (
+                <CurrThumb
+                  key={index}
+                  src={style.photos[0].thumbnail_url}/>
+              );
+            }
+          } else if (style.photos[0].thumbnail_url === null) {
+            return (
+              <StylePlaceholder
+                key={index}
+                onClick={() => changeStyle(index)}
+                src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
             );
           } else {
             return (

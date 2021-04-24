@@ -1,13 +1,20 @@
 import React from 'react';
 import { Flex, LinedTop, Left, Right } from './../../Styles';
 
-const impact = {
-  fontFamily: 'Yeseva One, cursive',
-  fontSize: '20px',
-}
+const Details = ({slogan, description, features}) => {
 
-const Details = ({slogan, description, features}) => (
-    <div id="details" style={{paddingTop: '10px'}}>
+  const impact = {
+    fontFamily: 'Yeseva One, cursive',
+    fontSize: '20px',
+  }
+
+  var loading = {
+    paddingTop: '10px',
+    opacity: `${description === null ? '50%': '100%'}`,
+  };
+
+  return (
+    <div id="details" style={loading}>
       <span style={impact}>{slogan}</span>
       <Flex>
         <Left>
@@ -28,6 +35,7 @@ const Details = ({slogan, description, features}) => (
         </Right>
       </Flex>
     </div>
-);
+  );
+}
 
 export default Details;

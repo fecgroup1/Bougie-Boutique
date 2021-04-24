@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export { AddToCartButton, CartDropdown} from './AddToCart';
-export { StyleThumbs, ThumbImg, CurrThumb , GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer} from './Thumbnails';
+export { StyleThumbs, ThumbImg, CurrThumb, Loading, StylePlaceholder, SelectedStylePlaceholder, PlaceholderBorder } from './Thumbnails';
+export { GallPlaceholder, GallergyBorder, SelectedGallPlaceholder, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, ScrollBg, MainImg, MainNull } from './Gallery';
 export { OuterStars, InnerStars } from './Stars';
 
 export const Small = styled.span`

@@ -1,6 +1,6 @@
 const _ = require('../../controllers/Product.js');
 
-test('getDetails retrieves the reviews, meta data, and styles for a product and returns it as a product object', done => {
+test('getOverviewData retrieves the reviews, meta data, and styles for a product and returns it as a product object', done => {
   const cb = (data) => {
     try {
       // console.log('this is data.meta: ', data)
@@ -20,35 +20,7 @@ test('getDetails retrieves the reviews, meta data, and styles for a product and 
     }
   }
 
-  _.getDetails(13023)
-  .then((data) => cb(data))
-  .catch((err) => cb(err));
-});
-
-test('getAll retrieves the product details, q and a data, and related products for a product and returns it as a product object', done => {
-  const cb = (data) => {
-    try {
-      // console.log('this is data.meta: ', data)
-
-      expect(data.currentProductId).toBe(13023);
-      expect(data.product).toBeDefined();
-      expect(data.styles).toBeDefined();
-
-      /* there is additional async behavior that may need to be accounted for need more reasearch on why the below aren't passing */
-
-      // expect(data.meta).toBeDefined();
-      // expect(data.reviews).toBeDefined();
-
-      expect(data.related).toBeDefined();
-
-
-      done();
-    } catch(err) {
-      done(err);
-    }
-  }
-
-  _.getAll(13023)
+  _.getOverviewData(13023)
   .then((data) => cb(data))
   .catch((err) => cb(err));
 });

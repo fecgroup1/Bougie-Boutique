@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddToCartButton, CartDropdown } from './../../../Styles';
+import { AddToCartButton, CartDropdown } from './../../../Styles/Overview';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -30,12 +30,12 @@ class AddToCart extends React.Component {
     if (this.state.warning !== nextState.warning) {
       return true;
     }
-    console.log('Did not re-render');
+    console.log('AddToCart did not re-render');
     return false;
   }
 
   componentDidMount() {
-    this.props.updateCart();
+    this.props.setCart(this.props.store);
   }
 
   handleSizeSelect(event) {
@@ -91,8 +91,7 @@ class AddToCart extends React.Component {
       var style = this.props.styles[this.props.currStyle].name;
       var title = this.props.title;
       window.localStorage.setItem('cart', JSON.stringify(cart));
-      console.log(window.localStorage);
-      this.props.updateCart();
+      this.props.setCart();
       this.setState({
         currSize: 'Select a size',
         quantity: 'Qty: --',
@@ -116,22 +115,28 @@ class AddToCart extends React.Component {
       height: '0.6em',
       color: 'red',
       fontSize: '0.6em',
-      padding: '10px 5px',
+      padding: '0px 5px',
+    }
+
+    const disabled = {
+      opacity: '50%',
     }
 
     if (this.props.outOfStock) {
       return (
         <>
         <form id="addcart" style={grid}>
-          <CartDropdown id="size">
+          <CartDropdown id="size" style={disabled}>
             <option value='0' disabled selected>Size: --</option>
           </CartDropdown>
-          <CartDropdown id="qty">
+          <CartDropdown id="qty" style={disabled}>
             <option value='0' disabled selected>Qty: --</option>
           </CartDropdown>
         </form>
-        <div style={red}>{this.state.warning}</div><br/><br/>
-        <AddToCartButton onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
+        <div style={red}>
+          {this.props.styles[0].name === null ? '': 'Out of Stock'}
+        </div>
+        <AddToCartButton style={disabled} onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
         </>
       );
     } else if (this.state.currSize === 'Select a size') {
@@ -161,7 +166,7 @@ class AddToCart extends React.Component {
               })}
           </CartDropdown>
           <CartDropdown id="qty" disabled>
-            <option value={this.state.quantity}>
+            <option defaultValue value={this.state.quantity}>
               {this.state.quantity}
             </option>
           </CartDropdown>
@@ -176,7 +181,7 @@ class AddToCart extends React.Component {
       return(
         <>
         <form id="addcart" style={grid}>
-          <select
+          <CartDropdown
             id="size"
             value={this.state.currSize}
             onChange={(event) => this.handleSizeSelect(event)}>
@@ -196,13 +201,13 @@ class AddToCart extends React.Component {
                   );
                 }
               })}
-          </select>
-          <select
+          </CartDropdown>
+          <CartDropdown
             id="qty"
             value={this.state.quantity}
             onChange={(event) => this.handleQtySelect(event)}>
               <option
-              defaultValue
+                defaultValue
                 value={this.state.quantity}>
                   {this.state.quantity}
               </option>
@@ -215,7 +220,7 @@ class AddToCart extends React.Component {
                     </option>
                 )
               })}
-          </select>
+          </CartDropdown>
         </form>
         <div style={red}>{this.state.warning}</div>
         <AddToCartButton onClick={this.handleAddCart}>Add To Cart</AddToCartButton>

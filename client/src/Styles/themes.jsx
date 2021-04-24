@@ -23,13 +23,25 @@ export const Body = createGlobalStyle`
     color: ${props => props.theme.text};
   }
 
-  // select {
+  @keyframes loadspin {
+    from { transform: rotate(0deg) }
+    to { transform: rotate(360deg) }
+  }
+
+  // #cart > select {
   //   border: 3px solid ${props => props.theme.text};
   //   color: ${props => props.theme.text};
   //   background: ${props => props.theme.bg};
   //   outline: #0056c5;
   //   height: 4em;
   //   padding: 1em 0em;
+  //   font-family: 'Josefin Sans', sans-serif;
+  //   font-size: 1em;
+  //   font-weight: bold;
+  //   transition: background 0.5s;
+  // }
+  // #cart > select: hover {
+  //   background: #002a60;
   // }
 
   .compareModalOverlay {
@@ -111,7 +123,8 @@ export const light = {
   text: 'black',
   bg: 'white',
   bluGry: '#002a60',
-  blkGry: 'black'
+  blkGry: 'black',
+  invertWht: 0,
 };
 
 export const dark = {
@@ -120,7 +133,8 @@ export const dark = {
   text: '#cccccc',
   bg: '#111111',
   bluGry: '#cccccc',
-  blkGry: '#cccccc'
+  blkGry: '#cccccc',
+  invertWht: 1,
 }
 
 

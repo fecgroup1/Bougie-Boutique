@@ -5,7 +5,7 @@ router.route('/')
 .get((req, res) => {
   let pid = req.query.pid;
   console.log(pid);
-  controllers.product.getAll(pid)
+  controllers.product.getOverviewData(pid)
   .then((fnlRes) => {
     res.send(fnlRes);
   })
@@ -15,18 +15,6 @@ router.route('/')
     res.end();
   });
 });
-
-router.route('/related')
-.post((req, res) => {
-  let promises = req.body.pids.map((pid) => {
-    return controllers.product.getDetails(pid);
-  });
-  Promise.all(promises)
-  .then((data) => {
-    res.send(data);
-  })
-
-})
 
 router.route('/related')
 .get((req, res) => {

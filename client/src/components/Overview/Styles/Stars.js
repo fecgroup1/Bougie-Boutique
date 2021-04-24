@@ -10,6 +10,7 @@ class Stars extends React.Component {
     if (this.props.rating !== nextProps.rating) {
       return true;
     }
+    console.log('Overview stars did not rerender')
     return false;
   }
 
@@ -18,7 +19,7 @@ class Stars extends React.Component {
     const reviews = this.props.reviews;
 
     const inner = {
-      width: `${rating / 5 * 100}%`,
+      width: `${(rating / 5 * 100) + 1}%`,
     };
 
     return (
