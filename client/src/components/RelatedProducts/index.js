@@ -24,7 +24,6 @@ const RelatedProducts = ({store, theme}) => {
   //check local storage on initial render
   useEffect(() => {
     const saved = JSON.parse(window.localStorage.getItem('bougieBoutiqueOutfits'))
-    console.log('saved outfits', saved)
     if (saved) {
       setOutfits(saved);
     }
@@ -49,7 +48,6 @@ const RelatedProducts = ({store, theme}) => {
   }
 
   const handleComparison = (product) => {
-    console.log('im invoked, heres my product to compare:', product)
     setComparisonProduct(product)
   }
 
@@ -175,15 +173,17 @@ const RelatedProducts = ({store, theme}) => {
 
     return (
       <Fragment>
-        <RelatedContainer>
-          {relatedSection}
-          {outfitSection}
-        </RelatedContainer>
-        <CompareModal
-          product={store.state.product}
-          comparisonProduct={comparisonProduct}
-          resetCompare={setComparisonProduct}
-         />
+        <section tracking={'Related Products'}>
+          <RelatedContainer>
+            {relatedSection}
+            {outfitSection}
+          </RelatedContainer>
+          <CompareModal
+            product={store.state.product}
+            comparisonProduct={comparisonProduct}
+            resetCompare={setComparisonProduct}
+          />
+         </section>
     </Fragment>
     )
 }

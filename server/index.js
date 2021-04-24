@@ -24,6 +24,8 @@ app.use('/qa', controller.qa.qaController);
 
 app.use('/addPhoto', form.single('image'), controller.s3);
 
+app.use('/tracking', routers.trackingRouter);
+
 app.listen(port, ()=> {
   console.log(`listening on ${port}`);
 })
