@@ -9,16 +9,23 @@ router.route('/')
   })
   .post((req, res) => {
     controllers.review.postReviews(req.body)
-    .then((response)=>res.end(response))
-    .catch((err) => res.end(err));
+    .then((response)=>res.end())
+    .catch((err) => res.status(500));
   })
 
 
 router.route('/:review_id/report')
- .put((req, res)=> {
-    controllers.review.reportReview(req.params.reviewId)
-    .then((response)=>res.end(response))
-    .catch((err) => res.end(err));
+  .put((req, res)=> {
+    controllers.review.reportReview(req.params.review_id)
+    .then(()=>res.end())
+    .catch((err) => res.status(500));
+  })
+
+router.route('/:review_id/helpful')
+  .put((req, res)=> {
+    controllers.review.markHelpful(req.params.review_id)
+    .then(()=>res.end())
+    .catch((err) => res.status(500));
   })
 
 router.route('/meta')

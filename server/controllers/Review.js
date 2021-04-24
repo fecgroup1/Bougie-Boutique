@@ -42,6 +42,7 @@ module.exports = {
       for (let i = 0; i < listOfReviews.length; i++) {
         const currentReview = listOfReviews[i];
         reviews.push({
+          review_id:currentReview.review_id,
           rating: currentReview.rating,
           date: currentReview.date,
           summary: currentReview.summary,
@@ -70,11 +71,12 @@ module.exports = {
 
     reportReview: (reviewId) => {
         return axios.put(`${url}reviews/${reviewId}/report`)
-          .then((response) => response)
-          .catch((err) => {
-            console.log(err);
-          });
-        }
+        },
+
+    markHelpful: (reviewId) => {
+      return axios.put(`${url}reviews/${reviewId}/helpful`)
+      }
+
 };
 
 

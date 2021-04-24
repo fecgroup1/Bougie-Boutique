@@ -19,7 +19,7 @@ return (<div>
       var rating = (characteristics[characteristic].value *50) - 50
      return ( <div style={{marginBottom:'50px', width:'250px', borderRadius: '4px'}}>
        <div>{characteristic}</div>
-        <i style={{marginLeft:`${rating}px` }}class="lni lni-diamond"></i>
+        <i style={{marginLeft:`${rating}px` }}className="lni lni-diamond"></i>
         <div style={{background:'#EEEEEE', width:'250px', height: '7px' }}></div>
         <span style={{fontSize:'90%', marginTop:'5px'}}>{CharacteristicDeff[characteristic][0]}</span>
         <span style={{float: 'right', fontSize:'90%', marginTop:'5px' }}>{CharacteristicDeff[characteristic][4]}</span>

@@ -1,15 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { SingleReview} from '../../Styles'
 import { StarsOuter, StarsInner} from '../../Styles/'
 import Stars from '../Overview/Styles/Stars.js'
 import axios from 'axios';
 
-const Reportreview = (reviewId)=>{
+const reportReview = (reviewId)=>{
   axios.put(`/reviews/${reviewId}/report`)
 }
+const markHelpful = (reviewId)=>{
+  axios.put(`/reviews/${reviewId}/helpful`)
+}
+
+const Review =({ review })=> {
+const[reported, setReported]= useState(false);
+const[helpful, setHelpful]= useState(false);
 
 
-const Review = ({ review }) => (
+return(
   <SingleReview>
     <StarsOuter>
       <StarsInner rating={review.rating}/>
@@ -21,14 +28,15 @@ const Review = ({ review }) => (
     {review.responseToReview ? <p>{review.responseToReview}</p> : <div></div>}
     <div style={{fontSize:'90%'}}>
       <span>Was this review helpful? </span>
-      <a style={{margin:'10px'}}>Yes({review.helpfulness})</a>
+      {!helpful? <a onClick={()=> {markHelpful(review.review_id); setHelpful(true)}} style={{margin:'10px'}}>Yes({review.helpfulness})</a>: <span style={{margin:'10px'}}>Yes({review.helpfulness +1})</span>}
       <span style={{marginLeft:'10px', marginRight:'15px'}}>|</span>
-      <a onClick={()=>Reportreview(review.review_id)}>Report<i class="lni lni-flag-alt"></i> </a>
+      {!reported? <a onClick={()=>{reportReview(review.review_id); setReported(true)}}>Report<i className="lni lni-flag-alt"></i> </a> : <a style={{color:'red'}}>Reported<i className="lni lni-flag-alt"></i> </a>}
+
     </div>
   </SingleReview>
-
-
-
 );
+
+}
+
 
 export default Review;
