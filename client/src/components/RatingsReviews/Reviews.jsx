@@ -30,7 +30,7 @@ class Reviews extends React.Component {
   }
 
   render(){
-     if (! this.props.reviewsToShow) {
+     if (!this.props.meta) {
       return <div>loading...</div>
     }
     var reviews= this.props.reviewsToShow.slice(0,this.state.length)
@@ -43,7 +43,7 @@ class Reviews extends React.Component {
       <NewReviewModal
       close={this.closeModal}
       isOpen= {this.state.modalIsOpen}
-      productName= {this.props.product.name}
+      productName= 'product goes here'
       productId= {this.props.productId}
       characteristics= {this.props.meta.characteristics}/>
     </div>)
