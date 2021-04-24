@@ -1,14 +1,27 @@
-import React, {Fragment} from 'react'
+import React, { useState, useEffect, Fragment} from 'react'
 import { StyledProductCard, CardImage,  StarsOuter, StarsInner, ActionButton, NavButton } from '../../Styles/'
 
-const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor}, theme) => {
+const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor, addedClasses, relatedProduct, theme}) => {
   let prd = product.product
+  const [actionProduct, setActionProduct] = useState()
+
+  useEffect(() => {
+    console.log('ln 9', product.product || product)
+    if (relatedProduct) {
+      setActionProduct(product.product)
+    } else {
+      setActionProduct(product)
+    }
+  }, [product])
+
   return (
     prd
     ?
-      <StyledProductCard>
+      <StyledProductCard
+        className={addedClasses}
+      >
         <ActionButton
-          onClick={() => buttonAction(product)}
+          onClick={() => buttonAction(actionProduct)}
           cursor={cursor}
         >
           <i className={`lni lni-32 ${buttonType}`} />
@@ -25,6 +38,7 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
               onClick={()=> changeProduct(product.currentProductId)}
             />
         }
+
         <div style={{borderTop: `1px solid ${theme.bluGry}`, paddingLeft: '.5em' }}>
           <p style={{marginBottom: 0}}>{prd.category}</p>
           <h4 style={{margin: 0}}>{prd.name}</h4>
