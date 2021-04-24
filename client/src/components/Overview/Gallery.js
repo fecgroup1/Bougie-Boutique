@@ -108,9 +108,8 @@ class Gallery extends React.Component {
                         (pIndex === currImg[1])) {
                         if (photo.thumbnail_url === null) {
                           return (
-                            <GallergyBorder>
+                            <GallergyBorder key={[sIndex, pIndex]}>
                               <SelectedGallPlaceholder
-                                key={[sIndex, pIndex]}
                                 id={`img${sIndex}-${pIndex}`}
                                 src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
                             </GallergyBorder>
