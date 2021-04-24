@@ -10,8 +10,8 @@ class ExpandedView extends React.Component {
     super(props);
     this.state = {
       zoom: 0,
-      imgTop: 50,
-      imgLeft: 50,
+      imgTop: 0,
+      imgLeft: 0,
     };
     this.handleZoom = this.handleZoom.bind(this);
     this.handleMouseMove = this.handleMouseMove.bind(this);
@@ -21,14 +21,16 @@ class ExpandedView extends React.Component {
     if (this.state.zoom) {
       let y = event.clientY;
       let x = event.clientX;
-      let height = event.target.height;
-      let width = event.target.width;
+      let height = document.getElementById("expandedGallery").clientHeight;
+      let width = document.getElementById("expandedGallery").clientWidth;
+      // 0 -> 50%
+      // 50 -> 0
+      // 100 -> -50%
 
-      console.log(`${y / height * 100}, ${x / width * 100}`);
-
+      console.log(`${y / height * 100 - 50}, ${x / width * 100 -50}`);
       this.setState({
-        imgTop: y / height * 100,
-        imgLet: x / width * 100,
+        imgTop: y / height * 100 * -1 + 50,
+        imgLeft: x / width * 100 * -1 + 50,
       });
     }
   }
@@ -55,19 +57,21 @@ class ExpandedView extends React.Component {
       overflow: 'hidden',
     }
     const container = {
+      display: 'grid',
+      gridTemplate: '"a" 100%',
+      justifyItems: 'center',
+      alignItems: 'center',
+      width: '100%',
+      height: '100%',
       margin: 0,
       padding: 0,
       overflow: 'hidden',
     };
     const scrollImg = {
-      position: 'absolute',
-      // top: `${50 - this.state.imgTop}%`,
-      // left: `${50 - this.state.imgLeft}%`,
-      transform: 'translateX(50%), translateY(50%)',
-      objectFit: 'cover',
-      objectPosition: `${this.state.imgTop}% ${this.state.imgLeft}%`,
-      width: `${100 * (this.state.zoom + 1)}%`,
-      height: `${100 * (this.state.zoom + 1)}%`,
+      position: 'relative',
+      top: `${this.state.imgTop}%`,
+      left: `${this.state.imgLeft}%`,
+      transform: `scale(${this.state.zoom + 1})`,
     };
 
     return (
