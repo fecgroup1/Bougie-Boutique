@@ -52,7 +52,8 @@ class DefaultView extends React.Component {
             isOpen={this.state.modalOpen}
             styles={styles}
             currImg={currImg}
-            handleModalOpen={this.handleModalOpen} />
+            handleModalOpen={this.handleModalOpen}
+            handleImgClick={this.props.handleImgClick}/>
       </>
       );
     }
