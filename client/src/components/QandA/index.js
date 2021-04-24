@@ -4,20 +4,18 @@ import Questions from './Questions.js';
 
 const QandA = ({store}) => {
   const [productId, setProductId] = useState(store.state.currentProductId)
-  // const [name, setName] = useState('')
+  const [name, setName] = useState('')
 
   useEffect(() => {
     ProductAPI.getProduct(store.state.currentProductId)
       .then((results) => {
-        console.log(store.state.currentProductId)
-        console.log(results)
         setProductId(results.currentProductId)
-        // setName(results.product.name)
+        setName(results.product.name)
       })
   }, [store.state.currentProductId]);
 
   if (productId !== undefined) {
-    return (<Questions productId={productId}/>)
+    return (<Questions productId={productId} name={name}/>)
   } else {
     return <div>Loading!!!</div>
   }

@@ -73,13 +73,15 @@ const Answers = (props) => {
           </div>
           {answer.answerer_name === 'Seller' ? (
             <div>
-              <p className='answererInfo'>by {' '}
+              <span className='answererInfo'>by
               <span style={{fontWeight: 'bold'}}>{answer.answerer_name}</span>
-              ,{' '} {aDate.toDateString().substring(4)}
-              </p>
-              <p id='answerHelpful' className='answererInfo'>| Helpful?
-                <span id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </span>
-                ({answer.helpfulness}) {' | '}
+              , {aDate.toDateString().substring(4)}
+              </span>
+              <span id='answerHelpful'>|</span>
+              <span id='answerHelpful' className='answererInfo'> Helpful?
+                <span id='helpfulButton' onClick={() => markHelpful(answer)}>Yes</span>
+                ({answer.helpfulness})
+                <span id='answerHelpful'></span>
                 {!report ?
                   (
                   <span id='reportButton' onClick={() => reportAnswer(answer)}>Report</span>
@@ -88,18 +90,20 @@ const Answers = (props) => {
                   <span>Reported</span>
                   )
                 }
-              </p>
+              </span>
             </div>
           )
           :
           (
             <div>
-              <p className='answererInfo'>
-                by {' '} {answer.answerer_name}, {' '} {aDate.toDateString().substring(4)}
-              </p>
-              <p id='answerHelpful' className='answererInfo'>| Helpful?
+              <span className='answererInfo'>
+                by {answer.answerer_name}, {aDate.toDateString().substring(4)}
+              </span>
+              <span id='answerHelpful'>|</span>
+              <span id='answerHelpful' className='answererInfo'> Helpful?
                 <span id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </span>
-                ({answer.helpfulness}) {' | '}
+                ({answer.helpfulness})
+                <span id='answerHelpful'>|</span>
                 {!report ?
                   (
                   <span id='reportButton' onClick={() => reportAnswer(answer)}>Report</span>
@@ -108,7 +112,7 @@ const Answers = (props) => {
                   <span>Reported</span>
                   )
                 }
-              </p>
+              </span>
               </div>
           )}
         </div>

@@ -5,7 +5,7 @@ import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
 import SearchQuestions from './SearchQuestions.js'
 import ProductAPI from '../../Utils/ProductAPI';
-import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead } from '../../Styles'
+import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead, QuestionsButtons } from '../../Styles'
 
 const Questions = (props) => {
   const [questions, setQuestions] = useState([]);
@@ -28,7 +28,7 @@ const Questions = (props) => {
     setSearchQuery('')
     setSearchResults([])
     getQuestions();
-  }, [props.productId])
+  }, [props.productId, props.name])
 
   useEffect(() => {
     console.log('i got a new question')
@@ -44,19 +44,6 @@ const Questions = (props) => {
       console.log(question)
     })
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (this.props.productId !== nextProps.productId) {
-  //     console.log('qa Re')
-  //     return true;
-  //   } if (this.props.name !== nextProps.name) {
-  //     return true;
-  //   }
-  //   console.log('qa NO RErender');
-  //   console.log(this.props.productId)
-  //   console.log(this.props.name)
-  //   return false;
-  // }
 
   const markHelpful = (question) => {
     const prevMarked = questionMarkedHelpful
@@ -107,7 +94,7 @@ const Questions = (props) => {
           <p id='questionBody'> Q: {tempBody}</p>
           <span id='qHelpful'>Helpful?
             <span id='helpfulButton' onClick={() => markHelpful(question)}> Yes </span>
-            ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer}/>
+            ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} name={props.name}/>
           </span>
         </QuestionHead>
 
@@ -145,7 +132,6 @@ const Questions = (props) => {
       setQuestionLength(add)
   }
 
-    // if (this.state.name !== '') {
   return (
   <QAContainer
     tracking={'Questions and Answers'}
@@ -178,12 +164,12 @@ const Questions = (props) => {
         {!moreSearchedQuestions && searchResults.length >  2 ?
         (
           <div>
-            <button id='moreQuestions' value={'search'} onClick={addMore}>MORE ANSWERED QUESTIONS</button>
-            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+            <QuestionsButtons value={'search'} onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
+            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
           </div>
         )
         :
-        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
         }
       </Fragment>
       )
@@ -193,12 +179,12 @@ const Questions = (props) => {
         {!moreQuestions && questions.length >  2?
         (
           <div>
-            <button id='moreQuestions' onClick={addMore}>MORE ANSWERED QUESTIONS</button>
-            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+            <QuestionsButtons onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
+            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
           </div>
         )
         :
-        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
       }
         </Fragment>
     )}
@@ -211,16 +197,13 @@ const Questions = (props) => {
   <QuestionsContainer>
     <h2>Questions and Answers</h2>
     <h4>There are currently no questions... Please add a question!</h4>
-    <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+    <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
   </QuestionsContainer>
 
   )
   }
   </QAContainer>
   )
-// } else {
-//   return (<div>Loading questions</div>)
-// }
 }
 
 

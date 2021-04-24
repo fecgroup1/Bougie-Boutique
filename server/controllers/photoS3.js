@@ -30,6 +30,7 @@ module.exports = (req, res) => {
   s3.putObject(s3Params, (err, data) => {
     if (err) {
       console.log(err);
+      res.statusCode = 409;
       res.json({success: false, error: err})
     }
 
