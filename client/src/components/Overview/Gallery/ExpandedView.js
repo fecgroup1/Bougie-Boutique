@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
-import { ThemeContext } from './../../../Styles';
+import { ThemeConsumer } from 'styled-components';
 import GalleryThumbnails from './GalleryThumbnails.js';
 
 // import { GalleryModal } from './../../../Styles/Overview';
@@ -38,12 +38,10 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
     setImgLeft(0);
   }
 
-  const theme = useContext(ThemeContext);
-
-  const overlayStyles = {
-    zIndex: 10,
-    background: `rgba${theme.bg.slice(3, -1)}, 0.75)`,
-  };
+  // const overlayStyles = {
+  //   zIndex: 10,
+  //   background: `rgba${theme.bg.slice(3, -1)}, 0.75)`,
+  // };
   const contentStyles = {
     display: 'grid',
     gridAutoRows: '100%',
@@ -55,47 +53,49 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
     overflow: 'hidden',
   };
   const container = {
-    display: 'grid',
-    gridAutoRows: '100%',
-    gridAutoColumns: '100%',
-    alignItems: 'center',
+    display: 'block',
     width: `${100 * (zoom + 1)}%`,
-    height: `${100 * (zoom + 1)}%`,
+    height: 'auto',
     margin: 0,
     padding: 0,
     position: 'relative',
-    top: `${imgTop}%`,
-    left: `${imgLeft}%`,
+    // top: `${imgTop}%`,
+    // left: `${imgLeft}%`,
   };
   const scrollImg = {
-    objectFit: 'cover',
     width: '100%',
     height: '100%',
-    objectPosition: '50% 50%',
   };
 
   return (
-    <Modal
-      id="gallerymodal"
-      style={{ overlay: overlayStyles, content: contentStyles }}
-      isOpen={isOpen}
-      onRequestClose={() => handleModalOpen(false)}
-      appElement={document.getElementById('app')}>
-        <div id="expandedGallery" style={container}>
-          <img
-            onClick={handleZoom}
-            onMouseMove={(event) => handleMouseMove(event)}
-            style={scrollImg}
-            src={styles[currImg[0]].photos[currImg[1]].url} />
-        </div>
-        {zoom ? null:
-          <GalleryThumbnails
-          styles={styles}
-          currImg={currImg}
-          handleImgClick={handleImgClick}
-          id="expandedThumbs"/>
-        }
-    </Modal>
+    <ThemeConsumer>
+      { theme =>
+        <Modal
+          id="gallerymodal"
+          style={{ overlay: {
+            zIndex: 10,
+            background: `rgba${theme.bg.slice(3, -1)}, 0.75)`,
+          }, content: contentStyles }}
+          isOpen={isOpen}
+          onRequestClose={() => handleModalOpen(false)}
+          appElement={document.getElementById('app')}>
+            <div id="expandedGallery" style={container}>
+              <img
+                onClick={handleZoom}
+                onMouseMove={(event) => handleMouseMove(event)}
+                style={scrollImg}
+                src={styles[currImg[0]].photos[currImg[1]].url} />
+            </div>
+            {zoom ? null:
+              <GalleryThumbnails
+              styles={styles}
+              currImg={currImg}
+              handleImgClick={handleImgClick}
+              id="expandedThumbs"/>
+            }
+        </Modal>
+      }
+    </ThemeConsumer>
   );
 };
 

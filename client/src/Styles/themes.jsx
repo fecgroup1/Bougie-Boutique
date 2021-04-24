@@ -138,9 +138,6 @@ export const dark = {
   invertWht: 1,
 }
 
-export const ThemeContext = React.createContext(light);
-
-
 // input {
 //   -webkit-appearance: none;
 //   appearance: none;
