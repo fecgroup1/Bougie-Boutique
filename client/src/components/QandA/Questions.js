@@ -28,7 +28,7 @@ const Questions = (props) => {
     setSearchQuery('')
     setSearchResults([])
     getQuestions();
-  }, [props.productId])
+  }, [props.productId, props.name])
 
   useEffect(() => {
     console.log('i got a new question')
@@ -94,7 +94,7 @@ const Questions = (props) => {
           <p id='questionBody'> Q: {tempBody}</p>
           <span id='qHelpful'>Helpful?
             <span id='helpfulButton' onClick={() => markHelpful(question)}> Yes </span>
-            ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer}/>
+            ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} name={props.name}/>
           </span>
         </QuestionHead>
 
@@ -165,11 +165,11 @@ const Questions = (props) => {
         (
           <div>
             <button id='moreQuestions' value={'search'} onClick={addMore}>MORE ANSWERED QUESTIONS</button>
-            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
           </div>
         )
         :
-        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
         }
       </Fragment>
       )
@@ -180,11 +180,11 @@ const Questions = (props) => {
         (
           <div>
             <button id='moreQuestions' onClick={addMore}>MORE ANSWERED QUESTIONS</button>
-            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
           </div>
         )
         :
-        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
       }
         </Fragment>
     )}
@@ -197,7 +197,7 @@ const Questions = (props) => {
   <QuestionsContainer>
     <h2>Questions and Answers</h2>
     <h4>There are currently no questions... Please add a question!</h4>
-    <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion}/>
+    <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
   </QuestionsContainer>
 
   )

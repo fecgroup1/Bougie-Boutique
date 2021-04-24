@@ -14,7 +14,7 @@ const AddQuestion = (props) => {
   useEffect(() => {
     setOpen(false)
     setChars(1000)
-  }, [props.currentProductId])
+  }, [props.currentProductId, props.name])
 
   const openModal = (event) => {
     event.preventDefault()
@@ -77,52 +77,55 @@ const AddQuestion = (props) => {
     backgroundColor: 'rgba(17, 17, 17, 0.75)'
   }}
 
-  return (
-    <Fragment>
-      <Modal
-        ariaHideApp={false}
-        isOpen={open}
-        className='questionModal'
-        style={overlay}
-        overlayClassName={{
-          base: 'questionModalOverlay',
-          afterOpen: 'questionModalOverlay-in',
-          beforeClose: 'questionModalOverlay-out'
-        }}
-        onRequestClose={() => closeForm()}
-      >
-      <form>
-        <div>
-          <button id='closeModal' onClick={closeForm}>X</button>
-          <h2>Ask your question</h2>
-          <h4>About the Product</h4>
-          <label>* Your Question: </label>
-          {textBodyInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a question</p> : null}
-          <textarea id='questionInputText' name='question' type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
-          <p id='charsLeft'>{chars} characters remaining</p>
+  if (props.name) {
+    return (
+      <Fragment>
+        <Modal
+          ariaHideApp={false}
+          isOpen={open}
+          className='questionModal'
+          style={overlay}
+          overlayClassName={{
+            base: 'questionModalOverlay',
+            afterOpen: 'questionModalOverlay-in',
+            beforeClose: 'questionModalOverlay-out'
+          }}
+          onRequestClose={() => closeForm()}
+        >
+        <form>
+          <div>
+            <button id='closeModal' onClick={closeForm}>X</button>
+            <h2>Ask your question</h2>
+            <h4>About the {props.name}</h4>
+            <label>* Your Question: </label>
+            {textBodyInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a question</p> : null}
+            <textarea id='questionInputText' name='question' type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
+            <p id='charsLeft'>{chars} characters remaining</p>
 
-          <label>* What is your nickname? </label><br></br>
-          {nicknameInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid name</p> : null}
-          <input type="text" id="questionNickname" className='modalInput'
-            placeholder='Example: jackson11!' name="nickname" maxLength='60' required></input>
-            <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
+            <label>* What is your nickname? </label><br></br>
+            {nicknameInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid name</p> : null}
+            <input type="text" id="questionNickname" className='modalInput'
+              placeholder='Example: jackson11!' name="nickname" maxLength='60' required></input>
+              <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
 
-          <label>* Your email: </label><br></br>
-          {emailInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid email</p> : null}
-          <input type="email" id="questionEmail" className='modalInput'
-            placeholder='Why did you like the product or not?' name="email" maxLength='60' required></input>
-            <p className='warning'>For authentication reasons, you will not be emailed</p>
+            <label>* Your email: </label><br></br>
+            {emailInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid email</p> : null}
+            <input type="email" id="questionEmail" className='modalInput'
+              placeholder='Why did you like the product or not?' name="email" maxLength='60' required></input>
+              <p className='warning'>For authentication reasons, you will not be emailed</p>
 
-          <p id='required'>* Required</p>
+            <p id='required'>* Required</p>
 
-          <button id='qaSubmit' onClick={(event) => submitForm(event)}>Submit</button>
-        </div>
-      </form>
-      </Modal>
-      <button id='addQuestionButton' onClick={openModal}>ASK A QUESTION +</button>
-    </Fragment>
-
-  )
+            <button id='qaSubmit' onClick={(event) => submitForm(event)}>Submit</button>
+          </div>
+        </form>
+        </Modal>
+        <button id='addQuestionButton' onClick={openModal}>ASK A QUESTION +</button>
+      </Fragment>
+    )
+  } else {
+    return (<div></div>)
+  }
 }
 
 export default AddQuestion
