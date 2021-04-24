@@ -29,38 +29,44 @@ class App extends React.Component {
     });
   }
 
+  handleTracking(event) {
+    console.log(event);
+  }
+
   render() {
     const theme = this.state.dark ? dark: light;
 
     return (
       <ThemeProvider theme={theme}>
-        <CurrentProduct render={ store => (
-          <>
-            <Nav
-              cart={store.state.cart}
-              store={store}
-              checkCart={store.checkCart}
-              dark={this.state.dark}
-              toggleTheme={this.toggleTheme}/>
-            <Body />
-            <div id="content">
-              <Overview
+        <CurrentProduct
+          onClick={() => handleTracking()}
+          render={ store => (
+            <>
+              <Nav
+                cart={store.state.cart}
                 store={store}
-              />
-              <RelatedProducts
-                store={store}
-                outfits={this.state.outfits}
-                theme={theme}
-              />
-              <QandA
-                store={store}
-              />
-              <RatingsReviews
-                store={store}
-                key= {store.state.reviews}
-              />
-            </div>
-          </>
+                checkCart={store.checkCart}
+                dark={this.state.dark}
+                toggleTheme={this.toggleTheme}/>
+              <Body />
+              <div id="content">
+                <Overview
+                  store={store}
+                />
+                <RelatedProducts
+                  store={store}
+                  outfits={this.state.outfits}
+                  theme={theme}
+                />
+                <QandA
+                  store={store}
+                />
+                <RatingsReviews
+                  store={store}
+                  key= {store.state.reviews}
+                />
+              </div>
+            </>
         )}/>
 
       </ThemeProvider>
