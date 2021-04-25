@@ -92,7 +92,7 @@ class RatingsReviews extends React.Component {
     }
     return (
     <section tracking={'Ratings and Reviews'}>
-      <h2 style={{'marginBottom': '50px','marginTop': '100px'}}>Ratings and Reviews</h2>
+      <h2 id="ratingsreviews" style={{'marginBottom': '50px','marginTop': '100px'}}>Ratings and Reviews</h2>
       <RatingsAndReviewsContainer>
         <RatingsContainer>
           <Ratings

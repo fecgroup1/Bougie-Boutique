@@ -14,6 +14,18 @@ class Stars extends React.Component {
     return false;
   }
 
+  scrollToReviews(event) {
+    event.preventDefault();
+    let element = document.getElementById('ratingsreviews');
+    let body = document.body.getBoundingClientRect();
+    let pos = element.getBoundingClientRect();
+    window.scroll({
+      top: pos.top - body.top - 5,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
+
   render() {
     const rating = this.props.rating;
     const reviews = this.props.reviews;
@@ -28,7 +40,11 @@ class Stars extends React.Component {
           <InnerStars style={inner}/>
           </OuterStars>
         <Small style={{position: 'relative', top: '-3px'}}>
-          &nbsp;&nbsp;<a href="">Read all {reviews} reviews</a>
+          &nbsp;&nbsp;<a
+            href=""
+            onClick={(event) => this.scrollToReviews(event)}>
+              Read all {reviews} reviews
+          </a>
         </Small>
       </div>
     )

@@ -135,7 +135,7 @@ export const ScrollBg = styled.button`
 export const GalleryScroll = styled.button`
 &{
   align-items: center;
-  background: none;
+  background: ${props => props.theme.alphaBg};
   border: 0.5vh solid transparent;
   border-radius: 50%;
   color: ${props => props.theme.text};
@@ -149,7 +149,7 @@ export const GalleryScroll = styled.button`
   outline: none;
   padding: 0;
   text-align: center;
-  transition: color 0.5s, opacity 0.5s;
+  transition: background 0.5s, color 0.5s, opacity 0.5s;
   width: 3vh;
   min-width: 15px;
 }
