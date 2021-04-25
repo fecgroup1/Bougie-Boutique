@@ -24,7 +24,7 @@ class Gallery extends React.Component {
 
     return (
       <Left style={{alignContent: 'center', minWidth: '400px'}}>
-        <div id="gallery" style={{ height: '66vh', overflow: 'hidden' }}>
+        <div id="gallery" style={{ height: '66vh', minHeight: '350px', overflow: 'hidden' }}>
           <DefaultView
             styles={styles}
             currImg={currImg}

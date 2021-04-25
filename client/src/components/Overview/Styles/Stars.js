@@ -23,7 +23,7 @@ class Stars extends React.Component {
     };
 
     return (
-      <div style={{marginBottom: '10px'}}>
+      <div>
         <OuterStars>
           <InnerStars style={inner}/>
           </OuterStars>

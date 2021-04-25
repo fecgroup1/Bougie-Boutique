@@ -74,6 +74,7 @@ class GalleryThumbnails extends React.Component {
       justifyContent: 'space-between',
       alignItems: 'center',
       height: '64vh',
+      minHeight: '325px',
       margin: '1vh 1vw',
       zIndex: 0,
     }
