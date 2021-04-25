@@ -19,11 +19,14 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
       let x = event.clientX;
       let height = document.getElementById("gallerymodal").clientHeight;
       let width = document.getElementById("gallerymodal").clientWidth;
-
-      let top = y / height * 100 * -1
-      let left = x / width * 100 * -1
-      let cappedTop = top < -100 ? -100: top
-      let cappedLeft = left < -100 ? -100: left;
+      let imgHeight = event.target.offsetHeight;
+      let imgWidth = event.target.offsetWidth;
+      let top = y / height * 100
+      let left = x / width * 100
+      let cappedTop = top > 100 ? 100: top
+      let cappedLeft = left > 100 ? 100: left;
+      cappedTop = imgHeight <= height ? 50: cappedTop;
+      cappedLeft = imgWidth <= width ? 50: cappedLeft;
 
       console.log(`${top}, ${left}`);
 
@@ -34,37 +37,39 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
 
   const handleZoom = () => {
     setZoom(!zoom);
-    setImgTop(0);
-    setImgLeft(0);
+    setImgTop(50);
+    setImgLeft(50);
   }
 
-  // const overlayStyles = {
-  //   zIndex: 10,
-  //   background: `rgba${theme.bg.slice(3, -1)}, 0.75)`,
-  // };
   const contentStyles = {
-    display: 'grid',
+    display: zoom ? 'flex': 'grid',
     gridAutoRows: '100%',
     gridAutoColumns: '100%',
     justifyContent: 'center',
     alignContent: 'center',
+    alignItems: 'center',
     margin: 0,
     padding: 0,
     overflow: 'hidden',
   };
   const container = {
     display: 'block',
-    width: `${100 * (zoom + 1)}%`,
-    height: 'auto',
+    width: zoom ? '': '100%',
+    height: zoom ? '': '100%',
     margin: 0,
     padding: 0,
-    position: 'relative',
-    // top: `${imgTop}%`,
-    // left: `${imgLeft}%`,
+    position: zoom ? 'absolute': 'relative',
+    top: `${imgTop}%`,
+    left: `${imgLeft}%`,
+    transform: `translate(-${imgLeft}%, -${imgTop}%)`,
   };
   const scrollImg = {
-    width: '100%',
-    height: '100%',
+    display: 'block',
+    objectFit: zoom ? '': 'cover',
+    objectPosition: zoom ? '': '50% 50%',
+    width: zoom ? '': '100%',
+    height: zoom ? '': '100%',
+    cursor: `url('${zoom ? '/assets/minus.png': '/assets/plus.png'}'), ${zoom ? 'zoom-out': 'zoom-in'}`,
   };
 
   return (
