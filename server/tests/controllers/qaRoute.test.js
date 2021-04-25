@@ -1,4 +1,4 @@
-const TOKEN = require('../../../config.js')
+const TOKEN = process.env.TOKEN
 const request = require('supertest')
 const app = require('../../index.js').listen()
 
