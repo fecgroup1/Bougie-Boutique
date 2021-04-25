@@ -38,6 +38,7 @@ export const Button = styled.button`
   border: none;
   top 30%;
   z-index: 1;
+  box-shadow: 5px 1px 5px;
   ${props => props.position}: 0;
   display: ${props => props.show ? 'inline-block': 'none'}
 
