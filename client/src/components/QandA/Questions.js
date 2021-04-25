@@ -120,7 +120,6 @@ const Questions = (props) => {
       if (addSearch >= searchResults.length) {
         setMoreSearchedQuestions(true)
         setSearchQuestionLength(addSearch)
-        console.log(searchQuestionLength)
       } else {
         setSearchQuestionLength(addSearch)
       }
