@@ -56,8 +56,8 @@ const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, pr
     photo: currImg[1] === 0 && currImg[0] !== 0 ? prevLastIndex: currImg[1]- 1,
   };
   var nextRight = {
-    style: currImg[1] === currLastIndex ? currImg[0] + 1: currImg[0],
-    photo: currImg[1] === currLastIndex ? 0: currImg[1] + 1,
+    style: currImg[1] === currLastIndex - 1 ? currImg[0] + 1: currImg[0],
+    photo: currImg[1] === currLastIndex - 1 ? 0: currImg[1] + 1,
   };
 
   return (
