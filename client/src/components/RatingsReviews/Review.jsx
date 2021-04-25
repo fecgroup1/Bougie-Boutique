@@ -27,7 +27,7 @@ return(
     <p>{review.body}</p>
     {review.photos.map((photo)=> <ReviewPhoto photo= {photo}/>)}
     {review.recommended ? <p style={{fontSize:'90%'}}> &#10003; I recomend this product</p> : <div></div>}
-    {review.responseToReview ? <p>{review.responseToReview}</p> : <div></div>}
+    {review.responseToReview ? <p style={{fontSize:'90%', backgroundColor:rgba(0, 0, 0, 0.2) }}>Response from seller:  {review.responseToReview}</p> : <div></div>}
     <div style={{fontSize:'90%'}}>
       <span>Was this review helpful? </span>
       {!helpful? <a onClick={()=> {markHelpful(review.review_id); setHelpful(true)}} style={{margin:'10px'}}>Yes({review.helpfulness})</a>: <span style={{margin:'10px'}}>Yes({review.helpfulness +1})</span>}
