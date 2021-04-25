@@ -46,16 +46,18 @@ class App extends React.Component {
           if (code) {
             data = code.value ? {element: event.target.outerHTML, widget: code.value, time: timeStamp } : {};
             i = event.path.length;
-            // console.log('tracking data', data)
+            console.log('tracking data', data)
           }
         }
       }
     }
-    TrackingAPI.sendTrackingData(data)
-    .then((response) => {
-      // console.log(response)
-    })
-    .catch((err) => console.log(err))
+    if (data.widget) {
+      TrackingAPI.sendTrackingData(data)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((err) => console.log(err))
+    }
 
   }
 
