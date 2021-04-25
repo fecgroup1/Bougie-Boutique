@@ -9,6 +9,9 @@ const RelatedProducts = ({store, theme}) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4]);
   const [productsPosition, setProductsPosition] = useState(0);
+  const [productScroll, setProductScroll] = useState({left: false, right: true});
+  const [outfitsPosition, setOutfitPosition] = useState(0);
+  const [outfitScroll, setOutfitScroll] = useState({left: false, right: true});
   const [comparisonProduct, setComparisonProduct] = useState(null);
   const [outfits, setOutfits] = useState({})
 
@@ -29,21 +32,45 @@ const RelatedProducts = ({store, theme}) => {
     }
   }, [])
 
+  //manage button scroll visibility products
+  useEffect(() => {
+    if (productsPosition <= 0) {
+      let temp = {...productScroll}
+      temp.left = false
+      setProductScroll(temp)
+    } else if (productsPosition > 0) {
+      let temp = {...productScroll}
+      temp.left = true
+      setProductScroll(temp)
+    }
+  }, [productsPosition]);
+
+  //manage button scroll visibility for outfits
+  useEffect(() => {
+    if (outfitsPosition <= 0) {
+      let temp = {...outfitScroll}
+      temp.left = false
+      setOutfitScroll(temp)
+    } else if (outfitsPosition > 0) {
+      let temp = {...outfitScroll}
+      temp.left = true
+      setOutfitScroll(temp)
+    }
+  }, [outfitsPosition]);
+
   const scroll = (container, direction, event) => {
     let area = event.target.parentNode.parentNode.children[1];
     let cardWidth = event.target.parentNode.parentNode.children[1].children[1].clientWidth;
-    if(direction === 'left' ) {
-      // console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
-      area.scrollLeft += cardWidth
-      if (productsPosition === `${container}`.length - 3) {
 
-      } else {
-        setProductsPosition(productsPosition + 1);
-      }
+    if(direction === 'right' ) {
+      area.scrollLeft += cardWidth
+      let pos = area.scrollLeft + cardWidth
+      container === 'products' ?  setProductsPosition(pos) : setOutfitPosition(pos);
+
     } else {
-      // console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft -= cardWidth
-      setProductsPosition(productsPosition - 1)
+      let pos = area.scrollLeft - cardWidth
+      container === 'products' ?  setProductsPosition(pos) : setOutfitPosition(pos);
     }
   }
 
@@ -79,14 +106,14 @@ const RelatedProducts = ({store, theme}) => {
       <CardsWrapper>
         <Button
           // onClick={(event) => scroll('products', 'right', event)}
-          show={!!productsPosition}
+          show={productScroll.left}
           position={'left'}
         >
           <i className="lni lni-32 lni-chevron-left-circle"
           style={{padding: '30px 20px',
             opacity: '.75',
             backgroundColor: 'white'}}
-          onClick={(event) => scroll('products', 'right', event)}
+          onClick={(event) => scroll('products', 'left', event)}
           ></i>
         </Button>
         <CardContainer>
@@ -107,21 +134,21 @@ const RelatedProducts = ({store, theme}) => {
           }
         </CardContainer>
           <Button
-            // onClick={(event) => scroll('products', 'left', event)}
-            show={true}
+            // onClick={(event) => scroll('products', 'right', event)}
+            show={productScroll.right}
             position={'right'}
           >
             <i className="lni lni-32 lni-chevron-right-circle"
             style={{padding: '30px 20px',
             opacity: '.75',
             backgroundColor: 'white'}}
-            onClick={(event) => scroll('products', 'left', event)}
+            onClick={(event) => scroll('products', 'right', event)}
             />
           </Button>
       </CardsWrapper>
     </ProductsContainer>
 
-    , [store.state.currentProductId, products])
+    , [store.state.currentProductId, products, productScroll])
 
   //memoizes the props in this componenet and only updates them when the array values are updated [outfits]
   const outfitSection = useMemo(() =>
@@ -132,6 +159,18 @@ const RelatedProducts = ({store, theme}) => {
         <h3>YOUR OUTFIT</h3>
       </div>
       <CardsWrapper>
+      <Button
+            // onClick={(event) => scroll('products', 'left', event)}
+            show={outfitScroll.left}
+            position={'left'}
+          >
+            <i className="lni lni-32 lni-chevron-left-circle"
+            style={{padding: '30px 20px',
+            opacity: '.75',
+            backgroundColor: 'white'}}
+            onClick={(event) => scroll('outfits', 'left', event)}
+            />
+          </Button>
       <CardContainer>
         <StyledProductCard
           className={'addOutfit'}
@@ -156,6 +195,7 @@ const RelatedProducts = ({store, theme}) => {
                 product={outfits[product]}
                 className={'productCard'}
                 buttonAction={handleRemoveOutfit}
+                changeProduct={store.changeProduct}
                 buttonType={'lni-cross-circle'}
                 cursor={'delete'}
                 addedClasses={'outfit'}
@@ -164,11 +204,23 @@ const RelatedProducts = ({store, theme}) => {
             ))
           }
         </CardContainer>
+        <Button
+            // onClick={(event) => scroll('products', 'left', event)}
+            show={outfitScroll.right}
+            position={'right'}
+          >
+            <i className="lni lni-32 lni-chevron-right-circle"
+            style={{padding: '30px 20px',
+            opacity: '.75',
+            backgroundColor: 'white'}}
+            onClick={(event) => scroll('outfits', 'right', event)}
+            />
+          </Button>
       </CardsWrapper>
 
     </ProductsContainer>
 
-  , [outfits])
+  , [outfits, outfitScroll])
 
 
     return (
