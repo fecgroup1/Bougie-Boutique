@@ -9,8 +9,14 @@ require('dotenv').config()
 module.exports = {
   projects: [
     {
+      displayName: 'dom',
+      testEnvironment: 'jsdom',
+      testMatch: ["**/*.test.jsx"]
+    },
+    {
       displayName: 'node',
       testEnvironment: 'node',
+      testMatch: ['**/*.test.js']
     },
   ],
 };
