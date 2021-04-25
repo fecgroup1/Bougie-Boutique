@@ -126,11 +126,11 @@ class AddToCart extends React.Component {
       return (
         <>
         <form id="addcart" style={grid}>
-          <CartDropdown id="size" style={disabled}>
-            <option value='0' disabled selected>Size: --</option>
+          <CartDropdown readOnly id="size" style={disabled} value="Size: --">
+            <option value='0' disabled >Size: --</option>
           </CartDropdown>
-          <CartDropdown id="qty" style={disabled}>
-            <option value='0' disabled selected>Qty: --</option>
+          <CartDropdown readOnly id="qty" style={disabled} value="Qty: --">
+            <option value='0' disabled >Qty: --</option>
           </CartDropdown>
         </form>
         <div style={red}>
@@ -149,7 +149,6 @@ class AddToCart extends React.Component {
             value={this.state.currSize}
             onChange={(event) => this.handleSizeSelect(event)}>
               <option
-                defaultValue
                 value={this.state.currSize}>
                   {this.state.currSize}
               </option>
@@ -165,8 +164,8 @@ class AddToCart extends React.Component {
                 }
               })}
           </CartDropdown>
-          <CartDropdown id="qty" disabled>
-            <option defaultValue value={this.state.quantity}>
+          <CartDropdown readOnly id="qty" disabled value={this.state.quantity}>
+            <option value={this.state.quantity}>
               {this.state.quantity}
             </option>
           </CartDropdown>

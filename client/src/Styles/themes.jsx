@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import React from 'react';
 
 export const Body = createGlobalStyle`
   body {
@@ -121,7 +122,7 @@ export const light = {
   border: 'white',
   outline: '#002a60',
   text: 'black',
-  bg: 'white',
+  bg: 'rgb(255, 255, 255)',
   bluGry: '#002a60',
   blkGry: 'black',
   invertWht: 0,
@@ -131,13 +132,11 @@ export const dark = {
   border: '#002a60',
   outline: '#cccccc',
   text: '#cccccc',
-  bg: '#111111',
+  bg: 'rgb(17, 17, 17)',
   bluGry: '#cccccc',
   blkGry: '#cccccc',
   invertWht: 1,
 }
-
-
 
 // input {
 //   -webkit-appearance: none;

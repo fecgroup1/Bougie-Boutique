@@ -61,7 +61,6 @@ class App extends React.Component {
 
   render() {
     const theme = this.state.dark ? dark: light;
-
     return (
       <ThemeProvider theme={theme}>
         <CurrentProduct
@@ -101,7 +100,6 @@ class App extends React.Component {
               </div>
             </>
         )}/>
-
       </ThemeProvider>
     )
   }

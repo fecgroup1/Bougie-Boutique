@@ -46,9 +46,8 @@ class Thumbnails extends React.Component {
           } else if (index === currStyle) {
             if (style.photos[0].thumbnail_url === null) {
               return (
-                <PlaceholderBorder>
+                <PlaceholderBorder key={index}>
                 <SelectedStylePlaceholder
-                  key={index}
                   onClick={() => changeStyle(index)}
                   src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
                 </PlaceholderBorder>
