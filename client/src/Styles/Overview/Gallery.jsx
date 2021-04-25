@@ -149,7 +149,7 @@ export const GalleryScroll = styled.button`
   outline: none;
   padding: 0;
   text-align: center;
-  transition: color 0.5s, opacity 0.5s;
+  transition: background 0.5s, color 0.5s, opacity 0.5s;
   width: 3vh;
   min-width: 15px;
 }
