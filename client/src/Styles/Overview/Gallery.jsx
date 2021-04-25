@@ -28,6 +28,8 @@ export const GallPlaceholder = styled.img`
     border: 0.75vh solid transparent;
     width: 3vh;
     height: 3vh;
+    min-width: 15px;
+    min-height: 15px;
     padding: 1.5vh;
     opacity: 30%;
     object-position: 50% 50%;
@@ -41,6 +43,8 @@ export const GallPlaceholder = styled.img`
 export const GallergyBorder = styled.div`
   width: 3vh;
   height: 3vh;
+  min-width: 15px;
+  min-height: 15px;
   border: 0.25vh solid ${props => props.theme.border};
   outline: 0.5vh solid ${props => props.theme.outline};
   margin: 0.5vh;
@@ -51,6 +55,8 @@ export const SelectedGallPlaceholder = styled.img`
   & {
     width: 3vh;
     height: 3vh;
+    min-width: 15px;
+    min-height: 15px;
     opacity: 30%;
     object-position: 50% 50%;
     filter: invert(${props => props.theme.invertWht});
@@ -66,6 +72,8 @@ export const GallThumb = styled.img`
   object-position: 50% 50%;
   width: 6vh;
   height: 6vh;
+  min-width: 30px;
+  min-height: 30px;
   scroll-snap-align: center;
   border: 0.75vh solid transparent;
   opacity: 50%;
@@ -81,6 +89,8 @@ export const CurrGallThumb = styled.img`
   object-position: 50% 50%;
   width: 6vh;
   height: 6vh;
+  min-width: 30px;
+  min-height: 30px;
   scroll-snap-align: center;
   margin: 0.5vh;
   border: 0.25vh solid ${props => props.theme.border};
@@ -92,6 +102,7 @@ export const NoScrollBar = styled.div`
   &{
     display: grid;
     align-content: flex-start;
+    justify-content: center;
     overflow-x: hidden;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
@@ -99,6 +110,7 @@ export const NoScrollBar = styled.div`
     transition: transform 0.5s;
     position: relative;
     width: 7.5vh;
+    min-width: 40px;
     scroll-behavior: smooth;
   }
   &:: -webkit-scrollbar {
@@ -111,11 +123,13 @@ export const ScrollBg = styled.button`
   border: none;
   border-radius: 50%;
   height: 3vh;
+  min-height: 15px;
   margin: 0vh;
   outline: none;
   padding: 0;
   transition: background 0.5s;
   width: 3vh;
+  min-width: 15px;
 `;
 
 export const GalleryScroll = styled.button`
@@ -128,6 +142,7 @@ export const GalleryScroll = styled.button`
   display: flex;
   font-size: 2.5vh;
   height: 3vh;
+  min-height: 15px;
   justify-content: center;
   line-height: 3vh;
   opacity: 50%;
@@ -136,6 +151,7 @@ export const GalleryScroll = styled.button`
   text-align: center;
   transition: color 0.5s, opacity 0.5s;
   width: 3vh;
+  min-width: 15px;
 }
 &:hover {
   opacity: 100%;
@@ -147,8 +163,10 @@ export const GallThumbContainer = styled.div`
   top: 100px;
   left: 20px;
   width: 7.5vh;
+  min-width: 40px;
   background: ${props => props.theme.bg};
   height: 56.5vh;
+  min-height: 300px;
   margin: 4.75vh 1vw;
   transition: background 0.5s;
 `;

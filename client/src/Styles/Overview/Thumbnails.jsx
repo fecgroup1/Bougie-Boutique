@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-export const StyleThumbs = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-`;
-
 export const Loading = styled.img`
   border: none;
   width: 50%;
@@ -26,6 +21,8 @@ export const StylePlaceholder = styled.img`
     border: 1.25vh solid transparent;
     width: 5vh;
     height: 5vh;
+    min-width: 25px;
+    min-height: 25px;
     padding: 2.5vh;
     opacity: 30%;
     object-position: 50% 50%;
@@ -46,6 +43,8 @@ export const SelectedStylePlaceholder = styled.img`
     object-fit: cover;
     width: 5vh;
     height: 5vh;
+    min-width: 25px;
+    min-height: 25px;
     padding: 2.5vh;
     opacity: 30%;
     object-position: 50% 50%;
@@ -64,6 +63,8 @@ export const ThumbImg = styled.img`
     object-position: 50% 50%;
     width: 10vh;
     height: 10vh;
+    min-width: 50px;
+    min-height: 50px;
     border: 1.25vh solid transparent;
     opacity: 50%;
     transition: opacity 0.5s;
@@ -78,8 +79,8 @@ export const CurrThumb = styled.img`
   object-position: 50% 50%;
   width: 10vh;
   height: 10vh;
-  min-width: 80px;
-  min-height: 80px;
+  min-width: 50px;
+  min-height: 50px;
   margin: 0.75vh;
   border: 0.5vh solid ${props => props.theme.border};
   outline: 0.75vh solid ${props => props.theme.outline};

@@ -27,6 +27,7 @@ const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews,
     alignItems: 'stretch',
     alignContent: 'space-between',
     height: '66vh',
+    minHeight: '350px',
   }
 
   var title = product.name;
@@ -42,27 +43,24 @@ const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews,
       <Stars
         rating={stars}
         reviews={reviews}/>
-
-    <Small>{category}</Small>
-    <div style={titleFont}>{title}</div>
-    <div className="price" style={{margin: '5px 0px'}}>
-      <Price
-        orig={styles[currStyle].original_price}
-        sale={styles[currStyle].sale_price}/>
-    </div>
-    <div
-      className="stylename small"
-      style={{marginTop: '10px'}}>
-        Style: {styles[currStyle].name}
-    </div>
-    <Thumbnails
-      styles={styles}
-      currStyle={currStyle}
-      changeStyle={changeStyle} />
-
-
-
-
+      <div>
+        <Small>{category}</Small>
+        <div style={titleFont}>{title}</div>
+        <div className="price">
+          <Price
+            orig={styles[currStyle].original_price}
+            sale={styles[currStyle].sale_price}/>
+        </div>
+      </div>
+      <div>
+        <div className="stylename small">
+            Style: {styles[currStyle].name}
+        </div>
+        <Thumbnails
+        styles={styles}
+        currStyle={currStyle}
+        changeStyle={changeStyle} />
+      </div>
       <AddToCart
         store={store}
         title={product.name}
