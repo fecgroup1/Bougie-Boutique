@@ -2,7 +2,7 @@ import React from 'react';
 // import WidgetContainer from '../../Styles'
 import Ratings from './Ratings';
 import Reviews from './Reviews';
-import { RatingsContainer, ReviewsContainer,  RatingsAndReviewsContainer} from '../../Styles'
+import { RatingsContainer,  RatingsAndReviewsContainer} from '../../Styles'
 
 
 
@@ -14,6 +14,7 @@ class RatingsReviews extends React.Component {
     this.sortReviews= this.sortReviews.bind(this);
     this.filterReviews= this.filterReviews.bind(this);
     this.state={
+      currentProductId: null,
       reviewsToShow: this.props.store.state.reviews,
       sortedBy:0,
       filteredFor:{
@@ -28,8 +29,18 @@ class RatingsReviews extends React.Component {
   }
 
   componentDidMount(){
+    console.log('mount')
     this.props.store.setMeta(this.props.store.state.currentProductId)
     this.props.store.setReviews(this.props.store.state.currentProductId)
+    this.setState({currentProductId: this.props.store.state.currentProductId})
+  }
+
+  componentDidUpdate(prevProps){
+    if (Number(this.props.store.state.currentProductId) !== Number(this.state.currentProductId)){
+      this.setState({currentProductId: this.props.store.state.currentProductId})
+      this.props.store.setMeta(this.props.store.state.currentProductId)
+      this.props.store.setReviews(this.props.store.state.currentProductId)
+    }
   }
 
   filterReviews(numberOfStars){
@@ -100,15 +111,14 @@ class RatingsReviews extends React.Component {
           filterReviews= {this.filterReviews}
           filteredFor= {this.state.filteredFor}/>
         </RatingsContainer>
-        <ReviewsContainer>
           <Reviews key={this.state.reviewsToShow}
           reviewsToShow ={this.state.reviewsToShow}
           product = {this.props.store.state.product}
           productId = {this.props.store.state.currentProductId}
           meta= {this.props.store.state.meta}
           sortReviews= {this.sortReviews}
+          theme={this.props.theme}
           />
-        </ReviewsContainer>
       </RatingsAndReviewsContainer>
     </section>
 

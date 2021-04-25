@@ -153,7 +153,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId}
       <div style={{'marginTop': '40px'}} > Review Summary:  </div><br></br>
       <input name = 'surmmary' type='text' size='50' maxLength= '60' id= 'summary' placeholder= 'Example: Best purchase ever!'></input>
       <div style={{'marginTop': '40px'}} >* Review:  </div><br></br>
-      <textarea id='body' required minLength= '5' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
+      <textarea id='body' required minLength= '50' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
       <div style={{'marginTop': '40px', 'marginBottom': '15px'}}> Upload your photos</div>
       <input id='photos' type= 'file' accept="image/png, image/jpeg"></input>
       <div style={{'marginTop': '40px'}} >* What is your nickname?</div><br></br>
