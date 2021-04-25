@@ -179,11 +179,14 @@ const RelatedProducts = ({store, theme}) => {
         onClick={() => handleSaveOutfit(store.state)}
         >
           <i
+            className="lni lni-circle-plus plus"
             style={{
               fontSize: '9em',
-              color: theme.bluGry
+              color: theme.bluGry,
+              boxShadow: `10px 10px 15px #cccccc`,
+              borderRadius: '500px'
             }}
-            className="lni lni-circle-plus plus"
+
           />
         </AddOutfitButton>
         </StyledProductCard>
@@ -220,7 +223,7 @@ const RelatedProducts = ({store, theme}) => {
 
     </ProductsContainer>
 
-  , [outfits, outfitScroll])
+  , [outfits, outfitScroll, theme])
 
 
     return (
