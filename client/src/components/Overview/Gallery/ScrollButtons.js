@@ -32,9 +32,11 @@ const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, pr
 
   var leftOpacity = {
     background: (currImg[0] === 0 && currImg[1] === 0) ? 'none': '',
+    borderRadius: '10%',
   };
   var rightOpacity = {
     background: (currImg[0] === lastStyleIndex && currImg[1] === lastImgIndex) ? 'none': '',
+    borderRadius: '10%',
   };
   var buttonContainer = {
     position: 'absolute',
@@ -44,8 +46,9 @@ const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, pr
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     justifyItems: 'flex-end',
-    height: galHeight,
-    width: galWidth,
+    height: galHeight - 10,
+    width: galWidth - 10,
+    padding: 5,
   }
 
   var nextLeft = {
