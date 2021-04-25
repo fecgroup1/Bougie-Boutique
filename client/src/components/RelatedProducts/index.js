@@ -105,7 +105,6 @@ const RelatedProducts = ({store, theme}) => {
       </div>
       <CardsWrapper>
         <Button
-          // onClick={(event) => scroll('products', 'right', event)}
           show={productScroll.left}
           position={'left'}
         >
@@ -160,7 +159,6 @@ const RelatedProducts = ({store, theme}) => {
       </div>
       <CardsWrapper>
       <Button
-            // onClick={(event) => scroll('products', 'left', event)}
             show={outfitScroll.left}
             position={'left'}
           >
