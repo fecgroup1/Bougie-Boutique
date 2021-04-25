@@ -8,7 +8,8 @@ import CompareModal from './CompareModal.js'
 const RelatedProducts = ({store, theme}) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4]);
-  const [productsPosition, setProductsPosition] = useState(0);
+  const [productsPosition, setProductsPosition] = useState({left: false, right: true, position: 0});
+  const [outfitsPosition, setOutfitPosition] = useState({left: false, right: true, position: 0});
   const [comparisonProduct, setComparisonProduct] = useState(null);
   const [outfits, setOutfits] = useState({})
 
@@ -29,21 +30,51 @@ const RelatedProducts = ({store, theme}) => {
     }
   }, [])
 
+  useEffect(() => {
+    if (productsPosition.position === 0) {
+      console.log('prodPos', productsPosition)
+      let temp = {...productsPosition}
+      temp.left = false
+      setProductsPosition(temp)
+    }
+    if (productsPosition.position > 0) {
+      let temp = {...productsPosition}
+      temp.left = true
+      setProductsPosition(temp)
+    }
+    if (outfitsPosition.position === 0) {
+      console.log('outPos', productsPosition)
+      let temp = {...productsPosition}
+      temp.left = false
+      setProductsPosition(temp)
+    }
+    if (productsPosition.position > 0) {
+      let temp = {...productsPosition}
+      temp.left = true
+      setProductsPosition(temp)
+    }
+  }, [])
+
   const scroll = (container, direction, event) => {
     let area = event.target.parentNode.parentNode.children[1];
     let cardWidth = event.target.parentNode.parentNode.children[1].children[1].clientWidth;
     if(direction === 'left' ) {
       // console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft += cardWidth
-      if (productsPosition === `${container}`.length - 3) {
+      console.log('scroll value: ', area.scrollLeft)
+      console.log('client width value: ', area.clientWidth)
+      let temp = {...productsPosition}
+      temp.position = area.scrollLeft
+      setProductsPosition(temp)
 
-      } else {
-        setProductsPosition(productsPosition + 1);
-      }
     } else {
       // console.log('lefttime', event.target.parentNode.parentNode.children[1].scrollLeft)
       area.scrollLeft -= cardWidth
-      setProductsPosition(productsPosition - 1)
+      console.log('scroll value: ', area.scrollLeft)
+      console.log('client width value: ', area.clientWidth)
+      let temp = {...productsPosition}
+      temp.position = area.scrollLeft
+      setProductsPosition(temp)
     }
   }
 
@@ -79,7 +110,7 @@ const RelatedProducts = ({store, theme}) => {
       <CardsWrapper>
         <Button
           // onClick={(event) => scroll('products', 'right', event)}
-          show={!!productsPosition}
+          show={productsPosition.left}
           position={'left'}
         >
           <i className="lni lni-32 lni-chevron-left-circle"
@@ -121,7 +152,7 @@ const RelatedProducts = ({store, theme}) => {
       </CardsWrapper>
     </ProductsContainer>
 
-    , [store.state.currentProductId, products])
+    , [store.state.currentProductId, products, productsPosition])
 
   //memoizes the props in this componenet and only updates them when the array values are updated [outfits]
   const outfitSection = useMemo(() =>
@@ -156,6 +187,7 @@ const RelatedProducts = ({store, theme}) => {
                 product={outfits[product]}
                 className={'productCard'}
                 buttonAction={handleRemoveOutfit}
+                changeProduct={store.changeProduct}
                 buttonType={'lni-cross-circle'}
                 cursor={'delete'}
                 addedClasses={'outfit'}
