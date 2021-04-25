@@ -12,6 +12,7 @@ class Gallery extends React.Component {
       lastStyleIndex: 0,
       lastImgIndex: 0,
       currLastIndex: 0,
+      prevLastIndex: 0,
     };
   }
 
@@ -37,6 +38,7 @@ class Gallery extends React.Component {
         lastStyleIndex: this.props.styles.length - 1,
         lastImgIndex: this.props.styles[this.props.styles.length - 1].photos.length - 1,
         currLastIndex: currLastIndex,
+        prevLastIndex: prevLastIndex,
       })
     }
   }
@@ -65,6 +67,7 @@ class Gallery extends React.Component {
             lastImgIndex={this.state.lastImgIndex}
             lastStyleIndex={this.state.lastStyleIndex}
             currLastIndex={this.state.currLastIndex}
+            prevLastIndex={this.state.prevLastIndex}
             handleImgClick={this.handleImgClick}/>
           <GalleryThumbnails
             styles={styles}

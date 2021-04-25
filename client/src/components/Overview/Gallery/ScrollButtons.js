@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ExpandedView from './ExpandedView.js';
 import { GalleryScroll } from './../../../Styles/Overview';
 
-const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, prevLastIndex, handleImgClick}) => {
+const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, prevLastIndex, handleImgClick, handleModalOpen}) => {
 
   const [galHeight, setGalHeight] = useState(0);
   const [galWidth, setGalWidth] = useState(0);
@@ -49,11 +49,12 @@ const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, pr
     height: galHeight - 10,
     width: galWidth - 10,
     padding: 5,
+    cursor: 'zoom-in',
   }
 
   var nextLeft = {
     style: (currImg[1] === 0 && currImg[0] !== 0) ? currImg[0] - 1: currImg[0],
-    photo: currImg[1] === 0 && currImg[0] !== 0 ? prevLastIndex: currImg[1]- 1,
+    photo: (currImg[1] === 0 && currImg[0] !== 0) ? prevLastIndex: currImg[1]- 1,
   };
   var nextRight = {
     style: currImg[1] === currLastIndex - 1 ? currImg[0] + 1: currImg[0],
@@ -61,7 +62,9 @@ const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, pr
   };
 
   return (
-    <div style={buttonContainer}>
+    <div
+      style={buttonContainer}
+      onClick={() => handleModalOpen(true)}>
             <GalleryScroll
               style={leftOpacity}
               onClick={() => handleImgClick(nextLeft.style, nextLeft.photo)}>

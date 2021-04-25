@@ -48,7 +48,8 @@ class DefaultView extends React.Component {
             lastImgIndex={lastImgIndex}
             lastStyleIndex={lastStyleIndex}
             currLastIndex={this.state.currLastIndex}
-            handleImgClick={this.props.handleImgClick}/>
+            handleImgClick={this.props.handleImgClick}
+            handleModalOpen={this.handleModalOpen}/>
           <MainNull
             src='https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg'/>
         </>
@@ -61,7 +62,8 @@ class DefaultView extends React.Component {
             lastImgIndex={lastImgIndex}
             lastStyleIndex={lastStyleIndex}
             currLastIndex={this.state.currLastIndex}
-            handleImgClick={this.props.handleImgClick}/>
+            handleImgClick={this.props.handleImgClick}
+            handleModalOpen= {this.handleModalOpen}/>
           <MainImg
             onClick={() => this.handleModalOpen(true)}
             src={styles[currImg[0]].photos[currImg[1]].url}/>
