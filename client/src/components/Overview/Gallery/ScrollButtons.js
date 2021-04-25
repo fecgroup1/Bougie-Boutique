@@ -33,10 +33,12 @@ const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, pr
   var leftOpacity = {
     background: (currImg[0] === 0 && currImg[1] === 0) ? 'none': '',
     borderRadius: '10%',
+    zIndex: 2,
   };
   var rightOpacity = {
     background: (currImg[0] === lastStyleIndex && currImg[1] === lastImgIndex) ? 'none': '',
     borderRadius: '10%',
+    zIndex: 2,
   };
   var buttonContainer = {
     position: 'absolute',
@@ -46,10 +48,9 @@ const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, pr
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     justifyItems: 'flex-end',
-    height: galHeight - 10,
-    width: galWidth - 10,
-    padding: 5,
-    cursor: 'zoom-in',
+    left: galWidth - 30,
+    top: galHeight + 70,
+    marging: 5,
   }
 
   var nextLeft = {
@@ -64,7 +65,8 @@ const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, pr
   return (
     <div
       style={buttonContainer}
-      onClick={() => handleModalOpen(true)}>
+      // onClick={() => handleModalOpen(true)}
+      >
             <GalleryScroll
               style={leftOpacity}
               onClick={() => handleImgClick(nextLeft.style, nextLeft.photo)}>
