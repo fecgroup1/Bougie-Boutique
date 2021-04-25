@@ -12,20 +12,20 @@ describe('Get API Endpoints', () => {
   })
 })
 
-describe('Post in API Endpoints', () => {
-  it('should post data to the API', async () => {
-    const res = await request(app)
-      .post("/qa/questions")
-      .send({"body": "This is a test question",
-            "name": "Test name",
-            "email": "test@email.com",
-            "product_id": 13023})
-      .set('Accept', 'application/json')
-      .expect("Content-Type", "text/html; charset=utf-8")
-      .expect(200)
-      expect(res.text).toBe("Created")
-  })
-})
+// describe('Post in API Endpoints', () => {
+//   it('should post data to the API', async () => {
+//     const res = await request(app)
+//       .post("/qa/questions")
+//       .send({"body": "This is a test question",
+//             "name": "Test name",
+//             "email": "test@email.com",
+//             "product_id": 13023})
+//       .set('Accept', 'application/json')
+//       .expect("Content-Type", "text/html; charset=utf-8")
+//       .expect(200)
+//       expect(res.text).toBe("Created")
+//   })
+// })
 
 // describe('Put in API Endpoints', () => {
 //   it('should Put data to the API', async () => {
