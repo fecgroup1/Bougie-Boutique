@@ -32,30 +32,26 @@ const RelatedProducts = ({store, theme}) => {
     }
   }, [])
 
+  //manage button scroll visibility products
   useEffect(() => {
-    console.log('im firing!')
     if (productsPosition <= 0) {
-      console.log('prodPos', productsPosition)
       let temp = {...productScroll}
       temp.left = false
       setProductScroll(temp)
     } else if (productsPosition > 0) {
-      console.log('prodPos', productsPosition)
       let temp = {...productScroll}
       temp.left = true
       setProductScroll(temp)
     }
   }, [productsPosition]);
 
+  //manage button scroll visibility for outfits
   useEffect(() => {
-    console.log('im firing!')
     if (outfitsPosition <= 0) {
-      console.log('outPos', outfitsPosition)
       let temp = {...outfitScroll}
       temp.left = false
       setOutfitScroll(temp)
     } else if (outfitsPosition > 0) {
-      console.log('outPos', outfitsPosition)
       let temp = {...outfitScroll}
       temp.left = true
       setOutfitScroll(temp)
@@ -69,18 +65,11 @@ const RelatedProducts = ({store, theme}) => {
     if(direction === 'right' ) {
       area.scrollLeft += cardWidth
       let pos = area.scrollLeft + cardWidth
-      console.log('scroll value: ', area.scrollLeft)
-      console.log('pos: ', pos)
-      console.log('client width value: ', area.clientWidth);
-      console.log('container:', container)
       container === 'products' ?  setProductsPosition(pos) : setOutfitPosition(pos);
 
     } else {
       area.scrollLeft -= cardWidth
       let pos = area.scrollLeft - cardWidth
-      console.log('scroll value: ', area.scrollLeft)
-      console.log('client width value: ', area.clientWidth)
-      console.log('container:', container)
       container === 'products' ?  setProductsPosition(pos) : setOutfitPosition(pos);
     }
   }
