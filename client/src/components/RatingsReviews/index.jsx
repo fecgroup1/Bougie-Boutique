@@ -2,7 +2,7 @@ import React from 'react';
 // import WidgetContainer from '../../Styles'
 import Ratings from './Ratings';
 import Reviews from './Reviews';
-import { RatingsContainer, ReviewsContainer,  RatingsAndReviewsContainer} from '../../Styles'
+import { RatingsContainer,  RatingsAndReviewsContainer} from '../../Styles'
 
 
 
@@ -111,15 +111,14 @@ class RatingsReviews extends React.Component {
           filterReviews= {this.filterReviews}
           filteredFor= {this.state.filteredFor}/>
         </RatingsContainer>
-        <ReviewsContainer>
           <Reviews key={this.state.reviewsToShow}
           reviewsToShow ={this.state.reviewsToShow}
           product = {this.props.store.state.product}
           productId = {this.props.store.state.currentProductId}
           meta= {this.props.store.state.meta}
           sortReviews= {this.sortReviews}
+          theme={this.props.theme}
           />
-        </ReviewsContainer>
       </RatingsAndReviewsContainer>
     </section>
 
