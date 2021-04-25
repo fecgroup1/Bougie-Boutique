@@ -11,7 +11,7 @@ class CurrentProduct extends React.Component {
     super(props);
 
     this.state = {
-      currentProductId: "13029",
+      currentProductId: "13318",
       cart: null,
     };
 
