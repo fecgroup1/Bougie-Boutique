@@ -14,6 +14,21 @@ class GalleryThumbnails extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
 
+  componentDidUpdate() {
+    let imgCount = 0;
+    for (let i = 0; i < this.props.styles.length; i++) {
+      let style = this.props.styles[i];
+      for (let j = 0; j < style.photos.length; j++) {
+        imgCount++;
+      }
+    }
+    if (this.state.numImgs !== imgCount) {
+      this.setState({
+        numImgs: imgCount,
+      })
+    }
+  }
+
   handleScroll() {
     let scrollTop = document.getElementById(this.props.id).scrollTop;
     let scrollHeight = document.getElementById(this.props.id).scrollHeight;
@@ -46,8 +61,6 @@ class GalleryThumbnails extends React.Component {
   }
 
   render() {
-    this.state.numImgs = 0;
-
     const styles = this.props.styles;
     const currImg = this.props.currImg;
     const handleImgClick = this.props.handleImgClick;
@@ -65,7 +78,14 @@ class GalleryThumbnails extends React.Component {
       opacity: `${styles[0].name === null ? '0': '0.5'}`,
     };
     const upOpacity = {
-      opacity: (styles[0].name === null) || (this.state.scrollTop <= 0) ? 0: 0.5,
+      background: ((styles[0].name === null) ||
+                (this.state.scrollTop <= 0) ||
+                (this.state.numImgs <= 7)) ? 'none': '',
+    };
+    const downOpacity = {
+      background: ((this.state.scrollBtm) ||
+                (styles[0].name === null) ||
+                (this.state.numImgs <= 7)) ? 'none': '',
     };
     const buttonContainer = {
       display: 'flex',
@@ -90,7 +110,6 @@ class GalleryThumbnails extends React.Component {
           onScroll={this.handleScroll}>
             {styles.map((style, sIndex) => {
               return style.photos.map((photo, pIndex) => {
-                this.state.numImgs++;
                 if (styles[0].name === null) {
                   return null;
                 } else if ((sIndex === currImg[0]) &&
@@ -134,22 +153,13 @@ class GalleryThumbnails extends React.Component {
       </GallThumbContainer>
 
       <GallThumbContainer style={buttonContainer}>
-        <ScrollBg style={upOpacity}></ScrollBg>
-        <ScrollBg style={
-          {
-            opacity: `${this.state.scrollBtm ||
-              (styles[0].name === null) ||
-              (this.state.numImgs <= 7) ? '0': '0.5'}`,
-          }
-        }></ScrollBg>
-        </GallThumbContainer>
-
-      <GallThumbContainer style={buttonContainer}>
           <GalleryScroll
+            style={upOpacity}
             onClick={() => this.scroll('up')}>
               {(styles[0].name === null) || (this.state.scrollTop <= 0) ? null: <i className="lni lni-chevron-up-circle"></i>}
           </GalleryScroll>
           <GalleryScroll
+            style={downOpacity}
             onClick={() => this.scroll('down')}>
               {this.state.scrollBtm ||
               (styles[0].name === null) ||
