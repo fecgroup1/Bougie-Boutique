@@ -1,7 +1,8 @@
+import axios from 'axios';
 const RelatedAPI = {
   getRelatedProducts: (pid) => {
-    return fetch(`/product/related?pid=${pid}`)
-    .then((data) => data.json());
+    return axios.get(`/product/related?pid=${pid}`)
+    .then((results) => results.data);
   }
 }
 
