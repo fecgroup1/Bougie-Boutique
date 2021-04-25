@@ -96,40 +96,45 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId}
     currentProductId=currentProductId.productId
     event.preventDefault();
     let form = document.querySelector('form[name="NewReview"]');
-    let obj= {};
-    for (var key in characteristics){
-      obj[characteristics[key]['id']] = Number(form.elements[key].value)
-    }
-
-
-      axios.post(`/reviews`, {
-        product_id: Number(currentProductId),
-        rating: Number(form.elements['overallRating'].value),
-        summary: document.getElementById('summary').value,
-        body: document.getElementById('body').value,
-        recommend: (form.elements['recomended'].value)=== "true"? true : false,
-        name: document.getElementById('userName').value,
-        email: document.getElementById('email').value,
-        photos: [document.getElementById('photos').value],
-        characteristics: obj
-      }, {
-        headers: {
-            'Content-Type': 'application/json',
+    let formData = new FormData()
+    formData.append('image', form.elements['photos'].files[0]);
+    axios.post('/addPhoto', formData, {'Content-Type': 'multipart/form-data'})
+    .then(res=> {
+      var photoURL= res.data
+      let obj= {};
+        for (var key in characteristics){
+          obj[characteristics[key]['id']] = Number(form.elements[key].value)
         }
+          axios.post(`/reviews`, {
+            product_id: Number(currentProductId),
+            rating: Number(form.elements['overallRating'].value),
+            summary: document.getElementById('summary').value,
+            body: document.getElementById('body').value,
+            recommend: (form.elements['recomended'].value)=== "true"? true : false,
+            name: document.getElementById('userName').value,
+            email: document.getElementById('email').value,
+            photos: [photoURL],
+            characteristics: obj
+          }, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+          .then(() => {
+            console.log('posted')
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+          close();
     })
-      .then(() => {
-        console.log('posted')
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      close();
+
 
   }
 
 
   return(
-     <Modal isOpen= {isOpen} onRequestClose= {()=> close()} style={{
+     <Modal key={productId} isOpen= {isOpen} onRequestClose= {()=> close()} style={{
     'overlay': {'background':'grey'},
     'content': {'color':'black', 'width': '450px', 'margin':'auto'} }}>
     <span style={{'float': 'right', 'fontSize': '150%'}} onClick= {()=> close()}>&#10006;</span>
@@ -148,7 +153,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId}
       <div style={{'marginTop': '40px'}} > Review Summary:  </div><br></br>
       <input name = 'surmmary' type='text' size='50' maxLength= '60' id= 'summary' placeholder= 'Example: Best purchase ever!'></input>
       <div style={{'marginTop': '40px'}} >* Review:  </div><br></br>
-      <textarea id='body' required minLength= '50' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
+      <textarea id='body' required minLength= '5' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
       <div style={{'marginTop': '40px', 'marginBottom': '15px'}}> Upload your photos</div>
       <input id='photos' type= 'file' accept="image/png, image/jpeg"></input>
       <div style={{'marginTop': '40px'}} >* What is your nickname?</div><br></br>

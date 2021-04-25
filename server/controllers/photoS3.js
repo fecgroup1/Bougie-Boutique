@@ -9,6 +9,7 @@ aws.config.update({
   'bucketname': process.env.awsBucket_FEC
 });
 
+
 console.log(process.env.awsBucket_FEC)
 
 const s3 = new aws.S3()
