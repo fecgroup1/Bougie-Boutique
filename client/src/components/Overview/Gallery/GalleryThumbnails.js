@@ -5,7 +5,6 @@ class GalleryThumbnails extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      numImgs: 0,
       position: 0,
       scrollTop: 0,
       scrollBtm: false,
@@ -14,20 +13,7 @@ class GalleryThumbnails extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
 
-  componentDidUpdate() {
-    let imgCount = 0;
-    for (let i = 0; i < this.props.styles.length; i++) {
-      let style = this.props.styles[i];
-      for (let j = 0; j < style.photos.length; j++) {
-        imgCount++;
-      }
-    }
-    if (this.state.numImgs !== imgCount) {
-      this.setState({
-        numImgs: imgCount,
-      })
-    }
-  }
+
 
   handleScroll() {
     let scrollTop = document.getElementById(this.props.id).scrollTop;
@@ -64,6 +50,7 @@ class GalleryThumbnails extends React.Component {
     const styles = this.props.styles;
     const currImg = this.props.currImg;
     const handleImgClick = this.props.handleImgClick;
+    const numImgs = this.props.numImgs;
 
     const position = {
       transform: `translateY(${this.state.position}vh)`,
@@ -80,12 +67,12 @@ class GalleryThumbnails extends React.Component {
     const upOpacity = {
       background: ((styles[0].name === null) ||
                 (this.state.scrollTop <= 0) ||
-                (this.state.numImgs <= 7)) ? 'none': '',
+                (numImgs <= 7)) ? 'none': '',
     };
     const downOpacity = {
       background: ((this.state.scrollBtm) ||
                 (styles[0].name === null) ||
-                (this.state.numImgs <= 7)) ? 'none': '',
+                (numImgs <= 7)) ? 'none': '',
     };
     const buttonContainer = {
       display: 'flex',
@@ -163,7 +150,7 @@ class GalleryThumbnails extends React.Component {
             onClick={() => this.scroll('down')}>
               {this.state.scrollBtm ||
               (styles[0].name === null) ||
-              (this.state.numImgs <= 7) ? null: <i className="lni lni-chevron-down-circle"></i>}
+              (numImgs <= 7) ? null: <i className="lni lni-chevron-down-circle"></i>}
           </GalleryScroll>
       </GallThumbContainer>
     </>
