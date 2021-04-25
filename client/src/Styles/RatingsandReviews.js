@@ -12,8 +12,17 @@ export const RatingsAndReviewsContainer = styled.section`
 export const RatingsContainer = styled.div`
 
 `;
-export const ReviewsContainer = styled.div`
-
+export const ReviewButton = styled.div`
+fontSize: 105%
+borderRadius: 1px
+padding: 15px
+ margin: 10px
+color: ${ props => props.theme.blkGry}
+fontFamily: Josefin Sans
+fontWeight: bold
+background: ${props => props.theme.invertWht}
+border: 3px solid
+borderColor: ${props => props.theme.bluGry}
 `;
 
 export const SingleReview = styled.div`

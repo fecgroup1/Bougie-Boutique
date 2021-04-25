@@ -96,6 +96,7 @@ class App extends React.Component {
                 </section>
                 <RatingsReviews
                   store={store}
+                  theme={theme}
                   key= {store.state.reviews}
                   tracking={'Ratings and Reviews'}
                 />
