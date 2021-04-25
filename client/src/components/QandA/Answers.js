@@ -130,7 +130,7 @@ const Answers = (props) => {
             <div>
               {answers.slice(0, 2).map((answer, index) =>
               (renderAnswer(answer, index)))}
-              {answers.length > 2 ? <a id='moreAnswers' onClick={getMore}>More answers...</a> : null}
+              {answers.length > 2 ? <a id='moreAnswers' onClick={getMore}>See more answers</a> : null}
             </div>
           )
           :

@@ -31,7 +31,6 @@ const Questions = (props) => {
   }, [props.productId, props.name])
 
   useEffect(() => {
-    console.log('i got a new question')
     getQuestions()
   }, [newQuestion])
 
@@ -41,7 +40,6 @@ const Questions = (props) => {
     axios.get(`qa/questions?product_id=${qid}&count=50`)
     .then((question) => {
       setQuestions(question.data.results)
-      console.log(question)
     })
   }
 
