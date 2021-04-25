@@ -118,7 +118,7 @@ const Questions = (props) => {
     if (event.target.value === 'search') {
       const addSearch = searchQuestionLength + 2
       if (addSearch >= searchResults.length) {
-        setMoreSearchQuestions(true)
+        setMoreSearchedQuestions(true)
         setSearchQuestionLength(addSearch)
       } else {
         setSearchQuestionLength(addSearch)
