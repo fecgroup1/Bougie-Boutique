@@ -23,7 +23,6 @@ const AddAnswer = (props) => {
   }, [props.currentProductId, props.name])
 
   const openModal = (event) => {
-    event.preventDefault();
     setOpen(true);
     document.body.style.overflow = 'hidden';
   }
@@ -45,14 +44,14 @@ const AddAnswer = (props) => {
   }
 
   const addPhotos = (e) => {
+    setFailedPhotoUpload(false);
+    setInvalidPhoto(false);
+    setOverPhotoLimit(false);
     if (e.target.files.length > 5) {
       setOverPhotoLimit(true);
       setImages([]);
       e.target.value = null
     } else {
-      setFailedPhotoUpload(false);
-      setInvalidPhoto(false);
-      setOverPhotoLimit(false);
       setImages([]);
       setImgToUpload(true);
       setImgUploading(true);
@@ -91,7 +90,6 @@ const AddAnswer = (props) => {
   }
 
   const submitForm = (event) => {
-    event.preventDefault();
     setEmailInvalid(false)
     setNicknameInvalid(false)
     setTextBodyInvalid(false)
@@ -138,12 +136,12 @@ const AddAnswer = (props) => {
         <Modal
           ariaHideApp={false}
           isOpen={open}
-          className='answerModal'
+          className='qaModal'
           style={overlay}
           overlayClassName={{
-            base: 'answerModalOverlay',
-            afterOpen: 'answerModalOverlay-in',
-            beforeClose: 'answerModalOverlay-out'
+            base: 'qaModalOverlay',
+            afterOpen: 'qaModalOverlay-in',
+            beforeClose: 'qaModalOverlay-out'
           }}
           onRequestClose={() => closeForm()}
         >
@@ -198,7 +196,7 @@ const AddAnswer = (props) => {
               {!imgUploading ?
               (
               <Fragment>
-              <p id='uploading'>Uploaded</p>
+              <p id='uploading'>Successfully uploaded photos</p>
               <p id='required'>* Required</p>
               <button id='qaSubmit' onClick={(event) => submitForm(event)}>Submit</button>
               </Fragment>)
