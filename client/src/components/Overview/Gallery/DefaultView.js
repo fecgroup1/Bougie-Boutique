@@ -1,5 +1,6 @@
 import React from 'react';
 import ExpandedView from './ExpandedView.js';
+import ScrollButtons from './ScrollButtons.js';
 import { Loading, MainImg, MainNull } from './../../../Styles/Overview';
 
 class DefaultView extends React.Component {
@@ -31,6 +32,8 @@ class DefaultView extends React.Component {
   render() {
     const styles = this.props.styles;
     const currImg = this.props.currImg;
+    const lastImgIndex = this.props.lastImgIndex;
+    const lastStyleIndex = this.props.lastStyleIndex;
 
     if (styles[0].name === null) {
     return (
@@ -39,12 +42,28 @@ class DefaultView extends React.Component {
     );
     } else if ( styles[currImg[0]].photos[currImg[1]].url === null) {
       return (
-        <MainNull
-          src='https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg'/>
+        <>
+          <ScrollButtons
+            currImg={currImg}
+            lastImgIndex={lastImgIndex}
+            lastStyleIndex={lastStyleIndex}
+            currLastIndex={this.state.currLastIndex}
+            handleImgClick={this.props.handleImgClick}
+            handleModalOpen={this.handleModalOpen}/>
+          <MainNull
+            src='https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg'/>
+        </>
       );
     } else {
       return (
         <>
+          <ScrollButtons
+            currImg={currImg}
+            lastImgIndex={lastImgIndex}
+            lastStyleIndex={lastStyleIndex}
+            currLastIndex={this.state.currLastIndex}
+            handleImgClick={this.props.handleImgClick}
+            handleModalOpen= {this.handleModalOpen}/>
           <MainImg
             onClick={() => this.handleModalOpen(true)}
             src={styles[currImg[0]].photos[currImg[1]].url}/>
