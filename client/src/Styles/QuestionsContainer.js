@@ -47,9 +47,10 @@ export const QuestionsButtons = styled.button`
     transition: background 0.5s;
     padding: 10px;
     text-align: center;
-    margin-top: 20px;
+    max-height: 6vh;
+    margin-top: 5px;
     margin-right: 20px;
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
   }
@@ -69,7 +70,7 @@ export const SearchBar = styled.input`
     width: 85%;
     height: 40px;
     margin-bottom: 15px;
-    font-size: 16px;
+    font-size: 1rm;
     font-family: 'Josefin Sans', sans-serif;
   }
 `;

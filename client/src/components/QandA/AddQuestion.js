@@ -17,7 +17,6 @@ const AddQuestion = (props) => {
   }, [props.currentProductId, props.name])
 
   const openModal = (event) => {
-    event.preventDefault()
     setOpen(true)
     document.body.style.overflow = 'hidden';
   }
@@ -36,7 +35,6 @@ const AddQuestion = (props) => {
   }
 
   const submitForm = (event) => {
-    event.preventDefault();
     setEmailInvalid(false)
     setNicknameInvalid(false)
     setTextBodyInvalid(false)
@@ -83,12 +81,12 @@ const AddQuestion = (props) => {
         <Modal
           ariaHideApp={false}
           isOpen={open}
-          className='questionModal'
+          className='qaModal'
           style={overlay}
           overlayClassName={{
-            base: 'questionModalOverlay',
-            afterOpen: 'questionModalOverlay-in',
-            beforeClose: 'questionModalOverlay-out'
+            base: 'qaModalOverlay',
+            afterOpen: 'qaModalOverlay-in',
+            beforeClose: 'qaModalOverlay-out'
           }}
           onRequestClose={() => closeForm()}
         >

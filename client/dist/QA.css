@@ -4,7 +4,6 @@
   width: 90%;
 }
 
-
 #qHelpful {
   float: right;
   margin-top: 20px;
@@ -115,7 +114,7 @@
   margin-bottom: 30px;
 }
 
-.answerModal {
+.qaModal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -129,10 +128,28 @@
   border-radius: 10px;
   outline: none;
   padding: 20px;
-  width: 20%;
+  overflow: auto;
+  max-height: 80%;
+  width: 25%;
+  min-width: 300px;
 }
 
-.answerModalOverlay {
+.qaModal::-webkit-scrollbar {
+  width: 10px
+}
+
+.qaModal::-webkit-scrollbar-track {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.qaModal::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(146, 146, 146, 0.8);
+}
+
+.qaModalOverlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -142,11 +159,11 @@
   transition: 500ms ease-in-out;
 }
 
-.answerModalOverlay-in {
+.qaModalOverlay-in {
   opacity: 1;
 }
 
-.answerModalOverlay-out {
+.qaModalOverlay-out {
   opacity: 0;
 }
 
@@ -179,40 +196,6 @@
   outline: none;
 }
 
-.questionModal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgb(0, 0, 0);
-  background: #cccccc;
-  color: black;
-  border-radius: 10px;
-  outline: none;
-  padding: 20px;
-  width: 20%
-}
-
-.questionModalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0;
-  transition: 500ms ease-in-out;
-}
-
-.questionModalOverlay-in {
-  opacity: 1;
-}
-
-.questionModalOverlay-out {
-  opacity: 0;
-}
 
 .warning {
   font-size: 13px;

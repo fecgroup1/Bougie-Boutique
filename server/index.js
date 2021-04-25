@@ -4,6 +4,7 @@ const routers = require('./routers');
 const bodyParser = require('body-parser')
 const controller = require('./controllers')
 const morgan = require('morgan')
+const request = require('supertest');
 const multer = require('multer')
 const storage = multer.memoryStorage()
 var form = multer({dest: 'form/', storage: storage})
@@ -29,3 +30,7 @@ app.use('/tracking', routers.trackingRouter);
 app.listen(port, ()=> {
   console.log(`listening on ${port}`);
 })
+
+
+
+module.exports = app;
