@@ -73,7 +73,8 @@ const AddQuestion = (props) => {
   }
 
   const overlay = { overlay: {
-    backgroundColor: 'rgba(17, 17, 17, 0.75)'
+    backgroundColor: 'rgba(17, 17, 17, 0.75)',
+    backdropFilter: 'blur(5px)'
   }}
 
   if (props.name) {

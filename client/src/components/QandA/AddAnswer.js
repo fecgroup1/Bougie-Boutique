@@ -135,7 +135,7 @@ const AddAnswer = (props) => {
           ariaHideApp={false}
           isOpen={open}
           className='qaModal'
-          style={{'overlay': {'background': 'rgba(17, 17, 17, 0.75)'}}}
+          style={{'overlay': {'background': 'rgba(17, 17, 17, 0.75)', 'backdropFilter': 'blur(5px)'}}}
           overlayClassName={{
             base: 'qaModalOverlay',
             afterOpen: 'qaModalOverlay-in',

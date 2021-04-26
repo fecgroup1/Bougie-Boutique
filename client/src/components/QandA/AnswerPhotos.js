@@ -32,7 +32,8 @@ const AnswerPhotos = (props) => {
 
   const overlay = { overlay: {
     backgroundColor: 'rgba(17, 17, 17, 0.75',
-    zIndex: '5'
+    zIndex: '5',
+    backdropFilter: 'blur(5px)'
   }}
 
   return (
