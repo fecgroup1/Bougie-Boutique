@@ -13,12 +13,9 @@ module.exports = {
     let relatedResults = []
     return ProductController.getRelated(pid)
     .then((related) => {
-      // console.log('this is the related', related)
-      // console.log('this is the related cache', relatedCache)
       let promises = []
       related.forEach((id) => {
         let check = relatedCache.get(`${id}`)
-        console.log('here is the check', check)
         if (check) {
           relatedResults.push(check);
         } else {
@@ -31,7 +28,7 @@ module.exports = {
       if (promises) {
         return Promise.all(promises)
       }
-      console.log('current related results:', relatedResults.length)
+      // console.log('current related results:', relatedResults.length)
     })
     .then((results) => {
       if (results) {
@@ -40,7 +37,7 @@ module.exports = {
           relatedResults.push(product)
         })
       }
-      console.log('Final related results:', relatedResults.length)
+      // console.log('Final related results:', relatedResults.length)
       return relatedResults
     })
     .catch((err) => {
