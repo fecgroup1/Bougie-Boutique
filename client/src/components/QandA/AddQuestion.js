@@ -114,7 +114,7 @@ const AddQuestion = (props) => {
 
             <p id='required'>* Required</p>
 
-            <button id='qaSubmit' onClick={(event) => submitForm(event)}>Submit</button>
+            <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
           </div>
         </form>
         </Modal>

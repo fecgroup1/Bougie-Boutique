@@ -229,17 +229,6 @@
     font-size: 22px
 }
 
-#qaSubmit {
-  border: none;
-  color: inherit;
-  background-color: #a8a8a8;
-  font-size: 16px;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 10px;
-}
-
 .qaImgModal {
   transform: translate(0, 5%);
   position: relative;
