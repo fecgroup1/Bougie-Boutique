@@ -89,11 +89,15 @@ class GalleryThumbnails extends React.Component {
       background: ((styles[0].name === null) ||
                 (this.state.scrollTop <= 0) ||
                 (numImgs <= 7)) ? 'none': '',
+      fontSize: `${galHeight * 0.07 / 2}px`,
+      lineHeight: `${galHeight * 0.07 / 2}px`,
     };
     const downOpacity = {
       background: ((this.state.scrollBtm) ||
                 (styles[0].name === null) ||
                 (numImgs <= 7)) ? 'none': '',
+      fontSize: `${galHeight * 0.07 / 2}px`,
+      lineHeight: `${galHeight * 0.07 / 2}px`,
     };
     const buttonContainer = {
       display: 'flex',
@@ -101,9 +105,9 @@ class GalleryThumbnails extends React.Component {
       background: 'none',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: 0.99 * galHeight,
+      height: 0.985 * galHeight,
       width: galHeight * 0.13,
-      margin: `${0.01 * galHeight / 2}px ${0.13 * galHeight / 4}px`,
+      margin: `${0.015 * galHeight / 2}px ${0.13 * galHeight / 4}px`,
       zIndex: 0,
       top: galTop,
       left: galLeft,
