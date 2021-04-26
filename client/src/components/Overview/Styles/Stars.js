@@ -6,10 +6,6 @@ class Stars extends React.Component {
     super(props);
   }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5a24849 ( call to api for reviews after new review and allow upoload of reviews without photo)
   scrollToReviews(event) {
     event.preventDefault();
     let element = document.getElementById('ratingsreviews');
