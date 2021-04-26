@@ -85,11 +85,11 @@ const Answers = (props) => {
               <span style={{fontWeight: '900'}}> {answer.answerer_name}</span>
               , {aDate.toDateString().substring(4)}
               </span>
-              <span id='answerHelpful'>|</span>
-              <span id='answerHelpful' className='answererInfo'> Was this answer helpful?
+              <span style={{marginLeft: '15px'}}>|</span>
+              <span style={{marginLeft: '15px'}} className='answererInfo'> Was this answer helpful?
                 <a id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </a>
                 ({answer.helpfulness})
-                <span id='answerHelpful'>|  </span>
+                <span style={{marginLeft: '15px'}}>|  </span>
                 {!report ?
                   (
                   <a id='reportButton' onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></a>
@@ -107,11 +107,11 @@ const Answers = (props) => {
               <span style={{opacity: '0.7'}} className='answererInfo'>
                 by {answer.answerer_name}, {aDate.toDateString().substring(4)}
               </span>
-              <span id='answerHelpful'>|</span>
-              <span id='answerHelpful' className='answererInfo'> Was this answer helpful?
+              <span style={{marginLeft: '15px'}}>|</span>
+              <span style={{marginLeft: '15px'}} className='answererInfo'> Was this answer helpful?
                 <a id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </a>
                 ({answer.helpfulness})
-                <span id='answerHelpful'>|</span>
+                <span style={{marginLeft: '15px'}}>|</span>
                 {!report ?
                   (
                   <a id='reportButton' onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></a>

@@ -9,7 +9,11 @@ const SearchQuestions = (props) => {
     return (
       <Fragment>
         <form className='searchQuestion'>
-          <i className="lni lni-32 lni-search"></i>
+          <i className="lni lni-32 lni-search" style={
+            { marginTop: '7px',
+              marginLeft: '10px',
+              position: 'absolute'}
+          }></i>
           <SearchBar id='searchQuestionInput' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
           onChange={props.filterQuestions}/>
         </form>

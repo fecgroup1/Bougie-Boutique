@@ -168,7 +168,7 @@ const AddAnswer = (props) => {
           <div>
           <button id='closeModal' onClick={closeForm}>X</button>
             <h2>Add an answer</h2>
-            <p styles={{fontWeight: 'bold'}}>{props.name}: {props.question.question_body}</p>
+            <p style={{fontWeight: 'bold'}}>{props.name}: {props.question.question_body}</p>
             <label>* Your Answer: </label>
             {textBodyInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter an answer</p> : null}
             <textarea id='answerInputText' name='answer' type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
@@ -189,7 +189,7 @@ const AddAnswer = (props) => {
             <p className='warning'>For authentication reasons, you will not be emailed</p><br></br>
 
             <label> Photos: </label><br></br>
-            <input type='file' id='qaPhotoUpload' name='image' accept='image/png, image/jpeg' onChange={addPhotos} multiple/>
+            <input type='file' style={{width: '60%'}} name='image' accept='image/png, image/jpeg' onChange={addPhotos} multiple/>
             {!overPhotoLimit ?
               <p className='warning'>Choose up to 5 photos</p>
               :
@@ -227,7 +227,7 @@ const AddAnswer = (props) => {
               {invalidPhoto ? <p style={{color: 'red'}} className='invalidWarning'>Invalid photo type included</p> : null}
               {failedPhotoUpload ? <p style={{color: 'red'}} className='invalidWarning'>One or more images failed to upload</p> : null}
 
-              {failedPhotoUpload || invalidPhoto || overPhotoLimit ? null : <p id='uploading'>Successfully uploaded photos</p>}
+              {failedPhotoUpload || invalidPhoto || overPhotoLimit ? null : <p style={{fontSize: '14px', marginBottom: '-10px'}}>Successfully uploaded photos</p>}
               <p id='required'>* Required</p>
               <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
               </Fragment>)

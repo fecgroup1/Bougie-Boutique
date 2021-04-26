@@ -41,7 +41,7 @@ const AnswerPhotos = (props) => {
       {props.answer.photos.length > 0 ? (
         <div className='qaImages'>
           {props.answer.photos.map((image, index) => (
-            <div key={index} className='qaPhotos'>
+            <div key={index} className='qaPhotos' style={{display: 'inline'}}>
               <Modal
                 ariaHideApp={false}
                 isOpen={clicked}
