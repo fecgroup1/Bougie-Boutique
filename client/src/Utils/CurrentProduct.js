@@ -39,15 +39,13 @@ class CurrentProduct extends React.Component {
   // }
 
   setProduct(pid) {
+    console.log('ive been called')
     let id = pid === undefined ? this.state.currentProductId: pid;
     ProductAPI.getProduct(id)
     .then((resData) => {
-      let productData = resData;
-      console.log('productData:', productData)
-      // productData.currStyle = 0;
-      // productData.cart = this.checkCart(resData);
-      productData.currImg = [0, 0];
-      this.setState(productData);
+      this.setState({currImg: [0, 0]});
+      this.setState({product: resData.product});
+      this.setState({styles: resData.styles});
     })
   }
 
