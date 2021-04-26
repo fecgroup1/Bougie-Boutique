@@ -70,14 +70,8 @@ export const GallThumb = styled.img`
 & {
   object-fit: cover;
   object-position: 50% 50%;
-  // width: 6vh;
-  // height: 6vh;
-  // min-width: 30px;
-  // min-height: 30px;
-  width: 100%;
-  height: 100%;
   scroll-snap-align: center;
-  // border: 0.75vh solid transparent;
+  border: 5px solid transparent;
   opacity: 50%;
   transition: opacity 0.5s;
 }
@@ -89,20 +83,16 @@ export const GallThumb = styled.img`
 export const CurrGallThumb = styled.img`
   object-fit: cover;
   object-position: 50% 50%;
-  width: 100%;
-  height: 100%;
   scroll-snap-align: center;
-  // margin: 0.5vh;
-  // border: 0.25vh solid ${props => props.theme.border};
-  // outline: 0.5vh solid ${props => props.theme.outline};
+  margin: 3px;
+  border: 2px solid ${props => props.theme.border};
+  outline: 3px solid ${props => props.theme.outline};
   transition: border 0.5s, outline 0.5s;
 `;
 
 export const NoScrollBar = styled.div`
   &{
     display: grid;
-    align-content: flex-start;
-    justify-content: center;
     overflow-x: hidden;
     overflow-y: auto;
     scroll-snap-type: y mandatory;
@@ -120,13 +110,13 @@ export const NoScrollBar = styled.div`
 export const GalleryScroll = styled.button`
 &{
   align-items: center;
+  justify-content: center;
   background: ${props => props.theme.alphaBg};
   border: 0.5vh solid transparent;
   border-radius: 50%;
   color: ${props => props.theme.text};
   display: flex;
   font-size: 2.5vh;
-  justify-content: center;
   line-height: 3vh;
   opacity: 50%;
   outline: none;

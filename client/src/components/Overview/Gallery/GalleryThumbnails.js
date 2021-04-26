@@ -54,8 +54,8 @@ class GalleryThumbnails extends React.Component {
     const thumbsBg = {
       opacity: `${styles[0].name === null ? '0': '0.5'}`,
       width: galHeight * 0.13,
-      height: galHeight * 0.88,
-      margin: `${0.12 * galHeight / 2}px ${0.12 * galHeight / 4}px`,
+      height: galHeight * 0.87,
+      margin: `${0.13 * galHeight / 2}px ${0.13 * galHeight / 4}px`,
       top: galTop,
       left: galLeft,
     };
@@ -68,18 +68,22 @@ class GalleryThumbnails extends React.Component {
       flexDirection: 'column',
       background: 'none',
       width: galHeight * 0.13,
-      height: galHeight * 0.88,
-      margin: `${0.12 * galHeight / 2}px ${0.12 * galHeight / 4}px`,
+      height: galHeight * 0.87,
+      margin: `${0.13 * galHeight / 2}px ${0.13 * galHeight / 4}px`,
       top: galTop,
       left: galLeft,
     };
     const thumbsGrid = {
-      gridTemplateColumns: galHeight / 10,
-      gridAutoRows: galHeight / 10,
+      gridTemplateColumns: galHeight * 0.115,
+      gridAutoRows: galHeight * 0.115,
       zIndex: 2,
-      width: galHeight * 0.11,
-      height: galHeight * 0.825,
+      width: galHeight * 0.115,
+      height: galHeight * 0.85,
       margin: 0,
+    }
+    const thumbSize = {
+      width: galHeight * 0.115 - 10,
+      height: galHeight * 0.115 - 10,
     }
     const upOpacity = {
       background: ((styles[0].name === null) ||
@@ -130,6 +134,7 @@ class GalleryThumbnails extends React.Component {
                     } else {
                       return (
                         <CurrGallThumb
+                          style={thumbSize}
                           key={[sIndex, pIndex]}
                           id={`img${sIndex}-${pIndex}`}
                           src={photo.thumbnail_url} />
@@ -146,6 +151,7 @@ class GalleryThumbnails extends React.Component {
                 } else {
                   return (
                     <GallThumb
+                      style={thumbSize}
                       key={[sIndex, pIndex]}
                       id={`img${sIndex}-${pIndex}`}
                       src={photo.thumbnail_url}
