@@ -16,11 +16,14 @@ const AddAnswer = (props) => {
   const [open, setOpen] = useState(false);
   const [chars, setChars] = useState(1000);
   const [images, setImages] = useState([]);
+  const [currentPicture, setCurrentPicture] = useState([]);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     setOpen(false)
     setChars(1000)
     setImages([])
+    setCurrentPicture([])
   }, [props.currentProductId, props.name])
 
   const openModal = (event) => {
@@ -39,21 +42,35 @@ const AddAnswer = (props) => {
     setFailedPhotoUpload(false);
   }
 
+  const selectedPhoto = (image) => {
+    setClicked(true)
+    setCurrentPicture(image)
+    document.body.style.overflow = 'hidden';
+  };
+
+  const changeClick = () => {
+    setClicked(false)
+    document.body.style.overflow = 'unset'
+ }
+
   const charsLeft = (e) => {
     const remaining = 1000 - e.target.value.length;
     setChars(remaining);
+  }
+
+  const removePhoto = (e, index) => {
+    e.preventDefault()
+    images.splice(index, 1);
+    setImages([...images])
   }
 
   const addPhotos = (e) => {
     setFailedPhotoUpload(false);
     setInvalidPhoto(false);
     setOverPhotoLimit(false);
-    if (e.target.files.length > 5) {
+    if (e.target.files.length + images.length > 5) {
       setOverPhotoLimit(true);
-      setImages([]);
-      e.target.value = null
     } else {
-      setImages([]);
       setImgToUpload(true);
       setImgUploading(true);
       const test = [...e.target.files].map((file) => {
@@ -61,7 +78,6 @@ const AddAnswer = (props) => {
           e.target.value = null;
           setInvalidPhoto(true);
           setImgUploading(false);
-          setImgToUpload(false);
           return;
         }
         const bodyFormData = new FormData();
@@ -77,7 +93,7 @@ const AddAnswer = (props) => {
           data.map((url) => {
             urlArray.push(url.data)
           })
-          setImages(urlArray)
+          setImages([...images, ...urlArray])
           setImgUploading(false)
         })
         .catch((err) => {
@@ -85,7 +101,6 @@ const AddAnswer = (props) => {
           e.target.value = null;
           setFailedPhotoUpload(true)
           setImgUploading(false);
-          setImgToUpload(false);
         })
     }
   }
@@ -128,6 +143,12 @@ const AddAnswer = (props) => {
       return;
   }
 
+ const overlay = { overlay: {
+   backgroundColor: 'rgba(17, 17, 17, 0.75',
+   zIndex: '5',
+   backdropFilter: 'blur(5px)'
+ }}
+
   if (props.name) {
     return (
       <Fragment>
@@ -143,7 +164,7 @@ const AddAnswer = (props) => {
           }}
           onRequestClose={() => closeForm()}
         >
-        <form novalidate="">
+        <form noValidate="">
           <div>
           <button id='closeModal' onClick={closeForm}>X</button>
             <h2>Add an answer</h2>
@@ -174,27 +195,39 @@ const AddAnswer = (props) => {
               :
               <p style={{color: 'red'}} className='warning'>Too many photos, try again!</p>
             }
-            {invalidPhoto ? <p style={{color: 'red'}} className='invalidWarning'>Invalid photo type included</p> : null}
-            {failedPhotoUpload ? <p style={{color: 'red'}} className='invalidWarning'>One or more images failed to upload</p> : null}
-
-            {!imgToUpload ?
-            <Fragment>
-            <p id='required'>* Required</p>
-            <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
-            </Fragment>
-            :
-            (
+              {!imgToUpload ?
+              <Fragment>
+              <p id='required'>* Required</p>
+              <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
+              </Fragment>
+              :
+              (
             <Fragment>
             <div>
               {images.map((image, index) => (
-                <img className='submitPreview' key={index} src={image}/>
+                <div key={index} style={{display: 'inline-block', position: 'relative'}} className ='submitPreviewGallery'>
+                  <i style={{zIndex: '5', position: 'absolute'}} onClick={(e) => removePhoto(e, index)} className="lni lni-cross-circle"></i>
+                  <Modal
+                  ariaHideApp={false}
+                  isOpen={clicked}
+                  onRequestClose={() => changeClick()}
+                  className= 'qaImgModal'
+                  style={overlay}
+                  >
+                  <img className='enlargedImage' src={currentPicture}/>
+                  </Modal>
+                  <img className='submitPreview' src={image} onClick={() => {selectedPhoto(image)}}/>
+                </div>
                 ))}
             </div>
             <div>
               {!imgUploading ?
               (
               <Fragment>
-              <p id='uploading'>Successfully uploaded photos</p>
+              {invalidPhoto ? <p style={{color: 'red'}} className='invalidWarning'>Invalid photo type included</p> : null}
+              {failedPhotoUpload ? <p style={{color: 'red'}} className='invalidWarning'>One or more images failed to upload</p> : null}
+
+              {failedPhotoUpload || invalidPhoto || overPhotoLimit ? null : <p id='uploading'>Successfully uploaded photos</p>}
               <p id='required'>* Required</p>
               <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
               </Fragment>)

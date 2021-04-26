@@ -274,10 +274,19 @@
   line-height: 150px;
 }
 
+.img:hover {
+  cursor: pointer;
+}
+
 .submitPreview {
+  position: relative;
   max-height: 75px;
   max-width: 75px;
   margin-right: 10px;
+}
+
+.submitPreview:hover {
+  cursor: pointer;
 }
 
 .enlargedImage {
@@ -303,7 +312,7 @@
 }
 
 #qaPhotoUpload {
-  width: 60%
+  width: 60%;
 }
 
 

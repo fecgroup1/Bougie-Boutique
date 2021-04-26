@@ -92,7 +92,7 @@ const AddQuestion = (props) => {
           }}
           onRequestClose={() => closeForm()}
         >
-        <form novalidate="">
+        <form noValidate="">
           <div>
             <button id='closeModal' onClick={closeForm}>X</button>
             <h2>Ask your question</h2>
