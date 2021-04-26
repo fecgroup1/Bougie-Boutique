@@ -15,7 +15,8 @@ const markHelpful = (reviewId)=>{
 const Review =({ review })=> {
 const[reported, setReported]= useState(false);
 const[helpful, setHelpful]= useState(false);
-const[modalOpen, setModalOpen]= useState(false)
+const[modalOpen, setModalOpen]= useState(false);
+const[fullReview, setFullReview]= useState(false);
 
 return(
   <SingleReview>
@@ -24,7 +25,7 @@ return(
     </StarsOuter>
     <span style={{float: 'right'}}>{review.reviewerName},   {new Date(review.date).toLocaleString('en-us', {month:'long', day: 'numeric', year: 'numeric'})}</span>
     <h3>{review.summary}</h3>
-    <p>{review.body}</p>
+    {fullReview || review.body.length < 251 ? <p>{review.body}</p> : <p>{review.body.slice(0,250)}<br></br><a onClick= {()=> setFullReview(true)}>...Show More</a></p>}
     {review.photos.map((photo)=> <ReviewPhoto photo= {photo}/>)}
     {review.recommended ? <p style={{fontSize:'90%'}}> &#10003; I recomend this product</p> : <div></div>}
     {review.responseToReview ? <p style={{fontSize:'90%', backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>Response from seller:  {review.responseToReview}</p> : <div></div>}
