@@ -4,51 +4,10 @@
   width: 90%;
 }
 
-#qHelpful {
-  float: right;
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-#questionBody {
-  display: inline-block;
-  max-width: 75%;
-  font-weight: bold;
-  font-size: 18px;
-}
-
 .answerContainer {
   display: flex;
   flex-direction: column;
   padding-bottom: 15px;
-}
-
-.answerText {
-  display: inline-block;
-  margin-bottom: 10px
-
-}
-
-#answerBody {
-  font-size: 15px;
-  max-width: 75%;
-  padding-top: 3px;
-  vertical-align: text-top;
-  margin-left: 26px;
-}
-
-.answererInfo {
-  font-size: 14px;
-  margin-left: 26px;
-  margin-bottom: 20px;
-  display: inline-block;
-}
-
-.askerInfo {
-  font-size: 16px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  display: inline;
 }
 
 #moreAnswers {
@@ -58,10 +17,6 @@
   text-decoration: underline;
   padding-bottom: 20px;
   margin-left: 26px;
-}
-
-#moreQuestions:hover {
-  cursor: pointer
 }
 
 #moreAnswers:hover {

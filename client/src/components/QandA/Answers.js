@@ -67,26 +67,28 @@ const Answers = (props) => {
       <div className='answerContainer' key={index}>
         <div>
           {index === 0 ?
-          <p style={{fontWeight: 'bold'}}className='answerText'> A: </p>
+          <p style={{fontWeight: 'bold', display: 'inline-block', marginBottom: '10px'}}> A: </p>
           :
           null
           }
           {index === 0 ?
-            <div id='answerBody' style={{marginLeft: '10px'}} className='answerText'>{tempBody}</div>
+            <div style={{fontSize: '15px', maxWidth: '75%', paddingTop: '3px', verticalAlign: 'text-top', marginLeft: '10px',
+              display: 'inline-block', marginBottom: '10px'}}>{tempBody}</div>
             :
-            <div id='answerBody' className='answerText'>{tempBody}</div>
+            <div style={{fontSize: '15px', maxWidth: '75%', paddingTop: '3px', verticalAlign: 'text-top', marginLeft: '26px',
+              display: 'inline-block', marginBottom: '10px'}}>{tempBody}</div>
           }
           <div>
            <AnswerPhotos answer={answer} key={index}/>
           </div>
           {answer.answerer_name.toLowerCase() === 'seller' ? (
             <div>
-              <span style={{opacity: '0.7'}} className='answererInfo'>by
+              <span style={{opacity: '0.7', fontSize: '14px', marginLeft: '26px', marginBottom: '20px', display: 'inline-block'}}>by
               <span style={{fontWeight: '900'}}> {answer.answerer_name}</span>
               , {aDate.toDateString().substring(4)}
               </span>
               <span style={{marginLeft: '15px'}}>|</span>
-              <span style={{marginLeft: '15px'}} className='answererInfo'> Was this answer helpful?
+              <span style={{marginLeft: '15px', fontSize: '14px', marginBottom: '20px', display: 'inline-block'}}> Was this answer helpful?
                 <a id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </a>
                 ({answer.helpfulness})
                 <span style={{marginLeft: '15px'}}>|  </span>
@@ -104,11 +106,11 @@ const Answers = (props) => {
           :
           (
             <div>
-              <span style={{opacity: '0.7'}} className='answererInfo'>
+              <span style={{opacity: '0.7', fontSize: '14px', marginLeft: '26px', marginBottom: '20px', display: 'inline-block'}} className='answererInfo'>
                 by {answer.answerer_name}, {aDate.toDateString().substring(4)}
               </span>
               <span style={{marginLeft: '15px'}}>|</span>
-              <span style={{marginLeft: '15px'}} className='answererInfo'> Was this answer helpful?
+              <span style={{marginLeft: '15px', fontSize: '14px', marginBottom: '20px', display: 'inline-block'}} className='answererInfo'> Was this answer helpful?
                 <a id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </a>
                 ({answer.helpfulness})
                 <span style={{marginLeft: '15px'}}>|</span>
