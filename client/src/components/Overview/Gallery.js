@@ -3,7 +3,6 @@ import DefaultView from './Gallery/DefaultView.js';
 import GalleryThumbnails from './Gallery/GalleryThumbnails.js';
 import { Left } from './../../Styles/Overview';
 
-
 class Gallery extends React.Component {
   constructor (props) {
     super(props);
@@ -147,7 +146,8 @@ class Gallery extends React.Component {
             styles={styles}
             currImg={currImg}
             numImgs={this.state.numImgs}
-            handleImgClick={this.handleImgClick}/>
+            handleImgClick={this.handleImgClick}
+            id="defaultThumbs"/>
         </div>
       </Left>
     );
