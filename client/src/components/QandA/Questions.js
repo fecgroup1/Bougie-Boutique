@@ -95,14 +95,14 @@ const Questions = (props) => {
     return (
       <div className='Question' key={index}>
         <QuestionHead>
-          <p id='questionBody'> Q: {tempBody}</p>
-          <span id='qHelpful'>Helpful?
+          <p style={{display: 'inline-block', maxWidth: '75%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
+          <span style={{float: 'right', marginTop: '20px', fontSize: '14px'}}>Helpful?
             <a id='helpfulButton' onClick={() => markHelpful(question)}> Yes </a>
             ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} name={props.name}/>
           </span>
         </QuestionHead>
         <Answers key={index} questionId={question.question_id} newAnswer={newAnswer}/>
-        <span className='askerInfo'>
+        <span style={{fontSize: '16px', marginTop: '10px', marginBottom: '20px', display: 'inline'}}>
           Asked by: {question.asker_name}, {qDate.toDateString().substring(4)}
           <span style={{marginLeft: '15px'}}>|</span>
           {!report ?
