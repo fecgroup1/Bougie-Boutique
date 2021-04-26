@@ -40,7 +40,7 @@ class Reviews extends React.Component {
     return (
     <div>
       <span>{this.props.reviewsToShow.length} reviews, sorted by </span><select onChange= {(event)=> this.props.sortReviews(event.target.selectedIndex)}> <option>Relevant</option><option>Helpful</option><option>Newest</option></select>
-      <section style= {{maxHeight: '700px', overflowY:'auto'}}>
+      <section style= {{maxHeight: '780px', overflowY:'auto'}}>
         {reviews.map((review)=> <Review review={review}/>)}
       </section>
 
