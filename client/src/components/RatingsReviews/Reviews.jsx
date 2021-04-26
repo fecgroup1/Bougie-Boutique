@@ -40,7 +40,10 @@ class Reviews extends React.Component {
     return (
     <div>
       <span>{this.props.reviewsToShow.length} reviews, sorted by </span><select onChange= {(event)=> this.props.sortReviews(event.target.selectedIndex)}> <option>Relevant</option><option>Helpful</option><option>Newest</option></select>
-      {reviews.map((review)=> <Review review={review}/>)}
+      <section style= {{maxHeight: '700px', overflowY:'auto'}}>
+        {reviews.map((review)=> <Review review={review}/>)}
+      </section>
+
       {this.props.reviewsToShow.length >2 ? (this.state.renderbutton ?
       <button
       style= {{ fontSize: '105%', borderRadius: '1px',padding: '15px' , margin:'10px', fontFamily: 'Josefin Sans',
