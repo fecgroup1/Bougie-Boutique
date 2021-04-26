@@ -41,10 +41,10 @@ export const GallPlaceholder = styled.img`
 `;
 
 export const GallergyBorder = styled.div`
-  width: 3vh;
-  height: 3vh;
-  min-width: 15px;
-  min-height: 15px;
+  // width: 3vh;
+  // height: 3vh;
+  // min-width: 15px;
+  // min-height: 15px;
   border: 0.25vh solid ${props => props.theme.border};
   outline: 0.5vh solid ${props => props.theme.outline};
   margin: 0.5vh;
@@ -70,12 +70,14 @@ export const GallThumb = styled.img`
 & {
   object-fit: cover;
   object-position: 50% 50%;
-  width: 6vh;
-  height: 6vh;
-  min-width: 30px;
-  min-height: 30px;
+  // width: 6vh;
+  // height: 6vh;
+  // min-width: 30px;
+  // min-height: 30px;
+  width: 100%;
+  height: 100%;
   scroll-snap-align: center;
-  border: 0.75vh solid transparent;
+  // border: 0.75vh solid transparent;
   opacity: 50%;
   transition: opacity 0.5s;
 }
@@ -87,14 +89,12 @@ export const GallThumb = styled.img`
 export const CurrGallThumb = styled.img`
   object-fit: cover;
   object-position: 50% 50%;
-  width: 6vh;
-  height: 6vh;
-  min-width: 30px;
-  min-height: 30px;
+  width: 100%;
+  height: 100%;
   scroll-snap-align: center;
-  margin: 0.5vh;
-  border: 0.25vh solid ${props => props.theme.border};
-  outline: 0.5vh solid ${props => props.theme.outline};
+  // margin: 0.5vh;
+  // border: 0.25vh solid ${props => props.theme.border};
+  // outline: 0.5vh solid ${props => props.theme.outline};
   transition: border 0.5s, outline 0.5s;
 `;
 
@@ -109,27 +109,12 @@ export const NoScrollBar = styled.div`
     -ms-overflow-style: none;
     transition: transform 0.5s;
     position: relative;
-    width: 7.5vh;
-    min-width: 40px;
+    width: 100%;
     scroll-behavior: smooth;
   }
   &:: -webkit-scrollbar {
     display: none
   }
-`;
-
-export const ScrollBg = styled.button`
-  background: ${props => props.theme.bg};
-  border: none;
-  border-radius: 50%;
-  height: 3vh;
-  min-height: 15px;
-  margin: 0vh;
-  outline: none;
-  padding: 0;
-  transition: background 0.5s;
-  width: 3vh;
-  min-width: 15px;
 `;
 
 export const GalleryScroll = styled.button`
@@ -156,13 +141,6 @@ export const GalleryScroll = styled.button`
 export const GallThumbContainer = styled.div`
   overflow: hidden;
   position: absolute;
-  top: 100px;
-  left: 20px;
-  width: 7.5vh;
-  min-width: 40px;
   background: ${props => props.theme.bg};
-  height: 56.5vh;
-  min-height: 300px;
-  margin: 4.75vh 1vw;
   transition: background 0.5s;
 `;

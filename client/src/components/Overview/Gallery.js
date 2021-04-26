@@ -3,107 +3,7 @@ import DefaultView from './Gallery/DefaultView.js';
 import GalleryThumbnails from './Gallery/GalleryThumbnails.js';
 import { Left } from './../../Styles/Overview';
 
-// const Gallery = ({ styles, currImg, changeImg }) => {
-//   // STATE
-//   const [numImgs, setNumImgs] = useState(0);
-//   const [lastStyleIndex, setLastStyleIndex] = useState(0);
-//   const [lastImgIndex, setLastImgIndex] = useState(0);
-//   const [currLastIndex, setCurrLastIndex] = useState(0);
-//   const [prevLastIndex, setPrevLastIndex] = useState(0);
-//   const [galRight, setGalRight] = useState(0);
-//   const [galBottom, setGalBottom] = useState(0);
-//   const [galLeft, setGalX] = useState(0);
-//   const [galTop, setGalY] = useState(0);
-//   const [galHeight, setGalHeight] = useState(0);
-//   const [galWidth, setGalWidth] = useState(0);
 
-//   // PARSE IMAGES ARRAY
-//   let imgCount = 0;
-//   let prev = 0;
-//   let curr = 0;
-//   for (let i = 0; i < styles.length; i++) {
-//     let style = styles[i];
-//     for (let j = 0; j < style.photos.length; j++) {
-//       imgCount++;
-//       if (i === currImg[0] - 1){
-//         prev = j;
-//       }
-//       if (i === currImg[0]) {
-//         curr = j;
-//       }
-//     }
-//   }
-//   if (numImgs !== imgCount) {
-//     setNumImgs(imgCount);
-//     setLastStyleIndex(styles.length - 1);
-//     setLastImgIndex(styles[styles.length - 1].photos.length - 1);
-//     setCurrLastIndex(curr);
-//     setPrevLastIndex(prev);
-//   }
-
-//   //
-
-//   const handleImgClick = (x, y) => {
-//     // FUTURE IMPLEMENTATION: Scroll to thumbnail
-//     let id = `img${x}-${y}`;
-//     // let dist = (x + 1) * (y + 1);
-//     // document.getElementById("galleryscroll").scrollTo(document.getElementById(id));
-//     console.log('style', x);
-//     console.log('photo', y);
-//     changeImg(x, y);
-//   };
-
-//   return(
-//     <Left style={{alignContent: 'center', minWidth: '400px'}}>
-//       <div id="gallery" style={{ height: '66vh', minHeight: '350px', overflow: 'hidden' }}>
-//         <DefaultView
-//           styles={styles}
-//           currImg={currImg}
-//           lastImgIndex={lastImgIndex}
-//           lastStyleIndex={lastStyleIndex}
-//           currLastIndex={currLastIndex}
-//           prevLastIndex={prevLastIndex}
-//           handleImgClick={handleImgClick}
-//           galWidth={galWidth}
-//           galHeight={galHeight}
-//           galLeft={galLeft}
-//           galTop={galTop}
-//           galRight={galRight}
-//           galBottom={galBottom}
-//           setGalWidth={setGalWidth}
-//           setGalHeight={setGalHeight}
-//           setGalX={setGalX}
-//           setGalY={setGalY}
-//           setGalRight={setGalRight}
-//           setGalBottom={setGalBottom}/>
-//         <GalleryThumbnails
-//           galHeight={galHeight}
-//           galWidth={galWidth}
-//           styles={styles}
-//           currImg={currImg}
-//           numImgs={numImgs}
-//           handleImgClick={handleImgClick}
-//           id="defaultThumbs"/>
-//       </div>
-//     </Left>
-//   );
-// }
-
-
-
-//   const [numImgs, setNumImgs] = useState(0);
-//   const [lastStyleIndex, setLastStyleIndex] = useState(0);
-//   const [lastImgIndex, setLastImgIndex] = useState(0);
-//   const [currLastIndex, setCurrLastIndex] = useState(0);
-//   const [prevLastIndex, setPrevLastIndex] = useState(0);
-//   const [galRight, setGalRight] = useState(0);
-//   const [galBottom, setGalBottom] = useState(0);
-//   const [galLeft, setGalX] = useState(0);
-//   const [galTop, setGalY] = useState(0);
-//   const [galHeight, setGalHeight] = useState(0);
-//   const [galWidth, setGalWidth] = useState(0);
-
-// CLASS COMPONENT VERSION
 class Gallery extends React.Component {
   constructor (props) {
     super(props);
@@ -242,11 +142,12 @@ class Gallery extends React.Component {
           <GalleryThumbnails
             galHeight={this.state.galHeight}
             galWidth={this.state.galWidth}
+            galLeft={this.state.galLeft}
+            galTop={this.state.galTop}
             styles={styles}
             currImg={currImg}
             numImgs={this.state.numImgs}
-            handleImgClick={this.handleImgClick}
-            id="defaultThumbs"/>
+            handleImgClick={this.handleImgClick}/>
         </div>
       </Left>
     );

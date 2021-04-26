@@ -2,8 +2,6 @@ import React, {Fragment} from 'react';
 import ProductAPI from './ProductAPI.js';
 import QuestionAPI from './QuestionAPI.js';
 import ReviewAPI from './ReviewAPI.js';
-import dummyState from './dummyState.json';
-// import { ProductAPI, QuestionAPI, ReviewAPI } from '../Utils'
 
 class CurrentProduct extends React.Component {
 

@@ -1,11 +1,10 @@
 import React from 'react';
-import { GallPlaceholder, GallergyBorder, SelectedGallPlaceholder, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer, ScrollBg } from './../../../Styles/Overview';
+import { GallPlaceholder, GallergyBorder, SelectedGallPlaceholder, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer } from './../../../Styles/Overview';
 
 class GalleryThumbnails extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      position: 0,
       scrollTop: 0,
       scrollBtm: false,
     };
@@ -27,23 +26,19 @@ class GalleryThumbnails extends React.Component {
   }
 
   scroll(direction) {
-    let pos = this.state.position;
     if (direction === 'up') {
       document.getElementById(this.props.id).scrollBy({
-        top: '-100',
+        top: '-200',
         left: 0,
         behavior: 'smooth'
       });
     } else if (direction === 'down') {
       document.getElementById(this.props.id).scrollBy({
-        top: '100',
+        top: '200',
         left: 0,
         behavior: 'smooth'
       });
     }
-    this.setState({
-      position: pos,
-    });
   }
 
   render() {
@@ -51,19 +46,41 @@ class GalleryThumbnails extends React.Component {
     const currImg = this.props.currImg;
     const handleImgClick = this.props.handleImgClick;
     const numImgs = this.props.numImgs;
+    const galHeight = this.props.galHeight;
+    // const galWidth = this.props.galWidth;
+    const galTop = this.props.galTop;
+    const galLeft = this.props.galLeft;
 
-    const position = {
-      transform: `translateY(${this.state.position}vh)`,
-      zIndex: 2,
-    }
-    const container = {
-      display: 'grid',
-      justifyItems: 'center',
-      background: 'none',
-    };
-    const bg = {
+    const thumbsBg = {
       opacity: `${styles[0].name === null ? '0': '0.5'}`,
+      width: galHeight * 0.13,
+      height: galHeight * 0.88,
+      margin: `${0.12 * galHeight / 2}px ${0.12 * galHeight / 4}px`,
+      top: galTop,
+      left: galLeft,
     };
+    const thumbContainer = {
+      display: 'flex',
+      justifyItems: 'center',
+      alignContent: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      background: 'none',
+      width: galHeight * 0.13,
+      height: galHeight * 0.88,
+      margin: `${0.12 * galHeight / 2}px ${0.12 * galHeight / 4}px`,
+      top: galTop,
+      left: galLeft,
+    };
+    const thumbsGrid = {
+      gridTemplateColumns: galHeight / 10,
+      gridAutoRows: galHeight / 10,
+      zIndex: 2,
+      width: galHeight * 0.11,
+      height: galHeight * 0.825,
+      margin: 0,
+    }
     const upOpacity = {
       background: ((styles[0].name === null) ||
                 (this.state.scrollTop <= 0) ||
@@ -80,20 +97,21 @@ class GalleryThumbnails extends React.Component {
       background: 'none',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: '64vh',
-      minHeight: '325px',
-      margin: '1vh 1vw',
+      height: 0.95 * galHeight,
+      margin: 0.05 * galHeight / 2,
       zIndex: 0,
+      top: galTop,
+      left: galLeft,
     }
 
     return (
     <>
-      <GallThumbContainer style={bg}></GallThumbContainer>
+      <GallThumbContainer id="gallerybg" style={thumbsBg}></GallThumbContainer>
 
-      <GallThumbContainer style={container}>
+      <GallThumbContainer id="thumbscontainer" style={thumbContainer}>
         <NoScrollBar
           id={this.props.id}
-          style={position}
+          style={thumbsGrid}
           onScroll={this.handleScroll}>
             {styles.map((style, sIndex) => {
               return style.photos.map((photo, pIndex) => {
@@ -139,7 +157,7 @@ class GalleryThumbnails extends React.Component {
         </NoScrollBar>
       </GallThumbContainer>
 
-      <GallThumbContainer style={buttonContainer}>
+      <GallThumbContainer id="galscrollbuttons" style={buttonContainer}>
           <GalleryScroll
             style={upOpacity}
             onClick={() => this.scroll('up')}>
