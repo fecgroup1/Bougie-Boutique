@@ -67,8 +67,8 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
     display: 'block',
     objectFit: zoom ? '': 'cover',
     objectPosition: zoom ? '': '50% 50%',
-    width: zoom ? '250%': '100%',
-    height: zoom ? 'auto': '100%',
+    width: zoom ? '': '100%',
+    height: zoom ? '': '100%',
     cursor: `url('${zoom ? '/assets/minus.png': '/assets/plus.png'}'), ${zoom ? 'zoom-out': 'zoom-in'}`,
   };
 

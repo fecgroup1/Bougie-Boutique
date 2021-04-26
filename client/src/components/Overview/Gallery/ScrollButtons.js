@@ -1,44 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import ExpandedView from './ExpandedView.js';
+import React, { useState } from 'react';
 import { GalleryScroll } from './../../../Styles/Overview';
 
-const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, prevLastIndex, handleImgClick, handleModalOpen}) => {
+const ScrollButtons = ({ currImg, lastStyleIndex, lastImgIndex, currLastIndex, prevLastIndex, handleImgClick, galHeight, galWidth, galLeft, galTop, buttonHeight, buttonWidth }) => {
 
-  const [galHeight, setGalHeight] = useState(0);
-  const [galWidth, setGalWidth] = useState(0);
+  // // GET BUTTON SIZE
+  // const [buttonWidth, setButtonWidth] = useState(0);
+  // const [buttonHeight, setButtonHeight] = useState(0);
 
-  // if (document.getElementById('gallery') !== null) {
-  //   let height = document.getElementById('gallery').offsetHeight;
-  //   let width = document.getElementById('gallery').offsetHeight;
-  //   if (galHeight !== height) {
-  //     setGalHeight(height);
-  //   }
-  //   if (galWidth !== width) {
-  //     setGalWidth(width);
-  //   }
+  // const resize_ob = new ResizeObserver((entries) => {
+  //   let rect = entries[0].borderBoxSize[0];
+
+  //   let width = rect.inlineSize;
+  //   let height = rect.blockSize;
+
+  //   console.log('width', width);
+  //   console.log('height', height);
+
+  //   setButtonWidth(width);
+  //   setButtonHeight(height);
+  // });
+
+  // if (document.getElementById('lrbuttons') !== null) {
+  //   resize_ob.observe(document.getElementById('lrbuttons'));
   // }
-
-  const resize_ob = new ResizeObserver((entries) => {
-    let rect = entries[0].contentRect;
-
-    let width = rect.width;
-    let height = rect.height;
-
-    setGalWidth(width);
-    setGalHeight(height);
-  })
-
-  resize_ob.observe(document.getElementById('gallery'));
 
   var leftOpacity = {
     background: (currImg[0] === 0 && currImg[1] === 0) ? 'none': '',
     borderRadius: '10%',
     zIndex: 2,
+    color: (currImg[0] === 0 && currImg[1] === 0) ? 'transparent': '',
   };
   var rightOpacity = {
     background: (currImg[0] === lastStyleIndex && currImg[1] === lastImgIndex) ? 'none': '',
     borderRadius: '10%',
     zIndex: 2,
+    color: (currImg[0] === lastStyleIndex && currImg[1] === lastImgIndex) ? 'transparent': '',
   };
   var buttonContainer = {
     position: 'absolute',
@@ -48,36 +44,35 @@ const ScrollButtons = ({currImg, lastStyleIndex, lastImgIndex, currLastIndex, pr
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
     justifyItems: 'flex-end',
-    left: galWidth - 30,
-    top: galHeight + 70,
-    marging: 5,
+    left: galWidth + galLeft - buttonWidth,
+    top: galHeight + galTop - buttonHeight,
+    transform: 'translate(-100% -100%)',
+    padding: galHeight * 0.01,
   }
 
+  // IMPLEMENT LOOP
   var nextLeft = {
     style: (currImg[1] === 0 && currImg[0] !== 0) ? currImg[0] - 1: currImg[0],
-    photo: (currImg[1] === 0 && currImg[0] !== 0) ? prevLastIndex: currImg[1]- 1,
+    photo: (currImg[1] === 0) ? prevLastIndex: currImg[1] - 1,
   };
   var nextRight = {
-    style: currImg[1] === currLastIndex - 1 ? currImg[0] + 1: currImg[0],
-    photo: currImg[1] === currLastIndex - 1 ? 0: currImg[1] + 1,
+    style: currImg[1] === currLastIndex ? currImg[0] + 1: currImg[0],
+    photo: currImg[1] === currLastIndex ? 0: currImg[1] + 1,
   };
 
   return (
-    <div
-      style={buttonContainer}
-      // onClick={() => handleModalOpen(true)}
-      >
-            <GalleryScroll
-              style={leftOpacity}
-              onClick={() => handleImgClick(nextLeft.style, nextLeft.photo)}>
-                {(currImg[0] === 0 && currImg[1] === 0) ? null: <i className="lni lni-chevron-left"></i>}
-            </GalleryScroll>
-            <GalleryScroll
-              style={rightOpacity}
-              onClick={() => handleImgClick(nextRight.style, nextRight.photo)}>
-                {(currImg[0] === lastStyleIndex && currImg[1] === lastImgIndex) ? null: <i className="lni lni-chevron-right"></i>}
-            </GalleryScroll>
-          </div>
+    <div id="lrbuttons" style={buttonContainer}>
+      <GalleryScroll
+        style={leftOpacity}
+        onClick={() => handleImgClick(nextLeft.style, nextLeft.photo)}>
+          <i className="lni lni-chevron-left"></i>
+      </GalleryScroll>
+      <GalleryScroll
+        style={rightOpacity}
+        onClick={() => handleImgClick(nextRight.style, nextRight.photo)}>
+          <i className="lni lni-chevron-right"></i>
+      </GalleryScroll>
+    </div>
   );
 };
 

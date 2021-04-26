@@ -141,8 +141,6 @@ export const GalleryScroll = styled.button`
   color: ${props => props.theme.text};
   display: flex;
   font-size: 2.5vh;
-  height: 3vh;
-  min-height: 15px;
   justify-content: center;
   line-height: 3vh;
   opacity: 50%;
@@ -150,8 +148,6 @@ export const GalleryScroll = styled.button`
   padding: 0;
   text-align: center;
   transition: background 0.5s, color 0.5s, opacity 0.5s;
-  width: 3vh;
-  min-width: 15px;
 }
 &:hover {
   opacity: 100%;
