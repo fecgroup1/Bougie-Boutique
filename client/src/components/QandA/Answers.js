@@ -17,7 +17,7 @@ const Answers = (props) => {
 
   const getAnswers = () => {
     const id = props.questionId
-    axios.get(`/qa/questions/${id}/answers`)
+    axios.get(`/qa/questions/${id}/answers?count=50`)
     .then ((answersArr) => {
       setAnswers(answersArr.data.results)
     })
