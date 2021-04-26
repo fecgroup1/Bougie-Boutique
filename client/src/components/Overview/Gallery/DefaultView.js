@@ -8,35 +8,6 @@ const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIn
   const [modalOpen, setModalOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
 
-  // WATCH GALLERY FOR RESIZE
-  // const resize_ob = new ResizeObserver((entries) => {
-  //   let rect = entries[0].contentRect;
-  //   let width = rect.width;
-  //   let height = rect.height;
-  //   let right = rect.right;
-  //   let bottom = rect.bottom;
-
-  //   let element = entries[0].target;
-  //   var top = 0;
-  //   var left = 0;
-
-  //   while (element !== null) {
-  //     top += element.offsetTop;
-  //     left += element.offsetLeft;
-  //     element = element.offsetParent;
-  //   }
-
-  //   setGalWidth(width);
-  //   setGalHeight(height);
-  //   setGalX(left);
-  //   setGalY(top);
-  //   setGalRight(right);
-  //   setGalBottom(bottom);
-  // });
-  // if (document.getElementById('gallery') !== null) {
-  //   resize_ob.observe(document.getElementById('gallery'));
-  // }
-
   const handleModalOpen = (bool) => {
     if (bool) {
       var pos = window.scrollY;
