@@ -91,6 +91,7 @@ const AddAnswer = (props) => {
   }
 
   const submitForm = (event) => {
+    event.preventDefault()
     setEmailInvalid(false)
     setNicknameInvalid(false)
     setTextBodyInvalid(false)
@@ -142,7 +143,7 @@ const AddAnswer = (props) => {
           }}
           onRequestClose={() => closeForm()}
         >
-        <form>
+        <form novalidate="">
           <div>
           <button id='closeModal' onClick={closeForm}>X</button>
             <h2>Add an answer</h2>
