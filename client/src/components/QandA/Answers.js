@@ -110,7 +110,7 @@ const Answers = (props) => {
                 by {answer.answerer_name}, {aDate.toDateString().substring(4)}
               </span>
               <span style={{marginLeft: '15px'}}>|</span>
-              <span style={{marginLeft: '15px'}} className='answererInfo'> Was this answer helpful?
+              <span style={{marginLeft: '15px', fontSize: '14px', marginBottom: '20px', display: 'inline-block'}} className='answererInfo'> Was this answer helpful?
                 <a id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </a>
                 ({answer.helpfulness})
                 <span style={{marginLeft: '15px'}}>|</span>
