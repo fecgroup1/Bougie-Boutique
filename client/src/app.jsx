@@ -45,7 +45,9 @@ class App extends React.Component {
           let code = event.path[i].attributes.getNamedItem('tracking');
           if (code) {
             data = code.value ? {element: event.target.outerHTML, widget: code.value, time: timeStamp } : {};
-            i = event.path.length;
+            if (code.value) {
+              i = event.path.length;
+            }
             // console.log('tracking data', data)
           }
         }
