@@ -115,7 +115,7 @@ const AddAnswer = (props) => {
     let email = document.getElementById('answerEmail')
 
     if ((answerBody.validity.valid) && (nickname.validity.valid)
-        && email.validity.valid && !failedPhotoUpload) {
+        && email.validity.valid) {
       const qid = props.question.question_id;
       axios.post(`/qa/questions/${qid}/answers`, {
         body: answerBody.value,
