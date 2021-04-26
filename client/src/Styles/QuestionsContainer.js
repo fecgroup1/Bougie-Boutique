@@ -70,7 +70,7 @@ export const SearchBar = styled.input`
     width: 85%;
     height: 40px;
     margin-bottom: 15px;
-    font-size: 1rm;
+    font-size: 1em;
     font-family: 'Josefin Sans', sans-serif;
   }
 `;
