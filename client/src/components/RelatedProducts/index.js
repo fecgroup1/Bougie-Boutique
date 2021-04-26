@@ -8,13 +8,48 @@ import CompareModal from './CompareModal.js'
 const RelatedProducts = ({store, theme}) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4]);
-  const [relatedSuccess, setRelatedSuccess] = useState(true)
+  const [relatedSuccess, setRelatedSuccess] = useState(true);
   const [productsPosition, setProductsPosition] = useState(0);
   const [productScroll, setProductScroll] = useState({left: false, right: true});
   const [outfitsPosition, setOutfitPosition] = useState(0);
   const [outfitScroll, setOutfitScroll] = useState({left: false, right: true});
   const [comparisonProduct, setComparisonProduct] = useState(null);
-  const [outfits, setOutfits] = useState({})
+  const [outfits, setOutfits] = useState({});
+  const [screenWidth, setScreenWidth] = useState(null);
+
+  useEffect(() => {
+    let outfitWidth = document.getElementById('outfitsWrapper').clientWidth
+
+    if(outfitWidth + 350 < screenWidth) {
+      setOutfitScroll({
+        ...outfitScroll,
+        right: false
+      })
+    } else if (outfitWidth + 350 > screenWidth) {
+      setOutfitScroll({
+        ...outfitScroll,
+        right: true
+      })
+    }
+
+  }, [outfits, screenWidth])
+
+  useEffect(() => {
+    let productWidth = document.getElementById('productsWrapper').clientWidth
+
+    if(productWidth + 350 < screenWidth) {
+      setProductScroll({
+        ...productScroll,
+        right: false,
+      })
+    } else if (productWidth + 350 > screenWidth) {
+      setProductScroll({
+        ...productScroll,
+        right: true,
+      })
+    }
+
+  }, [screenWidth])
 
   //grabs related products when the current productId is initally set/changed
   useEffect(() => {
@@ -34,6 +69,9 @@ const RelatedProducts = ({store, theme}) => {
     if (saved) {
       setOutfits(saved);
     }
+    setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [])
 
   //manage button scroll visibility products
@@ -98,6 +136,11 @@ const RelatedProducts = ({store, theme}) => {
     window.localStorage.setItem('bougieBoutiqueOutfits', JSON.stringify(newState));
   }
 
+  const handleResize = () => {
+    setScreenWidth(window.innerWidth);
+    console.log('screen width:', window.innerWidth);
+  }
+
   //memoizes the props in this componenet and only updates them when the array values are updated [currentProdID, products]
   const relatedSection = useMemo(() =>
     <ProductsContainer
@@ -107,7 +150,9 @@ const RelatedProducts = ({store, theme}) => {
       <div>
         <h3>RELATED PRODUCTS</h3>
       </div>
-      <CardsWrapper>
+      <CardsWrapper
+        id='productsWrapper'
+      >
         <Button
           show={productScroll.left}
           position={'left'}
@@ -161,7 +206,9 @@ const RelatedProducts = ({store, theme}) => {
       <div>
         <h3>YOUR OUTFIT</h3>
       </div>
-      <CardsWrapper>
+      <CardsWrapper
+        id='outfitsWrapper'
+      >
       <Button
             show={outfitScroll.left}
             position={'left'}
