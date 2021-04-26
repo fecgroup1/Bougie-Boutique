@@ -35,6 +35,7 @@ const AddQuestion = (props) => {
   }
 
   const submitForm = (event) => {
+    event.preventDefault();
     setEmailInvalid(false)
     setNicknameInvalid(false)
     setTextBodyInvalid(false)
@@ -72,7 +73,8 @@ const AddQuestion = (props) => {
   }
 
   const overlay = { overlay: {
-    backgroundColor: 'rgba(17, 17, 17, 0.75)'
+    backgroundColor: 'rgba(17, 17, 17, 0.75)',
+    backdropFilter: 'blur(5px)'
   }}
 
   if (props.name) {
@@ -90,7 +92,7 @@ const AddQuestion = (props) => {
           }}
           onRequestClose={() => closeForm()}
         >
-        <form>
+        <form noValidate="">
           <div>
             <button id='closeModal' onClick={closeForm}>X</button>
             <h2>Ask your question</h2>
@@ -114,7 +116,7 @@ const AddQuestion = (props) => {
 
             <p id='required'>* Required</p>
 
-            <button id='qaSubmit' onClick={(event) => submitForm(event)}>Submit</button>
+            <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
           </div>
         </form>
         </Modal>

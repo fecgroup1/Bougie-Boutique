@@ -19,6 +19,7 @@ const Questions = (props) => {
   const [qReported, setQReported] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [search, setSearch] = useState(false);
 
   useEffect(() => {
     setQuestionLength(2)
@@ -31,7 +32,6 @@ const Questions = (props) => {
   }, [props.productId, props.name])
 
   useEffect(() => {
-    console.log('i got a new question')
     getQuestions()
   }, [newQuestion])
 
@@ -41,7 +41,6 @@ const Questions = (props) => {
     axios.get(`qa/questions?product_id=${qid}&count=50`)
     .then((question) => {
       setQuestions(question.data.results)
-      console.log(question)
     })
   }
 
@@ -58,6 +57,11 @@ const Questions = (props) => {
   }
 
   const filterQuestions = (event) => {
+    if (event.target.value.length < 3) {
+      setSearch(false)
+    } else {
+      setSearch(true)
+    }
     const queryString = event.target.value
     setSearchQuery(queryString)
     setMoreSearchedQuestions(false)
@@ -93,43 +97,50 @@ const Questions = (props) => {
         <QuestionHead>
           <p id='questionBody'> Q: {tempBody}</p>
           <span id='qHelpful'>Helpful?
-            <span id='helpfulButton' onClick={() => markHelpful(question)}> Yes </span>
+            <a id='helpfulButton' onClick={() => markHelpful(question)}> Yes </a>
             ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} name={props.name}/>
           </span>
         </QuestionHead>
-
         <Answers key={index} questionId={question.question_id} newAnswer={newAnswer}/>
-        <div className='askerInfo'>
-          Asked by: {' '}{question.asker_name},{' '}{qDate.toDateString().substring(4)}{' '}|{' '}
+        <span className='askerInfo'>
+          Asked by: {question.asker_name}, {qDate.toDateString().substring(4)}
+          <span style={{marginLeft: '15px'}}>|</span>
           {!report ?
               (
-              <span id='reportButton' onClick={() => reportQuestion(question)}>Report</span>
+              <a id='reportButton' style={{fontSize: '14px'}} onClick={() => reportQuestion(question)}>Report this question <i className="lni lni-flag-alt"></i></a>
               ) :
               (
-              <span>Reported</span>
+              <span id='reportButton' style={{color: 'red', fontSize: '14px'}}>Reported <i className="lni lni-flag-alt"></i></span>
               )
             }
-        </div>
+        </span>
       </div>
     )
+  }
+
+  const unlimitedScroll = (event) => {
+    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight && moreQuestions && !search) {
+      if (questionLength < questions.length) {
+        setQuestionLength(questionLength + 2)
+      }
+    }
+    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight && moreSearchedQuestions && search) {
+      if (searchQuestionLength < questions.length) {
+      setSearchQuestionLength(searchQuestionLength + 2)
+      }
+    }
   }
 
   const addMore = (event) => {
     if (event.target.value === 'search') {
       const addSearch = searchQuestionLength + 2
-      if (addSearch >= searchResults.length) {
         setMoreSearchedQuestions(true)
         setSearchQuestionLength(addSearch)
-      } else {
-        setSearchQuestionLength(addSearch)
-      }
-    }
-    const add = questionLength + 2
-    if (add >= questions.length) {
+    } else {
+      const add = questionLength + 2
       setMoreQuestions(true)
       setQuestionLength(add)
-    } else
-      setQuestionLength(add)
+    }
   }
 
   return (
@@ -142,7 +153,7 @@ const Questions = (props) => {
     <QuestionsContainer>
       <h2>Questions and Answers</h2>
       <SearchQuestions currentProductId={props.productId} filterQuestions={filterQuestions}/>
-      <QuestionCardsContainer>
+      <QuestionCardsContainer onScroll={unlimitedScroll}>
         {searchQuery.length >= 3 ? (
           <Fragment>
             {searchResults.slice(0, searchQuestionLength).map((question, index) =>

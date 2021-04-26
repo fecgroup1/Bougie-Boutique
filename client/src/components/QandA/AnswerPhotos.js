@@ -31,7 +31,9 @@ const AnswerPhotos = (props) => {
   }
 
   const overlay = { overlay: {
-    backgroundColor: 'rgba(17, 17, 17, 0.75'
+    backgroundColor: 'rgba(17, 17, 17, 0.75',
+    zIndex: '5',
+    backdropFilter: 'blur(5px)'
   }}
 
   return (
@@ -39,7 +41,7 @@ const AnswerPhotos = (props) => {
       {props.answer.photos.length > 0 ? (
         <div className='qaImages'>
           {props.answer.photos.map((image, index) => (
-            <div key={index} className='qaPhotos'>
+            <div key={index} className='qaPhotos' style={{display: 'inline'}}>
               <Modal
                 ariaHideApp={false}
                 isOpen={clicked}

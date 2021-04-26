@@ -23,12 +23,9 @@
   padding-bottom: 15px;
 }
 
-#answerHelpful {
-  margin-left: 15px;
-}
-
 .answerText {
   display: inline-block;
+  margin-bottom: 10px
 
 }
 
@@ -37,13 +34,14 @@
   max-width: 75%;
   padding-top: 3px;
   vertical-align: text-top;
-  margin-left: 10px;
+  margin-left: 26px;
 }
 
 .answererInfo {
   font-size: 14px;
-  margin-left: 22px;
-  display: inline;
+  margin-left: 26px;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .askerInfo {
@@ -53,18 +51,14 @@
   display: inline;
 }
 
-.qaPhotos {
-  display: inline;
-}
-
 #moreAnswers {
   display: inline-block;
   font-size: 13px;
   font-weight: bold;
   text-decoration: underline;
-  padding-bottom: 20px
+  padding-bottom: 20px;
+  margin-left: 26px;
 }
-
 
 #moreQuestions:hover {
   cursor: pointer
@@ -75,6 +69,7 @@
 }
 
 #helpfulButton {
+  margin-left: 10px;
   text-decoration: underline;
 }
 
@@ -83,12 +78,13 @@
 }
 
 #reportButton {
+  color: red;
   margin-left: 15px;
 }
 
 #reportButton:hover {
-    cursor: pointer;
-    text-decoration: underline;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 #addAnswerButton {
@@ -132,6 +128,7 @@
   max-height: 80%;
   width: 25%;
   min-width: 300px;
+  z-index: 5
 }
 
 .qaModal::-webkit-scrollbar {
@@ -157,6 +154,7 @@
   bottom: 0;
   opacity: 0;
   transition: 500ms ease-in-out;
+  z-index: 5
 }
 
 .qaModalOverlay-in {
@@ -196,7 +194,6 @@
   outline: none;
 }
 
-
 .warning {
   font-size: 13px;
 }
@@ -224,17 +221,6 @@
     font-size: 22px
 }
 
-#qaSubmit {
-  border: none;
-  color: inherit;
-  background-color: #a8a8a8;
-  font-size: 16px;
-  cursor: pointer;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 10px;
-}
-
 .qaImgModal {
   transform: translate(0, 5%);
   position: relative;
@@ -244,6 +230,7 @@
   background-color: rgba(17, 17, 17, 0.75);
   margin: auto;
   border: none;
+  z-index: 5;
 }
 
 .qaImgModal::-webkit-scrollbar {
@@ -273,13 +260,23 @@
   width: auto;
   height: auto;
   margin-top: 5px;
+  margin-left: 21px;
   line-height: 150px;
 }
 
+.img:hover {
+  cursor: pointer;
+}
+
 .submitPreview {
+  position: relative;
   max-height: 75px;
   max-width: 75px;
   margin-right: 10px;
+}
+
+.submitPreview:hover {
+  cursor: pointer;
 }
 
 .enlargedImage {
@@ -290,22 +287,5 @@
   transform: translateY(-50%);
   margin: auto;
   padding: 0;
+  z-index: 5;
 }
-
-.lni-search {
-  margin-top: 7px;
-  margin-left: 10px;
-  position: absolute;
-}
-
-#uploading {
-  font-size: 14px;
-  margin-bottom: -10px;
-}
-
-#qaPhotoUpload {
-  width: 60%
-}
-
-
-
