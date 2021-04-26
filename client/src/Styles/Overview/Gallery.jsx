@@ -116,8 +116,6 @@ export const GalleryScroll = styled.button`
   border-radius: 50%;
   color: ${props => props.theme.text};
   display: flex;
-  font-size: 2.5vh;
-  line-height: 3vh;
   opacity: 50%;
   outline: none;
   padding: 0;
