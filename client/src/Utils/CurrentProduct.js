@@ -43,6 +43,7 @@ class CurrentProduct extends React.Component {
     ProductAPI.getProduct(id)
     .then((resData) => {
       let productData = resData;
+      console.log('productData:', productData)
       // productData.currStyle = 0;
       // productData.cart = this.checkCart(resData);
       productData.currImg = [0, 0];

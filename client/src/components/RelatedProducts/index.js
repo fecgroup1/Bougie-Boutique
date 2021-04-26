@@ -8,6 +8,7 @@ import CompareModal from './CompareModal.js'
 const RelatedProducts = ({store, theme}) => {
 
   const [products, setProducts] = useState([1, 2, 3, 4]);
+  const [relatedSuccess, setRelatedSuccess] = useState(true)
   const [productsPosition, setProductsPosition] = useState(0);
   const [productScroll, setProductScroll] = useState({left: false, right: true});
   const [outfitsPosition, setOutfitPosition] = useState(0);
@@ -20,6 +21,9 @@ const RelatedProducts = ({store, theme}) => {
     RelatedAPI.getRelatedProducts(store.state.currentProductId)
       .then((results) => {
         setProducts(results)
+      })
+      .catch((err) => {
+        setRelatedSuccess(false)
       })
 
   }, [store.state.currentProductId]);
@@ -228,7 +232,9 @@ const RelatedProducts = ({store, theme}) => {
       <Fragment>
         <section tracking={'Related Products'}>
           <RelatedContainer>
-            {relatedSection}
+            {
+              relatedSuccess ? relatedSection : <h2>Error Loading Related Products</h2>
+            }
             {outfitSection}
           </RelatedContainer>
           <CompareModal
