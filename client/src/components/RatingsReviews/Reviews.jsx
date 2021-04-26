@@ -55,7 +55,9 @@ class Reviews extends React.Component {
       isOpen= {this.state.modalIsOpen}
       productName= 'product goes here'
       productId= {this.props.productId}
-      characteristics= {this.props.meta.characteristics}/>
+      characteristics= {this.props.meta.characteristics}
+      setMeta= {this.props.setMeta}
+      setReviews={this.props.setReviews}/>
     </div>)
   }
 

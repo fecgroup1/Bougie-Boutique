@@ -38,7 +38,7 @@ const generateCharacteristic = (Characteristic)=> {
   )
 }
 
-const NewReviewModal = ({close, isOpen, productName, characteristics, productId})=> {
+const NewReviewModal = ({close, isOpen, productName, characteristics, productId, setMeta, setReviews})=> {
 
   const [starStyles, setstarStyles] = useState({
     one: {},
@@ -96,7 +96,8 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId}
     currentProductId=currentProductId.productId
     event.preventDefault();
     let form = document.querySelector('form[name="NewReview"]');
-    let formData = new FormData()
+    if(form.elements['photos'].files[0]){
+          let formData = new FormData()
     formData.append('image', form.elements['photos'].files[0]);
     axios.post('/addPhoto', formData, {'Content-Type': 'multipart/form-data'})
     .then(res=> {
@@ -121,15 +122,42 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId}
             }
         })
           .then(() => {
-            console.log('posted')
+            setMeta(productId);
+            setReviews(productId)
           })
           .catch((err) => {
             console.log(err)
           })
           close();
+        })
+    }else{
+      let obj= {};
+        for (var key in characteristics){
+          obj[characteristics[key]['id']] = Number(form.elements[key].value)
+        }
+      axios.post(`/reviews`, {
+        product_id: Number(currentProductId),
+        rating: Number(form.elements['overallRating'].value),
+        summary: document.getElementById('summary').value,
+        body: document.getElementById('body').value,
+        recommend: (form.elements['recomended'].value)=== "true"? true : false,
+        name: document.getElementById('userName').value,
+        email: document.getElementById('email').value,
+        characteristics: obj
+      }, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
     })
-
-
+      .then(() => {
+        setMeta(productId);
+        setReviews(productId)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      close();
+    }
   }
 
 

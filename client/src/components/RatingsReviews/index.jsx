@@ -116,6 +116,8 @@ class RatingsReviews extends React.Component {
           product = {this.props.store.state.product}
           productId = {this.props.store.state.currentProductId}
           meta= {this.props.store.state.meta}
+          setMeta= {this.props.store.setMeta}
+          setReviews={this.props.store.setReviews}
           sortReviews= {this.sortReviews}
           theme={this.props.theme}
           />
