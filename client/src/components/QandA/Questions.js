@@ -70,6 +70,9 @@ const Questions = (props) => {
       const match = questions.filter ((question) =>
         question.question_body.toLowerCase().includes(queryString.toLowerCase()))
         setSearchResults(match)
+        if (searchResults[0] === undefined) {
+          setMoreSearchedQuestions(true)
+        }
     } else {
       setSearchResults(questions)
     }
@@ -170,6 +173,7 @@ const Questions = (props) => {
       </QuestionCardsContainer>
     </QuestionsContainer>
     <QuestionsContainer>
+    {searchResults.length === 0 && searchQuery.length >=3 ? (<h4>There are no questions that match this search</h4>) : null}
     {searchResults.length > 0 && searchQuery.length >=3 ? (
       <Fragment>
         {!moreSearchedQuestions && searchResults.length >  2 ?
@@ -187,7 +191,7 @@ const Questions = (props) => {
       :
       (
       <Fragment>
-        {!moreQuestions && questions.length >  2?
+        {!moreQuestions && questions.length >  2 && !search?
         (
           <div>
             <QuestionsButtons onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
@@ -199,7 +203,6 @@ const Questions = (props) => {
       }
         </Fragment>
     )}
-
     </QuestionsContainer>
     </Fragment>
   )
