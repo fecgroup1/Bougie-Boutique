@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
-import WidgetContainer from '../../Styles'
+import styled from 'styled-components'
+import { ThemeToggle, QuestionsButtons } from '../../Styles'
 import Modal from 'react-modal'
 
 const AddAnswer = (props) => {
@@ -126,10 +127,6 @@ const AddAnswer = (props) => {
       return;
   }
 
-  const overlay = { overlay: {
-    backgroundColor: 'rgba(17, 17, 17, 0.75)'
-  }}
-
   if (props.name) {
     return (
       <Fragment>
@@ -137,7 +134,7 @@ const AddAnswer = (props) => {
           ariaHideApp={false}
           isOpen={open}
           className='qaModal'
-          style={overlay}
+          style={{'overlay': {'background': 'rgba(17, 17, 17, 0.75)'}}}
           overlayClassName={{
             base: 'qaModalOverlay',
             afterOpen: 'qaModalOverlay-in',
@@ -182,7 +179,7 @@ const AddAnswer = (props) => {
             {!imgToUpload ?
             <Fragment>
             <p id='required'>* Required</p>
-            <button id='qaSubmit' onClick={(event) => submitForm(event)}>Submit</button>
+            <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
             </Fragment>
             :
             (
@@ -198,7 +195,7 @@ const AddAnswer = (props) => {
               <Fragment>
               <p id='uploading'>Successfully uploaded photos</p>
               <p id='required'>* Required</p>
-              <button id='qaSubmit' onClick={(event) => submitForm(event)}>Submit</button>
+              <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
               </Fragment>)
               :
               (<i className="lni lni-spiner-solid lni-is-spinning"
@@ -211,7 +208,7 @@ const AddAnswer = (props) => {
           </div>
         </form>
         </Modal>
-        <p id='addAnswerButton' onClick={openModal}>{' '}  Add Answer</p>
+        <a id='addAnswerButton' onClick={openModal}>{' '}  Add Answer</a>
       </Fragment>
     )
   } else {

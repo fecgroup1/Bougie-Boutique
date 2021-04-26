@@ -37,13 +37,14 @@
   max-width: 75%;
   padding-top: 3px;
   vertical-align: text-top;
-  margin-left: 10px;
+  margin-left: 26px;
 }
 
 .answererInfo {
   font-size: 14px;
-  margin-left: 22px;
-  display: inline;
+  margin-left: 26px;
+  margin-bottom: 20px;
+  display: inline-block;
 }
 
 .askerInfo {
@@ -75,6 +76,7 @@
 }
 
 #helpfulButton {
+  margin-left: 10px;
   text-decoration: underline;
 }
 
@@ -83,12 +85,13 @@
 }
 
 #reportButton {
+  color: red;
   margin-left: 15px;
 }
 
 #reportButton:hover {
-    cursor: pointer;
-    text-decoration: underline;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 #addAnswerButton {
@@ -273,6 +276,7 @@
   width: auto;
   height: auto;
   margin-top: 5px;
+  margin-left: 21px;
   line-height: 150px;
 }
 

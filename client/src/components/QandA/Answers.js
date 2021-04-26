@@ -66,28 +66,36 @@ const Answers = (props) => {
     return (
       <div className='answerContainer' key={index}>
         <div>
+          {index === 0 ?
           <p style={{fontWeight: 'bold'}}className='answerText'> A: </p>
-          <div id='answerBody' className='answerText'>{tempBody}</div>
+          :
+          null
+          }
+          {index === 0 ?
+            <div id='answerBody' style={{marginLeft: '10px'}} className='answerText'>{tempBody}</div>
+            :
+            <div id='answerBody' className='answerText'>{tempBody}</div>
+          }
           <div>
            <AnswerPhotos answer={answer} key={index}/>
           </div>
-          {answer.answerer_name === 'Seller' ? (
+          {answer.answerer_name.toLowerCase() === 'seller' ? (
             <div>
-              <span className='answererInfo'>by
-              <span style={{fontWeight: 'bold'}}>{answer.answerer_name}</span>
+              <span style={{opacity: '0.7'}} className='answererInfo'>by
+              <span style={{fontWeight: '900'}}> {answer.answerer_name}</span>
               , {aDate.toDateString().substring(4)}
               </span>
               <span id='answerHelpful'>|</span>
-              <span id='answerHelpful' className='answererInfo'> Helpful?
-                <span id='helpfulButton' onClick={() => markHelpful(answer)}>Yes</span>
+              <span id='answerHelpful' className='answererInfo'> Was this answer helpful?
+                <a id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </a>
                 ({answer.helpfulness})
-                <span id='answerHelpful'></span>
+                <span id='answerHelpful'>|  </span>
                 {!report ?
                   (
-                  <span id='reportButton' onClick={() => reportAnswer(answer)}>Report</span>
+                  <a id='reportButton' onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></a>
                   ) :
                   (
-                  <span>Reported</span>
+                  <span id='reportButton 'style={{color: 'red'}}>Reported</span>
                   )
                 }
               </span>
@@ -96,20 +104,20 @@ const Answers = (props) => {
           :
           (
             <div>
-              <span className='answererInfo'>
+              <span style={{opacity: '0.7'}} className='answererInfo'>
                 by {answer.answerer_name}, {aDate.toDateString().substring(4)}
               </span>
               <span id='answerHelpful'>|</span>
-              <span id='answerHelpful' className='answererInfo'> Helpful?
-                <span id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </span>
+              <span id='answerHelpful' className='answererInfo'> Was this answer helpful?
+                <a id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </a>
                 ({answer.helpfulness})
                 <span id='answerHelpful'>|</span>
                 {!report ?
                   (
-                  <span id='reportButton' onClick={() => reportAnswer(answer)}>Report</span>
+                  <a id='reportButton' onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></a>
                   ) :
                   (
-                  <span>Reported</span>
+                  <span id='reportButton' style={{color: 'red'}}>Reported</span>
                   )
                 }
               </span>

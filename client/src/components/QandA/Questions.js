@@ -91,23 +91,23 @@ const Questions = (props) => {
         <QuestionHead>
           <p id='questionBody'> Q: {tempBody}</p>
           <span id='qHelpful'>Helpful?
-            <span id='helpfulButton' onClick={() => markHelpful(question)}> Yes </span>
+            <a id='helpfulButton' onClick={() => markHelpful(question)}> Yes </a>
             ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} name={props.name}/>
           </span>
         </QuestionHead>
-
         <Answers key={index} questionId={question.question_id} newAnswer={newAnswer}/>
-        <div className='askerInfo'>
-          Asked by: {' '}{question.asker_name},{' '}{qDate.toDateString().substring(4)}{' '}|{' '}
+        <span className='askerInfo'>
+          Asked by: {question.asker_name}, {qDate.toDateString().substring(4)}
+          <span style={{marginLeft: '15px'}}>|</span>
           {!report ?
               (
-              <span id='reportButton' onClick={() => reportQuestion(question)}>Report</span>
+              <a id='reportButton' style={{fontSize: '14px'}} onClick={() => reportQuestion(question)}>Report this question <i className="lni lni-flag-alt"></i></a>
               ) :
               (
-              <span>Reported</span>
+              <span id='reportButton' style={{color: 'red', fontSize: '14px'}}>Reported <i className="lni lni-flag-alt"></i></span>
               )
             }
-        </div>
+        </span>
       </div>
     )
   }
