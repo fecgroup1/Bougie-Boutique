@@ -137,6 +137,7 @@
   max-height: 80%;
   width: 25%;
   min-width: 300px;
+  z-index: 5
 }
 
 .qaModal::-webkit-scrollbar {
@@ -162,6 +163,7 @@
   bottom: 0;
   opacity: 0;
   transition: 500ms ease-in-out;
+  z-index: 5
 }
 
 .qaModalOverlay-in {
@@ -238,6 +240,7 @@
   background-color: rgba(17, 17, 17, 0.75);
   margin: auto;
   border: none;
+  z-index: 5;
 }
 
 .qaImgModal::-webkit-scrollbar {
@@ -285,6 +288,7 @@
   transform: translateY(-50%);
   margin: auto;
   padding: 0;
+  z-index: 5;
 }
 
 .lni-search {
