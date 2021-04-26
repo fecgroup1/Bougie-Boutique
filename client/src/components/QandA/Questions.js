@@ -19,6 +19,7 @@ const Questions = (props) => {
   const [qReported, setQReported] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [search, setSearch] = useState(false);
 
   useEffect(() => {
     setQuestionLength(2)
@@ -56,6 +57,11 @@ const Questions = (props) => {
   }
 
   const filterQuestions = (event) => {
+    if (event.target.value.length < 3) {
+      setSearch(false)
+    } else {
+      setSearch(true)
+    }
     const queryString = event.target.value
     setSearchQuery(queryString)
     setMoreSearchedQuestions(false)
@@ -112,22 +118,29 @@ const Questions = (props) => {
     )
   }
 
+  const unlimitedScroll = (event) => {
+    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight && moreQuestions && !search) {
+      if (questionLength < questions.length) {
+        setQuestionLength(questionLength + 2)
+      }
+    }
+    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight && moreSearchedQuestions && search) {
+      if (searchQuestionLength < questions.length) {
+      setSearchQuestionLength(searchQuestionLength + 2)
+      }
+    }
+  }
+
   const addMore = (event) => {
     if (event.target.value === 'search') {
       const addSearch = searchQuestionLength + 2
-      if (addSearch >= searchResults.length) {
         setMoreSearchedQuestions(true)
         setSearchQuestionLength(addSearch)
-      } else {
-        setSearchQuestionLength(addSearch)
-      }
-    }
-    const add = questionLength + 2
-    if (add >= questions.length) {
+    } else {
+      const add = questionLength + 2
       setMoreQuestions(true)
       setQuestionLength(add)
-    } else
-      setQuestionLength(add)
+    }
   }
 
   return (
@@ -140,7 +153,7 @@ const Questions = (props) => {
     <QuestionsContainer>
       <h2>Questions and Answers</h2>
       <SearchQuestions currentProductId={props.productId} filterQuestions={filterQuestions}/>
-      <QuestionCardsContainer>
+      <QuestionCardsContainer onScroll={unlimitedScroll}>
         {searchQuery.length >= 3 ? (
           <Fragment>
             {searchResults.slice(0, searchQuestionLength).map((question, index) =>
