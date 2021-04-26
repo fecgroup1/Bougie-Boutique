@@ -35,6 +35,7 @@ const AddQuestion = (props) => {
   }
 
   const submitForm = (event) => {
+    event.preventDefault();
     setEmailInvalid(false)
     setNicknameInvalid(false)
     setTextBodyInvalid(false)
@@ -90,7 +91,7 @@ const AddQuestion = (props) => {
           }}
           onRequestClose={() => closeForm()}
         >
-        <form>
+        <form novalidate="">
           <div>
             <button id='closeModal' onClick={closeForm}>X</button>
             <h2>Ask your question</h2>
