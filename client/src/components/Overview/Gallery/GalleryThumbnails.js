@@ -26,16 +26,10 @@ class GalleryThumbnails extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    console.log('this.props.currImg[1]', this.props.currImg[1]);
-    console.log('nextProps.currImg[1]', nextProps.currImg[1]);
-    console.log('this.props.currImg[0]', this.props.currImg[0]);
-    console.log('nextProps.currImg[0]', nextProps.currImg[0]);
-
     if (this.props.currIndex !== nextProps.currIndex) {
       let multiplier = nextProps.currIndex - 1;
-      console.log('currIndex', nextProps.currIndex);
+      console.log('GalleryThumnails scrolling without update');
       let pos = this.state.frameHeight * 0.115 * multiplier;
-      console.log('pos', pos);
       this.scroll(pos);
       // document.getElementById(this.props.id).scrollTo({
       //   top: pos,
@@ -44,13 +38,12 @@ class GalleryThumbnails extends React.Component {
       // });
       return false;
     }
-    if ()
     console.log('GalleryThumbnails now updating');
     return true;
   }
 
   componentDidUpdate() {
-    if (this.props.galHeight !== -1) {
+    if (this.props.id === 'defaultThumbs') {
       console.log('componentDidUpdate in DefaultView > GalleryThumbnails');
       if (this.props.galHeight !== this.state.frameHeight || this.props.galLeft !== this.state.frameLeft || this.props.galTop !== this.state.frameTop) {
         this.setState({
@@ -59,7 +52,7 @@ class GalleryThumbnails extends React.Component {
           frameTop: this.props.galTop,
         });
       }
-    } else {
+    } else if (this.props.id === 'expandedThumbs') {
       console.log('componentDidUpdate in ExpandedView > GalleryThumbnails');
 
       this.resize_modal.disconnect();
@@ -158,7 +151,8 @@ class GalleryThumbnails extends React.Component {
       fontSize: `${galHeight * 0.07 / 2}px`,
       lineHeight: `${galHeight * 0.07 / 2}px`,
       height: `${galHeight * 0.07 / 2}px`,
-      width: `${galHeight * 0.07 / 2}px`,
+      width: `${galHeight * 0.1 / 2}px`,
+      padding: '2px',
     };
     const downButton = {
       background: ((this.state.scrollBtm) ||
@@ -167,7 +161,8 @@ class GalleryThumbnails extends React.Component {
       fontSize: `${galHeight * 0.07 / 2}px`,
       lineHeight: `${galHeight * 0.07 / 2}px`,
       height: `${galHeight * 0.07 / 2}px`,
-      width: `${galHeight * 0.07 / 2}px`,
+      width: `${galHeight * 0.1 / 2}px`,
+      padding: '2px',
     };
     const buttonContainer = {
       display: 'flex',
@@ -190,14 +185,14 @@ class GalleryThumbnails extends React.Component {
           <GalleryScroll
             style={upButton}
             onClick={() => this.scroll('up')}>
-              {(styles[0].name === null) || (this.state.scrollTop <= 0) ? null: <i className="lni lni-chevron-up-circle"></i>}
+              {(styles[0].name === null) || (this.state.scrollTop <= 0) ? null: <i className="lni lni-chevron-up"></i>}
           </GalleryScroll>
           <GalleryScroll
             style={downButton}
             onClick={() => this.scroll('down')}>
               {(this.state.scrollBtm ||
               (styles[0].name === null) ||
-              (numImgs <= 7)) ? null: <i className="lni lni-chevron-down-circle"></i>}
+              (numImgs <= 7)) ? null: <i className="lni lni-chevron-down"></i>}
           </GalleryScroll>
       </GallThumbContainer>
 

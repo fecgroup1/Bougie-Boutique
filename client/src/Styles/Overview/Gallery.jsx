@@ -113,7 +113,7 @@ export const GalleryScroll = styled.button`
   justify-content: center;
   background: ${props => props.theme.alphaBg};
   border: 0.5vh solid transparent;
-  border-radius: 50%;
+  border-radius: 10%;
   color: ${props => props.theme.text};
   display: flex;
   opacity: 70%;
