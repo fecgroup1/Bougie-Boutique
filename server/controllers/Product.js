@@ -15,7 +15,7 @@ module.exports = {
     return module.exports.getProduct(pid)
     .then((productData) => {
       fnlRes.product = productData;
-      return module.exports.getStyles(pid)
+      return module.exports.getStyles(productData.id);
     })
     .then((stylesData) => {
       fnlRes.styles = stylesData;
@@ -32,7 +32,7 @@ module.exports = {
     })
     .catch((err) => {
       console.log('Error getting data for related', err);
-      return fnlRes;
+      throw err;
     })
   },
 
@@ -64,6 +64,7 @@ module.exports = {
     return axios.get(`${url}products/${pid}`)
       .then((response) => {
         let productData = {
+          id: response.data.id,
           name: response.data.name,
           slogan: response.data.slogan,
           description: response.data.description,
@@ -74,7 +75,7 @@ module.exports = {
       })
       .catch((err) => {
         console.log('Error getting product data', err);
-        return null;
+        throw err;
       })
   },
 

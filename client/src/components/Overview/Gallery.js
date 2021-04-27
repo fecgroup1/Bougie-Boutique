@@ -132,7 +132,7 @@ class Gallery extends React.Component {
     const currImg = this.props.currImg;
 
     return(
-      <Left style={{alignContent: 'center', minWidth: '400px'}}>
+      <Left style={{alignContent: 'center'}}>
         <div id="gallery" style={{ height: '66vh', minHeight: '350px', overflow: 'hidden' }}>
           <DefaultView
             styles={styles}

@@ -24,6 +24,7 @@ export const Left = styled.div`
   flex: 5 0 200px;
   order: 1;
   margin: 10px;
+  min-width: 400px;
 `;
 
 export const Right = styled.div`

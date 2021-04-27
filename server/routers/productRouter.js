@@ -12,7 +12,7 @@ router.route('/')
   .catch((err) => {
     // console.log('Error in product router getting all data', err);
     res.status(500)
-    res.end();
+    res.redirect('/');
   });
 });
 
