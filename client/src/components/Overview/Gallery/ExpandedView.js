@@ -91,6 +91,12 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
           onRequestClose={() => handleModalOpen(false)}
           preventScroll={true}
           appElement={document.getElementById('app')}>
+            <div id="expandedbg" style={{
+              position: 'absolute',
+              background: theme.bg,
+              height: '100%',
+              width: '100%'
+            }}></div>
             <div id="expandedGallery" style={container}>
               <div id="imgbox" style={imgBox}>
                 <img

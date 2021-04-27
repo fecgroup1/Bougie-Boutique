@@ -3,27 +3,6 @@ import { GalleryScroll } from './../../../Styles/Overview';
 
 const ScrollButtons = ({ currImg, lastStyleIndex, lastImgIndex, currLastIndex, prevLastIndex, handleImgClick, galHeight, galWidth, galLeft, galTop, buttonHeight, buttonWidth }) => {
 
-  // // GET BUTTON SIZE
-  // const [buttonWidth, setButtonWidth] = useState(0);
-  // const [buttonHeight, setButtonHeight] = useState(0);
-
-  // const resize_ob = new ResizeObserver((entries) => {
-  //   let rect = entries[0].borderBoxSize[0];
-
-  //   let width = rect.inlineSize;
-  //   let height = rect.blockSize;
-
-  //   console.log('width', width);
-  //   console.log('height', height);
-
-  //   setButtonWidth(width);
-  //   setButtonHeight(height);
-  // });
-
-  // if (document.getElementById('lrbuttons') !== null) {
-  //   resize_ob.observe(document.getElementById('lrbuttons'));
-  // }
-
   var leftOpacity = {
     background: (currImg[0] === 0 && currImg[1] === 0) ? 'none': '',
     borderRadius: '10%',
