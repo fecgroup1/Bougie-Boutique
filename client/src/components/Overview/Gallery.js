@@ -19,6 +19,7 @@ class Gallery extends React.Component {
       galWidth: 0,
       buttonHeight: 0,
       buttonWidth: 0,
+      currIndex: 0,
     };
   }
 
@@ -81,17 +82,25 @@ class Gallery extends React.Component {
 
     // PARSE IMAGES
     let imgCount = 0;
+    let currIndex = 0;
     let prevLastIndex = 0;
     let currLastIndex = 0;
+    let atCurrent = false;
     for (let i = 0; i < this.props.styles.length; i++) {
       let style = this.props.styles[i];
       for (let j = 0; j < style.photos.length; j++) {
         imgCount++;
+        if (!atCurrent) {
+          currIndex++;
+        }
         if (i === this.props.currImg[0] - 1){
           prevLastIndex = j;
         }
         if (i === this.props.currImg[0]) {
           currLastIndex = j;
+          if (j === this.props.currImg[1]) {
+            atCurrent = true;
+          }
         }
       }
     }
@@ -104,13 +113,14 @@ class Gallery extends React.Component {
         prevLastIndex: prevLastIndex,
       })
     }
+    if (this.state.currIndex !== currIndex) {
+      this.setState({
+        currIndex: currIndex,
+      });
+    }
   }
 
   handleImgClick(x, y) {
-    // FUTURE IMPLEMENTATION: Scroll to thumbnail
-    let id = `img${x}-${y}`;
-    // let dist = (x + 1) * (y + 1);
-    // document.getElementById("galleryscroll").scrollTo(document.getElementById(id));
     console.log('style', x);
     console.log('photo', y);
     this.props.changeImg(x, y);
@@ -138,7 +148,8 @@ class Gallery extends React.Component {
             galWidth={this.state.galWidth}
             buttonHeight={this.state.buttonHeight}
             buttonWidth={this.state.buttonWidth}
-            numImgs={this.state.numImgs}/>
+            numImgs={this.state.numImgs}
+            currIndex={this.state.currIndex}/>
           <GalleryThumbnails
             galHeight={this.state.galHeight}
             galWidth={this.state.galWidth}
@@ -148,6 +159,7 @@ class Gallery extends React.Component {
             currImg={currImg}
             numImgs={this.state.numImgs}
             handleImgClick={this.handleImgClick}
+            currIndex={this.state.currIndex}
             id="defaultThumbs"/>
         </div>
       </Left>

@@ -55,6 +55,21 @@ class GalleryThumbnails extends React.Component {
         this.resize_modal.observe(document.getElementById('gallerymodal'));
       }
     }
+
+    const multiplier = this.props.currIndex - 1;
+    let pos = this.state.frameHeight * 0.115 * multiplier;
+    console.log('pos', pos);
+    if (this.state.scrollTop !== pos) {
+      console.log('now scrolling', this.props.id);
+      document.getElementById(this.props.id).scrollTo({
+        top: pos,
+        left: 0,
+        behavior: 'smooth',
+      });
+      this.setState({
+        scrollTop: pos,
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -76,13 +91,13 @@ class GalleryThumbnails extends React.Component {
   scroll(direction) {
     if (direction === 'up') {
       document.getElementById(this.props.id).scrollBy({
-        top: '-200',
+        top: -200,
         left: 0,
         behavior: 'smooth'
       });
     } else if (direction === 'down') {
       document.getElementById(this.props.id).scrollBy({
-        top: '200',
+        top: 200,
         left: 0,
         behavior: 'smooth'
       });
