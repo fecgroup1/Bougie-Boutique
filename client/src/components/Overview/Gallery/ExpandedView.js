@@ -89,7 +89,6 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
           }, content: contentStyles }}
           isOpen={isOpen}
           onRequestClose={() => handleModalOpen(false)}
-          preventScroll={true}
           appElement={document.getElementById('app')}>
             <div id="expandedbg" style={{
               position: 'absolute',

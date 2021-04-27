@@ -9,15 +9,8 @@ const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIn
   const [scrollY, setScrollY] = useState(0);
 
   const handleModalOpen = (bool) => {
-    if (bool) {
-      var pos = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${pos}px`;
-    } else {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      window.scroll({ top: scrollY })
-    }
+    document.body.style.overflow = bool ? 'hidden': 'unset';
+
     setModalOpen(bool);
     setScrollY(pos);
   }
