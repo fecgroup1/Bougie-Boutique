@@ -35,13 +35,9 @@ app.use('/addPhoto', form.single('image'), controller.s3);
 
 app.use('/tracking', routers.trackingRouter);
 
-<<<<<<< HEAD
 app.use(redirectUnmatched);
 
 app.listen(port, ()=> {
-=======
-app.listen(33212 || 0, ()=> {
->>>>>>> refactor server routes tests into one file. create additional test
   console.log(`listening on ${port}`);
 })
 
