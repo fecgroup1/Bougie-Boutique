@@ -3,52 +3,14 @@ import ExpandedView from './ExpandedView.js';
 import ScrollButtons from './ScrollButtons.js';
 import { Loading, MainImg, MainNull } from './../../../Styles/Overview';
 
-const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIndex, prevLastIndex, handleImgClick, galHeight, galWidth, galLeft, galTop, setGalHeight, setGalWidth, setGalX, setGalY, setGalRight, setGalBottom, buttonHeight, buttonWidth }) => {
+const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIndex, prevLastIndex, handleImgClick, galHeight, galWidth, galLeft, galTop, buttonHeight, buttonWidth, numImgs }) => {
   // STATE
   const [modalOpen, setModalOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
-
-  // WATCH GALLERY FOR RESIZE
-  // const resize_ob = new ResizeObserver((entries) => {
-  //   let rect = entries[0].contentRect;
-  //   let width = rect.width;
-  //   let height = rect.height;
-  //   let right = rect.right;
-  //   let bottom = rect.bottom;
-
-  //   let element = entries[0].target;
-  //   var top = 0;
-  //   var left = 0;
-
-  //   while (element !== null) {
-  //     top += element.offsetTop;
-  //     left += element.offsetLeft;
-  //     element = element.offsetParent;
-  //   }
-
-  //   setGalWidth(width);
-  //   setGalHeight(height);
-  //   setGalX(left);
-  //   setGalY(top);
-  //   setGalRight(right);
-  //   setGalBottom(bottom);
-  // });
-  // if (document.getElementById('gallery') !== null) {
-  //   resize_ob.observe(document.getElementById('gallery'));
-  // }
 
   const handleModalOpen = (bool) => {
-    if (bool) {
-      var pos = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${pos}px`;
-    } else {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      window.scroll({ top: scrollY })
-    }
+    document.body.style.overflow = bool ? 'hidden': 'unset';
+
     setModalOpen(bool);
-    setScrollY(pos);
   }
 
   if (styles[0].name === null) {
@@ -99,6 +61,7 @@ const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIn
           isOpen={modalOpen}
           styles={styles}
           currImg={currImg}
+          numImgs={numImgs}
           handleModalOpen={handleModalOpen}
           handleImgClick={handleImgClick}/>
     </>
