@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GalleryScroll } from './../../../Styles/Overview';
 
 const ScrollButtons = ({ currImg, lastStyleIndex, lastImgIndex, currLastIndex, prevLastIndex, handleImgClick, galHeight, galWidth, galLeft, galTop, buttonHeight, buttonWidth }) => {
