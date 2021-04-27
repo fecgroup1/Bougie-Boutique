@@ -1,17 +1,65 @@
 import React from 'react';
 import { GallPlaceholder, GallergyBorder, SelectedGallPlaceholder, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer } from './../../../Styles/Overview';
 
+// const resize_modal = new ResizeObserver((entries) => {
+//   let rect = entries[0].contentRect;
+//   let height = rect.height;
+
+//   if (this.state.frameHeight !== height) {
+//     this.setState({
+//       frameHeight: height,
+//     });
+//   }
+// });
+
 class GalleryThumbnails extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       scrollTop: 0,
       scrollBtm: false,
+      frameHeight: window.innerHeight - 80,
+      frameLeft: 0,
+      frameTop: 0,
     };
     this.scroll = this.scroll.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+    this.resize_modal = new ResizeObserver((entries) => {
+      let rect = entries[0].contentRect;
+      let height = rect.height;
+
+      if (this.state.frameHeight !== height) {
+        this.setState({
+          frameHeight: height,
+        });
+      }
+    });
   }
 
+
+  componentDidUpdate() {
+    if (this.props.galHeight !== -1) {
+      console.log('componentDidUpdate in DefaultView > GalleryThumbnails');
+      if (this.props.galHeight !== this.state.frameHeight || this.props.galLeft !== this.state.frameLeft || this.props.galTop !== this.state.frameTop) {
+        this.setState({
+          frameHeight: this.props.galHeight,
+          frameLeft: this.props.galLeft,
+          frameTop: this.props.galTop,
+        });
+      }
+    } else {
+      console.log('componentDidUpdate in ExpandedView > GalleryThumbnails');
+
+      this.resize_modal.disconnect();
+      if (document.getElementById('gallerymodal') !== null) {
+        this.resize_modal.observe(document.getElementById('gallerymodal'));
+      }
+    }
+  }
+
+  componentWillUnmount() {
+    this.resize_modal.disconnect();
+  }
 
 
   handleScroll() {
@@ -46,10 +94,10 @@ class GalleryThumbnails extends React.Component {
     const currImg = this.props.currImg;
     const handleImgClick = this.props.handleImgClick;
     const numImgs = this.props.numImgs;
-    const galHeight = this.props.galHeight;
+    const galHeight = this.state.frameHeight;
     // const galWidth = this.props.galWidth;
-    const galTop = this.props.galTop;
-    const galLeft = this.props.galLeft;
+    const galTop = this.state.frameTop;
+    const galLeft = this.state.frameLeft;
 
     const thumbsBg = {
       opacity: `${styles[0].name === null ? '0': '0.5'}`,

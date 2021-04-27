@@ -137,7 +137,8 @@ class Gallery extends React.Component {
             galHeight={this.state.galHeight}
             galWidth={this.state.galWidth}
             buttonHeight={this.state.buttonHeight}
-            buttonWidth={this.state.buttonWidth}/>
+            buttonWidth={this.state.buttonWidth}
+            numImgs={this.state.numImgs}/>
           <GalleryThumbnails
             galHeight={this.state.galHeight}
             galWidth={this.state.galWidth}

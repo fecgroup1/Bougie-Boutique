@@ -3,7 +3,7 @@ import ExpandedView from './ExpandedView.js';
 import ScrollButtons from './ScrollButtons.js';
 import { Loading, MainImg, MainNull } from './../../../Styles/Overview';
 
-const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIndex, prevLastIndex, handleImgClick, galHeight, galWidth, galLeft, galTop, setGalHeight, setGalWidth, setGalX, setGalY, setGalRight, setGalBottom, buttonHeight, buttonWidth }) => {
+const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIndex, prevLastIndex, handleImgClick, galHeight, galWidth, galLeft, galTop, buttonHeight, buttonWidth, numImgs }) => {
   // STATE
   const [modalOpen, setModalOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -70,6 +70,7 @@ const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIn
           isOpen={modalOpen}
           styles={styles}
           currImg={currImg}
+          numImgs={numImgs}
           handleModalOpen={handleModalOpen}
           handleImgClick={handleImgClick}/>
     </>
