@@ -63,6 +63,37 @@ export const Body = createGlobalStyle`
     opacity: 0 ;
   }
 
+  .Question {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .answerContainer {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+  }
+
+  .qaModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: 500ms ease-in-out;
+    z-index: 5
+  }
+
+  .qaModalOverlay-in {
+    opacity: 1;
+  }
+
+  .qaModalOverlay-out {
+    opacity: 0;
+  }
+
   .addOutfit {
     box-shadow: none !important;
     grid-template-rows: 100% !important;

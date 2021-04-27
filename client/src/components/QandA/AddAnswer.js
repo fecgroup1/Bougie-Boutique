@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
-import { ThemeConsumer } from 'styled-components'
-import { ThemeToggle, QuestionsButtons } from '../../Styles'
+import { ThemeConsumer, styled } from 'styled-components'
+import { ThemeToggle, QuestionsButtons, QAModalInput, CloseModalButton, Warning, Required, AddAnswerButton } from '../../Styles'
 import Modal from 'react-modal'
 
 const AddAnswer = (props) => {
@@ -143,12 +143,6 @@ const AddAnswer = (props) => {
       return;
   }
 
- const overlay = { overlay: {
-   backgroundColor: 'rgba(17, 17, 17, 0.75',
-   zIndex: '5',
-   backdropFilter: 'blur(5px)'
- }}
-
   if (props.product) {
     return (
       <Fragment>
@@ -167,9 +161,12 @@ const AddAnswer = (props) => {
                   backgroundColor: theme.bg,
                   width: '25%',
                   minWidth: '300px',
-                  height: 'max-content',
+                  height: '70%',
+                  maxHeight: '80%',
+                  minHeight: '500px',
                   margin: 'auto',
-                  border: `10px solid ${theme.bluGry}`
+                  border: `10px solid ${theme.bluGry}`,
+                  overflow: 'auto'
                 }
                 }}
               overlayClassName={{
@@ -181,39 +178,40 @@ const AddAnswer = (props) => {
             >
             <form noValidate="">
               <div>
-              <button id='closeModal' onClick={closeForm}>X</button>
+              <CloseModalButton onClick={closeForm}>X</CloseModalButton>
                 <h2>Add an answer</h2>
                 <p style={{fontWeight: 'bold'}}>{props.product.name}: {props.question.question_body}</p>
                 <label>* Your Answer: </label>
-                {textBodyInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter an answer</p> : null}
-                <textarea name='answer' style={{width: '100%', height: '100px', backgroundColor: theme.bg, border: `2px solid ${theme.bluGry}`, color: `${theme.text}`}}
+                {textBodyInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter an answer</Warning> : null}
+                <textarea name='answer' id='answerInputText' style={{width: '100%', height: '100px', backgroundColor: theme.bg, border: `2px solid ${theme.bluGry}`,
+                 color: `${theme.text}`, fontFamily: "'Josefin Sans', sans-serif", padding: '5px'}}
                   type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
-                <p id='charsLeft'>{chars} characters remaining</p>
+                <p style={{fontSize: '14px', marginTop: '0', marginBottom: '30px'}}>{chars} characters remaining</p>
 
 
                 <label>* What is your nickname? </label><br></br>
-                {nicknameInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid name</p> : null}
-                <input type="text" id="answerNickname" className='modalInput' name="nickname"
-                  placeholder='Example: jack543!' maxLength='60'  required></input>
+                {nicknameInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter a valid name</Warning> : null}
+                <QAModalInput type="text" id="answerNickname" name="nickname"
+                  placeholder='Example: jack543!' maxLength='60'  required></QAModalInput>
 
-                <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
+                <Warning>For privacy reasons, do not use your full name or email address</Warning><br></br>
 
                 <label>* Your email: </label><br></br>
-                {emailInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid email</p> : null}
-                <input type="email" id="answerEmail" className='modalInput' name="email"
-                  placeholder='Example: jack@email.com' maxLength='60'  required></input>
-                <p className='warning'>For authentication reasons, you will not be emailed</p><br></br>
+                {emailInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter a valid email</Warning> : null}
+                <QAModalInput type="email" id="answerEmail" name="email"
+                  placeholder='Example: jack@email.com' maxLength='60'  required></QAModalInput>
+                <Warning className='warning'>For authentication reasons, you will not be emailed</Warning><br></br>
 
                 <label> Photos: </label><br></br>
                 <input type='file' style={{width: '60%'}} name='image' accept='image/png, image/jpeg' onChange={addPhotos} multiple/>
                 {!overPhotoLimit ?
-                  <p className='warning'>Choose up to 5 photos</p>
+                  <Warning className='warning'>Choose up to 5 photos</Warning>
                   :
-                  <p style={{color: 'red'}} className='warning'>Too many photos, try again!</p>
+                  <Warning style={{color: 'red'}} className='warning'>Too many photos, try again!</Warning>
                 }
                   {!imgToUpload ?
                   <Fragment>
-                  <p id='required'>* Required</p>
+                  <Required id='required'>* Required</Required>
                   <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
                   </Fragment>
                   :
@@ -221,18 +219,35 @@ const AddAnswer = (props) => {
                 <Fragment>
                 <div>
                   {images.map((image, index) => (
-                    <div key={index} style={{display: 'inline-block', position: 'relative'}} className ='submitPreviewGallery'>
+                    <div key={index} style={{display: 'inline-block', position: 'relative'}}>
                       <i style={{zIndex: '5', position: 'absolute'}} onClick={(e) => removePhoto(e, index)} className="lni lni-cross-circle"></i>
                       <Modal
                       ariaHideApp={false}
                       isOpen={clicked}
                       onRequestClose={() => changeClick()}
                       className= 'qaImgModal'
-                      style={overlay}
+                      style={{
+                        overlay: {
+                          background: 'rgba(17, 17, 17, 0.75)',
+                          backdropFilter: 'blur(5px)',
+                          zIndex: '5'
+                        },
+                        content: {
+                          transform: 'translate(0, 5%)',
+                          position: 'relative',
+                          backgroundColor: 'rgba(17, 17, 17, 0.75)',
+                          overflow: 'hidden',
+                          width: '90%',
+                          height: '90%',
+                          margin: 'auto',
+                          border: 'none',
+                          zIndex: '5'
+                        }
+                        }}
                       >
-                      <img className='enlargedImage' src={currentPicture}/>
+                      <img style={{width: '100%', height: 'auto'}} src={currentPicture}/>
                       </Modal>
-                      <img className='submitPreview' src={image} onClick={() => {selectedPhoto(image)}}/>
+                      <img style={{position: 'relative', maxHeight: '75px', maxWidth: '75px', marginRight: '10px'}} src={image} onClick={() => {selectedPhoto(image)}}/>
                     </div>
                     ))}
                 </div>
@@ -240,8 +255,8 @@ const AddAnswer = (props) => {
                   {!imgUploading ?
                   (
                   <Fragment>
-                  {invalidPhoto ? <p style={{color: 'red'}} className='invalidWarning'>Invalid photo type included</p> : null}
-                  {failedPhotoUpload ? <p style={{color: 'red'}} className='invalidWarning'>One or more images failed to upload</p> : null}
+                  {invalidPhoto ? <Warning style={{color: 'red', marginBottom: '5px'}}>Invalid photo type included</Warning> : null}
+                  {failedPhotoUpload ? <Warning style={{color: 'red', marginBottom: '5px'}}>One or more images failed to upload</Warning> : null}
 
                   {failedPhotoUpload || invalidPhoto || overPhotoLimit ? null : <p style={{fontSize: '14px', marginBottom: '-10px'}}>Successfully uploaded photos</p>}
                   <p id='required'>* Required</p>
@@ -260,7 +275,7 @@ const AddAnswer = (props) => {
             </Modal>
           }
         </ThemeConsumer>
-        <a id='addAnswerButton' onClick={openModal}>{' '}  Add Answer</a>
+        <AddAnswerButton onClick={openModal}>{' '}  Add Answer</AddAnswerButton>
       </Fragment>
     )
   } else {
