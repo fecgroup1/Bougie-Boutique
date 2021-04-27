@@ -49,11 +49,16 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    console.log('calling componentDidMount');
-    // const pid = (new URL(document.location)).searchParams.get('pid');
-    const pid = (new URL(document.location)).pathname;
-    console.log('calling setProduct with', pid);
-    this.props.store.setProduct()
+    console.log('componentDidMount in Overview');
+    const param = (new URL(document.location)).searchParams.get('pid');
+    if (param !== null) {
+      let pid = param.replace(/\D/g, '');
+      let id = (pid === null || pid === undefined) ? this.props.currentProductID: pid;
+      console.log('calling setProduct with', id);
+      this.props.store.setProduct(id);
+    } else {
+      this.props.store.setProduct();
+    }
   }
 
   changeStyle(index) {

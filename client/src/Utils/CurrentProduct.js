@@ -9,7 +9,7 @@ class CurrentProduct extends React.Component {
     super(props);
 
     this.state = {
-      currentProductId: "13026",
+      currentProductId: "13023",
       cart: {},
     };
 
@@ -41,6 +41,7 @@ class CurrentProduct extends React.Component {
     let id = pid === undefined ? this.state.currentProductId: pid;
     ProductAPI.getProduct(id)
     .then((resData) => {
+      console.log(resData);
       this.setState({
         currImg: [0, 0],
         product: resData.product,
