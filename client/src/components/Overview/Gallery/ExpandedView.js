@@ -98,9 +98,7 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
               currImg={currImg}
               handleImgClick={handleImgClick}
               galHeight={-1}
-              galLeft={0}
-              galTop={0}
-              numImgs={0}
+              numImgs={numImgs}
               id="expandedThumbs"/>
             }
         </Modal>

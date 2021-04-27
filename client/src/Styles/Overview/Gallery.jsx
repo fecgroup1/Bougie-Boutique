@@ -119,8 +119,6 @@ export const GalleryScroll = styled.button`
   opacity: 50%;
   outline: none;
   padding: 0;
-  width: auto;
-  height: auto;
   text-align: center;
   transition: background 0.5s, color 0.5s, opacity 0.5s;
 }

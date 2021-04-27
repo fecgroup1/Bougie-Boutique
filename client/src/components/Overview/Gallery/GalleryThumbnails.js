@@ -124,7 +124,6 @@ class GalleryThumbnails extends React.Component {
     const thumbsGrid = {
       gridTemplateColumns: galHeight * 0.115,
       gridAutoRows: galHeight * 0.115,
-      zIndex: 2,
       width: galHeight * 0.115,
       height: galHeight * 0.85,
       margin: 0,
@@ -133,19 +132,23 @@ class GalleryThumbnails extends React.Component {
       width: galHeight * 0.115 - 10,
       height: galHeight * 0.115 - 10,
     }
-    const upOpacity = {
+    const upButton = {
       background: ((styles[0].name === null) ||
                 (this.state.scrollTop <= 0) ||
                 (numImgs <= 7)) ? 'none': '',
       fontSize: `${galHeight * 0.07 / 2}px`,
       lineHeight: `${galHeight * 0.07 / 2}px`,
+      height: `${galHeight * 0.07 / 2}px`,
+      width: `${galHeight * 0.07 / 2}px`,
     };
-    const downOpacity = {
+    const downButton = {
       background: ((this.state.scrollBtm) ||
                 (styles[0].name === null) ||
                 (numImgs <= 7)) ? 'none': '',
       fontSize: `${galHeight * 0.07 / 2}px`,
       lineHeight: `${galHeight * 0.07 / 2}px`,
+      height: `${galHeight * 0.07 / 2}px`,
+      width: `${galHeight * 0.07 / 2}px`,
     };
     const buttonContainer = {
       display: 'flex',
@@ -153,10 +156,9 @@ class GalleryThumbnails extends React.Component {
       background: 'none',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: 0.985 * galHeight,
+      height: 0.97 * galHeight,
       width: galHeight * 0.13,
-      margin: `${0.015 * galHeight / 2}px ${0.13 * galHeight / 4}px`,
-      zIndex: 0,
+      padding: `${0.04 * galHeight / 2}px ${0.13 * galHeight / 4}px`,
       top: galTop,
       left: galLeft,
     }
@@ -164,6 +166,21 @@ class GalleryThumbnails extends React.Component {
     return (
     <>
       <GallThumbContainer id="gallerybg" style={thumbsBg}></GallThumbContainer>
+
+      <GallThumbContainer id="galscrollbuttons" style={buttonContainer}>
+          <GalleryScroll
+            style={upButton}
+            onClick={() => this.scroll('up')}>
+              {(styles[0].name === null) || (this.state.scrollTop <= 0) ? null: <i className="lni lni-chevron-up-circle"></i>}
+          </GalleryScroll>
+          <GalleryScroll
+            style={downButton}
+            onClick={() => this.scroll('down')}>
+              {(this.state.scrollBtm ||
+              (styles[0].name === null) ||
+              (numImgs <= 7)) ? null: <i className="lni lni-chevron-down-circle"></i>}
+          </GalleryScroll>
+      </GallThumbContainer>
 
       <GallThumbContainer id="thumbscontainer" style={thumbContainer}>
         <NoScrollBar
@@ -214,21 +231,6 @@ class GalleryThumbnails extends React.Component {
               })
             })}
         </NoScrollBar>
-      </GallThumbContainer>
-
-      <GallThumbContainer id="galscrollbuttons" style={buttonContainer}>
-          <GalleryScroll
-            style={upOpacity}
-            onClick={() => this.scroll('up')}>
-              {(styles[0].name === null) || (this.state.scrollTop <= 0) ? null: <i className="lni lni-chevron-up-circle"></i>}
-          </GalleryScroll>
-          <GalleryScroll
-            style={downOpacity}
-            onClick={() => this.scroll('down')}>
-              {this.state.scrollBtm ||
-              (styles[0].name === null) ||
-              (numImgs <= 7) ? null: <i className="lni lni-chevron-down-circle"></i>}
-          </GalleryScroll>
       </GallThumbContainer>
     </>
     );
