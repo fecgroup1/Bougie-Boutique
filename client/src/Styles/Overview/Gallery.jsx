@@ -119,7 +119,7 @@ export const GalleryScroll = styled.button`
   opacity: 70%;
   outline: none;
   font-Size: 1.5em;
-  margin: 3px;
+  margin: 1px;
   padding: 0;
   text-align: center;
   transition: background 0.5s, color 0.5s, opacity 0.5s;
