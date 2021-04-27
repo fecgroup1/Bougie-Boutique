@@ -8,6 +8,7 @@ import ProductAPI from '../../Utils/ProductAPI';
 import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead, QuestionsButtons } from '../../Styles'
 
 const Questions = (props) => {
+  const [loadedQuestions, setLoadedQuestions] = useState(false)
   const [questions, setQuestions] = useState([]);
   const [newAnswer, setNewAnswer] = useState(null)
   const [newQuestion, setNewQuestion] = useState(null)
@@ -29,7 +30,7 @@ const Questions = (props) => {
     setSearchQuery('')
     setSearchResults([])
     getQuestions();
-  }, [props.productId, props.name])
+  }, [props.productId])
 
   useEffect(() => {
     getQuestions()
@@ -37,10 +38,12 @@ const Questions = (props) => {
 
 
   const getQuestions = () => {
+    setLoadedQuestions(false)
     const qid = props.productId
     axios.get(`qa/questions?product_id=${qid}&count=50`)
     .then((question) => {
       setQuestions(question.data.results)
+      setLoadedQuestions(true)
     })
   }
 
@@ -101,7 +104,7 @@ const Questions = (props) => {
           <p style={{display: 'inline-block', maxWidth: '75%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
           <span style={{float: 'right', marginTop: '20px', fontSize: '14px'}}>Helpful?
             <a id='helpfulButton' onClick={() => markHelpful(question)}> Yes </a>
-            ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} name={props.name}/>
+            ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} product={props.product}/>
           </span>
         </QuestionHead>
         <Answers key={index} questionId={question.question_id} newAnswer={newAnswer}/>
@@ -150,12 +153,12 @@ const Questions = (props) => {
   <QAContainer
     tracking={'Questions and Answers'}
   >
-    {questions.length > 0 ?
+    {loadedQuestions ?
     (
     <Fragment>
     <QuestionsContainer>
       <h2>Questions and Answers</h2>
-      <SearchQuestions currentProductId={props.productId} filterQuestions={filterQuestions}/>
+      <SearchQuestions data-testid='test' currentProductId={props.productId} filterQuestions={filterQuestions}/>
       <QuestionCardsContainer onScroll={unlimitedScroll}>
         {searchQuery.length >= 3 ? (
           <Fragment>
@@ -180,11 +183,11 @@ const Questions = (props) => {
         (
           <div>
             <QuestionsButtons value={'search'} onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
-            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
+            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
           </div>
         )
         :
-        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
+        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
         }
       </Fragment>
       )
@@ -195,11 +198,11 @@ const Questions = (props) => {
         (
           <div>
             <QuestionsButtons onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
-            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
+            <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
           </div>
         )
         :
-        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
+        <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
       }
         </Fragment>
     )}
@@ -211,7 +214,7 @@ const Questions = (props) => {
   <QuestionsContainer>
     <h2>Questions and Answers</h2>
     <h4>There are currently no questions... Please add a question!</h4>
-    <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} name={props.name}/>
+    <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
   </QuestionsContainer>
 
   )

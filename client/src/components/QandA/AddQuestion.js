@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 import { ThemeToggle, QuestionsButtons } from '../../Styles'
+import { ThemeConsumer } from 'styled-components'
 import Modal from 'react-modal'
 
 
@@ -14,7 +15,7 @@ const AddQuestion = (props) => {
   useEffect(() => {
     setOpen(false)
     setChars(1000)
-  }, [props.currentProductId, props.name])
+  }, [props.currentProductId, props.product])
 
   const openModal = (event) => {
     setOpen(true)
@@ -72,59 +73,71 @@ const AddQuestion = (props) => {
       return;
   }
 
-  const overlay = { overlay: {
-    backgroundColor: 'rgba(17, 17, 17, 0.75)',
-    backdropFilter: 'blur(5px)'
-  }}
-
-  if (props.name) {
+  if (props.product) {
     return (
       <Fragment>
-        <Modal
-          ariaHideApp={false}
-          isOpen={open}
-          className='qaModal'
-          style={overlay}
-          overlayClassName={{
-            base: 'qaModalOverlay',
-            afterOpen: 'qaModalOverlay-in',
-            beforeClose: 'qaModalOverlay-out'
-          }}
-          onRequestClose={() => closeForm()}
-        >
-        <form noValidate="">
-          <div>
-            <button id='closeModal' onClick={closeForm}>X</button>
-            <h2>Ask your question</h2>
-            <h4>About the {props.name}</h4>
-            <label>* Your Question: </label>
-            {textBodyInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a question</p> : null}
-            <textarea id='questionInputText' name='question' type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
-            <p id='charsLeft'>{chars} characters remaining</p>
+        <ThemeConsumer>
+          { theme =>
+              <Modal
+                ariaHideApp={false}
+                isOpen={open}
+                style={{
+                  overlay: {
+                    backgroundColor: 'rgba(17, 17, 17, 0.75)',
+                    backdropFilter: 'blur(5px)'
+                  },
+                  content: {
+                    position: 'absolute',
+                    backgroundColor: theme.bg,
+                    width: '25%',
+                    minWidth: '300px',
+                    height: 'max-content',
+                    margin: 'auto',
+                    border: `10px solid ${theme.bluGry}`
+                  }
+                }}
+                overlayClassName={{
+                  base: 'qaModalOverlay',
+                  afterOpen: 'qaModalOverlay-in',
+                  beforeClose: 'qaModalOverlay-out'
+                }}
+                onRequestClose={() => closeForm()}
+              >
+              <form noValidate="">
+                <div>
+                  <button id='closeModal' onClick={closeForm}>X</button>
+                  <h2>Ask your question</h2>
+                  <h4>About the {props.product.name}</h4>
+                  <label>* Your Question: </label>
+                  {textBodyInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a question</p> : null}
+                  <textarea id='questionInputText' name='question' type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
+                  <p id='charsLeft'>{chars} characters remaining</p>
 
-            <label>* What is your nickname? </label><br></br>
-            {nicknameInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid name</p> : null}
-            <input type="text" id="questionNickname" className='modalInput'
-              placeholder='Example: jackson11!' name="nickname" maxLength='60' required></input>
-              <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
+                  <label>* What is your nickname? </label><br></br>
+                  {nicknameInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid name</p> : null}
+                  <input type="text" id="questionNickname" className='modalInput'
+                    placeholder='Example: jackson11!' name="nickname" maxLength='60' required></input>
+                    <p className='warning'>For privacy reasons, do not use your full name or email address</p><br></br>
 
-            <label>* Your email: </label><br></br>
-            {emailInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid email</p> : null}
-            <input type="email" id="questionEmail" className='modalInput'
-              placeholder='Why did you like the product or not?' name="email" maxLength='60' required></input>
-              <p className='warning'>For authentication reasons, you will not be emailed</p>
+                  <label>* Your email: </label><br></br>
+                  {emailInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a valid email</p> : null}
+                  <input type="email" id="questionEmail" className='modalInput'
+                    placeholder='Why did you like the product or not?' name="email" maxLength='60' required></input>
+                    <p className='warning'>For authentication reasons, you will not be emailed</p>
 
-            <p id='required'>* Required</p>
+                  <p id='required'>* Required</p>
 
-            <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
-          </div>
-        </form>
-        </Modal>
+                  <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
+                </div>
+              </form>
+              </Modal>
+          }
+        </ThemeConsumer>
         <QuestionsButtons onClick={openModal}>ASK A QUESTION +</QuestionsButtons>
       </Fragment>
     )
   } else {
-    return (<div></div>)
+    return (<div>Waiting For Product</div>)
   }
 }
 

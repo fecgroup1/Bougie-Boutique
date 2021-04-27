@@ -65,42 +65,6 @@
   margin-bottom: 30px;
 }
 
-.qaModal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  bottom: auto;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid rgb(0, 0, 0);
-  background: #cccccc;
-  color: black;
-  border-radius: 10px;
-  outline: none;
-  padding: 20px;
-  overflow: auto;
-  max-height: 80%;
-  width: 25%;
-  min-width: 300px;
-  z-index: 5
-}
-
-.qaModal::-webkit-scrollbar {
-  width: 10px
-}
-
-.qaModal::-webkit-scrollbar-track {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
-
-.qaModal::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: rgba(146, 146, 146, 0.8);
-}
-
 .qaModalOverlay {
   position: fixed;
   top: 0;
@@ -118,7 +82,7 @@
 
 .qaModalOverlay-out {
   opacity: 0;
-}
+} */
 
 #required {
   padding-top: 10px;
