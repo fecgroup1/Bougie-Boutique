@@ -48,7 +48,6 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId,
     five: {}
   })
 
-
   const highlightStars= (value)=>{
     if (value === '1'){
       setstarStyles({
@@ -110,7 +109,6 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId,
       }
 
       Promise.all(calls).then(()=>{
-        console.log(' this worked')
         let obj= {};
         for (var key in characteristics) {
           obj[characteristics[key]['id']] = Number(form.elements[key].value)
@@ -139,6 +137,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId,
           })
           close();
         })
+
     }else{
       let obj= {};
         for (var key in characteristics){

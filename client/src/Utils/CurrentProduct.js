@@ -9,7 +9,7 @@ class CurrentProduct extends React.Component {
     super(props);
 
     this.state = {
-      currentProductId: "13023",
+      currentProductId: "14001",
       cart: {},
     };
 
