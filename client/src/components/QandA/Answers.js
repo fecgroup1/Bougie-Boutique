@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { MoreAnswers, HelpfulButton, ReportButton } from '../../Styles'
 import AnswerPhotos from './AnswerPhotos.js'
 
 const Answers = (props) => {
@@ -89,15 +90,15 @@ const Answers = (props) => {
               </span>
               <span style={{marginLeft: '15px'}}>|</span>
               <span style={{marginLeft: '15px', fontSize: '14px', marginBottom: '20px', display: 'inline-block'}}> Was this answer helpful?
-                <a id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </a>
+                <HelpfulButton onClick={() => markHelpful(answer)}> Yes </HelpfulButton>
                 ({answer.helpfulness})
                 <span style={{marginLeft: '15px'}}>|  </span>
                 {!report ?
                   (
-                  <a id='reportButton' onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></a>
+                  <ReportButton onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></ReportButton>
                   ) :
                   (
-                  <span id='reportButton 'style={{color: 'red'}}>Reported</span>
+                  <span style={{color: 'red', fontSize: '14px', marginLeft: '15px'}}>Reported <i className="lni lni-flag-alt"></i></span>
                   )
                 }
               </span>
@@ -111,15 +112,15 @@ const Answers = (props) => {
               </span>
               <span style={{marginLeft: '15px'}}>|</span>
               <span style={{marginLeft: '15px', fontSize: '14px', marginBottom: '20px', display: 'inline-block'}} className='answererInfo'> Was this answer helpful?
-                <a id='helpfulButton' onClick={() => markHelpful(answer)}> Yes </a>
+                <HelpfulButton onClick={() => markHelpful(answer)}> Yes </HelpfulButton>
                 ({answer.helpfulness})
                 <span style={{marginLeft: '15px'}}>|</span>
                 {!report ?
                   (
-                  <a id='reportButton' onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></a>
+                  <ReportButton onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></ReportButton>
                   ) :
                   (
-                  <span id='reportButton' style={{color: 'red'}}>Reported</span>
+                  <span style={{color: 'red', fontSize: '14px', marginLeft: '15px'}}>Reported <i className="lni lni-flag-alt"></i></span>
                   )
                 }
               </span>
@@ -140,14 +141,14 @@ const Answers = (props) => {
             <div>
               {answers.slice(0, 2).map((answer, index) =>
               (renderAnswer(answer, index)))}
-              {answers.length > 2 ? <a id='moreAnswers' onClick={getMore}>See more answers</a> : null}
+              {answers.length > 2 ? <MoreAnswers onClick={getMore}>See more answers</MoreAnswers> : null}
             </div>
           )
           :
           (
             <div>
                 {answers.map((answer, index) => (renderAnswer(answer, index)))}
-                {answers.length > 2 ? <a id='moreAnswers' onClick={collapse}>Collapse answers</a> : null}
+                {answers.length > 2 ? <MoreAnswers onClick={collapse}>Collapse answers</MoreAnswers> : null}
             </div>
           )
 

@@ -5,7 +5,7 @@ import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
 import SearchQuestions from './SearchQuestions.js'
 import ProductAPI from '../../Utils/ProductAPI';
-import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead, QuestionsButtons } from '../../Styles'
+import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead, QuestionsButtons, HelpfulButton, ReportButton } from '../../Styles'
 
 const Questions = (props) => {
   const [loadedQuestions, setLoadedQuestions] = useState(false)
@@ -103,7 +103,7 @@ const Questions = (props) => {
         <QuestionHead>
           <p style={{display: 'inline-block', maxWidth: '75%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
           <span style={{float: 'right', marginTop: '20px', fontSize: '14px'}}>Helpful?
-            <a id='helpfulButton' onClick={() => markHelpful(question)}> Yes </a>
+            <HelpfulButton onClick={() => markHelpful(question)}> Yes </HelpfulButton>
             ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} product={props.product}/>
           </span>
         </QuestionHead>
@@ -113,10 +113,10 @@ const Questions = (props) => {
           <span style={{marginLeft: '15px'}}>|</span>
           {!report ?
               (
-              <a id='reportButton' style={{fontSize: '14px'}} onClick={() => reportQuestion(question)}>Report this question <i className="lni lni-flag-alt"></i></a>
+              <ReportButton onClick={() => reportQuestion(question)}>Report this question <i className="lni lni-flag-alt"/></ReportButton>
               ) :
               (
-              <span id='reportButton' style={{color: 'red', fontSize: '14px'}}>Reported <i className="lni lni-flag-alt"></i></span>
+              <span style={{color: 'red', fontSize: '14px', marginLeft: '15px'}}>Reported <i className="lni lni-flag-alt"></i></span>
               )
             }
         </span>

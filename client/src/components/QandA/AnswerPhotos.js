@@ -30,12 +30,6 @@ const AnswerPhotos = (props) => {
      document.body.style.overflow = 'unset'
   }
 
-  const overlay = { overlay: {
-    backgroundColor: 'rgba(17, 17, 17, 0.75',
-    zIndex: '5',
-    backdropFilter: 'blur(5px)'
-  }}
-
   return (
     <div>
       {props.answer.photos.length > 0 ? (
@@ -47,11 +41,30 @@ const AnswerPhotos = (props) => {
                 isOpen={clicked}
                 onRequestClose={() => changeClick()}
                 className= 'qaImgModal'
-                style={overlay}
+                style={{
+                    overlay: {
+                      background: 'rgba(17, 17, 17, 0.75)',
+                      backdropFilter: 'blur(5px)',
+                      zIndex: '5'
+                    },
+                    content: {
+                      transform: 'translate(0, 5%)',
+                      position: 'relative',
+                      backgroundColor: 'rgba(17, 17, 17, 0.75)',
+                      overflow: 'hidden',
+                      width: '90%',
+                      height: '90%',
+                      margin: 'auto',
+                      border: 'none',
+                      zIndex: '5',
+                      justifyContent: 'center'
+                    }
+                  }}
               >
-              <img key={index} className='enlargedImage' src={getUrl(image)}/>
+              <img key={index} style={{width: '100%', height: 'auto'}} src={getUrl(image)}/>
               </Modal>
-            <img key={index} onClick={() => {selectedPhoto(image)}} className='img' src={image.url}/>
+            <img key={index} style={{padding: '5px', maxHeight: '100px', maxWidth: '100px', marginLeft: '21px'}}
+              onClick={() => {selectedPhoto(image)}} className='img' src={image.url}/>
             </div>
           ))}
         </div>

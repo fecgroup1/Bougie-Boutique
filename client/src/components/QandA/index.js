@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect, useMemo } from 'react';
 import ProductAPI from '../../Utils/ProductAPI';
 import Questions from './Questions.js';
+import QABody from '../../Styles'
 
 const QandA = ({store}) => {
   const [productId, setProductId] = useState(store.state.currentProductId)

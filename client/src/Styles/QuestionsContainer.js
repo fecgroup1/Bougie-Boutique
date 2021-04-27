@@ -74,3 +74,110 @@ export const SearchBar = styled.input`
     font-family: 'Josefin Sans', sans-serif;
   }
 `;
+
+export const QAModalInput = styled.input`
+  & {
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 70%;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid ${props => props.theme.text};
+    font-family: 'Josefin Sans', sans-serif;
+    }
+  &:: placeholder {
+    color: rgb(100, 100, 100)
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  &: focus {
+    border-bottom: 1px solid ${props => props.theme.text};
+    outline: none;
+  }
+`;
+
+export const CloseModalButton = styled.button`
+  & {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 22px;
+  }
+  &: hover {
+    cursor: pointer;
+  }
+`;
+
+export const Warning = styled.p`
+  & {
+    font-size: 13px;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+`;
+
+export const Required = styled.p`
+  & {
+    padding-top: 10px;
+    font-size: 14px;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+`;
+
+export const MoreAnswers = styled.a`
+  & {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: underline;
+    padding-bottom: 20px;
+    margin-left: 26px;
+  }
+  &: hover {
+    cursor: pointer;
+  }
+`;
+
+export const HelpfulButton = styled.a`
+  & {
+    margin-left: 10px;
+    text-decoration: underline;
+  }
+  &: hover {
+    cursor: pointer;
+  }
+`;
+
+export const ReportButton = styled.a`
+  & {
+    font-size: 14px;
+    color: rgb(255, 0, 0);
+    margin-left: 15px;
+  }
+  &: hover {
+    cursor: pointer;
+  }
+`;
+
+export const AddAnswerButton = styled.a`
+  & {
+    float: right;
+    margin: 0px;
+    font-size: 14px;
+    padding-left: 5px;
+    text-decoration: underline;
+  }
+  &: hover {
+    cursor: pointer;
+  }
+`;
