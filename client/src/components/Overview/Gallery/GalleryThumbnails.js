@@ -27,15 +27,11 @@ class GalleryThumbnails extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     if (this.props.currIndex !== nextProps.currIndex) {
-      let multiplier = nextProps.currIndex - 1;
+      let multiplier = nextProps.currIndex - 4.5;
       console.log('GalleryThumnails scrolling without update');
       let pos = this.state.frameHeight * 0.115 * multiplier;
       this.scroll(pos);
-      // document.getElementById(this.props.id).scrollTo({
-      //   top: pos,
-      //   left: 0,
-      //   behavior: 'smooth',
-      // });
+
       return false;
     }
     console.log('GalleryThumbnails now updating');
