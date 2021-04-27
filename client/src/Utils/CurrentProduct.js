@@ -41,9 +41,11 @@ class CurrentProduct extends React.Component {
     let id = pid === undefined ? this.state.currentProductId: pid;
     ProductAPI.getProduct(id)
     .then((resData) => {
-      this.setState({currImg: [0, 0]});
-      this.setState({product: resData.product});
-      this.setState({styles: resData.styles});
+      this.setState({
+        currImg: [0, 0],
+        product: resData.product,
+        styles: resData.styles
+      });
     })
   }
 
