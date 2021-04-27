@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --collectCoverage=true",
-    "dev-react": "webpack --config ./webpack.config.js --mode development -w",
+    "dev-react": "webpack --config ./webpack.config.js --mode production -w",
     "server": " nodemon ./server/index.js"
   },
   "repository": {

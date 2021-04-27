@@ -46,8 +46,6 @@ class CurrentProduct extends React.Component {
         product: resData.product,
         styles: resData.styles
       });
-      // this.setState({product: resData.product});
-      // this.setState({styles: resData.styles});
     })
   }
 
