@@ -186,7 +186,8 @@ const AddAnswer = (props) => {
                 <p style={{fontWeight: 'bold'}}>{props.product.name}: {props.question.question_body}</p>
                 <label>* Your Answer: </label>
                 {textBodyInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter an answer</p> : null}
-                <textarea id='answerInputText' name='answer' type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
+                <textarea name='answer' style={{width: '100%', height: '100px', backgroundColor: theme.bg, border: `2px solid ${theme.bluGry}`, color: `${theme.text}`}}
+                  type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
                 <p id='charsLeft'>{chars} characters remaining</p>
 
 

@@ -110,7 +110,8 @@ const AddQuestion = (props) => {
                   <h4>About the {props.product.name}</h4>
                   <label>* Your Question: </label>
                   {textBodyInvalid ? <p style={{color: 'red'}} className='invalidWarning'>Please enter a question</p> : null}
-                  <textarea id='questionInputText' name='question' type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
+                  <textarea style={{width: '100%', height: '100px', backgroundColor: theme.bg, border: `2px solid ${theme.bluGry}`, color: `${theme.text}`}}
+                    name='question' type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
                   <p id='charsLeft'>{chars} characters remaining</p>
 
                   <label>* What is your nickname? </label><br></br>
