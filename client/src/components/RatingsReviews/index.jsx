@@ -36,7 +36,9 @@ class RatingsReviews extends React.Component {
   }
 
   componentDidUpdate(prevProps){
+    console.log('in componentDidUpdate in RatingsReviews')
     if (Number(this.props.store.state.currentProductId) !== Number(this.state.currentProductId)){
+      console.log('componentDidUpdate in RatingsReviews')
       this.setState({currentProductId: this.props.store.state.currentProductId})
       this.props.store.setMeta(this.props.store.state.currentProductId)
       this.props.store.setReviews(this.props.store.state.currentProductId)

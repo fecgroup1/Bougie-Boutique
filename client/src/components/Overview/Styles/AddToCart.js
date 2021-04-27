@@ -106,16 +106,23 @@ class AddToCart extends React.Component {
     const skus = this.props.styles[this.props.currStyle].skus;
     const grid = {
       display: 'grid',
-      gridTemplateColumns: 'repeat(2, 48%)',
-      columnGap: '1fr',
+      gridTemplateAreas: `
+        "size size qty qty"
+        "warning warning warning warning"
+        "cart cart cart share"
+      `,
+      gridTemplateRows: '45% 10% 45%',
+      gridTemplateColumns: 'repeat(4, 24%)',
+      columnGap: '5px',
+      rowGap: '2px',
       justifyContent: 'space-between',
       alignContent: 'space-between',
+      height: '20%',
     }
     const red = {
-      height: '0.6em',
       color: 'red',
-      fontSize: '0.6em',
-      padding: '0px 5px',
+      fontSize: '65%',
+      gridArea: 'warning',
     }
 
     const disabled = {
@@ -125,26 +132,40 @@ class AddToCart extends React.Component {
     if (this.props.outOfStock) {
       return (
         <>
-        <form id="addcart" style={grid}>
-          <CartDropdown readOnly id="size" style={disabled} value="Size: --">
-            <option value='0' disabled >Size: --</option>
+        <div id="addcart" style={grid}>
+          <CartDropdown
+            readOnly
+            id="size"
+            style={Object.assign({}, disabled, {gridArea: 'size'})}
+            value="Size: --">
+              <option value='0' disabled >Size: --</option>
           </CartDropdown>
-          <CartDropdown readOnly id="qty" style={disabled} value="Qty: --">
-            <option value='0' disabled >Qty: --</option>
+          <CartDropdown
+            readOnly
+            id="qty"
+            style={Object.assign({}, disabled, {gridArea: 'qty'})}
+            value="Qty: --">
+              <option value='0' disabled >Qty: --</option>
           </CartDropdown>
-        </form>
         <div style={red}>
           {this.props.styles[0].name === null ? '': 'Out of Stock'}
         </div>
-        <AddToCartButton style={disabled} onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
+        <AddToCartButton
+          style={Object.assign({}, disabled, {gridArea: 'cart'})}
+          onClick={this.handleAddCart}>
+            Add To Cart
+        </AddToCartButton>
+        <AddToCartButton style={{ gridArea: 'share' }}>share</AddToCartButton>
+        </div>
         </>
       );
     } else if (this.state.currSize === 'Select a size') {
 
       return (
         <>
-        <form id="addcart" style={grid}>
+        <div id="addcart" style={grid}>
           <CartDropdown
+            style={{ gridArea: 'size' }}
             id="size"
             value={this.state.currSize}
             onChange={(event) => this.handleSizeSelect(event)}>
@@ -164,14 +185,23 @@ class AddToCart extends React.Component {
                 }
               })}
           </CartDropdown>
-          <CartDropdown readOnly id="qty" disabled value={this.state.quantity}>
-            <option value={this.state.quantity}>
-              {this.state.quantity}
-            </option>
+          <CartDropdown
+            style={{ gridArea: 'qty' }}
+            readOnly id="qty"
+            disabled
+            value={this.state.quantity}>
+              <option value={this.state.quantity}>
+                {this.state.quantity}
+              </option>
           </CartDropdown>
-        </form>
         <div style={red}>{this.state.warning}</div>
-        <AddToCartButton onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
+        <AddToCartButton
+          style={{ gridArea: 'cart' }}
+          onClick={this.handleAddCart}>
+            Add To Cart
+        </AddToCartButton>
+        <AddToCartButton style={{ gridArea: 'share' }}>share</AddToCartButton>
+        </div>
         </>
       );
 
@@ -182,6 +212,7 @@ class AddToCart extends React.Component {
         <form id="addcart" style={grid}>
           <CartDropdown
             id="size"
+            style={{ gridArea: 'size' }}
             value={this.state.currSize}
             onChange={(event) => this.handleSizeSelect(event)}>
               <option
@@ -203,6 +234,7 @@ class AddToCart extends React.Component {
           </CartDropdown>
           <CartDropdown
             id="qty"
+            style={{ gridArea: 'qty' }}
             value={this.state.quantity}
             onChange={(event) => this.handleQtySelect(event)}>
               <option
@@ -220,9 +252,14 @@ class AddToCart extends React.Component {
                 )
               })}
           </CartDropdown>
-        </form>
         <div style={red}>{this.state.warning}</div>
-        <AddToCartButton onClick={this.handleAddCart}>Add To Cart</AddToCartButton>
+        <AddToCartButton
+          style={{ gridArea: 'cart' }}
+          onClick={this.handleAddCart}>
+            Add To Cart
+        </AddToCartButton>
+        <AddToCartButton style={{ gridArea: 'share' }}>share</AddToCartButton>
+        </form>
         </>
       );
     }

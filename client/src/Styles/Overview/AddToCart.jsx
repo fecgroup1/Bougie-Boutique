@@ -11,8 +11,8 @@ export const AddToCartButton = styled.button`
     outline: #002a60;
     transition: background 0.5s;
     text-align: center;
-    height: 10vh;
-    min-height: 6vh;
+    height: 100%;
+    width: 100%;
     font-size: 1em;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: bold;
@@ -31,8 +31,8 @@ export const CartDropdown = styled.select`
     color: ${props => props.theme.text};
     background: ${props => props.theme.bg};
     outline: #0056c5;
-    min-height: 6vh;
-    height: 10vh;
+    width: 100%;
+    height: 100%;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1em;
     font-weight: bold;

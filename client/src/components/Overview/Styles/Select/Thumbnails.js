@@ -31,6 +31,7 @@ class Thumbnails extends React.Component {
       // gridAutoRows: '100px',
       justifyContent: 'space-between',
       alignContent: 'space-between',
+      height: '50%',
     }
 
     return (
