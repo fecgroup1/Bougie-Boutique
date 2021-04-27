@@ -138,7 +138,6 @@ const RelatedProducts = ({store, theme}) => {
 
   const handleResize = () => {
     setScreenWidth(window.innerWidth);
-    console.log('screen width:', window.innerWidth);
   }
 
   //memoizes the props in this componenet and only updates them when the array values are updated [currentProdID, products]
