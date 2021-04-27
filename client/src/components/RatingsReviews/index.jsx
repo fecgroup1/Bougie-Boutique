@@ -102,7 +102,8 @@ class RatingsReviews extends React.Component {
       return<div></div>
     }
     return (
-    <section tracking={'Ratings and Reviews'}>
+      <section tracking={'Ratings and Reviews'}>
+      {console.log('reviews is rendering')}
       <h2 id="ratingsreviews" style={{'marginBottom': '50px','marginTop': '100px'}}>Ratings and Reviews</h2>
       <RatingsAndReviewsContainer>
         <RatingsContainer>
