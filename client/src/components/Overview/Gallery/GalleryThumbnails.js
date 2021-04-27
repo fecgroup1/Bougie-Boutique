@@ -1,17 +1,6 @@
 import React from 'react';
 import { GallPlaceholder, GallergyBorder, SelectedGallPlaceholder, GallThumb, CurrGallThumb, NoScrollBar, GalleryScroll, GallThumbContainer } from './../../../Styles/Overview';
 
-// const resize_modal = new ResizeObserver((entries) => {
-//   let rect = entries[0].contentRect;
-//   let height = rect.height;
-
-//   if (this.state.frameHeight !== height) {
-//     this.setState({
-//       frameHeight: height,
-//     });
-//   }
-// });
-
 class GalleryThumbnails extends React.Component {
   constructor (props) {
     super(props);
@@ -36,6 +25,29 @@ class GalleryThumbnails extends React.Component {
     });
   }
 
+  shouldComponentUpdate(nextProps) {
+    console.log('this.props.currImg[1]', this.props.currImg[1]);
+    console.log('nextProps.currImg[1]', nextProps.currImg[1]);
+    console.log('this.props.currImg[0]', this.props.currImg[0]);
+    console.log('nextProps.currImg[0]', nextProps.currImg[0]);
+
+    if (this.props.currIndex !== nextProps.currIndex) {
+      let multiplier = nextProps.currIndex - 1;
+      console.log('currIndex', nextProps.currIndex);
+      let pos = this.state.frameHeight * 0.115 * multiplier;
+      console.log('pos', pos);
+      this.scroll(pos);
+      // document.getElementById(this.props.id).scrollTo({
+      //   top: pos,
+      //   left: 0,
+      //   behavior: 'smooth',
+      // });
+      return false;
+    }
+    if ()
+    console.log('GalleryThumbnails now updating');
+    return true;
+  }
 
   componentDidUpdate() {
     if (this.props.galHeight !== -1) {
@@ -73,16 +85,23 @@ class GalleryThumbnails extends React.Component {
     });
   }
 
-  scroll(direction) {
-    if (direction === 'up') {
+  scroll(arg) {
+    console.log('now scrolling', this.props.id);
+    if (arg === 'up') {
       document.getElementById(this.props.id).scrollBy({
-        top: '-200',
+        top: -200,
         left: 0,
         behavior: 'smooth'
       });
-    } else if (direction === 'down') {
+    } else if (arg === 'down') {
       document.getElementById(this.props.id).scrollBy({
-        top: '200',
+        top: 200,
+        left: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      document.getElementById(this.props.id).scrollTo({
+        top: arg,
         left: 0,
         behavior: 'smooth'
       });
