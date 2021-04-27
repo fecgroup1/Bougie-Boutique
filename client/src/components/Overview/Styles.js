@@ -67,9 +67,9 @@ const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews,
         flexGrow: 2,
       }}>
         <Thumbnails
-        styles={styles}
-        currStyle={currStyle}
-        changeStyle={changeStyle} />
+          styles={styles}
+          currStyle={currStyle}
+          changeStyle={changeStyle} />
       </div>
       <AddToCart
         store={store}

@@ -27,19 +27,20 @@ class Thumbnails extends React.Component {
     const thumbsGrid = {
       display: 'grid',
       gridTemplateAreas: `
-        style style style style
-        thumb thumb thumb thumb
-      `
+        "style style style style"
+        "thumb thumb thumb thumb"
+      `,
       gridTemplateColumns: 'repeat(4, 100px)',
       columnGap: '1fr',
       // gridAutoRows: '100px',
       justifyContent: 'space-between',
       alignContent: 'space-between',
+      marginBottom: '0.5%',
     }
 
     return (
       <div id="stylethumbs" style={thumbsGrid}>
-        <div className="stylename small">
+        <div className="stylename small" style={{ gridArea: 'style' }}>
             Style: {styles[currStyle].name}
         </div>
         {styles.map((style, index) => {
