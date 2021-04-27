@@ -6,13 +6,11 @@ import { Loading, MainImg, MainNull } from './../../../Styles/Overview';
 const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIndex, prevLastIndex, handleImgClick, galHeight, galWidth, galLeft, galTop, buttonHeight, buttonWidth, numImgs }) => {
   // STATE
   const [modalOpen, setModalOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
   const handleModalOpen = (bool) => {
     document.body.style.overflow = bool ? 'hidden': 'unset';
 
     setModalOpen(bool);
-    setScrollY(pos);
   }
 
   if (styles[0].name === null) {
