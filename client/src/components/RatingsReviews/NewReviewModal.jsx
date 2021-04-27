@@ -97,15 +97,24 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId,
     event.preventDefault();
     let form = document.querySelector('form[name="NewReview"]');
     if(form.elements['photos'].files[0]){
-          let formData = new FormData()
-    formData.append('image', form.elements['photos'].files[0]);
-    axios.post('/addPhoto', formData, {'Content-Type': 'multipart/form-data'})
-    .then(res=> {
-      var photoURL= res.data
-      let obj= {};
-        for (var key in characteristics){
+      var photos = [];
+      var calls =[];
+      for(var i=0; i< form.elements['photos'].files.length; i++){
+        let formData = new FormData()
+        formData.append('image', form.elements['photos'].files[i]);
+        calls.push(axios.post('/addPhoto', formData, {'Content-Type': 'multipart/form-data'})
+          .then(res=> {
+            var photoURL= res.data
+            photos.push(photoURL)
+          }))
+      }
+
+      Promise.all(calls).then(()=>{
+        console.log(' this worked')
+        let obj= {};
+        for (var key in characteristics) {
           obj[characteristics[key]['id']] = Number(form.elements[key].value)
-        }
+        };
           axios.post(`/reviews`, {
             product_id: Number(currentProductId),
             rating: Number(form.elements['overallRating'].value),
@@ -114,7 +123,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId,
             recommend: (form.elements['recomended'].value)=== "true"? true : false,
             name: document.getElementById('userName').value,
             email: document.getElementById('email').value,
-            photos: [photoURL],
+            photos: photos,
             characteristics: obj
           }, {
             headers: {
@@ -183,7 +192,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId,
       <div style={{'marginTop': '40px'}} >* Review:  </div><br></br>
       <textarea id='body' required minLength= '50' maxLength='1000'  rows='4' cols ='50'placeholder='Why did you like the product or not?'></textarea>
       <div style={{'marginTop': '40px', 'marginBottom': '15px'}}> Upload your photos</div>
-      <input id='photos' type= 'file' accept="image/png, image/jpeg"></input>
+      <input id='photos' type= 'file' accept="image/png, image/jpeg" multiple></input>
       <div style={{'marginTop': '40px'}} >* What is your nickname?</div><br></br>
       <input name= 'userName' required type='text' size='50' maxLength= '60' id= 'userName' placeholder= 'jackson11!'></input>
       <div style= {{'marginTop': '10px','fontSize': '77%'}}>For privacy reasons, do not use your full name or email address.</div>
