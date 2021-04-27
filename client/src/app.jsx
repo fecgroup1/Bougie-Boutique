@@ -84,7 +84,7 @@ class App extends React.Component {
                     store={store}
                   />
                 </section>
-                {/* <section tracking="Related Products">
+                <section tracking="Related Products">
                   <RelatedProducts
                     store={store}
                     outfits={this.state.outfits}
@@ -101,7 +101,7 @@ class App extends React.Component {
                   theme={theme}
                   key= {store.state.reviews}
                   tracking={'Ratings and Reviews'}
-                /> */}
+                />
               </div>
             </>
         )}/>
