@@ -9,8 +9,8 @@ import GalleryThumbnails from './GalleryThumbnails.js';
 
 const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick, numImgs }) => {
   const [zoom, setZoom] = useState(0);
-  const [imgTop, setImgTop] = useState(0);
-  const [imgLeft, setImgLeft] = useState(0);
+  const [imgTop, setImgTop] = useState(50);
+  const [imgLeft, setImgLeft] = useState(50);
 
   const handleMouseMove = (event) => {
 
@@ -53,6 +53,12 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
     overflow: 'hidden',
   };
   const container = {
+    position: 'absolute',
+    height: '100%',
+    width: zoom ? '100%': `${(window.innerWidth - 80) - ((window.innerHeight - 80) * (0.13 + (0.13 / 2)))}px`,
+    right: 0,
+  }
+  const imgBox = {
     display: 'block',
     width: zoom ? '': '100%',
     height: zoom ? '': '100%',
@@ -86,11 +92,13 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
           preventScroll={true}
           appElement={document.getElementById('app')}>
             <div id="expandedGallery" style={container}>
-              <img
-                onClick={handleZoom}
-                onMouseMove={(event) => handleMouseMove(event)}
-                style={scrollImg}
-                src={styles[currImg[0]].photos[currImg[1]].url} />
+              <div id="imgbox" style={imgBox}>
+                <img
+                  onClick={handleZoom}
+                  onMouseMove={(event) => handleMouseMove(event)}
+                  style={scrollImg}
+                  src={styles[currImg[0]].photos[currImg[1]].url} />
+                </div>
             </div>
             {zoom ? null:
               <GalleryThumbnails
