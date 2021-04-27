@@ -26,16 +26,22 @@ class Thumbnails extends React.Component {
     const changeStyle = this.props.changeStyle;
     const thumbsGrid = {
       display: 'grid',
+      gridTemplateAreas: `
+        style style style style
+        thumb thumb thumb thumb
+      `
       gridTemplateColumns: 'repeat(4, 100px)',
       columnGap: '1fr',
       // gridAutoRows: '100px',
       justifyContent: 'space-between',
       alignContent: 'space-between',
-      height: '50%',
     }
 
     return (
       <div id="stylethumbs" style={thumbsGrid}>
+        <div className="stylename small">
+            Style: {styles[currStyle].name}
+        </div>
         {styles.map((style, index) => {
           if (style.name === null) {
             return (

@@ -35,7 +35,7 @@ const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews,
 
   const titleFont = {
     fontFamily: '"Yeseva One", cursive',
-    fontSize: '24px'
+    fontSize: '1.5em'
   };
 
   return (
@@ -43,7 +43,14 @@ const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews,
       <Stars
         rating={stars}
         reviews={reviews}/>
-      <div>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '100%',
+        gridAutoRows: 'auto',
+        alignContent: 'space-evenly',
+        flexGrow: 1,
+        paddingTop: '0.5%',
+      }}>
         <Small>{category}</Small>
         <div style={titleFont}>{title}</div>
         <div className="price">
@@ -52,10 +59,13 @@ const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews,
             sale={styles[currStyle].sale_price}/>
         </div>
       </div>
-      <div>
-        <div className="stylename small">
-            Style: {styles[currStyle].name}
-        </div>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '100%',
+        gridAutoRows: 'auto',
+        alignContent: 'space-around',
+        flexGrow: 2,
+      }}>
         <Thumbnails
         styles={styles}
         currStyle={currStyle}

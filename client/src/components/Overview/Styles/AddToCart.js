@@ -117,7 +117,7 @@ class AddToCart extends React.Component {
       rowGap: '2px',
       justifyContent: 'space-between',
       alignContent: 'space-between',
-      height: '20%',
+      flexGrow: 3,
     }
     const red = {
       color: 'red',
