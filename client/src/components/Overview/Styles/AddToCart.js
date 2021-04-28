@@ -11,6 +11,7 @@ class AddToCart extends React.Component {
       max: 0,
       totalStock: 0,
       toAdd: 0,
+      warningColor: 'red',
       warning: '    ',
       shareHover: false,
     };
@@ -42,7 +43,8 @@ class AddToCart extends React.Component {
       max: array,
       totalStock: quantity,
       toAdd: skus[event.target.value].sku,
-      warning: ''
+      warning: '    ',
+      warningColor: '',
     });
   }
 
@@ -57,10 +59,12 @@ class AddToCart extends React.Component {
     if (this.state.currSize === 'Select a size') {
       this.setState({
         warning: 'Please select a size',
+        warningColor: 'red',
       })
     } else if (this.state.quantity === 'Qty: 0') {
       this.setState({
         warning: 'All available stock in cart',
+        warningColor: 'red',
       });
     } else {
       let cart = this.props.cart;
@@ -85,6 +89,7 @@ class AddToCart extends React.Component {
         max: 0,
         toAdd: 0,
         warning: `${newQty}x ${size} ${title} (${style}) now in cart`,
+        warningColor: '',
       });
     }
   }
@@ -120,7 +125,7 @@ class AddToCart extends React.Component {
       marginBottom: '3px',
     }
     const red = {
-      color: 'red',
+      color: this.state.warningColor,
       fontSize: '65%',
       gridArea: 'warning',
     }
