@@ -104,6 +104,12 @@ export const Body = createGlobalStyle`
       cursor: auto;
     }
   }
+
+  @media (hover: none) {
+    #expandedgallery {
+      overflow: scroll;
+    }
+  }
 `;
 
 export const NavButton = styled.button`
