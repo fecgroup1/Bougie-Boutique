@@ -11,7 +11,7 @@ class AddToCart extends React.Component {
       max: 0,
       totalStock: 0,
       toAdd: 0,
-      warning: '',
+      warning: '  ',
       shareHover: false,
     };
     this.handleSizeSelect = this.handleSizeSelect.bind(this);
@@ -42,7 +42,7 @@ class AddToCart extends React.Component {
       max: array,
       totalStock: quantity,
       toAdd: skus[event.target.value].sku,
-      warning: '',
+      warning: '  ',
     });
   }
 
