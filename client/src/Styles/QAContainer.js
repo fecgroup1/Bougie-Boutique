@@ -7,5 +7,4 @@ export const QAContainer = styled.div`
   max-height: 100vh;
   width: 100%;
   overflow: hidden;
-  padding-left: 20px;
 `;

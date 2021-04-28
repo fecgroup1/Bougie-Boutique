@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const QuestionsContainer = styled.div`
-  min-width: 60vw;
+  min-width: 30vw;
   max-width: 1200px;
   justify-content: center;
   margin-left: auto;
@@ -10,7 +10,7 @@ export const QuestionsContainer = styled.div`
 
 export const QuestionCardsContainer = styled.div`
   max-height: 70vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
@@ -162,8 +162,9 @@ export const HelpfulButton = styled.a`
 export const ReportButton = styled.a`
   & {
     font-size: 14px;
-    color: rgb(255, 0, 0);
+    color: ${props => props.theme.text};
     margin-left: 15px;
+    opacity: 0.65;
   }
   &: hover {
     cursor: pointer;

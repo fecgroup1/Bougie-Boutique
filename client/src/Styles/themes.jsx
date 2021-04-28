@@ -57,7 +57,7 @@ export const Body = createGlobalStyle`
   .Question {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 95%;
   }
 
   .answerContainer {

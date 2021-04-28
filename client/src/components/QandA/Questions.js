@@ -128,14 +128,15 @@ const Questions = (props) => {
   }
 
   const unlimitedScroll = (event) => {
-    setMoreQuestions(true)
-    setMoreSearchedQuestions(true)
-    if (event.target.scrollHeight - Math.ceil(event.target.scrollTop) <= event.target.clientHeight && moreQuestions && !search) {
+    console.log(event.target.scrollHeight)
+    console.log(event.target.scrollTop)
+    console.log(event.target.clientHeight)
+    if (event.target.scrollHeight - event.target.scrollTop <= event.target.clientHeight + 1 && moreQuestions && !search) {
       if (questionLength < questions.length) {
         setQuestionLength(questionLength + 2)
       }
     }
-    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight && moreSearchedQuestions && search) {
+    if (event.target.scrollHeight - event.target.scrollTop <= event.target.clientHeight + 1 && moreSearchedQuestions && search) {
       if (searchQuestionLength < questions.length) {
       setSearchQuestionLength(searchQuestionLength + 2)
       }
@@ -144,9 +145,11 @@ const Questions = (props) => {
 
   const addMore = (event) => {
     if (event.target.value === 'search') {
+      setMoreSearchedQuestions(true)
       const addSearch = searchQuestionLength + 2
       setSearchQuestionLength(addSearch)
     } else {
+      setMoreQuestions(true)
       const add = questionLength + 2
       setQuestionLength(add)
     }
