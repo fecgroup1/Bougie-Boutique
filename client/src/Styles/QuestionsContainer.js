@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const QuestionsContainer = styled.div`
-  min-width: 30vw;
+  min-width: 50%;
   max-width: 1200px;
   justify-content: center;
   margin-left: auto;
