@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
-import { SingleReview} from '../../Styles'
-import { StarsOuter, StarsInner} from '../../Styles/'
-import Stars from '../Overview/Styles/Stars.js'
+import React, { useState } from 'react';
+import { SingleReview } from '../../Styles';
+import StarsDisplay from '../../Styles/StarsDisplay.js';
 import axios from 'axios';
-import ReviewPhoto from './ReviewPhoto'
+import ReviewPhoto from './ReviewPhoto';
 
 const reportReview = (reviewId)=>{
   axios.put(`/reviews/${reviewId}/report`)
@@ -20,9 +19,7 @@ const[fullReview, setFullReview]= useState(false);
 
 return(
   <SingleReview>
-    <StarsOuter>
-      <StarsInner rating={review.rating}/>
-    </StarsOuter>
+    <StarsDisplay rating={review.rating}/>
     <span style={{float: 'right'}}>{review.reviewerName},   {new Date(review.date).toLocaleString('en-us', {month:'long', day: 'numeric', year: 'numeric'})}</span>
     <h3>{review.summary}</h3>
     {fullReview || review.body.length < 251 ? <p>{review.body}</p> : <p>{review.body.slice(0,250)}<br></br><a onClick= {()=> setFullReview(true)}>...Show More</a></p>}

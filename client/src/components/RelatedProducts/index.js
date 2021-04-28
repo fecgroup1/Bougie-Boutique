@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect, useMemo } from 'react';
 import RelatedAPI from '../../Utils/RelatedAPI';
 import ProductAPI from '../../Utils/ProductAPI';
-import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button, StarsInner, StarsOuter, StyledProductCard, AddOutfitButton } from '../../Styles';
+import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button, StyledProductCard, AddOutfitButton } from '../../Styles';
 import ProductCard from './ProductCard.js'
 import CompareModal from './CompareModal.js'
 

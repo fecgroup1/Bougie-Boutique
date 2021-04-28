@@ -1,5 +1,6 @@
 import React from 'react';
-import { OuterStars, InnerStars, Small } from './../../../Styles';
+import { Small } from './../../../Styles/Overview'
+import StarsDisplay from './../../../Styles/StarsDisplay.js';
 
 class Stars extends React.Component {
   constructor(props) {
@@ -22,28 +23,11 @@ class Stars extends React.Component {
     const rating = this.props.rating;
     const reviews = this.props.reviews;
 
-    const inner = {
-      width: `${(rating / 5 * 100)}%`,
-    };
-
     return (
       <div style={{
         flexGrow: 0
       }}>
-        <OuterStars>
-          <i class="lni lni-star"></i>
-          <i class="lni lni-star"></i>
-          <i class="lni lni-star"></i>
-          <i class="lni lni-star"></i>
-          <i class="lni lni-star"></i>
-          <InnerStars style={inner}>
-            <i class="lni lni-star-filled"></i>
-            <i class="lni lni-star-filled"></i>
-            <i class="lni lni-star-filled"></i>
-            <i class="lni lni-star-filled"></i>
-            <i class="lni lni-star-filled"></i>
-          </InnerStars>
-          </OuterStars>
+        <StarsDisplay rating={rating}/>
         <Small style={{position: 'relative', top: '-3px'}}>
           &nbsp;&nbsp;<a
             href="#ratingsreviews"

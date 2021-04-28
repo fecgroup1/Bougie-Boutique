@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment} from 'react'
-import { StyledProductCard, CardImage,  StarsOuter, StarsInner, ActionButton, NavButton } from '../../Styles/'
+import StarsDisplay from '../../Styles/StarsDisplay.js'
+import { StyledProductCard, CardImage,  ActionButton } from '../../Styles/'
 
 const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor, addedClasses, relatedProduct, theme}) => {
   let prd = product.product
@@ -42,12 +43,7 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
           <p style={{marginBottom: 0}}>{prd.category}</p>
           <h4 style={{margin: 0}}>{prd.name}</h4>
           <p style={{marginTop: 0}}>{`$${product.styles[0].original_price}`}</p>
-          <StarsOuter
-          >
-            <StarsInner
-              rating={product.meta.starRating}
-            />
-          </StarsOuter>
+          <StarsDisplay rating={product.meta.starRating}/>
         </div>
       </StyledProductCard>
     :<StyledProductCard>
@@ -64,12 +60,7 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
         <div style={{marginTop: '2em', marginBottom: 0, backgroundColor: '#cccccc', width: '80%', height: '1em'}}></div>
         <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
         <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
-        <StarsOuter
-        >
-          <StarsInner
-            rating={3}
-          />
-        </StarsOuter>
+        <StarsDisplay rating={3}/>
       </div>
     </StyledProductCard>
 
