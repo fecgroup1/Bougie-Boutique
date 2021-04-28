@@ -17,48 +17,29 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
   // const [clientWidth, setClientWidth] = useState(0);
 
   const handleMouseMove = (event) => {
+    let x = 0;
+
     if (!zoom) {
       let leftMargin = document.getElementById("gallerymodal").clientWidth - document.getElementById("expandedgallery").clientWidth;
-
-      let y = event.clientY - 40;
-      let x = event.clientX - 40 - leftMargin;
-
-      let height = document.getElementById("gallerymodal").clientHeight;
-      let width = document.getElementById("gallerymodal").clientWidth;
-
-      let imgHeight = event.target.offsetHeight;
-      let imgWidth = event.target.offsetWidth;
-      let topPerc = y / height * 100
-      let leftPerc = x / width * 100
-
-      let cappedTop = topPerc > 100 ? 100: topPerc
-      let cappedLeft = leftPerc > 100 ? 100: leftPerc;
-      cappedTop = imgHeight <= height ? 50: cappedTop;
-      cappedLeft = imgWidth <= width ? 50: cappedLeft;
-
-      setImgTop(cappedTop);
-      setImgLeft(cappedLeft);
-      setTransTop(cappedTop);
-      setTransLeft(cappedLeft);
+      x = event.clientX - 40 - leftMargin;
     } else {
-      let y = event.clientY - 40;
-      let x = event.clientX - 40;
-      let height = document.getElementById("expandedgallery").clientHeight;
-      let width = document.getElementById("expandedgallery").clientWidth;
-      let imgHeight = event.target.offsetHeight;
-      let imgWidth = event.target.offsetWidth;
-      let top = y / height * 100
-      let left = x / width * 100
-      let cappedTop = top > 100 ? 100: top
-      let cappedLeft = left > 100 ? 100: left;
-      cappedTop = imgHeight <= height ? 50: cappedTop;
-      cappedLeft = imgWidth <= width ? 50: cappedLeft;
-
-      setImgTop(cappedTop);
-      setImgLeft(cappedLeft);
-      setTransTop(cappedTop);
-      setTransLeft(cappedLeft);
+      x = event.clientX - 40;
     }
+
+    let y = event.clientY - 40;
+    let height = document.getElementById("gallerymodal").clientHeight;
+    let width = document.getElementById("gallerymodal").clientWidth;
+    let imgHeight = event.target.offsetHeight;
+    let imgWidth = event.target.offsetWidth;
+    let top = y / height * 100
+    let left = x / width * 100
+    let cappedTop = top > 100 ? 100: top
+    let cappedLeft = left > 100 ? 100: left;
+    cappedTop = imgHeight <= height ? 50: cappedTop;
+    cappedLeft = imgWidth <= width ? 50: cappedLeft;
+
+    setImgTop(cappedTop);
+    setImgLeft(cappedLeft);
   };
 
   const handleZoom = () => {
@@ -83,6 +64,7 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
     height: '100%',
     width: zoom ? '100%': `${(window.innerWidth - 80) - ((window.innerHeight - 80) * (0.13 + (0.13 / 2)))}px`,
     right: 0,
+    overflow: 'hidden',
   }
   const imgBox = {
     display: 'block',
@@ -90,8 +72,8 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
     padding: 0,
     position: 'absolute',
     top: `${imgTop}%`,
-    left: zoom ? `${imgLeft}%`: `${imgLeft}%`,
-    transform: `translate(-${transLeft}%, -${transTop}%)`,
+    left: `${imgLeft}%`,
+    transform: `translate(-${imgLeft}%, -${imgTop}%)`,
   };
   const scrollImg = {
     display: 'block',
