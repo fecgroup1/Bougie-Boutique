@@ -1,6 +1,6 @@
 import React from 'react';
 import { Small } from './../../../Styles/Overview'
-import StarsDisplay from './../../../Styles/StarsDisplay.js';
+import { StarsDisplay } from './../../../Styles/';
 
 class Stars extends React.Component {
   constructor(props) {

@@ -7,3 +7,4 @@ export { Small, StyleName, Flex, Left, Right, LinedTop, ThumbImg, CurrThumb, Add
 export { RatingsContainer,  RatingsAndReviewsContainer, SingleReview} from './RatingsandReviews.js';
 export { QAContainer } from './QAContainer.js'
 export { QuestionsContainer, QuestionCardsContainer, QuestionHead, QuestionsButtons, SearchBar, QAModalInput, CloseModalButton, Warning, Required, MoreAnswers, HelpfulButton, ReportButton, AddAnswerButton } from './QuestionsContainer.js'
+export { StarsDisplay } from './Stars.js';

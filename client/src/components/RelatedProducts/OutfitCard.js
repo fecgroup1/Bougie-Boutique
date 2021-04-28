@@ -1,6 +1,5 @@
 import React from 'react';
-import StarsDisplay from './../../../Styles/StarsDisplay.js';
-import { StyledProductCard } from '../../Styles/';
+import { StyledProductCard, StarsDisplay } from '../../Styles/';
 
 const OutfitCard = ({outfit, deleteMe}, theme) => {
   return (

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment} from 'react'
-import StarsDisplay from '../../Styles/StarsDisplay.js'
-import { StyledProductCard, CardImage,  ActionButton } from '../../Styles/'
+import { StyledProductCard, CardImage,  ActionButton, StarsDisplay } from '../../Styles/'
 
 const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor, addedClasses, relatedProduct, theme}) => {
   let prd = product.product

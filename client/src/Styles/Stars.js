@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const OuterStars = styled.div`
+const OuterStars = styled.div`
   display: inline-block;
   position: relative;
   top: 0;
@@ -14,7 +14,7 @@ const func = (props) => (
   `
 )
 
-export const InnerStars = styled.div`
+const InnerStars = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -23,3 +23,22 @@ export const InnerStars = styled.div`
   color: ${props => props.theme.bluGry} !important;
   ${props => func(props)}
 `
+
+import React from 'react';
+
+export const StarsDisplay = (props) => (
+  <OuterStars style={props.styling}>
+    <i className="lni lni-star"></i>
+    <i className="lni lni-star"></i>
+    <i className="lni lni-star"></i>
+    <i className="lni lni-star"></i>
+    <i className="lni lni-star"></i>
+    <InnerStars rating={props.rating}>
+      <i className="lni lni-star-filled"></i>
+      <i className="lni lni-star-filled"></i>
+      <i className="lni lni-star-filled"></i>
+      <i className="lni lni-star-filled"></i>
+      <i className="lni lni-star-filled"></i>
+    </InnerStars>
+  </OuterStars>
+);

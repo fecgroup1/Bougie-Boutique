@@ -1,5 +1,5 @@
 import React from 'react';
-import StarsDisplay from '../../Styles/StarsDisplay.js';
+import { StarsDisplay } from '../../Styles/';
 import Characteristics from './Characteristics';
 
 var calculatePercent = (obj)=>{

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { SingleReview } from '../../Styles';
-import StarsDisplay from '../../Styles/StarsDisplay.js';
+import { SingleReview, StarsDisplay } from '../../Styles';
 import axios from 'axios';
 import ReviewPhoto from './ReviewPhoto';
 
