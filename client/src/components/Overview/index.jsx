@@ -72,11 +72,14 @@ class Overview extends React.Component {
     var metaStore = store.meta === undefined ? this.state.meta: store.meta;
     var reviewsStore = store.reviews === undefined? this.state.reviews: store.reviews;
 
-    var loading = this.props.store.state.styles === undefined ? {opacity: '50%'}: {};
+    var loading = {
+      opacity: this.props.store.state.styles === undefined ?'50%': '',
+      marginBottom: '10px',
+    };
 
     return (
       <div id="overview" style={{marginBottom: '10px'}}>
-        <Flex style={loading}>
+        <Flex className="overviewflex" style={loading}>
           <Gallery
             styles={store.styles}
             currImg={store.currImg}
@@ -92,10 +95,10 @@ class Overview extends React.Component {
             cart={store.cart}
             setCart={this.props.store.setCart}/>
         </Flex>
-          <Details
-            slogan={store.product.slogan}
-            description={store.product.description}
-            features={store.product.features}/>
+        <Details
+          slogan={store.product.slogan}
+          description={store.product.description}
+          features={store.product.features}/>
       </div>
     );
   }

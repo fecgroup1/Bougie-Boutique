@@ -24,9 +24,22 @@ export const Body = createGlobalStyle`
     color: ${props => props.theme.text};
   }
 
+  .sharelink {
+    color: ${props => props.theme.text}
+  }
+  .sharelink: hover {
+    color: ${props => props.theme.bg};
+  }
+
   @keyframes loadspin {
     from { transform: rotate(0deg) }
     to { transform: rotate(360deg) }
+  }
+
+  @media (min-width: 700px) {
+    .overviewflex {
+      flex-direction: column;
+    }
   }
 
   // #cart > select {

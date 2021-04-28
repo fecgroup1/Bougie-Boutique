@@ -32,6 +32,7 @@ class Thumbnails extends React.Component {
       `,
       gridTemplateColumns: 'repeat(4, 100px)',
       columnGap: '1fr',
+      rowGap: '0.75vh',
       // gridAutoRows: '100px',
       justifyContent: 'space-between',
       alignContent: 'space-between',
