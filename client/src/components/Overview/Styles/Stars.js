@@ -35,7 +35,7 @@ class Stars extends React.Component {
           </OuterStars>
         <Small style={{position: 'relative', top: '-3px'}}>
           &nbsp;&nbsp;<a
-            href=""
+            href="#ratingsreviews"
             onClick={(event) => this.scrollToReviews(event)}>
               Read all {reviews} reviews
           </a>

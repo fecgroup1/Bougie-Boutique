@@ -147,7 +147,7 @@ const RelatedProducts = ({store, theme}) => {
     items={products.length}
     >
       <div>
-        <h3>RELATED PRODUCTS</h3>
+        <h2>RELATED PRODUCTS</h2>
       </div>
       <CardsWrapper
         id='productsWrapper'
