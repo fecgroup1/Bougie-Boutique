@@ -16,7 +16,7 @@ const Details = ({slogan, description, features}) => {
   return (
     <div id="details" style={loading}>
       <span style={impact}>{slogan}</span>
-      <Flex className="overviewflex">
+      <Flex>
         <Left>
           <LinedTop>
             <b>Description</b><br/><br/>
