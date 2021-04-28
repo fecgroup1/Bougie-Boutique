@@ -158,6 +158,7 @@ export const light = {
   bluGry: '#002a60',
   blkGry: 'black',
   invertWht: 0,
+  faintBluGry:'rgba(0, 68, 153, 0.12)'
 };
 
 export const dark = {
@@ -169,6 +170,7 @@ export const dark = {
   bluGry: '#cccccc',
   blkGry: '#cccccc',
   invertWht: 1,
+  faintBluGry:'rgba(205, 227, 253, 0.33)'
 }
 
 // input {

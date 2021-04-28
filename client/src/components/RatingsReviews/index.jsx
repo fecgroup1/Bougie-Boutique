@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 // import WidgetContainer from '../../Styles'
 import Ratings from './Ratings';
 import Reviews from './Reviews';
@@ -13,6 +13,7 @@ class RatingsReviews extends React.Component {
     super(props);
     this.sortReviews= this.sortReviews.bind(this);
     this.filterReviews= this.filterReviews.bind(this);
+    this.searchReviews= this.searchReviews.bind(this);
     this.state={
       currentProductId: null,
       reviewsToShow: this.props.store.state.reviews,
@@ -29,14 +30,15 @@ class RatingsReviews extends React.Component {
   }
 
   componentDidMount(){
-    console.log('mount')
+    console.log('>------------------------ call to get reviews')
     this.props.store.setMeta(this.props.store.state.currentProductId)
     this.props.store.setReviews(this.props.store.state.currentProductId)
     this.setState({currentProductId: this.props.store.state.currentProductId})
   }
 
-  componentDidUpdate(prevProps){
+ componentDidUpdate(prevProps){
     if (Number(this.props.store.state.currentProductId) !== Number(this.state.currentProductId)){
+      console.log('>------------------------ call to update reviews')
       this.setState({currentProductId: this.props.store.state.currentProductId})
       this.props.store.setMeta(this.props.store.state.currentProductId)
       this.props.store.setReviews(this.props.store.state.currentProductId)
@@ -97,13 +99,28 @@ class RatingsReviews extends React.Component {
 
   }
 
+  searchReviews(term){
+    if(term.length > 2){
+      var searchedReviews=[];
+      for (var i=0; i< this.state.reviewsToShow.length; i++){
+        var currentReview = this.state.reviewsToShow[i]
+        if (currentReview.body.indexOf(term) !== -1 || currentReview.summary.indexOf(term) !== -1 ){
+          searchedReviews.push(currentReview);
+        }
+      }
+      this.setState({reviewsToShow: searchedReviews})
+    }else{
+      this.setState({reviewsToShow: this.props.store.state.reviews})
+    }
+  }
+
   render(){
     if (this.state.reviewsToShow === undefined){
       return<div></div>
     }
     return (
-    <section tracking={'Ratings and Reviews'}>
-      <h2 id="ratingsreviews" style={{'marginBottom': '50px','marginTop': '100px'}}>Ratings and Reviews</h2>
+      <section tracking={'Ratings and Reviews'}>
+      <h2 id="ratingsreviews" style={{marginBottom: '50px',marginTop: '100px', marginLeft:'3%'}}>Ratings and Reviews</h2>
       <RatingsAndReviewsContainer>
         <RatingsContainer>
           <Ratings
@@ -111,22 +128,24 @@ class RatingsReviews extends React.Component {
           filterReviews= {this.filterReviews}
           filteredFor= {this.state.filteredFor}/>
         </RatingsContainer>
+        <div >
+          <div style= {{ minWidth:'300px', height: '30px', width:'40%',border:`2px solid ${this.props.theme.blkGry}`, margin: '20px', marginLeft:'0px'}}> <i style= {{fontSize: '95%', margin: '3px'}} className="lni lni-32 lni-search"></i><input placeHolder= 'Search Reviews' style= {{height: '27px', width:'90%', border:`none`, outline:'none' , background:`${this.props.theme.invertWht}`, color: `${this.props.theme.blkGry}`}} type= 'text' onChange = {(event)=> this.searchReviews(event.target.value)}></input></div>
           <Reviews key={this.state.reviewsToShow}
-          reviewsToShow ={this.state.reviewsToShow}
-          product = {this.props.store.state.product}
-          productId = {this.props.store.state.currentProductId}
-          meta= {this.props.store.state.meta}
-          setMeta= {this.props.store.setMeta}
-          setReviews={this.props.store.setReviews}
-          sortReviews= {this.sortReviews}
-          theme={this.props.theme}
-          />
+            reviewsToShow ={this.state.reviewsToShow}
+            product = {this.props.store.state.product}
+            productId = {this.props.store.state.currentProductId}
+            meta= {this.props.store.state.meta}
+            setMeta= {this.props.store.setMeta}
+            setReviews={this.props.store.setReviews}
+            sortReviews= {this.sortReviews}
+            theme={this.props.theme}
+            searchReviews= {this.searchReviews}
+            searchTerm={this.state.searchTerm}
+            />
+        </div>
+
       </RatingsAndReviewsContainer>
     </section>
-
-
-
-
     );
 }
 }
