@@ -18,6 +18,7 @@ class AddToCart extends React.Component {
     this.handleQtySelect = this.handleQtySelect.bind(this);
     this.handleAddCart = this.handleAddCart.bind(this);
     this.handleShareHover = this.handleShareHover.bind(this);
+    this.handleShareView = this.handleShareView.bind(this);
   }
 
   componentDidMount() {
@@ -91,6 +92,12 @@ class AddToCart extends React.Component {
   handleShareHover() {
     this.setState({
       shareHover: !this.state.shareHover,
+    });
+  }
+
+  handleShareView() {
+    this.setState({
+      shareHover: true,
     });
   }
 
@@ -313,9 +320,10 @@ class AddToCart extends React.Component {
 
         <AddToCartButton
           id="sharebutton"
+          onClick={this.handleShareHover}
           onMouseEnter={this.handleShareHover}
           onMouseLeave={this.handleShareHover}
-          onClick={this.handleShareOpen}
+          onClick={this.handleShareView}
           style={{ gridArea: 'share', display: 'flex', justifyContent: 'space-evenly' }}>
             {this.state.shareHover ? <>
               <span
