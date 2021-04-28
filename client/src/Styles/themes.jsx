@@ -24,26 +24,17 @@ export const Body = createGlobalStyle`
     color: ${props => props.theme.text};
   }
 
+  .sharelink {
+    color: ${props => props.theme.text}
+  }
+  .sharelink: hover {
+    color: ${props => props.theme.bg};
+  }
+
   @keyframes loadspin {
     from { transform: rotate(0deg) }
     to { transform: rotate(360deg) }
   }
-
-  // #cart > select {
-  //   border: 3px solid ${props => props.theme.text};
-  //   color: ${props => props.theme.text};
-  //   background: ${props => props.theme.bg};
-  //   outline: #0056c5;
-  //   height: 4em;
-  //   padding: 1em 0em;
-  //   font-family: 'Josefin Sans', sans-serif;
-  //   font-size: 1em;
-  //   font-weight: bold;
-  //   transition: background 0.5s;
-  // }
-  // #cart > select: hover {
-  //   background: #002a60;
-  // }
 
   .compareModalOverlay {
     position: fixed;
@@ -113,22 +104,6 @@ export const Body = createGlobalStyle`
       cursor: auto;
     }
   }
-
-  // button {
-  //   & {
-  //     border: 3px solid ${props => props.theme.text};
-  //     color: ${props => props.theme.text};
-  //     background: ${props => props.theme.bg};
-  //     outline: #002a60;
-  //     transition: background 0.5s;
-  //     padding: 1em;
-  //     text-align: center;
-  //     height: 4em;
-  //   }
-  //   &: hover {
-  //     background: #002a60;
-  //   }
-  // }
 `;
 
 export const NavButton = styled.button`

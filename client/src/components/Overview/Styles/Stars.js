@@ -23,7 +23,7 @@ class Stars extends React.Component {
     const reviews = this.props.reviews;
 
     const inner = {
-      width: `${(rating / 5 * 100) + 1}%`,
+      width: `${(rating / 5 * 100)}%`,
     };
 
     return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { AddToCartButton, CartDropdown } from './../../../Styles/Overview';
+import { ThemeConsumer } from 'styled-components';
 
 class AddToCart extends React.Component {
   constructor(props) {
@@ -10,28 +11,14 @@ class AddToCart extends React.Component {
       max: 0,
       totalStock: 0,
       toAdd: 0,
-      warning: '',
+      warning: '    ',
+      shareHover: false,
     };
     this.handleSizeSelect = this.handleSizeSelect.bind(this);
     this.handleQtySelect = this.handleQtySelect.bind(this);
     this.handleAddCart = this.handleAddCart.bind(this);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.styles[this.props.currStyle].style_id !== nextProps.styles[nextProps.currStyle].style_id) {
-      return true;
-    }
-    if (this.state.currSize !== nextState.currSize) {
-      return true;
-    }
-    if (this.state.quantity !== nextState.quantity) {
-      return true;
-    }
-    if (this.state.warning !== nextState.warning) {
-      return true;
-    }
-    console.log('AddToCart did not re-render');
-    return false;
+    this.handleShareHover = this.handleShareHover.bind(this);
+    this.handleShareView = this.handleShareView.bind(this);
   }
 
   componentDidMount() {
@@ -55,7 +42,7 @@ class AddToCart extends React.Component {
       max: array,
       totalStock: quantity,
       toAdd: skus[event.target.value].sku,
-      warning: '',
+      warning: ''
     });
   }
 
@@ -102,6 +89,18 @@ class AddToCart extends React.Component {
     }
   }
 
+  handleShareHover() {
+    this.setState({
+      shareHover: !this.state.shareHover,
+    });
+  }
+
+  handleShareView() {
+    this.setState({
+      shareHover: true,
+    });
+  }
+
   render() {
     const skus = this.props.styles[this.props.currStyle].skus;
     const grid = {
@@ -118,6 +117,7 @@ class AddToCart extends React.Component {
       justifyContent: 'space-between',
       alignContent: 'space-between',
       flexGrow: 3,
+      marginBottom: '3px',
     }
     const red = {
       color: 'red',
@@ -148,14 +148,44 @@ class AddToCart extends React.Component {
               <option value='0' disabled >Qty: --</option>
           </CartDropdown>
         <div style={red}>
-          {this.props.styles[0].name === null ? '': 'Out of Stock'}
+          {this.props.styles[0].name === null ? this.state.warning.replace(/ /g, "\u00a0"): 'Out of Stock'}
         </div>
         <AddToCartButton
           style={Object.assign({}, disabled, {gridArea: 'cart'})}
           onClick={this.handleAddCart}>
             Add To Cart
         </AddToCartButton>
-        <AddToCartButton style={{ gridArea: 'share' }}>share</AddToCartButton>
+
+        <AddToCartButton
+          id="sharebutton"
+          onMouseEnter={this.handleShareHover}
+          onMouseLeave={this.handleShareHover}
+          onClick={this.handleShareOpen}
+          style={{ gridArea: 'share', display: 'flex', justifyContent: 'space-evenly' }}>
+            {this.state.shareHover ? <>
+              <span
+                className="fb-share-button"
+                data-href={(new URL(document.location)).href}data-layout="button_count"
+                data-size="small">
+                <a
+                  style={{ textDecoration: 'none' }}
+                  target="_blank"
+                  rel="noreferrer"
+                  href={this.state.shareHover ? `https://www.facebook.com/sharer/sharer.php?u=${(new URL(document.location)).href};src=sdkpreparse`: ''}
+                  className="sharelink fb-xfbml-parse-ignore  lni lni-facebook-filled">
+                </a>
+              </span>
+              <a
+                style={{ textDecoration: 'none' }}
+                className="sharelink lni lni-twitter-original"
+                href={this.state.shareHover ? `https://twitter.com/intent/tweet?text=${(new URL(document.location)).href}`: ''}></a>
+              <a
+                style={{ textDecoration: 'none' }}
+                className="sharelink lni lni-pinterest"
+                href={this.state.shareHover ? `https://www.pinterest.com`: ''}></a>
+              </>: <i className="sharelink lni lni-telegram-original"></i>}
+        </AddToCartButton>
+
         </div>
         </>
       );
@@ -194,13 +224,42 @@ class AddToCart extends React.Component {
                 {this.state.quantity}
               </option>
           </CartDropdown>
-        <div style={red}>{this.state.warning}</div>
+        <div style={red}>{this.state.warning.replace(/ /g, "\u00a0")}</div>
         <AddToCartButton
           style={{ gridArea: 'cart' }}
           onClick={this.handleAddCart}>
             Add To Cart
         </AddToCartButton>
-        <AddToCartButton style={{ gridArea: 'share' }}>share</AddToCartButton>
+
+        <AddToCartButton
+          id="sharebutton"
+          onMouseEnter={this.handleShareHover}
+          onMouseLeave={this.handleShareHover}
+          onClick={this.handleShareOpen}
+          style={{ gridArea: 'share', display: 'flex', justifyContent: 'space-evenly' }}>
+            {this.state.shareHover ? <>
+              <span
+                className="fb-share-button"
+                data-href={(new URL(document.location)).href}data-layout="button_count"
+                data-size="small">
+                <a
+                  style={{ textDecoration: 'none' }}
+                  target="_blank"
+                  rel="noreferrer"
+                  href={this.state.shareHover ? `https://www.facebook.com/sharer/sharer.php?u=${(new URL(document.location)).href};src=sdkpreparse`: ''}
+                  className="sharelink fb-xfbml-parse-ignore  lni lni-facebook-filled">
+                </a>
+              </span>
+              <a
+                style={{ textDecoration: 'none' }}
+                className="sharelink lni lni-twitter-original"
+                href={this.state.shareHover ? `https://twitter.com/intent/tweet?text=${(new URL(document.location)).href}`: ''}></a>
+              <a
+                style={{ textDecoration: 'none' }}
+                className="sharelink lni lni-pinterest"
+                href={this.state.shareHover ? `https://www.pinterest.com`: ''}></a>
+              </>: <i className="sharelink lni lni-telegram-original"></i>}
+        </AddToCartButton>
         </div>
         </>
       );
@@ -209,7 +268,7 @@ class AddToCart extends React.Component {
 
       return(
         <>
-        <form id="addcart" style={grid}>
+        <div id="addcart" style={grid}>
           <CartDropdown
             id="size"
             style={{ gridArea: 'size' }}
@@ -252,14 +311,43 @@ class AddToCart extends React.Component {
                 )
               })}
           </CartDropdown>
-        <div style={red}>{this.state.warning}</div>
+        <div style={red}>{this.state.warning.replace(/ /g, "\u00a0")}</div>
         <AddToCartButton
           style={{ gridArea: 'cart' }}
           onClick={this.handleAddCart}>
             Add To Cart
         </AddToCartButton>
-        <AddToCartButton style={{ gridArea: 'share' }}>share</AddToCartButton>
-        </form>
+
+        <AddToCartButton
+          id="sharebutton"
+          onMouseEnter={this.handleShareHover}
+          onMouseLeave={this.handleShareHover}
+          onClick={this.handleShareOpen}
+          style={{ gridArea: 'share', display: 'flex', justifyContent: 'space-evenly' }}>
+            {this.state.shareHover ? <>
+              <span
+                className="fb-share-button"
+                data-href={(new URL(document.location)).href}data-layout="button_count"
+                data-size="small">
+                <a
+                  style={{ textDecoration: 'none' }}
+                  target="_blank"
+                  rel="noreferrer"
+                  href={this.state.shareHover ? `https://www.facebook.com/sharer/sharer.php?u=${(new URL(document.location)).href};src=sdkpreparse`: ''}
+                  className="sharelink fb-xfbml-parse-ignore  lni lni-facebook-filled">
+                </a>
+              </span>
+              <a
+                style={{ textDecoration: 'none' }}
+                className="sharelink lni lni-twitter-original"
+                href={this.state.shareHover ? `https://twitter.com/intent/tweet?text=${(new URL(document.location)).href}`: ''}></a>
+              <a
+                style={{ textDecoration: 'none' }}
+                className="sharelink lni lni-pinterest"
+                href={this.state.shareHover ? `https://www.pinterest.com`: ''}></a>
+              </>: <i className="sharelink lni lni-telegram-original"></i>}
+        </AddToCartButton>
+        </div>
         </>
       );
     }

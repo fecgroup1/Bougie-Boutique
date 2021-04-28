@@ -70,6 +70,7 @@ class App extends React.Component {
         <CurrentProduct
           render={ store => (
             <>
+              <Body />
               <Nav
                 cart={store.state.cart}
                 store={store}
@@ -77,7 +78,6 @@ class App extends React.Component {
                 dark={this.state.dark}
                 toggleTheme={this.toggleTheme}
               />
-              <Body />
               <div id="content">
                 <section tracking="Overview">
                   <Overview

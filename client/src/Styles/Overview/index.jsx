@@ -16,6 +16,7 @@ export const StyleName = styled.div`
 export const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   justify-content: space-between;
   margin: -10px;
 `;
@@ -25,6 +26,11 @@ export const Left = styled.div`
   order: 1;
   margin: 10px;
   min-width: 400px;
+  @media screen and (max-width: 700px) {
+    min-width: unset;
+    width: 100%;
+    flex: none;
+  }
 `;
 
 export const Right = styled.div`
@@ -32,6 +38,12 @@ export const Right = styled.div`
   flex: 1 0 400px;
   order: 2;
   margin: 10px;
+  @media screen and (max-width: 700px) {
+    min-height: unset;
+    min-width: unset;
+    flex: none;
+    width: 100%;
+  }
 `;
 
 export const LinedTop = styled.div`
