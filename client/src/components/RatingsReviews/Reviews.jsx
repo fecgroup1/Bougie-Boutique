@@ -39,8 +39,8 @@ class Reviews extends React.Component {
     }
     var reviews= this.props.reviewsToShow.slice(0,this.state.length)
     return (
-    <div>
-      <span>{this.props.reviewsToShow.length} reviews, sorted by </span><select onChange= {(event)=> this.props.sortReviews(event.target.selectedIndex)}> <option>Relevant</option><option>Helpful</option><option>Newest</option></select> <br></br>
+    <div className= 'reviews'>
+      <span>{this.props.reviewsToShow.length} reviews, sorted by </span><select className= 'dropDown' onChange= {(event)=> this.props.sortReviews(event.target.selectedIndex)}> <option>Relevant</option><option>Helpful</option><option>Newest</option></select> <br></br>
       <section style= {{maxHeight: '780px', overflowY:'auto'}}>
         {reviews.map((review)=> <Review review={review}/>)}
       </section>

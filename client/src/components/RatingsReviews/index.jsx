@@ -119,8 +119,8 @@ class RatingsReviews extends React.Component {
       return<div></div>
     }
     return (
-    <section tracking={'Ratings and Reviews'}>
-      <h2 id="ratingsreviews" style={{'marginBottom': '50px','marginTop': '100px'}}>Ratings and Reviews</h2>
+      <section tracking={'Ratings and Reviews'}>
+      <h2 id="ratingsreviews" style={{marginBottom: '50px',marginTop: '100px', marginLeft:'3%'}}>Ratings and Reviews</h2>
       <RatingsAndReviewsContainer>
         <RatingsContainer>
           <Ratings
@@ -128,8 +128,8 @@ class RatingsReviews extends React.Component {
           filterReviews= {this.filterReviews}
           filteredFor= {this.state.filteredFor}/>
         </RatingsContainer>
-        <div>
-          <div style= {{height: '30px', width:'40%',border:`2px solid ${this.props.theme.blkGry}`, margin: '20px', marginLeft:'0px'}}> <i style= {{fontSize: '95%', margin: '3px'}} className="lni lni-32 lni-search"></i><input placeHolder= 'Search Reviews' style= {{height: '27px', width:'93%', border:`none`, outline:'none' , background:`${this.props.theme.invertWht}`, color: `${this.props.theme.blkGry}`}} type= 'text' onChange = {(event)=> this.searchReviews(event.target.value)}></input></div>
+        <div >
+          <div style= {{ minWidth:'300px', height: '30px', width:'40%',border:`2px solid ${this.props.theme.blkGry}`, margin: '20px', marginLeft:'0px'}}> <i style= {{fontSize: '95%', margin: '3px'}} className="lni lni-32 lni-search"></i><input placeHolder= 'Search Reviews' style= {{height: '27px', width:'90%', border:`none`, outline:'none' , background:`${this.props.theme.invertWht}`, color: `${this.props.theme.blkGry}`}} type= 'text' onChange = {(event)=> this.searchReviews(event.target.value)}></input></div>
           <Reviews key={this.state.reviewsToShow}
             reviewsToShow ={this.state.reviewsToShow}
             product = {this.props.store.state.product}
