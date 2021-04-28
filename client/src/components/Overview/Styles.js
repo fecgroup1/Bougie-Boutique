@@ -27,6 +27,7 @@ const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews,
     alignItems: 'stretch',
     alignContent: 'space-between',
     height: '66vh',
+    minHeight: '400px',
   }
 
   var title = product.name;
