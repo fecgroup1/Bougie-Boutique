@@ -44,3 +44,30 @@ test('getReviews gets the reviews the current product and returns it as an array
   return ReviewAPI.getReviews(13023)
     .then(res => expect(res.data).toEqual(reviews))
 });
+
+test('getMeta gets the Metadata for the current product and returns it ', () => {
+    var meta= {
+        "ratings": {
+            "1": "3",
+            "3": "4",
+            "4": "5",
+            "5": "11"
+        },
+        "recommended": {
+            "false": "3",
+            "true": "20"
+        },
+        "characteristics": {
+            "Fit": {
+                "id": 43617,
+                "value": "3.9583333333333333"
+            },
+        }
+    }
+
+    const resp = {data: meta};
+    axios.get.mockResolvedValue(resp);
+
+    return ReviewAPI.getReviews(13023)
+      .then(res => expect(res.data).toEqual(meta))
+  });
