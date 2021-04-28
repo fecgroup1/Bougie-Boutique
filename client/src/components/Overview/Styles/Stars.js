@@ -31,7 +31,18 @@ class Stars extends React.Component {
         flexGrow: 0
       }}>
         <OuterStars>
-          <InnerStars style={inner}/>
+          <i class="lni lni-star"></i>
+          <i class="lni lni-star"></i>
+          <i class="lni lni-star"></i>
+          <i class="lni lni-star"></i>
+          <i class="lni lni-star"></i>
+          <InnerStars style={inner}>
+            <i class="lni lni-star-filled"></i>
+            <i class="lni lni-star-filled"></i>
+            <i class="lni lni-star-filled"></i>
+            <i class="lni lni-star-filled"></i>
+            <i class="lni lni-star-filled"></i>
+          </InnerStars>
           </OuterStars>
         <Small style={{position: 'relative', top: '-3px'}}>
           &nbsp;&nbsp;<a
