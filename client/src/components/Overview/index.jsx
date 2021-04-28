@@ -79,7 +79,7 @@ class Overview extends React.Component {
 
     return (
       <div id="overview" style={{marginBottom: '10px'}}>
-        <Flex style={loading}>
+        <Flex className="overviewflex" style={loading}>
           <Gallery
             styles={store.styles}
             currImg={store.currImg}
