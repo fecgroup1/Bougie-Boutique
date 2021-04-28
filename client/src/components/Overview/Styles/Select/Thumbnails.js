@@ -30,7 +30,6 @@ class Thumbnails extends React.Component {
         "style style style style"
         "thumb thumb thumb thumb"
       `,
-      gridTemplateColumns: 'repeat(4, 100px)',
       columnGap: '1fr',
       rowGap: '0.75vh',
       // gridAutoRows: '100px',
