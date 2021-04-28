@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest --collectCoverage=true",
     "dev-react": "webpack --config ./webpack.config.js --mode development -w",
+    "prod-react": "webpack --config ./webpack.config.js --mode production",
     "server": " nodemon ./server/index.js"
   },
   "repository": {
@@ -47,6 +48,7 @@
     "axios": "^0.21.1",
     "babel-jest": "^26.6.3",
     "express": "^4.17.1",
+    "forever-monitor": "^3.0.3",
     "multer": "^1.4.2",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.1",
