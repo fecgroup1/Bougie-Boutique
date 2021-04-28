@@ -11,7 +11,7 @@ class AddToCart extends React.Component {
       max: 0,
       totalStock: 0,
       toAdd: 0,
-      warning: '  ',
+      warning: '    ',
       shareHover: false,
     };
     this.handleSizeSelect = this.handleSizeSelect.bind(this);
@@ -42,7 +42,7 @@ class AddToCart extends React.Component {
       max: array,
       totalStock: quantity,
       toAdd: skus[event.target.value].sku,
-      warning: '  ',
+      warning: ''
     });
   }
 
@@ -148,7 +148,7 @@ class AddToCart extends React.Component {
               <option value='0' disabled >Qty: --</option>
           </CartDropdown>
         <div style={red}>
-          {this.props.styles[0].name === null ? '': 'Out of Stock'}
+          {this.props.styles[0].name === null ? this.state.warning.replace(/ /g, "\u00a0"): 'Out of Stock'}
         </div>
         <AddToCartButton
           style={Object.assign({}, disabled, {gridArea: 'cart'})}
@@ -224,7 +224,7 @@ class AddToCart extends React.Component {
                 {this.state.quantity}
               </option>
           </CartDropdown>
-        <div style={red}>{this.state.warning}</div>
+        <div style={red}>{this.state.warning.replace(/ /g, "\u00a0")}</div>
         <AddToCartButton
           style={{ gridArea: 'cart' }}
           onClick={this.handleAddCart}>
@@ -311,7 +311,7 @@ class AddToCart extends React.Component {
                 )
               })}
           </CartDropdown>
-        <div style={red}>{this.state.warning}</div>
+        <div style={red}>{this.state.warning.replace(/ /g, "\u00a0")}</div>
         <AddToCartButton
           style={{ gridArea: 'cart' }}
           onClick={this.handleAddCart}>
