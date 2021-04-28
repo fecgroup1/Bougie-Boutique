@@ -45,6 +45,9 @@ const Questions = (props) => {
       setQuestions(question.data.results)
       setLoadedQuestions(true)
     })
+    .catch((err) => {
+      return;
+    })
   }
 
   const markHelpful = (question) => {
