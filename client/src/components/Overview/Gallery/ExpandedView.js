@@ -13,26 +13,29 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
   const [imgLeft, setImgLeft] = useState(50);
 
   const handleMouseMove = (event) => {
+    let x = 0;
 
-    if (zoom) {
-      let y = event.clientY;
-      let x = event.clientX;
-      let height = document.getElementById("gallerymodal").clientHeight;
-      let width = document.getElementById("gallerymodal").clientWidth;
-      let imgHeight = event.target.offsetHeight;
-      let imgWidth = event.target.offsetWidth;
-      let top = y / height * 100
-      let left = x / width * 100
-      let cappedTop = top > 100 ? 100: top
-      let cappedLeft = left > 100 ? 100: left;
-      cappedTop = imgHeight <= height ? 50: cappedTop;
-      cappedLeft = imgWidth <= width ? 50: cappedLeft;
-
-      console.log(`${top}, ${left}`);
-
-      setImgTop(cappedTop);
-      setImgLeft(cappedLeft);
+    if (!zoom) {
+      let leftMargin = document.getElementById("gallerymodal").clientWidth - document.getElementById("expandedgallery").clientWidth;
+      x = event.clientX - 40 - leftMargin;
+    } else {
+      x = event.clientX - 40;
     }
+
+    let y = event.clientY - 40;
+    let height = document.getElementById("gallerymodal").clientHeight;
+    let width = document.getElementById("gallerymodal").clientWidth;
+    let imgHeight = event.target.offsetHeight;
+    let imgWidth = event.target.offsetWidth;
+    let top = y / height * 100
+    let left = x / width * 100
+    let cappedTop = top > 100 ? 100: top
+    let cappedLeft = left > 100 ? 100: left;
+    cappedTop = imgHeight <= height ? 50: cappedTop;
+    cappedLeft = imgWidth <= width ? 50: cappedLeft;
+
+    setImgTop(cappedTop);
+    setImgLeft(cappedLeft);
   };
 
   const handleZoom = () => {
@@ -42,7 +45,7 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
   }
 
   const contentStyles = {
-    display: zoom ? 'flex': 'grid',
+    display: 'flex',
     gridAutoRows: '100%',
     gridAutoColumns: '100%',
     justifyContent: 'center',
@@ -57,24 +60,21 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
     height: '100%',
     width: zoom ? '100%': `${(window.innerWidth - 80) - ((window.innerHeight - 80) * (0.13 + (0.13 / 2)))}px`,
     right: 0,
+    overflow: 'hidden',
   }
   const imgBox = {
     display: 'block',
-    width: zoom ? '': '100%',
-    height: zoom ? '': '100%',
     margin: 0,
     padding: 0,
-    position: zoom ? 'absolute': 'relative',
+    position: 'absolute',
     top: `${imgTop}%`,
     left: `${imgLeft}%`,
     transform: `translate(-${imgLeft}%, -${imgTop}%)`,
   };
   const scrollImg = {
     display: 'block',
-    objectFit: zoom ? '': 'cover',
-    objectPosition: zoom ? '': '50% 50%',
-    width: zoom ? '': '100%',
-    height: zoom ? '': '100%',
+    width: 'auto',
+    height: !zoom ? '': `${(window.innerHeight - 80) * 2.5}px`,
     cursor: `url('${zoom ? '/assets/minus.png': '/assets/plus.png'}'), ${zoom ? 'zoom-out': 'zoom-in'}`,
   };
 
@@ -96,7 +96,7 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
               height: '100%',
               width: '100%'
             }}></div>
-            <div id="expandedGallery" style={container}>
+            <div id="expandedgallery" style={container}>
               <div id="imgbox" style={imgBox}>
                 <img
                   onClick={handleZoom}
@@ -119,125 +119,5 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
     </ThemeConsumer>
   );
 };
-
-
-
-
-
-
-
-
-
-
-// class ExpandedView extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       zoom: 0,
-//       imgTop: 0,
-//       imgLeft: 0,
-//     };
-//     this.handleZoom = this.handleZoom.bind(this);
-//     this.handleMouseMove = this.handleMouseMove.bind(this);
-//   }
-
-//   handleMouseMove(event) {
-//     if (this.state.zoom) {
-//       let y = event.clientY;
-//       let x = event.clientX;
-//       let height = document.getElementById("gallerymodal").clientHeight;
-//       let width = document.getElementById("gallerymodal").clientWidth;
-
-//       let top = y / height * 100 * -1
-//       let left = x / width * 100 * -1
-//       let cappedTop = top < -100 ? -100: top
-//       let cappedLeft = left < -100 ? -100: left;
-
-//       console.log(`${top}, ${left}`);
-//       this.setState({
-//         imgTop: cappedTop,
-//         imgLeft: cappedLeft,
-//       });
-//     }
-//   }
-
-//   handleZoom() {
-//     this.setState({
-//       zoom: !this.state.zoom,
-//       imgTop: 0,
-//       imgLeft: 0,
-//     });
-//   }
-
-//   render() {
-//     const styles = this.props.styles;
-//     const currImg = this.props.currImg;
-//     const isOpen = this.props.isOpen;
-//     const handleModalOpen = this.props.handleModalOpen;
-//     const handleImgClick = this.props.handleImgClick;
-
-//     const theme = useContext(ThemeContext);
-
-//     const overlayStyles = {
-//       zIndex: 10,
-//       background: theme.bg,
-//     }
-//     const contentStyles = {
-//       display: 'grid',
-//       gridAutoRows: '100%',
-//       gridAutoColumns: '100%',
-//       justifyContent: 'center',
-//       alignContent: 'center',
-//       margin: 0,
-//       padding: 0,
-//       overflow: 'hidden',
-//     }
-//     const container = {
-//       display: 'grid',
-//       gridAutoRows: '100%',
-//       gridAutoColumns: '100%',
-//       alignItems: 'center',
-//       width: `${100 * (this.state.zoom + 1)}%`,
-//       height: `${100 * (this.state.zoom + 1)}%`,
-//       margin: 0,
-//       padding: 0,
-//       position: 'relative',
-//       top: `${this.state.imgTop}%`,
-//       left: `${this.state.imgLeft}%`,
-//     };
-//     const scrollImg = {
-//       // top: `${this.state.imgTop}%`,
-//       // left: `${this.state.imgLeft}%`,
-//       objectFit: 'cover',
-//       width: '100%',
-//       height: '100%',
-//       objectPosition: '50% 50%',
-//     };
-
-//     return (
-//       <Modal
-//         id="gallerymodal"
-//         style={{ overlay: overlayStyles, content: contentStyles }}
-//         isOpen={isOpen}
-//         onRequestClose={() => handleModalOpen(false)}
-//         appElement={document.getElementById('app')}>
-//           <div id="expandedGallery" style={container}>
-//             <img
-//               onClick={this.handleZoom}
-//               onMouseMove={(event) => this.handleMouseMove(event)}
-//               style={scrollImg}
-//               src={styles[currImg[0]].photos[currImg[1]].url} />
-//           </div>
-//           {this.state.zoom ? null:
-//             <GalleryThumbnails
-//             styles={styles}
-//             currImg={currImg}
-//             handleImgClick={handleImgClick}
-//             id="expandedThumbs"/>
-//           }
-//       </Modal>
-//     );
-//   }
-// }
 
 export default ExpandedView;

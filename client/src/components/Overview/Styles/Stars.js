@@ -27,7 +27,9 @@ class Stars extends React.Component {
     };
 
     return (
-      <div>
+      <div style={{
+        flexGrow: 0
+      }}>
         <OuterStars>
           <InnerStars style={inner}/>
           </OuterStars>
