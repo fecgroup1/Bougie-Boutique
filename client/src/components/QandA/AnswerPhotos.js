@@ -63,7 +63,7 @@ const AnswerPhotos = (props) => {
               >
               <img key={index} style={{width: '100%', height: 'auto'}} src={getUrl(image)}/>
               </Modal>
-            <img key={index} style={{padding: '5px', maxHeight: '100px', maxWidth: '100px', marginLeft: '21px'}}
+            <img key={index} style={{padding: '5px', maxHeight: '100px', maxWidth: '100px', marginLeft: '21px', marginRight: '-20px'}}
               onClick={() => {selectedPhoto(image)}} className='img' src={image.url}/>
             </div>
           ))}

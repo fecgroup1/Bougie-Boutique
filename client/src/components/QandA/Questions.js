@@ -104,7 +104,7 @@ const Questions = (props) => {
     return (
       <div className='Question' key={index}>
         <QuestionHead>
-          <p style={{display: 'inline-block', maxWidth: '75%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
+          <p style={{display: 'inline-block', maxWidth: '55%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
           <span style={{float: 'right', marginTop: '20px', fontSize: '14px'}}>Helpful?
             <HelpfulButton onClick={() => markHelpful(question)}> Yes </HelpfulButton>
             ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} product={props.product}/>
@@ -128,7 +128,9 @@ const Questions = (props) => {
   }
 
   const unlimitedScroll = (event) => {
-    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight && moreQuestions && !search) {
+    setMoreQuestions(true)
+    setMoreSearchedQuestions(true)
+    if (event.target.scrollHeight - Math.ceil(event.target.scrollTop) <= event.target.clientHeight && moreQuestions && !search) {
       if (questionLength < questions.length) {
         setQuestionLength(questionLength + 2)
       }
@@ -143,11 +145,9 @@ const Questions = (props) => {
   const addMore = (event) => {
     if (event.target.value === 'search') {
       const addSearch = searchQuestionLength + 2
-        setMoreSearchedQuestions(true)
-        setSearchQuestionLength(addSearch)
+      setSearchQuestionLength(addSearch)
     } else {
       const add = questionLength + 2
-      setMoreQuestions(true)
       setQuestionLength(add)
     }
   }
