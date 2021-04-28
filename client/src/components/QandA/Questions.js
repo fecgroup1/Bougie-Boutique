@@ -45,6 +45,9 @@ const Questions = (props) => {
       setQuestions(question.data.results)
       setLoadedQuestions(true)
     })
+    .catch((err) => {
+      return;
+    })
   }
 
   const markHelpful = (question) => {
@@ -101,7 +104,7 @@ const Questions = (props) => {
     return (
       <div className='Question' key={index}>
         <QuestionHead>
-          <p style={{display: 'inline-block', maxWidth: '75%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
+          <p style={{display: 'inline-block', maxWidth: '55%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
           <span style={{float: 'right', marginTop: '20px', fontSize: '14px'}}>Helpful?
             <HelpfulButton onClick={() => markHelpful(question)}> Yes </HelpfulButton>
             ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} product={props.product}/>
@@ -125,12 +128,15 @@ const Questions = (props) => {
   }
 
   const unlimitedScroll = (event) => {
-    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight && moreQuestions && !search) {
+    console.log(event.target.scrollHeight)
+    console.log(event.target.scrollTop)
+    console.log(event.target.clientHeight)
+    if (event.target.scrollHeight - event.target.scrollTop <= event.target.clientHeight + 1 && moreQuestions && !search) {
       if (questionLength < questions.length) {
         setQuestionLength(questionLength + 2)
       }
     }
-    if (event.target.scrollHeight - event.target.scrollTop === event.target.clientHeight && moreSearchedQuestions && search) {
+    if (event.target.scrollHeight - event.target.scrollTop <= event.target.clientHeight + 1 && moreSearchedQuestions && search) {
       if (searchQuestionLength < questions.length) {
       setSearchQuestionLength(searchQuestionLength + 2)
       }
@@ -139,12 +145,12 @@ const Questions = (props) => {
 
   const addMore = (event) => {
     if (event.target.value === 'search') {
+      setMoreSearchedQuestions(true)
       const addSearch = searchQuestionLength + 2
-        setMoreSearchedQuestions(true)
-        setSearchQuestionLength(addSearch)
+      setSearchQuestionLength(addSearch)
     } else {
-      const add = questionLength + 2
       setMoreQuestions(true)
+      const add = questionLength + 2
       setQuestionLength(add)
     }
   }
