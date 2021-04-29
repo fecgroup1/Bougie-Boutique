@@ -13,7 +13,7 @@ class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      translate: this.props.dark ? -0.95: 0
+      translate: this.props.theme.invertWht ? -0.95: 0
     }
     this.handleMouseOver = this.handleMouseOver.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
@@ -21,13 +21,13 @@ class Nav extends React.Component {
 
   handleMouseOver() {
     this.setState({
-      translate: this.props.dark ? 0: -0.95
+      translate: this.props.theme.invertWht ? 0: -0.95
     });
   }
 
   handleMouseLeave() {
     this.setState({
-      translate: this.props.dark ? -0.95: -0
+      translate: this.props.theme.invertWht ? -0.95: -0
     });
   }
 
@@ -35,7 +35,7 @@ class Nav extends React.Component {
 
     const cart = this.props.cart;
     const store = this.props.store;
-    const dark = this.props.dark;
+    const dark = this.props.theme.invertWht;
     const toggleTheme = this.props.toggleTheme;
 
     const cartCount = countItems(cart);

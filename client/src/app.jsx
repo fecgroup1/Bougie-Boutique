@@ -13,12 +13,16 @@ import { Body, dark, light } from './Styles';
 import TrackingAPI from './Utils/TrackingAPI.js'
 
 const App = ({match, location, history}) => {
-  const [darkMode, setDarkMode] = useState(false);
-  const theme = darkMode ? dark: light;
+  const [theme, setTheme] = useState(dark);
 
   // METHODS
   const toggleTheme = () => {
-    setDarkMode(!dark);
+    console.log('theme toggled');
+    if (theme === dark) {
+      setTheme(light);
+    } else {
+      setTheme(dark);
+    }
   }
 
   const handleTracking = (event) => {
@@ -81,8 +85,8 @@ const App = ({match, location, history}) => {
               cart={store.state.cart}
               store={store}
               checkCart={store.checkCart}
-              dark={darkMode}
               toggleTheme={toggleTheme}
+              theme={theme}
             />
             <div id="content">
               <section tracking="Overview">
