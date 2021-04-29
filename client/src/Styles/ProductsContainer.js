@@ -10,7 +10,6 @@ export const ProductsContainer = styled.div`
 
 export const CardContainer = styled.div`
   display: grid;
-  grid-gap: 2vw;
   grid-auto-flow: column;
   grid-auto-columns: calc(50% - var(--gutter) * 2);
   max-width: 100vw;
