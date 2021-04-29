@@ -9,7 +9,7 @@ class CurrentProduct extends React.Component {
     super(props);
 
     this.state = {
-      currentProductId: "13023",
+      currentProductId: this.props.pid,
       cart: {},
     };
 
@@ -24,11 +24,20 @@ class CurrentProduct extends React.Component {
     this.setMeta=this.setMeta.bind(this);
   }
 
-  changeProduct(pid, event) {
+  componentDidMount() {
+    window.onpopstate = (event) => {
+      if (this.props.pid !== this.state.currentProductId) {
+        this.setState({currentProductId: this.props.pid});
+        this.setProduct(this.props.pid);
+      }
+    }
+  }
+
+  changeProduct(pid) {
     this.setState({currentProductId: pid})
     this.setProduct(pid);
     window.scrollTo({top: 0, behavior: 'smooth'})
-    window.history.pushState(null, `product: ${pid} page`, `?pid=${pid}`);
+    this.props.history.push(`/${pid}`);
   }
 
   // changeStyle(index) {
