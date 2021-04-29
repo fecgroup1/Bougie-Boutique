@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledProductCard, CardImage,  StarsOuter, StarsInner, CompareButton, NavButton } from '../../Styles/'
+import { StyledProductCard, StarsDisplay } from '../../Styles/';
 
 const OutfitCard = ({outfit, deleteMe}, theme) => {
   return (
@@ -13,12 +13,7 @@ const OutfitCard = ({outfit, deleteMe}, theme) => {
         <div style={{marginTop: '.2em', marginBottom: 0, backgroundColor: '#cccccc', width: '80%', height: '1em'}}></div>
         <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
         <div style={{marginTop: '.1em', backgroundColor: '#cccccc', width: '65%', height: '1em'}}></div>
-        <StarsOuter
-        >
-          <StarsInner
-            rating={3}
-          />
-        </StarsOuter>
+        <StarsDisplay rating={3}/>
       </div>
     </StyledProductCard>
   )

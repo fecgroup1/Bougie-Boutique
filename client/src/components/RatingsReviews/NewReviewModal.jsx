@@ -1,6 +1,5 @@
 import React, {useState}from 'react';
 import Modal from 'react-modal';
-import { StarsOuter, StarsInner} from '../../Styles/';
 import ClickableStars from './ClickableStars'
 import axios from 'axios';
 

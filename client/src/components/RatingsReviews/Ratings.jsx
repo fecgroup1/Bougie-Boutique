@@ -1,5 +1,5 @@
 import React from 'react';
-import { StarsOuter, StarsInner} from '../../Styles/';
+import { StarsDisplay } from '../../Styles/';
 import Characteristics from './Characteristics';
 
 var calculatePercent = (obj)=>{
@@ -30,9 +30,9 @@ const Ratings = ({ meta, filterReviews, filteredFor }) => {
    var totalReviews = calulateTotalReviews(meta.ratings)
   return (<div>
     <span style={{'fontSize': '300%'}}>{meta.averageRating}</span>
-    <StarsOuter style={{fontSize: '95%', verticalAlign:'top', marginLeft: '10px'}}>
-            <StarsInner rating={meta.starRating}/>
-    </StarsOuter>
+    <StarsDisplay
+      styling={{fontSize: '95%', verticalAlign:'top', marginLeft: '10px'}}
+      rating={meta.starRating}/>
     <p>{calculatePercent(meta.recommended)}% of reviews recomend this product</p>
         {filteredFor['5']? <i>&#10003;</i> : <div></div>} <span className= 'ratingBar' onClick= {()=> filterReviews('5')}><span >5 stars </span><meter min= '0' max= '100' value= {meta.ratings['5']? (meta.ratings['5'] / totalReviews)* 100 : 0}></meter> <span style={{fontSize:'80%'}}>({meta.ratings['5']? (meta.ratings['5']): 0})</span></span><br></br>
         {filteredFor['4']? <i>&#10003;</i> : <div></div>}<span class= 'ratingBar' onClick= {()=> filterReviews('4')}><span >4 stars </span><meter min= '0' max= '100' value= {meta.ratings['4']? (meta.ratings['4'] / totalReviews)* 100 : 0}></meter> <span style={{fontSize:'80%'}}>({meta.ratings['4']? (meta.ratings['4']): 0})</span></span><br></br>

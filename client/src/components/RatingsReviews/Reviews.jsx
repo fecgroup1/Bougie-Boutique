@@ -1,11 +1,6 @@
 import React from 'react';
 import Review from './Review';
 import NewReviewModal from './NewReviewModal';
-import { ReviewButton} from '../../Styles'
-
-
-
-
 
 class Reviews extends React.Component {
   constructor(props){
