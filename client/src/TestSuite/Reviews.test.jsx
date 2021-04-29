@@ -99,13 +99,13 @@ test('<RatingsReviews/> renders without crashing', ()=>{
   )
 });
 
-test('reviews section matches snapshot', ()=>{
-  var component = render(
-    <RatingsReviews store = {store} theme={light} />
-  )
+// test('reviews section matches snapshot', ()=>{
+//   var component = render(
+//     <RatingsReviews store = {store} theme={light} />
+//   )
 
-  expect(component.container).toMatchSnapshot();
-})
+//   expect(component.container).toMatchSnapshot();
+// })
 
 test('<Review/> to render review body text as review', ()=>{
   const div = document.createElement('div')
@@ -163,7 +163,7 @@ test('show more button adds more reviews', ()=>{
 
   const showMore = getByTestId('showMore');
   fireEvent.click(showMore)
-  
+
   expect(getAllByTestId('reviewBody').length).toBe(3)
 
 })
