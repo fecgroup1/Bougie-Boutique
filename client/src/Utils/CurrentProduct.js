@@ -24,11 +24,11 @@ class CurrentProduct extends React.Component {
     this.setMeta=this.setMeta.bind(this);
   }
 
-  changeProduct(pid, event) {
+  changeProduct(pid) {
     this.setState({currentProductId: pid})
     this.setProduct(pid);
     window.scrollTo({top: 0, behavior: 'smooth'})
-    window.history.pushState(null, `product: ${pid} page`, `?pid=${pid}`);
+    // this.props.history.push(`/${pid}`);
   }
 
   // changeStyle(index) {
