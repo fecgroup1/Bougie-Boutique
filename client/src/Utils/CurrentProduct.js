@@ -26,9 +26,6 @@ class CurrentProduct extends React.Component {
 
   componentDidMount() {
     window.onpopstate = (event) => {
-      console.log(
-        'popstate called'
-      );
       if (this.props.pid !== this.state.currentProductId) {
         this.setState({currentProductId: this.props.pid});
         this.setProduct(this.props.pid);
