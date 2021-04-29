@@ -23,6 +23,7 @@ const Questions = (props) => {
   const [search, setSearch] = useState(false);
 
   useEffect(() => {
+    setLoadedQuestions(false)
     setQuestionLength(2)
     setSearchQuestionLength(2)
     setMoreQuestions(false)
@@ -38,7 +39,6 @@ const Questions = (props) => {
 
 
   const getQuestions = () => {
-    setLoadedQuestions(false)
     const qid = props.productId
     axios.get(`qa/questions?product_id=${qid}&count=50`)
     .then((question) => {
@@ -46,7 +46,7 @@ const Questions = (props) => {
       setLoadedQuestions(true)
     })
     .catch((err) => {
-      return;
+      setLoadedQuestions(false)
     })
   }
 
@@ -110,7 +110,7 @@ const Questions = (props) => {
             ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} product={props.product}/>
           </HelpfulBar>
         </QuestionHead>
-        <Answers key={index} questionId={question.question_id} newAnswer={newAnswer}/>
+        <Answers key={index} questionId={question.question_id} currentProductId={props.productId} newAnswer={newAnswer}/>
         <span style={{fontSize: '16px', marginTop: '10px', marginBottom: '20px', display: 'inline'}}>
           Asked by: {question.asker_name}, {qDate.toDateString().substring(4)}
           <span style={{marginLeft: '15px'}}>|</span>
@@ -156,7 +156,7 @@ const Questions = (props) => {
   <QAContainer
     tracking={'Questions and Answers'}
   >
-    {loadedQuestions ?
+    {loadedQuestions & questions[0] !== undefined ?
     (
     <Fragment>
     <QuestionsContainer>
@@ -216,7 +216,7 @@ const Questions = (props) => {
   (
   <QuestionsContainer>
     <h2>Questions and Answers</h2>
-    <h4>There are currently no questions... Please add a question!</h4>
+    <h4>There are no questions for this product... Please add a question!</h4>
     <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
   </QuestionsContainer>
 

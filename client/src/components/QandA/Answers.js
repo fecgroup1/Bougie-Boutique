@@ -4,6 +4,7 @@ import { MoreAnswers, HelpfulButton, ReportButton } from '../../Styles'
 import AnswerPhotos from './AnswerPhotos.js'
 
 const Answers = (props) => {
+  const [loadedAnswers, setLoadedAnswers] = useState(false)
   const [answers, setAnswers] = useState([]);
   const [moreAnswers, setMoreAnswers] = useState(false);
   const [helpful, setHelpful] = useState(false);
@@ -11,9 +12,10 @@ const Answers = (props) => {
   const [aReported, setAReported] = useState([]);
 
   useEffect(() => {
+    setLoadedAnswers(false)
     setMoreAnswers(false)
     getAnswers();
-  }, [props.questionId, props.newAnswer])
+  }, [props.questionId, props.newAnswer, props.currentProductId])
 
 
   const getAnswers = () => {
@@ -21,9 +23,10 @@ const Answers = (props) => {
     axios.get(`/qa/questions/${id}/answers?count=50`)
     .then ((answersArr) => {
       setAnswers(answersArr.data.results)
+      setLoadedAnswers(true);
     })
     .catch ((err) => {
-      console.log(err)
+      setLoadedAnswers(false);
     })
   }
 
@@ -132,8 +135,7 @@ const Answers = (props) => {
   }
 
 
-  if (props.questionId !== undefined) {
-    var storeAnswers = props.answers
+  if (loadedAnswers) {
     return (
       <div>
         {!moreAnswers ?
