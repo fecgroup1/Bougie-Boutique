@@ -48,20 +48,17 @@ const AnswerPhotos = (props) => {
                       zIndex: '5'
                     },
                     content: {
-                      transform: 'translate(0, 5%)',
-                      position: 'relative',
+                      position: 'fixed',
+                      inset: '5%',
                       backgroundColor: 'rgba(17, 17, 17, 0.75)',
                       overflow: 'hidden',
-                      width: '90%',
-                      height: '90%',
-                      margin: 'auto',
                       border: 'none',
                       zIndex: '5',
                       justifyContent: 'center'
                     }
                   }}
               >
-              <img key={index} style={{width: '100%', height: 'auto'}} src={getUrl(image)}/>
+              <img class='enlargedImage' key={index} onClick={changeClick} src={getUrl(image)}/>
               </Modal>
             <img key={index} style={{padding: '5px', maxHeight: '100px', maxWidth: '100px', marginLeft: '21px', marginRight: '-20px'}}
               onClick={() => {selectedPhoto(image)}} className='img' src={image.url}/>

@@ -5,7 +5,7 @@ import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
 import SearchQuestions from './SearchQuestions.js'
 import ProductAPI from '../../Utils/ProductAPI';
-import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead, QuestionsButtons, HelpfulButton, ReportButton } from '../../Styles'
+import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead, QuestionsButtons, HelpfulButton, ReportButton, HelpfulBar } from '../../Styles'
 
 const Questions = (props) => {
   const [loadedQuestions, setLoadedQuestions] = useState(false)
@@ -104,11 +104,11 @@ const Questions = (props) => {
     return (
       <div className='Question' key={index}>
         <QuestionHead>
-          <p style={{display: 'inline-block', maxWidth: '55%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
-          <span style={{float: 'right', marginTop: '20px', fontSize: '14px'}}>Helpful?
+          <p style={{display: 'inline-block', maxWidth: '50%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
+          <HelpfulBar>Helpful?
             <HelpfulButton onClick={() => markHelpful(question)}> Yes </HelpfulButton>
             ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} product={props.product}/>
-          </span>
+          </HelpfulBar>
         </QuestionHead>
         <Answers key={index} questionId={question.question_id} newAnswer={newAnswer}/>
         <span style={{fontSize: '16px', marginTop: '10px', marginBottom: '20px', display: 'inline'}}>
@@ -116,7 +116,7 @@ const Questions = (props) => {
           <span style={{marginLeft: '15px'}}>|</span>
           {!report ?
               (
-              <ReportButton onClick={() => reportQuestion(question)}>Report this question <i className="lni lni-flag-alt"/></ReportButton>
+              <ReportButton onClick={() => reportQuestion(question)}>Report <i className="lni lni-flag-alt"/></ReportButton>
               ) :
               (
               <span style={{color: 'red', fontSize: '14px', marginLeft: '15px'}}>Reported <i className="lni lni-flag-alt"></i></span>
@@ -128,9 +128,6 @@ const Questions = (props) => {
   }
 
   const unlimitedScroll = (event) => {
-    console.log(event.target.scrollHeight)
-    console.log(event.target.scrollTop)
-    console.log(event.target.clientHeight)
     if (event.target.scrollHeight - event.target.scrollTop <= event.target.clientHeight + 1 && moreQuestions && !search) {
       if (questionLength < questions.length) {
         setQuestionLength(questionLength + 2)

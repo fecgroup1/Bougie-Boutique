@@ -66,6 +66,19 @@ export const Body = createGlobalStyle`
     padding-bottom: 15px;
   }
 
+  .qaImgModal {
+    @media screen and (max-width: 500px) {
+      max-width: 400px;
+      max-height: 400px;
+      transform: translateY(400px)
+    }
+  }
+
+  .enlargedImage {
+    width: 100%;
+    height: auto;
+  }
+
   .qaModalOverlay {
     position: fixed;
     top: 0;
