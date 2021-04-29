@@ -90,6 +90,24 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
           isOpen={isOpen}
           onRequestClose={() => handleModalOpen(false)}
           appElement={document.getElementById('app')}>
+            <button
+              onClick={() => handleModalOpen(false)}
+              style={{
+                position: 'absolute',
+                right: 0,
+                top: 0,
+                height: '5%',
+                padding: '5px',
+                zIndex: 12,
+                fontSize: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignContent: 'center',
+                background: 'none',
+                border: 'none',
+                color: theme.text,
+              }}><i className="lni lni-close"></i>
+            </button>
             <div id="expandedbg" style={{
               position: 'absolute',
               background: theme.bg,
