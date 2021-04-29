@@ -1,5 +1,6 @@
 import ReviewAPI from '../Utils/ReviewAPI';
 import axios from 'axios'
+import Review from '../components/RatingsReviews/Review.jsx'
 
 jest.mock('axios');
 
@@ -71,3 +72,4 @@ test('getMeta gets the Metadata for the current product and returns it ', () => 
     return ReviewAPI.getReviews(13023)
       .then(res => expect(res.data).toEqual(meta))
   });
+

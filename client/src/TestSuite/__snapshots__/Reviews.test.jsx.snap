@@ -3,7 +3,6 @@
 exports[`reviews section matches snapshot 1`] = `
 <div>
   <section
-    data-testid="content"
     tracking="Ratings and Reviews"
   >
     <h2
@@ -195,7 +194,7 @@ exports[`reviews section matches snapshot 1`] = `
           class="reviews"
         >
           <span>
-            1
+            3
              reviews, sorted by 
           </span>
           <select
@@ -215,6 +214,7 @@ exports[`reviews section matches snapshot 1`] = `
            
           <br />
           <section
+            data-testid="reviewsSection"
             style="max-height: 780px; overflow-y: auto;"
           >
             <div
@@ -234,10 +234,14 @@ exports[`reviews section matches snapshot 1`] = `
                 ,   
                 March 7, 2021
               </span>
-              <h3>
+              <h3
+                data-testid="reviewSummary"
+              >
                 Makes me smile
               </h3>
-              <p>
+              <p
+                data-testid="reviewBody"
+              >
                 This product is great because it puts a little smile on my face!
               </p>
               <div>
@@ -259,6 +263,7 @@ exports[`reviews section matches snapshot 1`] = `
                   Was this review helpful? 
                 </span>
                 <a
+                  data-testid="reviewHelpful"
                   style="margin: 10px;"
                 >
                   Yes(
@@ -270,7 +275,78 @@ exports[`reviews section matches snapshot 1`] = `
                 >
                   |
                 </span>
-                <a>
+                <a
+                  data-testid="reviewReport"
+                >
+                  Report
+                  <i
+                    class="lni lni-flag-alt"
+                  />
+                   
+                </a>
+              </div>
+            </div>
+            <div
+              class="RatingsandReviews__SingleReview-sc-17lej04-2 ddUuHr"
+            >
+              <div
+                class="Stars__StarsOuter-sc-7428jg-0 eNEVLX"
+              >
+                <div
+                  class="Stars__StarsInner-sc-7428jg-1 fVhJIw"
+                />
+              </div>
+              <span
+                style="float: right;"
+              >
+                second
+                ,   
+                March 7, 2021
+              </span>
+              <h3
+                data-testid="reviewSummary"
+              >
+                times 2
+              </h3>
+              <p
+                data-testid="reviewBody"
+              >
+                This the second!
+              </p>
+              <div>
+                <img
+                  src="https://i.ibb.co/5xbC4Xk/happy-Monkey.jpg"
+                  style="width: 65px;"
+                />
+              </div>
+              <p
+                style="font-size: 90%;"
+              >
+                 ✓ I recomend this product
+              </p>
+              <div />
+              <div
+                style="font-size: 90%;"
+              >
+                <span>
+                  Was this review helpful? 
+                </span>
+                <a
+                  data-testid="reviewHelpful"
+                  style="margin: 10px;"
+                >
+                  Yes(
+                  42
+                  )
+                </a>
+                <span
+                  style="margin-left: 10px; margin-right: 15px;"
+                >
+                  |
+                </span>
+                <a
+                  data-testid="reviewReport"
+                >
                   Report
                   <i
                     class="lni lni-flag-alt"
@@ -280,7 +356,12 @@ exports[`reviews section matches snapshot 1`] = `
               </div>
             </div>
           </section>
-          <div />
+          <button
+            data-testid="showMore"
+            style="font-size: 105%; border-radius: 1px; padding: 15px; margin: 10px; font-family: Josefin Sans; font-weight: bold; color: black; border: 3px solid; border-color: #002a60;"
+          >
+            More Reviews
+          </button>
           <button
             style="font-size: 105%; border-radius: 1px; padding: 15px; margin: 10px; font-family: Josefin Sans; font-weight: bold; color: black; border: 3px solid; border-color: #002a60;"
           >

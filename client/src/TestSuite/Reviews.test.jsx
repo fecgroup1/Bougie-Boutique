@@ -1,7 +1,12 @@
 import React from 'react'
+import {render, fireEvent} from '@testing-library/react'
+import '@testing-library/jest-dom'
+import axios from 'axios'
 import RatingsReviews from '../components/RatingsReviews/index.jsx'
-import {render} from '@testing-library/react'
+import Review from '../components/RatingsReviews/Review.jsx'
 import {light} from '../Styles/themes.jsx'
+
+jest.mock('axios');
 
 var store ={};
 store.setMeta = ()=>{}
@@ -35,6 +40,7 @@ store.state = {
   "reviews": [
       {
           "rating": 5,
+          "review_id": 1,
           "date": "2021-03-08T00:00:00.000Z",
           "summary": "Makes me smile",
           "body": "This product is great because it puts a little smile on my face!",
@@ -48,7 +54,41 @@ store.state = {
           "reviewerName": "SmilingSean",
           "responseToReview": null,
           "helpfulness": 42
-      }
+      },
+      {
+        "rating": 5,
+        "review_id": 2,
+        "date": "2021-03-08T00:00:00.000Z",
+        "summary": "times 2",
+        "body": "This the second!",
+        "photos": [
+            {
+                "id": 496602,
+                "url": "https://i.ibb.co/5xbC4Xk/happy-Monkey.jpg"
+            }
+        ],
+        "recommended": true,
+        "reviewerName": "second",
+        "responseToReview": null,
+        "helpfulness": 42
+    },
+    {
+      "rating": 5,
+      "review_id": 3,
+      "date": "2021-03-08T00:00:00.000Z",
+      "summary": "times three",
+      "body": "The third one",
+      "photos": [
+          {
+              "id": 496602,
+              "url": "https://i.ibb.co/5xbC4Xk/happy-Monkey.jpg"
+          }
+      ],
+      "recommended": true,
+      "reviewerName": "third",
+      "responseToReview": null,
+      "helpfulness": 42
+  },
   ],
 
 }
@@ -67,14 +107,67 @@ test('reviews section matches snapshot', ()=>{
   expect(component.container).toMatchSnapshot();
 })
 
-
-test('<RatingsReviews/> renders without crashing', ()=>{
+test('<Review/> to render review body text as review', ()=>{
   const div = document.createElement('div')
   const {getByTestId} = render(
+    <Review review={store.state.reviews[0]} />, div
+  )
+  const reviewBody = getByTestId('reviewBody');
+  expect(reviewBody.textContent).toBe("This product is great because it puts a little smile on my face!")
+});
+
+test('<Review/> to render review summary text as heading', ()=>{
+  const div = document.createElement('div')
+  const {getByTestId} = render(
+    <Review review={store.state.reviews[0]} />, div
+  )
+  const reviewSummary = getByTestId('reviewSummary');
+  expect(reviewSummary.textContent).toBe("Makes me smile")
+});
+
+test('Review to call markHelpful if helpful is clicked', ()=>{
+  const div = document.createElement('div')
+  const {getByTestId} = render(
+    <Review review={store.state.reviews[0]} />, div
+  )
+  axios.put.mockResolvedValue({productId: 13023});
+  const helpful = getByTestId('reviewHelpful');
+  fireEvent.click(helpful)
+
+  expect(axios.put).toHaveBeenCalledTimes(1)
+  expect(axios.put).toHaveBeenCalledWith('/reviews/1/helpful')
+  jest.resetAllMocks()
+});
+
+test('Call Report if Report is clicked', ()=>{
+  const div = document.createElement('div')
+  const {getByTestId} = render(
+    <Review review={store.state.reviews[0]} />, div
+  )
+  axios.put.mockResolvedValue({productId: 13023});
+  const report = getByTestId('reviewReport');
+  fireEvent.click(report)
+
+  expect(axios.put).toHaveBeenCalledTimes(1)
+  expect(axios.put).toHaveBeenCalledWith('/reviews/1/report')
+  jest.resetAllMocks()
+
+})
+
+test('show more button adds more reviews', ()=>{
+  const div = document.createElement('div')
+  const {getByTestId, getAllByTestId} = render(
     <RatingsReviews store = {store} theme={light} />, div
   )
-  const content = getByTestId('rairings')
+  expect(getAllByTestId('reviewBody').length).toBe(2)
 
-});
+  const showMore = getByTestId('showMore');
+  fireEvent.click(showMore)
+  
+  expect(getAllByTestId('reviewBody').length).toBe(3)
+
+})
+
+
 
 
