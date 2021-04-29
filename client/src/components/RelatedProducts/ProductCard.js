@@ -20,7 +20,7 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
         className={addedClasses}
       >
         <ActionButton
-          onClick={() => buttonAction(actionProduct)}
+          onClick={() => buttonAction(actionProduct, event)}
           cursor={cursor}
         >
           <i className={`lni lni-32 ${buttonType}`} />

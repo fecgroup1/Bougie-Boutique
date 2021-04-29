@@ -156,8 +156,8 @@ const RelatedProducts = ({store, theme}) => {
           show={productScroll.left}
           position={'left'}
         >
-          <i className="lni lni-32 lni-chevron-left-circle"
-          style={{padding: '30px 20px',
+          <i className="lni lni-32 lni-chevron-left"
+          style={{padding: '50px 10px',
             opacity: '.75',
             backgroundColor: 'white'}}
           onClick={(event) => scroll('products', 'left', event)}
@@ -185,8 +185,8 @@ const RelatedProducts = ({store, theme}) => {
             show={productScroll.right}
             position={'right'}
           >
-            <i className="lni lni-32 lni-chevron-right-circle"
-            style={{padding: '30px 20px',
+            <i className="lni lni-32 lni-chevron-right"
+            style={{padding: '50px 10px',
             opacity: '.75',
             backgroundColor: 'white'}}
             onClick={(event) => scroll('products', 'right', event)}
@@ -212,8 +212,8 @@ const RelatedProducts = ({store, theme}) => {
             show={outfitScroll.left}
             position={'left'}
           >
-            <i className="lni lni-32 lni-chevron-left-circle"
-            style={{padding: '30px 20px',
+            <i className="lni lni-32 lni-chevron-left"
+            style={{padding: '50px 10px',
             opacity: '.75',
             backgroundColor: 'white'}}
             onClick={(event) => scroll('outfits', 'left', event)}
@@ -260,8 +260,8 @@ const RelatedProducts = ({store, theme}) => {
             show={outfitScroll.right}
             position={'right'}
           >
-            <i className="lni lni-32 lni-chevron-right-circle"
-            style={{padding: '30px 20px',
+            <i className="lni lni-32 lni-chevron-right"
+            style={{padding: '50px 10px',
             opacity: '.75',
             backgroundColor: 'white'}}
             onClick={(event) => scroll('outfits', 'right', event)}
