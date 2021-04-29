@@ -8,7 +8,7 @@ const SearchQuestions = (props) => {
   }, [props.currentProductId])
     return (
       <Fragment>
-        <form className='searchQuestion'>
+        <form className='searchQuestion' style={{display: 'flex'}}>
           <i className="lni lni-search-alt" style={
             { marginTop: '7px',
               marginLeft: '10px',

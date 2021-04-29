@@ -14,6 +14,7 @@ export const QuestionCardsContainer = styled.div`
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  min width: 300px;
 
   ::-webkit-scrollbar {
     width: 10px
@@ -67,12 +68,17 @@ export const SearchBar = styled.input`
     color: ${props => props.theme.text};
     background: transparent;
     outline: #002a60;
-    padding-left: 60px;
+    padding-left: 50px;
     width: 90%;
+    display: block;
     height: 40px;
     margin-bottom: 15px;
-    font-size: 1em;
+    font-size: 0.9em;
     font-family: 'Josefin Sans', sans-serif;
+    @media screen and (max-width: 600px) {
+      font-size: 0.6em;
+      margin-bottom: 10px;
+    }
   }
 `;
 
@@ -127,6 +133,15 @@ export const Warning = styled.p`
   }
 `;
 
+export const HelpfulBar = styled.span`
+  & {
+    float: right;
+    margin-top: 20px;
+    font-size: 14px;
+    max-width: 40%;
+  }
+`;
+
 export const Required = styled.p`
   & {
     padding-top: 10px;
@@ -173,7 +188,7 @@ export const ReportButton = styled.a`
 
 export const AddAnswerButton = styled.a`
   & {
-    float: right;
+    display: inline-block;
     margin: 0px;
     font-size: 14px;
     padding-left: 5px;

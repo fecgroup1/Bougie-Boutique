@@ -95,7 +95,7 @@ const Answers = (props) => {
                 <span style={{marginLeft: '15px'}}>|  </span>
                 {!report ?
                   (
-                  <ReportButton onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></ReportButton>
+                  <ReportButton onClick={() => reportAnswer(answer)}>Report <i className="lni lni-flag-alt"></i></ReportButton>
                   ) :
                   (
                   <span style={{color: 'red', fontSize: '14px', marginLeft: '15px'}}>Reported <i className="lni lni-flag-alt"></i></span>
@@ -117,7 +117,7 @@ const Answers = (props) => {
                 <span style={{marginLeft: '15px'}}>|</span>
                 {!report ?
                   (
-                  <ReportButton onClick={() => reportAnswer(answer)}>Report this answer <i className="lni lni-flag-alt"></i></ReportButton>
+                  <ReportButton onClick={() => reportAnswer(answer)}>Report <i className="lni lni-flag-alt"></i></ReportButton>
                   ) :
                   (
                   <span style={{color: 'red', fontSize: '14px', marginLeft: '15px'}}>Reported <i className="lni lni-flag-alt"></i></span>
