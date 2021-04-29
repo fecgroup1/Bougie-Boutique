@@ -24,12 +24,43 @@ exports[`reviews section matches snapshot 1`] = `
             3.9
           </span>
           <div
-            class="Stars__StarsOuter-sc-7428jg-0 eNEVLX"
+            class="Stars__OuterStars-sc-7428jg-0 VTbLp"
             style="font-size: 95%; vertical-align: top; margin-left: 10px;"
           >
-            <div
-              class="Stars__StarsInner-sc-7428jg-1 ipzXih"
+            <i
+              class="lni lni-star"
             />
+            <i
+              class="lni lni-star"
+            />
+            <i
+              class="lni lni-star"
+            />
+            <i
+              class="lni lni-star"
+            />
+            <i
+              class="lni lni-star"
+            />
+            <div
+              class="Stars__InnerStars-sc-7428jg-1 dJZJkm"
+            >
+              <i
+                class="lni lni-star-filled"
+              />
+              <i
+                class="lni lni-star-filled"
+              />
+              <i
+                class="lni lni-star-filled"
+              />
+              <i
+                class="lni lni-star-filled"
+              />
+              <i
+                class="lni lni-star-filled"
+              />
+            </div>
           </div>
           <p>
             87
@@ -221,11 +252,42 @@ exports[`reviews section matches snapshot 1`] = `
               class="RatingsandReviews__SingleReview-sc-17lej04-2 ddUuHr"
             >
               <div
-                class="Stars__StarsOuter-sc-7428jg-0 eNEVLX"
+                class="Stars__OuterStars-sc-7428jg-0 VTbLp"
               >
-                <div
-                  class="Stars__StarsInner-sc-7428jg-1 fVhJIw"
+                <i
+                  class="lni lni-star"
                 />
+                <i
+                  class="lni lni-star"
+                />
+                <i
+                  class="lni lni-star"
+                />
+                <i
+                  class="lni lni-star"
+                />
+                <i
+                  class="lni lni-star"
+                />
+                <div
+                  class="Stars__InnerStars-sc-7428jg-1 dijQST"
+                >
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                </div>
               </div>
               <span
                 style="float: right;"
@@ -290,11 +352,42 @@ exports[`reviews section matches snapshot 1`] = `
               class="RatingsandReviews__SingleReview-sc-17lej04-2 ddUuHr"
             >
               <div
-                class="Stars__StarsOuter-sc-7428jg-0 eNEVLX"
+                class="Stars__OuterStars-sc-7428jg-0 VTbLp"
               >
-                <div
-                  class="Stars__StarsInner-sc-7428jg-1 fVhJIw"
+                <i
+                  class="lni lni-star"
                 />
+                <i
+                  class="lni lni-star"
+                />
+                <i
+                  class="lni lni-star"
+                />
+                <i
+                  class="lni lni-star"
+                />
+                <i
+                  class="lni lni-star"
+                />
+                <div
+                  class="Stars__InnerStars-sc-7428jg-1 dijQST"
+                >
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                  <i
+                    class="lni lni-star-filled"
+                  />
+                </div>
               </div>
               <span
                 style="float: right;"
