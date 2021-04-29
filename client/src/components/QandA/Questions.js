@@ -156,7 +156,7 @@ const Questions = (props) => {
   <QAContainer
     tracking={'Questions and Answers'}
   >
-    {loadedQuestions ?
+    {loadedQuestions & questions[0] !== undefined ?
     (
     <Fragment>
     <QuestionsContainer>
@@ -216,7 +216,7 @@ const Questions = (props) => {
   (
   <QuestionsContainer>
     <h2>Questions and Answers</h2>
-    <h4>There are currently no questions... Please add a question!</h4>
+    <h4>There are no questions for this product... Please add a question!</h4>
     <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
   </QuestionsContainer>
 
