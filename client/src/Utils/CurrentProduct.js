@@ -24,11 +24,23 @@ class CurrentProduct extends React.Component {
     this.setMeta=this.setMeta.bind(this);
   }
 
+  componentDidMount() {
+    window.onpopstate = (event) => {
+      console.log(
+        'popstate called'
+      );
+      if (this.props.pid !== this.state.currentProductId) {
+        this.setState({currentProductId: this.props.pid});
+        this.setProduct(this.props.pid);
+      }
+    }
+  }
+
   changeProduct(pid) {
     this.setState({currentProductId: pid})
     this.setProduct(pid);
     window.scrollTo({top: 0, behavior: 'smooth'})
-    // this.props.history.push(`/${pid}`);
+    this.props.history.push(`/${pid}`);
   }
 
   // changeStyle(index) {
