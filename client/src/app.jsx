@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 
 import CurrentProduct  from './Utils/CurrentProduct.js'
 import Nav from './components/Nav';
@@ -13,7 +12,7 @@ import { Body, dark, light } from './Styles';
 
 import TrackingAPI from './Utils/TrackingAPI.js'
 
-const App = ({match, location}) => {
+const App = ({match, location, history}) => {
   const [darkMode, setDarkMode] = useState(false);
   const theme = darkMode ? dark: light;
 
@@ -50,20 +49,22 @@ const App = ({match, location}) => {
 
   const getPID = () => {
     let pid = 13023;
-    if (match.params.pid !== undefined) {
-      pid = match.params.pid;
-      console.log('match: ', pid);
+    if (location.pathname.length >= 5) {
+      let string = location.pathname.slice(1);
+      pid = string;
     } else if (location.search.length >= 5) {
       let string = location.search;
       let index = string.indexOf('pid=');
       pid = string.slice(index + 4, index + 9);
-      console.log('search: ', pid);
+    } else if (match.params.pid !== undefined) {
+      pid = match.params.pid;
     }
     return pid;
   }
 
   // COMPONENTDIDMOUNT
   useEffect(() => {
+    console.log('App useEffect now running');
     document.body.addEventListener('click', handleTracking);
   }, []);
 
@@ -72,6 +73,7 @@ const App = ({match, location}) => {
     <ThemeProvider theme={theme}>
       <CurrentProduct
         pid={getPID()}
+        history={history}
         render={ store => (
           <>
             <Body />

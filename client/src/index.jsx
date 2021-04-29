@@ -6,8 +6,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 ReactDOM.render(
   <Router>
     <Switch>
-      <Route path="/"  exact render={({history, location, match}) => (<App match={match} history={history} location={location}/>)} />
-      <Route path="/:pid"  render={({history, location, match}) => (<App match={match} history={history} location={location}/>)} />
+      <Route path="/"  exact>
+        {({history, location, match}) => (<App match={match} history={history} location={location}/>)}
+      </Route>
+      <Route path="/:pid">
+        {({history, location, match}) => (<App match={match} history={history} location={location}/>)}
+      </Route>
     </Switch>
   </Router>
 , document.getElementById("app"));
