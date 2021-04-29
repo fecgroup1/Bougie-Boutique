@@ -129,7 +129,7 @@ class RatingsReviews extends React.Component {
           filteredFor= {this.state.filteredFor}/>
         </RatingsContainer>
         <div >
-          <div style= {{ minWidth:'300px', height: '30px', width:'40%',border:`2px solid ${this.props.theme.blkGry}`, margin: '20px', marginLeft:'0px'}}> <i style= {{fontSize: '95%', margin: '3px'}} className="lni lni-32 lni-search"></i><input placeHolder= 'Search Reviews' style= {{height: '27px', width:'90%', border:`none`, outline:'none' , background:`${this.props.theme.invertWht}`, color: `${this.props.theme.blkGry}`}} type= 'text' onChange = {(event)=> this.searchReviews(event.target.value)}></input></div>
+          <div style= {{ minWidth:'300px', height: '30px', width:'40%',border:`2px solid ${this.props.theme.blkGry}`, margin: '20px', marginLeft:'0px'}}> <i style= {{fontSize: '95%', margin: '3px'}} className="lni lni-32 lni-search-alt"></i><input placeholder= 'Search Reviews' style= {{height: '27px', width:'90%', border:`none`, outline:'none' , background:`${this.props.theme.invertWht}`, color: `${this.props.theme.blkGry}`}} type= 'text' onChange = {(event)=> this.searchReviews(event.target.value)}></input></div>
           <Reviews key={this.state.reviewsToShow}
             reviewsToShow ={this.state.reviewsToShow}
             product = {this.props.store.state.product}

@@ -36,12 +36,12 @@ class Reviews extends React.Component {
     return (
     <div className= 'reviews'>
       <span>{this.props.reviewsToShow.length} reviews, sorted by </span><select className= 'dropDown' onChange= {(event)=> this.props.sortReviews(event.target.selectedIndex)}> <option>Relevant</option><option>Helpful</option><option>Newest</option></select> <br></br>
-      <section style= {{maxHeight: '780px', overflowY:'auto'}}>
+      <section data-testid='reviewsSection' style= {{maxHeight: '780px', overflowY:'auto'}}>
         {reviews.map((review)=> <Review review={review}/>)}
       </section>
 
       {this.props.reviewsToShow.length >2 ? (this.state.renderbutton ?
-      <button
+      <button data-testid='showMore'
       style= {{ fontSize: '105%', borderRadius: '1px',padding: '15px' , margin:'10px', fontFamily: 'Josefin Sans',
       fontWeight: 'bold',color:`${this.props.theme.blkGry}`, background: `${this.props.theme.invertWht}`, border: '3px solid', borderColor: `${this.props.theme.bluGry}`}}
       onClick={(event)=>{this.showMore()}}>More Reviews</button>
