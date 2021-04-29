@@ -230,7 +230,7 @@ const RelatedProducts = ({store, theme}) => {
             className="lni lni-circle-plus plus"
             style={{
               fontSize: '9em',
-              color: theme.bluGry,
+              color: theme.bluGry || blue,
               boxShadow: `10px 10px 15px #cccccc`,
               borderRadius: '500px'
             }}

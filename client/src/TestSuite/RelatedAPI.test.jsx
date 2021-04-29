@@ -1,5 +1,11 @@
+import React from 'react'
 import RelatedAPI from '../Utils/RelatedAPI';
 import axios from 'axios'
+import { render, fireEvent } from '@testing-library/react'
+import Related from '../components/RelatedProducts'
+import CurrentProduct from '../Utils/currentProduct.js'
+import ThemeProvider from 'styled-components'
+import { Body, dark, light } from './Styles';
 
 jest.mock('axios');
 
@@ -11,3 +17,14 @@ test('getRelated retrieves the product information for all of the products realt
   return RelatedAPI.getRelatedProducts(13023)
     .then(data => expect(data).toEqual(related))
 });
+
+test('related products container renders properly', () => {
+  const {getByText} = render(
+  <ThemeProvider theme={light}>
+    <CurrentProduct render={ store =>
+      <Related store={store} theme={theme}/>
+    }/>
+  </ThemeProvider>
+  )
+  expect(getByText('Related Products'))
+})
