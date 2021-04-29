@@ -49,21 +49,10 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount in Overview');
-    // const param = (new URL(document.location)).searchParams.get('pid');
-    // if (param !== null) {
-    //   let pid = param.replace(/\D/g, '');
-    //   let id = (pid === null || pid === undefined) ? this.props.currentProductID: pid;
-    //   console.log('calling setProduct with', id);
-    //   this.props.store.setProduct(id);
-    // } else {
-    //   this.props.store.setProduct();
-    // }
     this.props.store.setProduct();
   }
 
   changeStyle(index) {
-    console.log('changStyle index: ', index);
     this.props.store.changeImg(index, 0);
   }
 

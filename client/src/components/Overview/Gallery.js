@@ -24,7 +24,6 @@ class Gallery extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount in Gallery');
     // WATCH GALLERY
     const resize_gallery = new ResizeObserver((entries) => {
       let rect = entries[0].contentRect;
