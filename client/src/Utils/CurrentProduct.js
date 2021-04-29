@@ -9,7 +9,7 @@ class CurrentProduct extends React.Component {
     super(props);
 
     this.state = {
-      currentProductId: "13023",
+      currentProductId: this.props.pid,
       cart: {},
     };
 
@@ -28,7 +28,11 @@ class CurrentProduct extends React.Component {
     this.setState({currentProductId: pid})
     this.setProduct(pid);
     window.scrollTo({top: 0, behavior: 'smooth'})
+<<<<<<< HEAD
     window.history.pushState(null, `product: ${pid} page`, `?pid=${pid}`);
+=======
+    // location.href = `/${pid}`;
+>>>>>>> Now routing to appropriate url
   }
 
   // changeStyle(index) {
