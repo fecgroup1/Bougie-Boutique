@@ -5,12 +5,13 @@ import axios from 'axios'
 import RatingsReviews from '../components/RatingsReviews/index.jsx'
 import Review from '../components/RatingsReviews/Review.jsx'
 import {light} from '../Styles/themes.jsx'
+import ReviewAPI from '../Utils/ReviewAPI';
 
 jest.mock('axios');
 
-var store ={};
-store.setMeta = ()=>{}
-store.setReviews = ()=>{}
+var store = {}
+store.setMeta = ReviewAPI.getMeta,
+store.setReviews = ReviewAPI.getReviews,
 store.state = {
   "currentProductId": "13023",
   "product": {
@@ -94,9 +95,26 @@ store.state = {
 }
 test('<RatingsReviews/> renders without crashing', ()=>{
   var div = document.createElement('div')
+  axios.get.mockResolvedValue({productId: 13023})
   render(
     <RatingsReviews store = {store} theme={light} />, div
   )
+
+  expect(axios.get).toHaveBeenCalledTimes(2)
+  jest.resetAllMocks()
+});
+
+test('<RatingsReviews/> to get meta and reviews upon render', ()=>{
+  var div = document.createElement('div')
+  axios.get.mockResolvedValue({productId: 13023})
+  render(
+    <RatingsReviews store = {store} theme={light} />, div
+  )
+
+  expect(axios.get).toHaveBeenCalledTimes(2)
+  expect(axios.get).toHaveBeenCalledWith('/reviews/meta?product_id=13023')
+  expect(axios.get).toHaveBeenCalledWith('/reviews?product_id=13023')
+  jest.resetAllMocks()
 });
 
 // test('reviews section matches snapshot', ()=>{
