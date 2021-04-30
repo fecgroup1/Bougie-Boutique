@@ -1,0 +1,1921 @@
+[
+  {
+      "currentProductId": 13024,
+      "product": {
+          "id": 13024,
+          "name": "Bright Future Sunglasses",
+          "slogan": "You've got to wear shades",
+          "description": "Where you're going you might not need roads, but you definitely need some shades. Give those baby blues a rest and let the future shine bright on these timeless lenses.",
+          "category": "Accessories",
+          "features": [
+              {
+                  "feature": "Lenses",
+                  "value": "Ultrasheen"
+              },
+              {
+                  "feature": "UV Protection",
+                  "value": null
+              },
+              {
+                  "feature": "Frames",
+                  "value": "LightCompose"
+              }
+          ]
+      },
+      "styles": [
+          {
+              "style_id": 64137,
+              "name": "Black Lenses & Black Frame",
+              "original_price": "69.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": null,
+                      "url": null
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          },
+          {
+              "style_id": 64138,
+              "name": "Black Lenses & Gold Frame",
+              "original_price": "69.00",
+              "sale_price": null,
+              "default?": true,
+              "photos": [
+                  {
+                      "thumbnail_url": null,
+                      "url": null
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          },
+          {
+              "style_id": 64139,
+              "name": "Gold Lenses & Black Frame",
+              "original_price": "69.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": null,
+                      "url": null
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          },
+          {
+              "style_id": 64140,
+              "name": "Gold Lenses & Gold Frame",
+              "original_price": "69.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": null,
+                      "url": null
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          }
+      ],
+      "meta": {
+          "ratings": {
+              "2": "1",
+              "3": "1",
+              "4": "2",
+              "5": "2"
+          },
+          "recommended": {
+              "false": "2",
+              "true": "4"
+          },
+          "characteristics": {
+              "Quality": {
+                  "id": 43621,
+                  "value": "4.3333333333333333"
+              }
+          },
+          "averageRating": 3.8,
+          "starRating": 3.75
+      }
+  },
+  {
+      "currentProductId": 13025,
+      "product": {
+          "id": 13025,
+          "name": "Morning Joggers",
+          "slogan": "Make yourself a morning person",
+          "description": "Whether you're a morning person or not.  Whether you're gym bound or not.  Everyone looks good in joggers.",
+          "category": "Pants",
+          "features": [
+              {
+                  "feature": "Fabric",
+                  "value": "100% Cotton"
+              },
+              {
+                  "feature": "Cut",
+                  "value": "Skinny"
+              }
+          ]
+      },
+      "styles": [
+          {
+              "style_id": 64141,
+              "name": "Black",
+              "original_price": "40.00",
+              "sale_price": null,
+              "default?": true,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1492447105260-2e947425b5cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1492447105260-2e947425b5cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1548133464-29abc661eb5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1548133464-29abc661eb5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1500340520802-1687634cbe38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1500340520802-1687634cbe38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1559304022-afbf28f53c4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1559304022-afbf28f53c4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1656&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554921148-83d8ceda2095?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554921148-83d8ceda2095?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370357"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370358"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370359"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370360"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370361"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370362"
+                  }
+              ]
+          },
+          {
+              "style_id": 64142,
+              "name": "Grey",
+              "original_price": "40.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1562542082-519ebcdb43e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2057&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1562542132-8555e1b583f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1562542132-8555e1b583f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=2057&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1562542096-218d8f9760bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1562542096-218d8f9760bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=2057&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1562542119-19d015b93c45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1562542119-19d015b93c45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2057&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1516684810863-e49c82f1f092?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1516684810863-e49c82f1f092?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=965&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1490427712608-588e68359dbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1490427712608-588e68359dbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370363"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370364"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370365"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370366"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370367"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370368"
+                  }
+              ]
+          },
+          {
+              "style_id": 64143,
+              "name": "Goldenrod",
+              "original_price": "40.00",
+              "sale_price": "35.00",
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1530073391204-7b34a1497281?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1530073391204-7b34a1497281?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1426647451887-5f2be01918a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1426647451887-5f2be01918a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1517438476312-10d79c077509?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1517438476312-10d79c077509?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1485646979142-d4abb57a876f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1485646979142-d4abb57a876f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370369"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370370"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370371"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370372"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370373"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370374"
+                  }
+              ]
+          },
+          {
+              "style_id": 64144,
+              "name": "Maroon",
+              "original_price": "40.00",
+              "sale_price": "35.00",
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1519857609704-61e751edba25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1519857609704-61e751edba25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1499714832275-d6205d94c35d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1499714832275-d6205d94c35d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1532244769164-ff64ddeefa45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1532244769164-ff64ddeefa45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1549540806-76ce9007b674?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1549540806-76ce9007b674?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554136920-a1df2909d8f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554136920-a1df2909d8f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1541214880206-03318856c6c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1541214880206-03318856c6c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370375"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370376"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370377"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370378"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370379"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370380"
+                  }
+              ]
+          },
+          {
+              "style_id": 64145,
+              "name": "Chartreuse",
+              "original_price": "40.00",
+              "sale_price": "25.00",
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1530073391204-7b34a1497281?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1530073391204-7b34a1497281?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1482876555840-f31c5ebbff1c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1426647451887-5f2be01918a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1426647451887-5f2be01918a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1517438476312-10d79c077509?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1517438476312-10d79c077509?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1485646979142-d4abb57a876f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1485646979142-d4abb57a876f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=962&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370381"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370382"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370383"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370384"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370385"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370386"
+                  }
+              ]
+          },
+          {
+              "style_id": 64146,
+              "name": "White",
+              "original_price": "40.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1510390099355-23e690d8129d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1510390099355-23e690d8129d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1547257965-087be799b084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1547257965-087be799b084?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1510217167326-549ae78e4738?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1510217167326-549ae78e4738?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1470282312847-28b943046dc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1470282312847-28b943046dc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1652&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1552904219-f4b87efe8792?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1552904219-f4b87efe8792?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=666&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1519241978701-4302ab53de1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1519241978701-4302ab53de1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370387"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370388"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370389"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370390"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370391"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370392"
+                  }
+              ]
+          }
+      ],
+      "meta": {
+          "ratings": {
+              "1": "2",
+              "3": "2",
+              "4": "1",
+              "5": "2"
+          },
+          "recommended": {
+              "false": "4",
+              "true": "3"
+          },
+          "characteristics": {
+              "Fit": {
+                  "id": 43622,
+                  "value": "2.8571428571428571"
+              },
+              "Length": {
+                  "id": 43623,
+                  "value": "3.1428571428571429"
+              },
+              "Comfort": {
+                  "id": 43624,
+                  "value": "3.0000000000000000"
+              },
+              "Quality": {
+                  "id": 43625,
+                  "value": "2.5714285714285714"
+              }
+          },
+          "averageRating": 3.1,
+          "starRating": 3
+      }
+  },
+  {
+      "currentProductId": 13026,
+      "product": {
+          "id": 13026,
+          "name": "Slacker's Slacks",
+          "slogan": "Comfortable for everything, or nothing",
+          "description": "I'll tell you how great they are after I nap for a bit.",
+          "category": "Pants",
+          "features": [
+              {
+                  "feature": "Fabric",
+                  "value": "99% Cotton 1% Elastic"
+              },
+              {
+                  "feature": "Cut",
+                  "value": "Loose"
+              }
+          ]
+      },
+      "styles": [
+          {
+              "style_id": 64147,
+              "name": "Black",
+              "original_price": "65.00",
+              "sale_price": null,
+              "default?": true,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554260570-9140fd3b7614?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554260570-9140fd3b7614?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370393"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370394"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370395"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370396"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370397"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370398"
+                  }
+              ]
+          },
+          {
+              "style_id": 64148,
+              "name": "Olive Green",
+              "original_price": "65.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1534481909716-9a482087f27d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1534481909716-9a482087f27d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370399"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370400"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370401"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370402"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370403"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370404"
+                  }
+              ]
+          },
+          {
+              "style_id": 64149,
+              "name": "Grey",
+              "original_price": "65.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1459501462159-97d5bded1416?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1459501462159-97d5bded1416?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370405"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370406"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370407"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370408"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370409"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370410"
+                  }
+              ]
+          },
+          {
+              "style_id": 64150,
+              "name": "Tan",
+              "original_price": "65.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1479756212843-6314ad5121dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1479756212843-6314ad5121dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370411"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370412"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370413"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370414"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370415"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370416"
+                  }
+              ]
+          },
+          {
+              "style_id": 64151,
+              "name": "Red",
+              "original_price": "65.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1461551449292-b63f7419ac93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1461551449292-b63f7419ac93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1970&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370417"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370418"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370419"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370420"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370421"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370422"
+                  }
+              ]
+          },
+          {
+              "style_id": 64152,
+              "name": "Pinstripe",
+              "original_price": "65.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1511766566737-1740d1da79be?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1511766566737-1740d1da79be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370423"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370424"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370425"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370426"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370427"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370428"
+                  }
+              ]
+          },
+          {
+              "style_id": 64153,
+              "name": "Khaki",
+              "original_price": "65.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1560095633-6803ba0461cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1560095633-6803ba0461cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370429"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370430"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370431"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370432"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370433"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370434"
+                  }
+              ]
+          },
+          {
+              "style_id": 64154,
+              "name": "Plaid",
+              "original_price": "65.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1544701758-5241eb611a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1544701758-5241eb611a48?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370435"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370436"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370437"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370438"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370439"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370440"
+                  }
+              ]
+          },
+          {
+              "style_id": 64155,
+              "name": "White",
+              "original_price": "65.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1519722417352-7d6959729417?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1519722417352-7d6959729417?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-2f39e38a013c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2760&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1553830591-d8632a99e6ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1511&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1554774853-d50f9c681ae2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 8,
+                      "size": "XS",
+                      "sku": "370441"
+                  },
+                  {
+                      "quantity": 16,
+                      "size": "S",
+                      "sku": "370442"
+                  },
+                  {
+                      "quantity": 17,
+                      "size": "M",
+                      "sku": "370443"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "L",
+                      "sku": "370444"
+                  },
+                  {
+                      "quantity": 15,
+                      "size": "XL",
+                      "sku": "370445"
+                  },
+                  {
+                      "quantity": 6,
+                      "size": "XXL",
+                      "sku": "370446"
+                  }
+              ]
+          }
+      ],
+      "meta": {
+          "ratings": {
+              "2": "1",
+              "4": "1",
+              "5": "1"
+          },
+          "recommended": {
+              "false": "1",
+              "true": "2"
+          },
+          "characteristics": {
+              "Fit": {
+                  "id": 43626,
+                  "value": "3.6666666666666667"
+              },
+              "Length": {
+                  "id": 43627,
+                  "value": "3.6666666666666667"
+              },
+              "Comfort": {
+                  "id": 43628,
+                  "value": "3.6666666666666667"
+              },
+              "Quality": {
+                  "id": 43629,
+                  "value": "3.6666666666666667"
+              }
+          },
+          "averageRating": 3.7,
+          "starRating": 3.75
+      }
+  },
+  {
+      "currentProductId": 13029,
+      "product": {
+          "id": 13029,
+          "name": "Blues Suede Shoes",
+          "slogan": "2019 Stanley Cup Limited Edition",
+          "description": "Touch down in the land of the Delta Blues in the middle of the pouring rain",
+          "category": "Dress Shoes",
+          "features": [
+              {
+                  "feature": "Sole",
+                  "value": "Rubber"
+              },
+              {
+                  "feature": "Material",
+                  "value": "FullControlSkin"
+              },
+              {
+                  "feature": "Stitching",
+                  "value": "Double Stitch"
+              }
+          ]
+      },
+      "styles": [
+          {
+              "style_id": 64162,
+              "name": "White Sole",
+              "original_price": "120.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1561861422-a549073e547a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1561861422-a549073e547a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1560072810-1cffb09faf0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1560072810-1cffb09faf0f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 14,
+                      "size": "7",
+                      "sku": "370513"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "7.5",
+                      "sku": "370514"
+                  },
+                  {
+                      "quantity": 9,
+                      "size": "8",
+                      "sku": "370515"
+                  },
+                  {
+                      "quantity": 2,
+                      "size": "8.5",
+                      "sku": "370516"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "9",
+                      "sku": "370517"
+                  },
+                  {
+                      "quantity": 12,
+                      "size": "9.5",
+                      "sku": "370518"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "10",
+                      "sku": "370519"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "10.5",
+                      "sku": "370520"
+                  },
+                  {
+                      "quantity": 11,
+                      "size": "11",
+                      "sku": "370521"
+                  },
+                  {
+                      "quantity": 35,
+                      "size": "11.5",
+                      "sku": "370522"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "12",
+                      "sku": "370523"
+                  }
+              ]
+          },
+          {
+              "style_id": 64163,
+              "name": "Black Sole",
+              "original_price": "120.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/uploads/1412198532414025532c0/6a31309c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/uploads/1412198532414025532c0/6a31309c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1454024183771-42d54053cd75?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1454024183771-42d54053cd75?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 14,
+                      "size": "7",
+                      "sku": "370524"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "7.5",
+                      "sku": "370525"
+                  },
+                  {
+                      "quantity": 9,
+                      "size": "8",
+                      "sku": "370526"
+                  },
+                  {
+                      "quantity": 2,
+                      "size": "8.5",
+                      "sku": "370527"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "9",
+                      "sku": "370528"
+                  },
+                  {
+                      "quantity": 12,
+                      "size": "9.5",
+                      "sku": "370529"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "10",
+                      "sku": "370530"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "10.5",
+                      "sku": "370531"
+                  },
+                  {
+                      "quantity": 11,
+                      "size": "11",
+                      "sku": "370532"
+                  },
+                  {
+                      "quantity": 35,
+                      "size": "11.5",
+                      "sku": "370533"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "12",
+                      "sku": "370534"
+                  }
+              ]
+          },
+          {
+              "style_id": 64164,
+              "name": "Tan Sole",
+              "original_price": "120.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1465124982537-9f918f1e1aaf?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1465124982537-9f918f1e1aaf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1449505278894-297fdb3edbc1?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1449505278894-297fdb3edbc1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 14,
+                      "size": "7",
+                      "sku": "370535"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "7.5",
+                      "sku": "370536"
+                  },
+                  {
+                      "quantity": 9,
+                      "size": "8",
+                      "sku": "370537"
+                  },
+                  {
+                      "quantity": 2,
+                      "size": "8.5",
+                      "sku": "370538"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "9",
+                      "sku": "370539"
+                  },
+                  {
+                      "quantity": 12,
+                      "size": "9.5",
+                      "sku": "370540"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "10",
+                      "sku": "370541"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "10.5",
+                      "sku": "370542"
+                  },
+                  {
+                      "quantity": 11,
+                      "size": "11",
+                      "sku": "370543"
+                  },
+                  {
+                      "quantity": 35,
+                      "size": "11.5",
+                      "sku": "370544"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "12",
+                      "sku": "370545"
+                  }
+              ]
+          },
+          {
+              "style_id": 64165,
+              "name": "Red Sole",
+              "original_price": "120.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1454177643390-7f100d1bbeec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1454177643390-7f100d1bbeec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 14,
+                      "size": "7",
+                      "sku": "370546"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "7.5",
+                      "sku": "370547"
+                  },
+                  {
+                      "quantity": 9,
+                      "size": "8",
+                      "sku": "370548"
+                  },
+                  {
+                      "quantity": 2,
+                      "size": "8.5",
+                      "sku": "370549"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "9",
+                      "sku": "370550"
+                  },
+                  {
+                      "quantity": 12,
+                      "size": "9.5",
+                      "sku": "370551"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "10",
+                      "sku": "370552"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "10.5",
+                      "sku": "370553"
+                  },
+                  {
+                      "quantity": 11,
+                      "size": "11",
+                      "sku": "370554"
+                  },
+                  {
+                      "quantity": 35,
+                      "size": "11.5",
+                      "sku": "370555"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "12",
+                      "sku": "370556"
+                  }
+              ]
+          },
+          {
+              "style_id": 64166,
+              "name": "Yellow Sole",
+              "original_price": "120.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1499013819532-e4ff41b00669?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1499013819532-e4ff41b00669?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1459631836437-1c2824882e3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1459631836437-1c2824882e3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 14,
+                      "size": "7",
+                      "sku": "370557"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "7.5",
+                      "sku": "370558"
+                  },
+                  {
+                      "quantity": 9,
+                      "size": "8",
+                      "sku": "370559"
+                  },
+                  {
+                      "quantity": 2,
+                      "size": "8.5",
+                      "sku": "370560"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "9",
+                      "sku": "370561"
+                  },
+                  {
+                      "quantity": 12,
+                      "size": "9.5",
+                      "sku": "370562"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "10",
+                      "sku": "370563"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "10.5",
+                      "sku": "370564"
+                  },
+                  {
+                      "quantity": 11,
+                      "size": "11",
+                      "sku": "370565"
+                  },
+                  {
+                      "quantity": 35,
+                      "size": "11.5",
+                      "sku": "370566"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "12",
+                      "sku": "370567"
+                  }
+              ]
+          }
+      ],
+      "meta": {
+          "ratings": {
+              "1": "2",
+              "5": "3"
+          },
+          "recommended": {
+              "false": "2",
+              "true": "3"
+          },
+          "characteristics": {
+              "Size": {
+                  "id": 43638,
+                  "value": "2.8000000000000000"
+              },
+              "Width": {
+                  "id": 43639,
+                  "value": "3.6000000000000000"
+              },
+              "Comfort": {
+                  "id": 43640,
+                  "value": "3.4000000000000000"
+              },
+              "Quality": {
+                  "id": 43641,
+                  "value": "2.8000000000000000"
+              }
+          },
+          "averageRating": 3.4,
+          "starRating": 3.5
+      }
+  },
+  {
+      "currentProductId": 13031,
+      "product": {
+          "id": 13031,
+          "name": "Summer Shoes",
+          "slogan": "A risky call in the spring or fall",
+          "description": "Low-top panelled buffed leather and mesh sneakers. Sizing embroidered in black at round toe. Tonal lace-up closure. Pull-loop and rubberized style name at padded tongue. Padded collar. Pull-loop at heel collar. Logo embroidered in black at outer side. Tonal treaded rubber sole. Tonal stitching.",
+          "category": "Kicks",
+          "features": [
+              {
+                  "feature": "Sole",
+                  "value": "Rubber"
+              },
+              {
+                  "feature": "Material",
+                  "value": "FullControlSkin"
+              },
+              {
+                  "feature": "Mid-Sole",
+                  "value": "ControlSupport Arch Bridge"
+              },
+              {
+                  "feature": "Stitching",
+                  "value": "Double Stitch"
+              }
+          ]
+      },
+      "styles": [
+          {
+              "style_id": 64176,
+              "name": "White",
+              "original_price": "59.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1550338300-f9a475b50ba2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1550338300-f9a475b50ba2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1500699889581-a7f97ec155d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1500699889581-a7f97ec155d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1498200163530-bdb7c50ec863?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1498200163530-bdb7c50ec863?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1558118070-09ba9a9efb2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1558118070-09ba9a9efb2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1531889947080-bc5693ae9fa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1531889947080-bc5693ae9fa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"
+                  },
+                  {
+                      "thumbnail_url": "https://images.unsplash.com/photo-1529108750117-bcbad8bd25dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80",
+                      "url": "https://images.unsplash.com/photo-1529108750117-bcbad8bd25dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=662&q=80"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": 14,
+                      "size": "7",
+                      "sku": "370667"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "7.5",
+                      "sku": "370668"
+                  },
+                  {
+                      "quantity": 9,
+                      "size": "8",
+                      "sku": "370669"
+                  },
+                  {
+                      "quantity": 2,
+                      "size": "8.5",
+                      "sku": "370670"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "9",
+                      "sku": "370671"
+                  },
+                  {
+                      "quantity": 12,
+                      "size": "9.5",
+                      "sku": "370672"
+                  },
+                  {
+                      "quantity": 10,
+                      "size": "10",
+                      "sku": "370673"
+                  },
+                  {
+                      "quantity": 18,
+                      "size": "10.5",
+                      "sku": "370674"
+                  },
+                  {
+                      "quantity": 11,
+                      "size": "11",
+                      "sku": "370675"
+                  },
+                  {
+                      "quantity": 35,
+                      "size": "11.5",
+                      "sku": "370676"
+                  },
+                  {
+                      "quantity": 25,
+                      "size": "12",
+                      "sku": "370677"
+                  }
+              ]
+          }
+      ],
+      "meta": {
+          "ratings": {},
+          "recommended": {},
+          "characteristics": {
+              "Size": {
+                  "id": 43646,
+                  "value": null
+              },
+              "Width": {
+                  "id": 43647,
+                  "value": null
+              },
+              "Comfort": {
+                  "id": 43648,
+                  "value": null
+              },
+              "Quality": {
+                  "id": 43649,
+                  "value": null
+              }
+          },
+          "averageRating": null,
+          "starRating": null
+      }
+  },
+  {
+      "currentProductId": 13032,
+      "product": {
+          "id": 13032,
+          "name": "Infinity Stone",
+          "slogan": "Reality is often disappointing. That is, it was. Now, reality can be whatever I want.",
+          "description": "The Infinity Stones are six immensely powerful stone-like objects tied to different aspects of the universe, created by the Cosmic Entities. Each of the stones possesses unique capabilities that have been enhanced and altered by various alien civilizations for millennia.",
+          "category": "Accessories",
+          "features": []
+      },
+      "styles": [
+          {
+              "style_id": 64177,
+              "name": "Reality",
+              "original_price": "500000000.00",
+              "sale_price": null,
+              "default?": true,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Reality_Stone_VFX.png/revision/latest?cb=20190427012609",
+                      "url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/9/9b/Reality_Stone_VFX.png/revision/latest?cb=20190427012609"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          },
+          {
+              "style_id": 64178,
+              "name": "Space",
+              "original_price": "500000000.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/0/0a/Space_Stone_VFX.png/revision/latest?cb=20190427012702",
+                      "url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/0/0a/Space_Stone_VFX.png/revision/latest?cb=20190427012702"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          },
+          {
+              "style_id": 64179,
+              "name": "Time",
+              "original_price": "500000000.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/f/f0/Time_Stone_VFX.png/revision/latest?cb=20190427012724",
+                      "url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/f/f0/Time_Stone_VFX.png/revision/latest?cb=20190427012724"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          },
+          {
+              "style_id": 64180,
+              "name": "Power",
+              "original_price": "500000000.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/d/d7/Power_Stone_VFX.png/revision/latest?cb=20190427012543",
+                      "url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/d/d7/Power_Stone_VFX.png/revision/latest?cb=20190427012543"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          },
+          {
+              "style_id": 64181,
+              "name": "Mind",
+              "original_price": "500000000.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/e/e4/Mind_Stone_VFX.png/revision/latest?cb=20190427012504",
+                      "url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/e/e4/Mind_Stone_VFX.png/revision/latest?cb=20190427012504"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          },
+          {
+              "style_id": 64182,
+              "name": "Soul",
+              "original_price": "500000000.00",
+              "sale_price": null,
+              "default?": false,
+              "photos": [
+                  {
+                      "thumbnail_url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/1/17/Soul_Stone_VFX.png/revision/latest?cb=20190427012633",
+                      "url": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/1/17/Soul_Stone_VFX.png/revision/latest?cb=20190427012633"
+                  }
+              ],
+              "skus": [
+                  {
+                      "quantity": null,
+                      "size": null,
+                      "sku": "null"
+                  }
+              ]
+          }
+      ],
+      "meta": {
+          "ratings": {},
+          "recommended": {},
+          "characteristics": {
+              "Quality": {
+                  "id": 43650,
+                  "value": null
+              }
+          },
+          "averageRating": null,
+          "starRating": null
+      }
+  }
+]

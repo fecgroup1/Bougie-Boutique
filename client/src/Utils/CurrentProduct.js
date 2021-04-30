@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import ProductAPI from './ProductAPI.js';
 import QuestionsAPI from './QuestionAPI.js';
 import ReviewAPI from './ReviewAPI.js';
-import axios from 'axios'
+import RelatedAPI from './RelatedAPI.js';
 
 class CurrentProduct extends React.Component {
 
@@ -24,6 +24,7 @@ class CurrentProduct extends React.Component {
     this.setMeta=this.setMeta.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.getAnswers = this.getAnswers.bind(this)
+    this.getRelated = this.getRelated.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +42,21 @@ class CurrentProduct extends React.Component {
     window.scrollTo({top: 0, behavior: 'smooth'})
     this.props.history.push(`/${pid}`);
   }
+
+  getRelated() {
+    console.log('get related is invoked', this.state.currentProductId)
+    return RelatedAPI.getRelatedProducts(this.state.currentProductId)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => err)
+  }
+
+  // changeStyle(index) {
+  //   this.setState({
+  //     currStyle: index
+  //   });
+  // }
 
   setProduct(pid) {
     let id = pid === undefined ? this.state.currentProductId: pid;

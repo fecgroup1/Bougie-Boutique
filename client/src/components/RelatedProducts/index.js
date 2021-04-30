@@ -4,6 +4,7 @@ import ProductAPI from '../../Utils/ProductAPI';
 import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button, StyledProductCard, AddOutfitButton } from '../../Styles';
 import ProductCard from './ProductCard.js'
 import CompareModal from './CompareModal.js'
+import { act } from 'react-dom/test-utils';
 
 const RelatedProducts = ({store, theme}) => {
 
@@ -52,14 +53,14 @@ const RelatedProducts = ({store, theme}) => {
   }, [screenWidth])
 
   //grabs related products when the current productId is initally set/changed
-  useEffect(() => {
-    RelatedAPI.getRelatedProducts(store.state.currentProductId)
-      .then((results) => {
-        setProducts(results)
-      })
-      .catch((err) => {
-        setRelatedSuccess(false)
-      })
+  useEffect(async () => {
+    try {
+      const results = await store.getRelated();
+      console.log('results in the related index: ', results)
+      setProducts(results);
+    } catch (e) {
+      setRelatedSuccess(false)
+    }
 
   }, [store.state.currentProductId]);
 
@@ -287,6 +288,7 @@ const RelatedProducts = ({store, theme}) => {
             product={store.state.product}
             comparisonProduct={comparisonProduct}
             resetCompare={setComparisonProduct}
+            theme={theme}
           />
          </section>
     </Fragment>
