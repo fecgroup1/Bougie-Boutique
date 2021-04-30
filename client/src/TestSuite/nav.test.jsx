@@ -41,9 +41,9 @@ test('theme button toggles theme colors upon click', () => {
 
 test('cart value updates when new products are added', () => {
   const { rerender } = render(<MockNav cart={{sku: 1}}/>);
-  expect(screen.getByLabelText(/Cart Count/)).toHaveTextContent('1');
+  expect(screen.getByLabelText(/Cart Count/i)).toHaveTextContent('1');
 
   rerender(<MockNav cart={{sku: 1, newSku: 2}}/>);
-  expect(screen.getByLabelText(/Cart Count/)).toHaveTextContent('3');
+  expect(screen.getByLabelText(/Cart Count/i)).toHaveTextContent('3');
 
 });

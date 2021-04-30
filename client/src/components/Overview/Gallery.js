@@ -128,11 +128,13 @@ class Gallery extends React.Component {
 
     const styles = this.props.styles;
     const currImg = this.props.currImg;
+    const title = this.props.title;
 
     return(
       <Left style={{alignContent: 'center'}}>
         <div id="gallery" style={{ height: '66vh', minHeight: '400px', overflow: 'hidden' }}>
           <DefaultView
+            title={title}
             styles={styles}
             currImg={currImg}
             lastImgIndex={this.state.lastImgIndex}

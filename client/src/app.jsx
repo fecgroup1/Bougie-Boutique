@@ -110,7 +110,7 @@ const App = ({match, location, history}) => {
               />
             </div>
           </>
-      )}/>
+        )}/>
     </ThemeProvider>
   );
 };

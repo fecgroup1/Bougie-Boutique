@@ -10,7 +10,7 @@ class Overview extends React.Component {
     super(props);
     this.state = {
       currImg: [0, 0],
-      currentProductID: this.props.store.state.currentProductId,
+      currentProductID: this.props.store.state.currentProductId || null,
       product: {
         name: 'Loading...',
         slogan: 'Loading...',
@@ -73,7 +73,8 @@ class Overview extends React.Component {
           <Gallery
             styles={store.styles}
             currImg={store.currImg}
-            changeImg={this.props.store.changeImg} />
+            changeImg={this.props.store.changeImg}
+            title={store.product.name} />
           <Styles
             store={store}
             product={store.product}
