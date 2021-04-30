@@ -62,8 +62,14 @@ const DefaultView = ({ styles, currImg, lastImgIndex, lastStyleIndex, currLastIn
           styles={styles}
           currImg={currImg}
           numImgs={numImgs}
+          lastImgIndex={lastImgIndex}
+          lastStyleIndex={lastStyleIndex}
+          currLastIndex={currLastIndex}
+          prevLastIndex={prevLastIndex}
           handleModalOpen={handleModalOpen}
-          handleImgClick={handleImgClick}/>
+          handleImgClick={handleImgClick}
+          buttonHeight={buttonHeight}
+          buttonWidth={buttonWidth}/>
     </>
     );
   }

@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { ThemeConsumer } from 'styled-components';
 import GalleryThumbnails from './GalleryThumbnails.js';
+import ScrollButtons from './ScrollButtons.js';
 
 // import { GalleryModal } from './../../../Styles/Overview';
 
 // Add x in corner to close Modal
 
-const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick, numImgs }) => {
+const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick, numImgs, lastImgIndex, lastStyleIndex, currLastIndex, prevLastIndex, buttonHeight, buttonWidth }) => {
   const [zoom, setZoom] = useState(0);
   const [imgTop, setImgTop] = useState(50);
   const [imgLeft, setImgLeft] = useState(50);
@@ -90,6 +91,19 @@ const ExpandedView = ({ styles, currImg, isOpen, handleModalOpen, handleImgClick
           isOpen={isOpen}
           onRequestClose={() => handleModalOpen(false)}
           appElement={document.getElementById('app')}>
+            <ScrollButtons
+              currImg={currImg}
+              lastImgIndex={lastImgIndex}
+              lastStyleIndex={lastStyleIndex}
+              currLastIndex={currLastIndex}
+              prevLastIndex={prevLastIndex}
+              handleImgClick={handleImgClick}
+              galHeight={window.innerHeight - 90}
+              galWidth={window.innerWidth - 90}
+              galLeft={0}
+              galTop={0}
+              buttonHeight={buttonHeight}
+              buttonWidth={buttonWidth} />
             <button
               onClick={() => handleModalOpen(false)}
               style={{
