@@ -105,12 +105,18 @@ class Nav extends React.Component {
           Bougie Boutique
         </Title>
         <div className="headerRight" style={right}>
-          <div style={number}>{cartCount}</div>
+          <div
+            aria-label={`Cart Count: ${cartCount}`}
+            style={number}>
+              {cartCount}
+          </div>
           <NavButton
-              style={cartIcon}>
-              <span className="lni lni-tshirt"></span>
+            aria-label="View Cart"
+            style={cartIcon}>
+            <span className="lni lni-tshirt"></span>
           </NavButton>
           <NavButton
+            aria-label="Theme Toggle"
             style={track}
             onClick={toggleTheme}
             onMouseOver={this.handleMouseOver}

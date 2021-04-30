@@ -57,7 +57,6 @@ class Gallery extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate in Gallery');
 
     // GET BUTTON SIZE
     const resize_button = new ResizeObserver((entries) => {
