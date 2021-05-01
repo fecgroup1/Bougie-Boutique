@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, screen, fireEvent, act, waitForElementToBeRemoved} from '@testing-library/react';
+import {render, screen, fireEvent, act, waitForElementToBeRemoved, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import axios from 'axios';
 import RelatedProducts from '../components/RelatedProducts/index.js';
@@ -32,9 +32,19 @@ test('Succesfully handles the realted products API call', () => {
 
 })
 
-// test('Proudct cards render with related products received by the api call', async () => {
-//   console.log(prettyDOM(document))
-//   const productCards = await screen.getAllByLabelText(/productCard/i);
-//   expect(productCards.length).toEqual(dummyRelated.length);
+test('Proudct cards render with related products received by the api call', async () => {
 
-// })
+  const div = document.createElement('div');
+  const promise = Promise.resolve(dummyRelated);
+  store.getRelated = () => {return promise}
+
+  render(
+    <RelatedProducts store={store} theme={light} />, div
+  )
+
+  await waitFor(() => {
+    const productCards = screen.getAllByLabelText(/productCard/i);
+    expect(productCards.length).toEqual(dummyRelated.length);
+  })
+
+})
