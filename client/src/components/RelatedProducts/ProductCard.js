@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment} from 'react'
 import { StyledProductCard, CardImage,  ActionButton, StarsDisplay } from '../../Styles/'
 
-const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor, addedClasses, relatedProduct, theme}) => {
+const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor, addedClasses, relatedProduct, theme, id}) => {
   let prd = product.product
   const [actionProduct, setActionProduct] = useState()
 
@@ -18,10 +18,14 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
     ?
       <StyledProductCard
         className={addedClasses}
+        aria-label="productCard"
+        alt={`${prd.name} product-card`}
       >
         <ActionButton
           onClick={() => buttonAction(actionProduct, event)}
           cursor={cursor}
+          alt={`${id} action button`}
+          aria-label={`${id} action button`}
         >
           <i className={`lni lni-32 ${buttonType}`} />
         </ActionButton>
@@ -45,13 +49,16 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
           <StarsDisplay rating={product.meta.starRating}/>
         </div>
       </StyledProductCard>
-    :<StyledProductCard>
+    :<StyledProductCard
+    alt="palceholder product-card"
+    >
       <ActionButton>
       <i className="lni lni-32 lni-pagination" />
       </ActionButton>
       <div style={{alignSelf: 'center', placeSelf: 'center'}}>
       <i
         className="lni lni-spinner-arrow lni-is-spinning"
+        aria-label="spinner"
         style={{color: `${theme.bluGry}`, fontSize:'5em'}}
       />
       </div>

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const StyledProductCard = styled.div`
   position: relative;
   margin: 0 2vw;
+  margin-top: .25em;
   display: inline-grid;
   width: 275px;
   height 400px;

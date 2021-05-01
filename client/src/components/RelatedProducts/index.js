@@ -4,6 +4,7 @@ import ProductAPI from '../../Utils/ProductAPI';
 import { RelatedContainer, ProductsContainer, CardContainer, CardsWrapper, Button, StyledProductCard, AddOutfitButton } from '../../Styles';
 import ProductCard from './ProductCard.js'
 import CompareModal from './CompareModal.js'
+import { act } from 'react-dom/test-utils';
 
 const RelatedProducts = ({store, theme}) => {
 
@@ -15,7 +16,7 @@ const RelatedProducts = ({store, theme}) => {
   const [outfitScroll, setOutfitScroll] = useState({left: false, right: true});
   const [comparisonProduct, setComparisonProduct] = useState(null);
   const [outfits, setOutfits] = useState({});
-  const [screenWidth, setScreenWidth] = useState(null);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     let outfitWidth = document.getElementById('outfitsWrapper').clientWidth
@@ -37,12 +38,12 @@ const RelatedProducts = ({store, theme}) => {
   useEffect(() => {
     let productWidth = document.getElementById('productsWrapper').clientWidth
 
-    if(productWidth + 350 < screenWidth) {
+    if(productWidth + 150 < screenWidth) {
       setProductScroll({
         ...productScroll,
         right: false,
       })
-    } else if (productWidth + 350 > screenWidth) {
+    } else if (productWidth + 150 > screenWidth) {
       setProductScroll({
         ...productScroll,
         right: true,
@@ -52,15 +53,13 @@ const RelatedProducts = ({store, theme}) => {
   }, [screenWidth])
 
   //grabs related products when the current productId is initally set/changed
-  useEffect(() => {
-    RelatedAPI.getRelatedProducts(store.state.currentProductId)
-      .then((results) => {
-        setProducts(results)
-      })
-      .catch((err) => {
-        setRelatedSuccess(false)
-      })
-
+  useEffect(async () => {
+    try {
+      const results = await store.getRelated();
+      setProducts(results);
+    } catch (e) {
+      setRelatedSuccess(false)
+    }
   }, [store.state.currentProductId]);
 
   //check local storage on initial render
@@ -69,7 +68,7 @@ const RelatedProducts = ({store, theme}) => {
     if (saved) {
       setOutfits(saved);
     }
-    setScreenWidth(window.innerWidth);
+    // setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [])
@@ -168,6 +167,7 @@ const RelatedProducts = ({store, theme}) => {
             products.map((product, index) => (
               <ProductCard
                 key={'relatedproduct' + index}
+                id={'relatedproduct' + index}
                 theme={theme}
                 product={product}
                 className={'productCard'}
@@ -181,7 +181,6 @@ const RelatedProducts = ({store, theme}) => {
           }
         </CardContainer>
           <Button
-            // onClick={(event) => scroll('products', 'right', event)}
             show={productScroll.right}
             position={'right'}
           >
@@ -225,12 +224,13 @@ const RelatedProducts = ({store, theme}) => {
         >
         <AddOutfitButton
         onClick={() => handleSaveOutfit(store.state)}
+        aria-label={'add outfit button'}
         >
           <i
             className="lni lni-circle-plus plus"
             style={{
               fontSize: '9em',
-              color: theme.bluGry,
+              color: theme.bluGry || blue,
               boxShadow: `10px 10px 15px #cccccc`,
               borderRadius: '500px'
             }}
@@ -242,6 +242,7 @@ const RelatedProducts = ({store, theme}) => {
             Object.keys(outfits).map((product, index) => (
               <ProductCard
                 key={'outfit' + index}
+                id={'outfit' + index}
                 theme={theme}
                 product={outfits[product]}
                 className={'productCard'}
@@ -279,7 +280,7 @@ const RelatedProducts = ({store, theme}) => {
         <section tracking={'Related Products'}>
           <RelatedContainer>
             {
-              relatedSuccess ? relatedSection : <h2>Error Loading Related Products</h2>
+              relatedSuccess ? relatedSection : <h2 alt='error loading products'>Error Loading Related Products</h2>
             }
             {outfitSection}
           </RelatedContainer>
@@ -287,6 +288,7 @@ const RelatedProducts = ({store, theme}) => {
             product={store.state.product}
             comparisonProduct={comparisonProduct}
             resetCompare={setComparisonProduct}
+            theme={theme}
           />
          </section>
     </Fragment>
