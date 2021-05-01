@@ -41,7 +41,6 @@ const CompareModal = ({product, comparisonProduct, resetCompare, theme}) => {
       }}
     >
       <Chart
-        aria-label={`comparison chart`}
         product={product}
         comparison={comparisonProduct}
         theme={theme}

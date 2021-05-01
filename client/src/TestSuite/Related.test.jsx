@@ -60,15 +60,10 @@ test('Tests that the comparison modal renders when clicking compare on a product
     <RelatedProducts store={store} theme={light} />, div
   )
 
-
   await waitFor(() => {
-
     const productCards = screen.getAllByLabelText(/productCard/i);
-    // const element = screen.getAllByAltText(/action button/i)
-
-  // fireEvent.click(screen.getByAltText(/relatedproduct0 action button/i))
   })
   fireEvent.click(screen.getByLabelText(/relatedproduct0 action button/i))
-  // const comparisonChart = screen.getByLabelText(/comaprison chart/i);
-  // expect(comparisonChart).toBeTruthy();
+  const comparisonChart = screen.getByLabelText(/comparison chart/i);
+  expect(comparisonChart).toBeTruthy();
 })

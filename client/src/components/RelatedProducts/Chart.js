@@ -33,24 +33,28 @@ const Chart = ({product, comparison, theme}) => {
       return (
         <Fragment>
           <h2 style={{textAlign: 'center', marginTop: '.25em', color: theme.bluGry}}>Compare Products</h2>
-          <CompareTable>
-              <th className={'title'}>{product.name}</th>
-              <th className={'inner title'}></th>
-              <th className={'title'}>{comparison.name}</th>
-              <tbody>
-                { !!features
-                  ?
-                    Object.keys(features).map((feature, i) => (
-                      <tr key={i}>
-                        <td>{features[feature][0]}</td>
-                        <td className={'inner'}>{feature}</td>
-                        <td>{features[feature][1]}</td>
-                      </tr>
-                    ))
-                  :
-                  null
-                }
-              </tbody>
+          <CompareTable aria-label={`comparison chart`}>
+            <thead>
+              <tr>
+                <th className={'title'}>{product.name}</th>
+                <th className={'inner title'}></th>
+                <th className={'title'}>{comparison.name}</th>
+              </tr>
+            </thead>
+            <tbody>
+              { !!features
+                ?
+                  Object.keys(features).map((feature, i) => (
+                    <tr key={i}>
+                      <td>{features[feature][0]}</td>
+                      <td className={'inner'}>{feature}</td>
+                      <td>{features[feature][1]}</td>
+                    </tr>
+                  ))
+                :
+                null
+              }
+            </tbody>
           </CompareTable>
         </Fragment>
       )
