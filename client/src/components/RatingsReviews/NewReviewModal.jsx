@@ -25,7 +25,7 @@ const AddCharRateing = (Characteristic, value) => {
 const generateCharacteristic = (Characteristic)=> {
   return (
     <div style={{'marginTop': '15px'}}><br></br>
-      <span> * </span><u>{Characteristic}:</u> <span  style= {{'fontSize': '90%'}} id= {Characteristic}></span><br></br><br></br>
+      <span> * </span><u data-testid= 'charLabel'>{Characteristic}:</u> <span  style= {{'fontSize': '90%'}} id= {Characteristic}></span><br></br><br></br>
       <label style= {{'fontSize': '85%'}} >{CharacteristicDeff[Characteristic][0]} </label>
       <input required onClick= {(event)=> AddCharRateing( Characteristic, event.target.value) } type="radio" name={Characteristic} value="1" ></input>
       <input onClick= {(event)=> AddCharRateing( Characteristic, event.target.value) } type="radio" name={Characteristic} value="2" ></input>
@@ -174,7 +174,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId,
     'content': {'color':'black', 'width': '450px', 'margin':'auto'} }}>
     <span style={{'float': 'right', 'fontSize': '150%'}} onClick= {()=> close()}>&#10006;</span>
     <h2>Write Your Review</h2>
-    <h3>About the {productName}</h3>
+    <h3 data-testid= 'reviewAbout'>About the {productName}</h3>
     <form name = 'NewReview' onSubmit= {()=> submitReview({productId})}>
       <label style={{'marginTop': '40px'}} for='starRating'>* Overall Rating:  </label>
       <ClickableStars starStyles= {starStyles} highlightStars= {highlightStars}/>
@@ -197,7 +197,7 @@ const NewReviewModal = ({close, isOpen, productName, characteristics, productId,
       <div style={{'marginTop': '40px'}} >* What is your email?</div><br></br>
       <input name= 'email' required type='email' size='50' maxLength= '60' id= 'email' placeholder= 'jackson11@email.com'></input>
       <div style= {{'marginTop': '10px','fontSize': '77%'}}>For authentication reasons, you will not be emailed.</div>
-      <button  style={{'marginTop': '15px'}} type='submit' >Submit Review</button>
+      <button data-testid ='submitReviewButton' style={{'marginTop': '15px'}} type='submit' >Submit Review</button>
     </form>
   </Modal>
   )
