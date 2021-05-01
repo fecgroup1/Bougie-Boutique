@@ -38,7 +38,7 @@ const RenderQuestion = (props) => {
   const report = (qReported.includes(props.question.question_id))
   const qDate = new Date(props.question.question_date)
   return (
-    <div className='Question' key={props.index}>
+    <div aria-label='renderedQuestion' className='Question' key={props.index}>
       <QuestionHead>
         <p style={{display: 'inline-block', maxWidth: '50%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
         <HelpfulBar>Helpful?
