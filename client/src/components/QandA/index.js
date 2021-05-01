@@ -13,7 +13,7 @@ const QandA = ({store}) => {
   }, [store.state.currentProductId, store.state.product]);
 
   if (productId !== undefined) {
-    return (<Questions productId={productId} product={product}/>)
+    return (<Questions productId={productId} product={product} getQuestions={store.getQuestions} getAnswers={store.getAnswers}/>)
   } else {
     return <div>Loading!!!</div>
   }

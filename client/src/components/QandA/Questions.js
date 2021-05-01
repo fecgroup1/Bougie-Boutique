@@ -1,23 +1,21 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import Answers from './Answers.js'
+import RenderQuestion from './RenderQuestion.js'
 import AddQuestion from './AddQuestion.js'
 import AddAnswer from './AddAnswer.js'
 import SearchQuestions from './SearchQuestions.js'
-import ProductAPI from '../../Utils/ProductAPI';
+import QuestionsAPI from '../../Utils/QuestionAPI';
 import { QuestionsContainer, QAContainer, QuestionCardsContainer, ThemeToggle, QuestionHead, QuestionsButtons, HelpfulButton, ReportButton, HelpfulBar } from '../../Styles'
 
 const Questions = (props) => {
   const [loadedQuestions, setLoadedQuestions] = useState(false)
   const [questions, setQuestions] = useState([]);
-  const [newAnswer, setNewAnswer] = useState(null)
   const [newQuestion, setNewQuestion] = useState(null)
   const [questionLength, setQuestionLength] = useState(2);
   const [searchQuestionLength, setSearchQuestionLength] = useState(2);
   const [moreQuestions, setMoreQuestions] = useState(false);
   const [moreSearchedQuestions, setMoreSearchedQuestions] = useState(false);
-  const [questionMarkedHelpful, setQuestionMarkedHelpful] = useState([]);
-  const [qReported, setQReported] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [search, setSearch] = useState(false);
@@ -30,37 +28,28 @@ const Questions = (props) => {
     setMoreSearchedQuestions(false)
     setSearchQuery('')
     setSearchResults([])
-    getQuestions();
+    QuestionsAPI.getQuestions(props.productId)
+      .then((result) => {
+        setQuestions(result)
+        setLoadedQuestions(true)
+      })
+      .catch((err) => {
+        setLoadedQuestions(false)
+        console.log(err)
+      })
   }, [props.productId])
 
   useEffect(() => {
-    getQuestions()
-  }, [newQuestion])
-
-
-  const getQuestions = () => {
-    const qid = props.productId
-    axios.get(`qa/questions?product_id=${qid}&count=50`)
-    .then((question) => {
-      setQuestions(question.data.results)
+    QuestionsAPI.getQuestions(props.productId)
+    .then((result) => {
+      setQuestions(result)
       setLoadedQuestions(true)
     })
     .catch((err) => {
       setLoadedQuestions(false)
+      console.log(err)
     })
-  }
-
-  const markHelpful = (question) => {
-    const prevMarked = questionMarkedHelpful
-    const qid = question.question_id;
-    if (prevMarked.includes(question.question_id)) {
-      return;
-    } else {
-      setQuestionMarkedHelpful([...prevMarked, question.question_id])
-      axios.put(`qa/questions/${qid}/helpful`, null)
-      question.question_helpfulness += 1
-    }
-  }
+  }, [newQuestion])
 
   const filterQuestions = (event) => {
     if (event.target.value.length < 3) {
@@ -82,49 +71,6 @@ const Questions = (props) => {
     } else {
       setSearchResults(questions)
     }
-  }
-
-  const reportQuestion = (question) => {
-    const prevReported = qReported;
-    const qid = question.question_id;
-    setQReported([...prevReported, question.question_id])
-    axios.put(`qa/questions/${qid}/report`, null)
-    question.reported = true;
-  }
-
-  const escape = (html) => {
-    return String(html)
-      .replace(new RegExp("&"+"#"+"x27;", "g"), "'")
-  }
-
-  const renderQuestion = (question, index, product) => {
-    const tempBody = (escape(question.question_body))
-    const report = (qReported.includes(question.question_id))
-    const qDate = new Date(question.question_date)
-    return (
-      <div className='Question' key={index}>
-        <QuestionHead>
-          <p style={{display: 'inline-block', maxWidth: '50%', fontWeight: 'bold', fontSize: '18px'}}> Q: {tempBody}</p>
-          <HelpfulBar>Helpful?
-            <HelpfulButton onClick={() => markHelpful(question)}> Yes </HelpfulButton>
-            ({question.question_helpfulness}) | <AddAnswer question={question} setNewAnswer={setNewAnswer} product={props.product}/>
-          </HelpfulBar>
-        </QuestionHead>
-        <Answers key={index} questionId={question.question_id} currentProductId={props.productId} newAnswer={newAnswer}/>
-        <span style={{fontSize: '16px', marginTop: '10px', marginBottom: '20px', display: 'inline'}}>
-          Asked by: {question.asker_name}, {qDate.toDateString().substring(4)}
-          <span style={{marginLeft: '15px'}}>|</span>
-          {!report ?
-              (
-              <ReportButton onClick={() => reportQuestion(question)}>Report <i className="lni lni-flag-alt"/></ReportButton>
-              ) :
-              (
-              <span style={{color: 'red', fontSize: '14px', marginLeft: '15px'}}>Reported <i className="lni lni-flag-alt"></i></span>
-              )
-            }
-        </span>
-      </div>
-    )
   }
 
   const unlimitedScroll = (event) => {
@@ -166,13 +112,17 @@ const Questions = (props) => {
         {searchQuery.length >= 3 ? (
           <Fragment>
             {searchResults.slice(0, searchQuestionLength).map((question, index) =>
-            (renderQuestion(question, index)))}
+            <RenderQuestion question={question} key={index} product={props.product}
+            productId={props.productId} getAnswers={props.getAnswers}/>
+            )}
           </Fragment>
         )
         :
         (<Fragment>
             {questions.slice(0, questionLength).map((question, index) =>
-            (renderQuestion(question, index)))}
+            <RenderQuestion question={question} key={index} product={props.product}
+            productId={props.productId} getAnswers={props.getAnswers}/>
+            )}
         </Fragment>
 
         )}

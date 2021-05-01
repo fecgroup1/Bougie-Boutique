@@ -1,7 +1,8 @@
 import React, {Fragment} from 'react';
 import ProductAPI from './ProductAPI.js';
-import QuestionAPI from './QuestionAPI.js';
+import QuestionsAPI from './QuestionAPI.js';
 import ReviewAPI from './ReviewAPI.js';
+import axios from 'axios'
 
 class CurrentProduct extends React.Component {
 
@@ -16,12 +17,13 @@ class CurrentProduct extends React.Component {
     this.changeProduct = this.changeProduct.bind(this);
     // this.changeStyle = this.changeStyle.bind(this);
     this.setProduct = this.setProduct.bind(this);
-    this.setQuestions = this.setQuestions.bind(this);
     this.setCart = this.setCart.bind(this);
     // this.updateCart = this.updateCart.bind(this);
     this.changeImg = this.changeImg.bind(this);
     this.setReviews=this.setReviews.bind(this);
     this.setMeta=this.setMeta.bind(this);
+    this.getQuestions = this.getQuestions.bind(this);
+    this.getAnswers = this.getAnswers.bind(this)
   }
 
   componentDidMount() {
@@ -66,12 +68,24 @@ class CurrentProduct extends React.Component {
       });
   }
 
-  setQuestions(id) {
-    QuestionAPI.getQuestions(id)
-      .then((questions) => {
-        console.log('hello', questions)
-        this.setState({ questions: questions })
-      })
+  getQuestions(pid) {
+    return QuestionsAPI.getQuestions(pid)
+    .then((questions) => {
+      return questions
+    })
+    .catch((err) => {
+      console.log('err')
+    })
+  }
+
+  getAnswers (qid) {
+    return QuestionsAPI.getAnswers(qid)
+    .then ((answers) => {
+      return answers
+    })
+    .catch ((err) => {
+      console.log(err)
+    })
   }
 
   setCart() {
