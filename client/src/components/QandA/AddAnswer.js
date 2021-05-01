@@ -176,7 +176,7 @@ const AddAnswer = (props) => {
               }}
               onRequestClose={() => closeForm()}
             >
-            <form noValidate="">
+            <form noValidate="" data-testid='answerModal'>
               <div>
               <CloseModalButton onClick={closeForm}>X</CloseModalButton>
                 <h2>Add an answer</h2>
@@ -275,7 +275,7 @@ const AddAnswer = (props) => {
             </Modal>
           }
         </ThemeConsumer>
-        <AddAnswerButton onClick={openModal}>{' '}  Add Answer</AddAnswerButton>
+        <AddAnswerButton data-testid='addAnswer' onClick={openModal}>{' '}  Add Answer</AddAnswerButton>
       </Fragment>
     )
   } else {

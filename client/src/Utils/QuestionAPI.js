@@ -1,25 +1,25 @@
 import axios from 'axios'
 
-const qaAPI = {
-  getQuestions: (productId) => {
-    axios.get(`/qa/questions?product_id=${productId}`)
-      .then ((questions) => {
-        return questions.data.results;
-      })
-      .catch((err) => {
-        return err;
-      })
+const questionsAPI = {
+  getQuestions: (pid) => {
+    return axios.get(`qa/questions?product_id=${pid}&count=50`)
+    .then((question) => {
+      return question.data.results
+    })
+    .catch((err) => {
+      console.log('err')
+    })
   },
 
-  getAnswers: (questionId) => {
-    axios.get(`/qa/questions/${questionId}/answers`)
-      .then((answers) => {
-        return answers.data.results
-      })
-      .catch((err) => {
-        return err;
-      })
+  getAnswers: (qid) => {
+    return axios.get(`/qa/questions/${qid}/answers?count=50`)
+    .then ((answersArr) => {
+      return answersArr.data.results
+    })
+    .catch ((err) => {
+      return (err)
+    })
   }
 }
 
-export default qaAPI
+export default questionsAPI
