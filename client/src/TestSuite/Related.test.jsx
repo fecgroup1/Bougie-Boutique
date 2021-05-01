@@ -78,7 +78,7 @@ test('Tests that the comparison modal renders when clicking compare on a product
   expect(comparisonChart).toBeTruthy();
 })
 
-test('Create new saved outfit', async () => {
+test('Create a new saved outfit', async () => {
   const div = document.createElement('div');
   const promise = Promise.resolve(dummyRelated);
   store.getRelated = () => {return promise}
@@ -97,4 +97,27 @@ test('Create new saved outfit', async () => {
   const postClickCardCount = screen.getAllByLabelText(/productCard/i);
 
   expect(postClickCardCount.length).toBeGreaterThan(preClickCardCount.length)
+})
+
+test('Delete saved outfit', async () => {
+  const div = document.createElement('div');
+  const promise = Promise.resolve(dummyRelated);
+  store.getRelated = () => {return promise}
+
+  render(
+    <RelatedProducts store={store} theme={light} />, div
+  )
+
+  await waitForElementToBeRemoved(() => screen.getAllByLabelText(/spinner/i)[0])
+
+  let preClickCardCount = screen.getAllByLabelText(/productCard/i);
+
+  let postClickCardCount
+  await waitFor(() => {
+    fireEvent.click(screen.getByLabelText(/outfit0 action button/i))
+  })
+  postClickCardCount = screen.getAllByLabelText(/productCard/i);
+
+  expect(postClickCardCount.length).toBeLessThan(preClickCardCount.length)
+
 })
