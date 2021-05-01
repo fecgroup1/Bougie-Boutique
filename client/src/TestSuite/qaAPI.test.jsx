@@ -127,7 +127,7 @@ var getQAAnswers =
             "date": "2018-11-04T00:00:00.000Z",
             "answerer_name": "metslover",
             "helpfulness": 9,
-            "photos": []
+            "photos": ["https://hr-fec-group12.s3.amazonaws.com/Frog_on_palm_frond.jpg"]
         },
         {
             "answer_id": 630244,
@@ -214,6 +214,22 @@ const {getByText} = render(
 )
 const answerBody = getByText('Suede', { exact: false});
 });
+
+test('<RenderAnswer/> to open a photo when clicked on', () => {
+    const div = document.createElement('div')
+    const {getByText, getByTestId} = render(
+        <ThemeProvider theme={light}>
+            <RenderAnswer answer={getQAAnswers[0]} index={1}/>, div
+        </ThemeProvider>
+    )
+    const photoModal = getByTestId('photoModal');
+    fireEvent.click(photoModal)
+    const htmlElement = document.querySelector('[data-testid="openImgModal"]');
+    expect(htmlElement).toBeInTheDocument();
+    const openImgModal = getByTestId('openImgModal')
+    fireEvent.click(openImgModal)
+    expect(htmlElement).not.toBeInTheDocument();
+  });
 
 
 test('Question to post helpful if helpful is clicked', async () => {

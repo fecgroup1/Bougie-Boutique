@@ -58,9 +58,9 @@ const AnswerPhotos = (props) => {
                     }
                   }}
               >
-              <img className='enlargedImage' key={index} onClick={changeClick} src={getUrl(image)}/>
+              <img data-testid='openImgModal' className='enlargedImage' key={index} onClick={changeClick} src={getUrl(image)}/>
               </Modal>
-            <img key={index} style={{padding: '5px', maxHeight: '100px', maxWidth: '100px', marginLeft: '21px', marginRight: '-20px'}}
+            <img data-testid='photoModal' key={index} style={{padding: '5px', maxHeight: '100px', maxWidth: '100px', marginLeft: '21px', marginRight: '-20px'}}
               onClick={() => {selectedPhoto(image)}} className='img' src={image.url}/>
             </div>
           ))}
