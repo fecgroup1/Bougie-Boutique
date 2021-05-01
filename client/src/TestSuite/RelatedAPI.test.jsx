@@ -3,7 +3,6 @@ import RelatedAPI from '../Utils/RelatedAPI';
 import axios from 'axios'
 import { render, fireEvent } from '@testing-library/react'
 import Related from '../components/RelatedProducts'
-import CurrentProduct from '../Utils/currentProduct.js'
 import {ThemeProvider} from 'styled-components'
 import { Body, dark, light } from '../Styles';
 import dummyRelated from '../Utils/dummyRelated.json'
