@@ -10,7 +10,7 @@ class Overview extends React.Component {
     super(props);
     this.state = {
       currImg: [0, 0],
-      currentProductID: this.props.store.state.currentProductId || null,
+      currentProductID: this.props.store.state.currentProductId,
       product: {
         name: 'Loading...',
         slogan: 'Loading...',

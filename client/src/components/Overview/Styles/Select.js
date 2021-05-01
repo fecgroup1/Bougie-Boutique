@@ -25,6 +25,7 @@ const Select = ({title, category, currStyle, styles, changeStyle}) => (
         Style: {styles[currStyle].name}
     </div>
     <Thumbnails
+      title={title}
       styles={styles}
       currStyle={currStyle}
       changeStyle={changeStyle} />

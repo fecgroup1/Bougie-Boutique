@@ -9,18 +9,16 @@ class Thumbnails extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.currStyle !== nextProps.currStyle) {
-      console.log('Overview thumbnails re-rendered')
       return true;
     }
     if (this.props.styles[0].style_id != nextProps.styles[0].style_id) {
-      console.log('Overview thumbnails re-rendered')
       return true;
     }
-    console.log('Overview thumbnails did not rerender')
     return false;
   }
 
   render() {
+    const title = this.props.title;
     const styles = this.props.styles;
     const currStyle = this.props.currStyle;
     const changeStyle = this.props.changeStyle;
@@ -48,7 +46,8 @@ class Thumbnails extends React.Component {
             return (
               <Loading
                 key={index}
-                src={style.photos[0].thumbnail_url}/>
+                src={style.photos[0].thumbnail_url}
+                alt="Thumbnail image is loading"/>
             )
           } else if (index === currStyle) {
             if (style.photos[0].thumbnail_url === null) {
@@ -56,6 +55,7 @@ class Thumbnails extends React.Component {
                 <PlaceholderBorder key={index}>
                 <SelectedStylePlaceholder
                   onClick={() => changeStyle(index)}
+                  alt={`Thumbnail image for ${style.name} style ${title} is unavailable`}
                   src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
                 </PlaceholderBorder>
               );
@@ -63,6 +63,7 @@ class Thumbnails extends React.Component {
               return (
                 <CurrThumb
                   key={index}
+                  alt={`Thumbnail image for currently selected ${style.name} style ${title}`}
                   src={style.photos[0].thumbnail_url}/>
               );
             }
@@ -70,6 +71,7 @@ class Thumbnails extends React.Component {
             return (
               <StylePlaceholder
                 key={index}
+                alt={`Thumbnail image for ${style.name} style ${title} is unavailable`}
                 onClick={() => changeStyle(index)}
                 src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
             );
@@ -77,6 +79,7 @@ class Thumbnails extends React.Component {
             return (
               <ThumbImg
                 key={index}
+                alt={`Thumbnail image for ${style.name} style ${title}`}
                 onClick={() => changeStyle(index)}
                 src={style.photos[0].thumbnail_url}/>
             );
