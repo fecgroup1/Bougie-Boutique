@@ -1,17 +1,19 @@
 import React from 'react';
 import {render, screen, fireEvent, act, waitForElementToBeRemoved, waitFor} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import axios from 'axios';
 import RelatedProducts from '../components/RelatedProducts/index.js';
 import ProductCard from '../components/RelatedProducts/ProductCard';
 import { light } from '../Styles/themes.jsx';
-import dummyRelated from '../Utils/dummyRelated.json'
+import dummyRelated from '../Utils/dummyRelated.json';
+import dummyState from '../Utils/dummyState.json'
 
 jest.mock('axios');
 
 const customGlobal = global;
 const store = {}
-store.state = {"currentProductId": "13023"};
+store.state = dummyState;
 
 test('<RelatedProducts /> renders without crashing', async () => {
   const div = document.createElement('div');
@@ -47,4 +49,26 @@ test('Proudct cards render with related products received by the api call', asyn
     expect(productCards.length).toEqual(dummyRelated.length);
   })
 
+})
+
+test('Tests that the comparison modal renders when clicking compare on a product card', async () => {
+  const div = document.createElement('div');
+  const promise = Promise.resolve(dummyRelated);
+  store.getRelated = () => {return promise}
+
+  render(
+    <RelatedProducts store={store} theme={light} />, div
+  )
+
+
+  await waitFor(() => {
+
+    const productCards = screen.getAllByLabelText(/productCard/i);
+    // const element = screen.getAllByAltText(/action button/i)
+
+  // fireEvent.click(screen.getByAltText(/relatedproduct0 action button/i))
+  })
+  fireEvent.click(screen.getByLabelText(/relatedproduct0 action button/i))
+  // const comparisonChart = screen.getByLabelText(/comaprison chart/i);
+  // expect(comparisonChart).toBeTruthy();
 })

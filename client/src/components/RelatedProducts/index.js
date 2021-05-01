@@ -38,12 +38,12 @@ const RelatedProducts = ({store, theme}) => {
   useEffect(() => {
     let productWidth = document.getElementById('productsWrapper').clientWidth
 
-    if(productWidth + 350 < screenWidth) {
+    if(productWidth + 150 < screenWidth) {
       setProductScroll({
         ...productScroll,
         right: false,
       })
-    } else if (productWidth + 350 > screenWidth) {
+    } else if (productWidth + 150 > screenWidth) {
       setProductScroll({
         ...productScroll,
         right: true,
@@ -56,19 +56,10 @@ const RelatedProducts = ({store, theme}) => {
   useEffect(async () => {
     try {
       const results = await store.getRelated();
-      // console.log('results in the related index: ', results)
       setProducts(results);
     } catch (e) {
       setRelatedSuccess(false)
     }
-    // store.getRelated().then((results) => {
-    //   setProducts(results);
-    // })
-    // .catch((e) => {
-    //   console.log(e);
-    //   setRelatedSuccess(false);
-    //   })
-
   }, [store.state.currentProductId]);
 
   //check local storage on initial render
@@ -176,6 +167,7 @@ const RelatedProducts = ({store, theme}) => {
             products.map((product, index) => (
               <ProductCard
                 key={'relatedproduct' + index}
+                id={'relatedproduct' + index}
                 theme={theme}
                 product={product}
                 className={'productCard'}
@@ -189,7 +181,6 @@ const RelatedProducts = ({store, theme}) => {
           }
         </CardContainer>
           <Button
-            // onClick={(event) => scroll('products', 'right', event)}
             show={productScroll.right}
             position={'right'}
           >
@@ -250,6 +241,7 @@ const RelatedProducts = ({store, theme}) => {
             Object.keys(outfits).map((product, index) => (
               <ProductCard
                 key={'outfit' + index}
+                id={'outfit' + index}
                 theme={theme}
                 product={outfits[product]}
                 className={'productCard'}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment} from 'react'
 import { StyledProductCard, CardImage,  ActionButton, StarsDisplay } from '../../Styles/'
 
-const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor, addedClasses, relatedProduct, theme}) => {
+const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, cursor, addedClasses, relatedProduct, theme, id}) => {
   let prd = product.product
   const [actionProduct, setActionProduct] = useState()
 
@@ -24,6 +24,8 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
         <ActionButton
           onClick={() => buttonAction(actionProduct, event)}
           cursor={cursor}
+          alt={`${id} action button`}
+          aria-label={`${id} action button`}
         >
           <i className={`lni lni-32 ${buttonType}`} />
         </ActionButton>
