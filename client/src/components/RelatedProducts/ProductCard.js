@@ -18,6 +18,8 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
     ?
       <StyledProductCard
         className={addedClasses}
+        aria-label="productCard"
+        alt={`${prd.name} product-card`}
       >
         <ActionButton
           onClick={() => buttonAction(actionProduct, event)}
@@ -45,13 +47,16 @@ const ProductCard = ({product, buttonAction, buttonType, changeProduct, button, 
           <StarsDisplay rating={product.meta.starRating}/>
         </div>
       </StyledProductCard>
-    :<StyledProductCard>
+    :<StyledProductCard
+    alt="palceholder product-card"
+    >
       <ActionButton>
       <i className="lni lni-32 lni-pagination" />
       </ActionButton>
       <div style={{alignSelf: 'center', placeSelf: 'center'}}>
       <i
         className="lni lni-spinner-arrow lni-is-spinning"
+        aria-label="spinner"
         style={{color: `${theme.bluGry}`, fontSize:'5em'}}
       />
       </div>

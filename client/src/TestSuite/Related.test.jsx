@@ -1,32 +1,40 @@
 import React from 'react';
-import {render, fireEvent} from '@testing-library/react';
+import {render, screen, fireEvent, act, waitForElementToBeRemoved} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import axios from 'axios';
 import RelatedProducts from '../components/RelatedProducts/index.js';
 import ProductCard from '../components/RelatedProducts/ProductCard';
 import { light } from '../Styles/themes.jsx';
 import dummyRelated from '../Utils/dummyRelated.json'
-import { act } from 'react-dom/test-utils';
 
 jest.mock('axios');
 
+const customGlobal = global;
 const store = {}
 store.state = {"currentProductId": "13023"};
 
-test('<RelatedProducts /> renders without crashing', () => {
-  const div = document.createElement('div')
-  axios.get.mockResolvedValue(dummyRelated);
+test('<RelatedProducts /> renders without crashing', async () => {
+  const div = document.createElement('div');
+  const promise = Promise.resolve(dummyRelated);
+  store.getRelated = () => {return promise}
 
     render(
       <RelatedProducts store={store} theme={light} />, div
     )
+    await waitForElementToBeRemoved(() => screen.getAllByLabelText(/spinner/i)[0])
 
-  jest.resetAllMocks()
 })
 
-test('will render Product Card', () => {
-  const div = document.createElement('div')
-  render (
-    <RelatedProducts store={store} theme={light} />, div
-  )
+test('Succesfully handles the realted products API call', () => {
+
+  const loadingErrorMessage = screen.queryByAltText(/error loading products/i)
+  expect(loadingErrorMessage).toBe(null);
+
 })
+
+// test('Proudct cards render with related products received by the api call', async () => {
+//   console.log(prettyDOM(document))
+//   const productCards = await screen.getAllByLabelText(/productCard/i);
+//   expect(productCards.length).toEqual(dummyRelated.length);
+
+// })

@@ -44,7 +44,7 @@ class CurrentProduct extends React.Component {
   }
 
   getRelated() {
-    console.log('get related is invoked', this.state.currentProductId)
+    // console.log('get related is invoked', this.state.currentProductId)
     return RelatedAPI.getRelatedProducts(this.state.currentProductId)
       .then((results) => {
         return results;

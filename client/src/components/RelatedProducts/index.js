@@ -16,7 +16,7 @@ const RelatedProducts = ({store, theme}) => {
   const [outfitScroll, setOutfitScroll] = useState({left: false, right: true});
   const [comparisonProduct, setComparisonProduct] = useState(null);
   const [outfits, setOutfits] = useState({});
-  const [screenWidth, setScreenWidth] = useState(null);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     let outfitWidth = document.getElementById('outfitsWrapper').clientWidth
@@ -56,11 +56,18 @@ const RelatedProducts = ({store, theme}) => {
   useEffect(async () => {
     try {
       const results = await store.getRelated();
-      console.log('results in the related index: ', results)
+      // console.log('results in the related index: ', results)
       setProducts(results);
     } catch (e) {
       setRelatedSuccess(false)
     }
+    // store.getRelated().then((results) => {
+    //   setProducts(results);
+    // })
+    // .catch((e) => {
+    //   console.log(e);
+    //   setRelatedSuccess(false);
+    //   })
 
   }, [store.state.currentProductId]);
 
@@ -70,7 +77,7 @@ const RelatedProducts = ({store, theme}) => {
     if (saved) {
       setOutfits(saved);
     }
-    setScreenWidth(window.innerWidth);
+    // setScreenWidth(window.innerWidth);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [])
@@ -280,7 +287,7 @@ const RelatedProducts = ({store, theme}) => {
         <section tracking={'Related Products'}>
           <RelatedContainer>
             {
-              relatedSuccess ? relatedSection : <h2>Error Loading Related Products</h2>
+              relatedSuccess ? relatedSection : <h2 alt='error loading products'>Error Loading Related Products</h2>
             }
             {outfitSection}
           </RelatedContainer>
