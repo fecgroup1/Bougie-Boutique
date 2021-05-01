@@ -15,6 +15,16 @@ const customGlobal = global;
 const store = {}
 store.state = dummyState;
 
+// beforeEach(() => {
+//   const div = document.createElement('div');
+//   const promise = Promise.resolve(dummyRelated);
+//   store.getRelated = () => {return promise}
+
+//   render(
+//     <RelatedProducts store={store} theme={light} />, div
+//   )
+// })
+
 test('<RelatedProducts /> renders without crashing', async () => {
   const div = document.createElement('div');
   const promise = Promise.resolve(dummyRelated);
@@ -66,4 +76,25 @@ test('Tests that the comparison modal renders when clicking compare on a product
   fireEvent.click(screen.getByLabelText(/relatedproduct0 action button/i))
   const comparisonChart = screen.getByLabelText(/comparison chart/i);
   expect(comparisonChart).toBeTruthy();
+})
+
+test('Create new saved outfit', async () => {
+  const div = document.createElement('div');
+  const promise = Promise.resolve(dummyRelated);
+  store.getRelated = () => {return promise}
+
+  render(
+    <RelatedProducts store={store} theme={light} />, div
+  )
+
+  let preClickCardCount;
+
+  await waitFor(() => {
+    preClickCardCount = screen.getAllByLabelText(/productCard/i);
+  })
+
+  fireEvent.click(screen.getByLabelText(/add outfit button/i))
+  const postClickCardCount = screen.getAllByLabelText(/productCard/i);
+
+  expect(postClickCardCount.length).toBeGreaterThan(preClickCardCount.length)
 })

@@ -224,6 +224,7 @@ const RelatedProducts = ({store, theme}) => {
         >
         <AddOutfitButton
         onClick={() => handleSaveOutfit(store.state)}
+        aria-label={'add outfit button'}
         >
           <i
             className="lni lni-circle-plus plus"
