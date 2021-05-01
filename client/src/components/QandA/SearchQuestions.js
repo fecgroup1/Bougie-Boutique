@@ -16,7 +16,7 @@ const SearchQuestions = (props) => {
               fontSize: '32px'
             }
           }></i>
-          <SearchBar id='searchQuestionInput' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
+          <SearchBar data-testid='searchQuestions' id='searchQuestionInput' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...'
           onChange={props.filterQuestions}/>
         </form>
       </Fragment>

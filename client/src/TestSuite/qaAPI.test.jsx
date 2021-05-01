@@ -418,3 +418,31 @@ test('<Questions/> to open answer modal when clicked', async () => {
     });
     jest.resetAllMocks()
   });
+
+  test('<Questions/> filters when search parameter passed in', async () => {
+    const div = document.createElement('div')
+    const answerPromise = Promise.resolve(getQAAnswers)
+    const questionPromise = Promise.resolve(getQAResponse)
+    axios.get.mockResolvedValue(getQAAnswers)
+    const {getByText, getByTestId} = render(
+      <ThemeProvider theme={light}>
+          <Questions question={getQAResponse[0]} index={1} product={{"name": "Camo Onesie"}}
+          getAnswers={() => {return answerPromise}} getQuestions={() => {return questionPromise}} productId={'13023'}/>, div
+      </ThemeProvider>
+    )
+
+    const rerender = await waitForElementToBeRemoved(() => screen.getAllByLabelText(/questionNull/i))
+      .then(() => {
+      getByText('What fabric is the top made of?', { exact: false});
+      })
+    const filterQuestions = getByTestId('searchQuestions');
+    fireEvent.change(filterQuestions, { target : { value: 'Expanded'} })
+    await waitFor(() => {
+      expect(filterQuestions.value).toBe('Expanded')
+      getByText('Expanded', { exact: false })
+      const filteredOutQuestion = screen.queryByText('top made of')
+      expect(filteredOutQuestion).not.toBeInTheDocument()
+    })
+
+    jest.resetAllMocks()
+  });
