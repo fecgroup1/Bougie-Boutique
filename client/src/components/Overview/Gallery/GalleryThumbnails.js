@@ -28,19 +28,16 @@ class GalleryThumbnails extends React.Component {
   shouldComponentUpdate(nextProps) {
     if (this.props.currIndex !== nextProps.currIndex) {
       let multiplier = nextProps.currIndex - 4.5;
-      console.log('GalleryThumnails scrolling without update');
       let pos = this.state.frameHeight * 0.115 * multiplier;
       this.scroll(pos);
 
       return false;
     }
-    console.log('GalleryThumbnails now updating');
     return true;
   }
 
   componentDidUpdate() {
     if (this.props.id === 'defaultThumbs') {
-      console.log('componentDidUpdate in DefaultView > GalleryThumbnails');
       if (this.props.galHeight !== this.state.frameHeight || this.props.galLeft !== this.state.frameLeft || this.props.galTop !== this.state.frameTop) {
         this.setState({
           frameHeight: this.props.galHeight,
@@ -49,7 +46,6 @@ class GalleryThumbnails extends React.Component {
         });
       }
     } else if (this.props.id === 'expandedThumbs') {
-      console.log('componentDidUpdate in ExpandedView > GalleryThumbnails');
 
       this.resize_modal.disconnect();
       if (document.getElementById('gallerymodal') !== null) {
@@ -75,7 +71,6 @@ class GalleryThumbnails extends React.Component {
   }
 
   scroll(arg) {
-    console.log('now scrolling', this.props.id);
     if (arg === 'up') {
       document.getElementById(this.props.id).scrollBy({
         top: -200,

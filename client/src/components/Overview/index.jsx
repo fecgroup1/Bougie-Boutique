@@ -10,7 +10,7 @@ class Overview extends React.Component {
     super(props);
     this.state = {
       currImg: [0, 0],
-      currentProductID: this.props.store.state.currentProductId,
+      currentProductID: this.props.store.state.currentProductId || null,
       product: {
         name: 'Loading...',
         slogan: 'Loading...',
@@ -49,21 +49,10 @@ class Overview extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount in Overview');
-    // const param = (new URL(document.location)).searchParams.get('pid');
-    // if (param !== null) {
-    //   let pid = param.replace(/\D/g, '');
-    //   let id = (pid === null || pid === undefined) ? this.props.currentProductID: pid;
-    //   console.log('calling setProduct with', id);
-    //   this.props.store.setProduct(id);
-    // } else {
-    //   this.props.store.setProduct();
-    // }
     this.props.store.setProduct();
   }
 
   changeStyle(index) {
-    console.log('changStyle index: ', index);
     this.props.store.changeImg(index, 0);
   }
 
@@ -84,7 +73,8 @@ class Overview extends React.Component {
           <Gallery
             styles={store.styles}
             currImg={store.currImg}
-            changeImg={this.props.store.changeImg} />
+            changeImg={this.props.store.changeImg}
+            title={store.product.name} />
           <Styles
             store={store}
             product={store.product}

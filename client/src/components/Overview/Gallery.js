@@ -24,7 +24,6 @@ class Gallery extends React.Component {
   }
 
   componentDidMount() {
-    console.log('componentDidMount in Gallery');
     // WATCH GALLERY
     const resize_gallery = new ResizeObserver((entries) => {
       let rect = entries[0].contentRect;
@@ -58,7 +57,6 @@ class Gallery extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('componentDidUpdate in Gallery');
 
     // GET BUTTON SIZE
     const resize_button = new ResizeObserver((entries) => {
@@ -130,11 +128,13 @@ class Gallery extends React.Component {
 
     const styles = this.props.styles;
     const currImg = this.props.currImg;
+    const title = this.props.title;
 
     return(
       <Left style={{alignContent: 'center'}}>
         <div id="gallery" style={{ height: '66vh', minHeight: '400px', overflow: 'hidden' }}>
           <DefaultView
+            title={title}
             styles={styles}
             currImg={currImg}
             lastImgIndex={this.state.lastImgIndex}

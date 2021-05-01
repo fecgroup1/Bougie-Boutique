@@ -1,14 +1,6 @@
 import React from 'react';
 import { Title, NavButton } from './../../Styles';
 
-const countItems = (obj) => {
-  let count = 0;
-  for (let item in obj) {
-    count += obj[item];
-  }
-  return count;
-}
-
 class Nav extends React.Component {
   constructor(props) {
     super(props);
@@ -34,9 +26,16 @@ class Nav extends React.Component {
   render() {
 
     const cart = this.props.cart;
-    const store = this.props.store;
     const dark = this.props.theme.invertWht;
     const toggleTheme = this.props.toggleTheme;
+
+    const countItems = (obj) => {
+      let count = 0;
+      for (let item in obj) {
+        count += obj[item];
+      }
+      return count;
+    }
 
     const cartCount = countItems(cart);
 
@@ -106,12 +105,18 @@ class Nav extends React.Component {
           Bougie Boutique
         </Title>
         <div className="headerRight" style={right}>
-          <div style={number}>{cartCount}</div>
+          <div
+            aria-label={`Cart Count: ${cartCount}`}
+            style={number}>
+              {cartCount}
+          </div>
           <NavButton
-              style={cartIcon}>
-              <span className="lni lni-tshirt"></span>
+            aria-label="View Cart"
+            style={cartIcon}>
+            <span className="lni lni-tshirt"></span>
           </NavButton>
           <NavButton
+            aria-label="Theme Toggle"
             style={track}
             onClick={toggleTheme}
             onMouseOver={this.handleMouseOver}

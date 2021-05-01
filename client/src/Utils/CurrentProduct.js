@@ -40,18 +40,10 @@ class CurrentProduct extends React.Component {
     this.props.history.push(`/${pid}`);
   }
 
-  // changeStyle(index) {
-  //   this.setState({
-  //     currStyle: index
-  //   });
-  // }
-
   setProduct(pid) {
-    console.log('ive been called')
     let id = pid === undefined ? this.state.currentProductId: pid;
     ProductAPI.getProduct(id)
     .then((resData) => {
-      console.log(resData);
       this.setState({
         currImg: [0, 0],
         product: resData.product,
@@ -83,48 +75,14 @@ class CurrentProduct extends React.Component {
   }
 
   setCart() {
-    // let productData = this.state;
     var cart = JSON.parse(window.localStorage.getItem('cart'));
-    console.log('current cart', cart);
-    if (cart === null) {
-      // console.log('shouldn\'t be here');
-      var newCart = {};
-      // if (cart !== null) {
-      //   for (let i = 0; i < productData.styles.length; i++) {
-      //     let style = prsoductData.styles[i];
-      //     for (let j = 0; j < style.skus.length; j++) {
-      //       let sku = style.skus[j].sku;
-      //       let stock = style.skus[j].quantity;
-      //       if (cart[sku] <= stock) {
-      //         newCart[sku] = cart[sku];
-      //       } else if (cart[sku] > stock) {
-      //         newCart[sku] = stock;
-      //       }
-      //     }
-      //   }
-      //   window.localStorage.setItem('cart', JSON.stringify(newCart));
-      // }
-      console.log(window.localStorage);
-      this.setState({
-        cart: newCart
-      });
-    } else {
-      this.setState({
-        cart: cart,
-      });
-    }
+    this.setState({
+      cart: cart === null ? {}: cart
+    });
   }
-
-  // updateCart() {
-  //   let newCart = this.checkCart(this.state);
-  //   this.setState({
-  //     cart: newCart
-  //   });
-  // }
 
   changeImg(style, index) {
     this.setState({
-      // currStyle: this.state.currImg[0],
       currImg: [style, index]
     });
   }
