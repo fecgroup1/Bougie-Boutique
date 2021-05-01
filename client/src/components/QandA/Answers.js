@@ -13,7 +13,7 @@ const Answers = (props) => {
   useEffect(() => {
     setLoadedAnswers(false)
     setMoreAnswers(false)
-    QuestionsAPI.getAnswers(props.questionId)
+    props.getAnswers(props.questionId)
       .then((result) => {
         setAnswers(result)
         setLoadedAnswers(true)
@@ -55,7 +55,7 @@ const Answers = (props) => {
       </div>
     )
   } else {
-    return (<div>Loading answers...</div>)
+    return (<div aria-label='answerNull'>Loading answers...</div>)
   }
 
 }

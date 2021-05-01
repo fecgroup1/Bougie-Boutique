@@ -28,7 +28,7 @@ const Questions = (props) => {
     setMoreSearchedQuestions(false)
     setSearchQuery('')
     setSearchResults([])
-    QuestionsAPI.getQuestions(props.productId)
+    props.getQuestions(props.productId)
       .then((result) => {
         setQuestions(result)
         setLoadedQuestions(true)
@@ -40,7 +40,7 @@ const Questions = (props) => {
   }, [props.productId])
 
   useEffect(() => {
-    QuestionsAPI.getQuestions(props.productId)
+    props.getQuestions(props.productId)
     .then((result) => {
       setQuestions(result)
       setLoadedQuestions(true)

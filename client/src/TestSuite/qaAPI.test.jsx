@@ -178,19 +178,25 @@ test('<QandA/> to render widget', async () => {
     await getByText('Loading', { exact: false});
   });
 
-test('<RenderQuestion/> to render questions', () => {
-    const div = document.createElement('div')
-    axios.get.mockResolvedValue(getQAAnswers)
-    const {getByText} = render(
-        <ThemeProvider theme={light}>
-            <RenderQuestion question={getQAResponse[0]} index={1} product={{"name": "Camo Onesie"}}
-            productId={'13023'}/>, div
-        </ThemeProvider>
-    )
 
-    const questionBody = getByText('What fabric is the top made of?', { exact: false});
-    jest.resetAllMocks()
-  });
+test('<RenderQuestion/> to render questions', async () => {
+  const div = document.createElement('div')
+  const promise = Promise.resolve(getQAAnswers)
+  axios.get.mockResolvedValue(getQAAnswers)
+  const {getByText} = render(
+    <ThemeProvider theme={light}>
+        <RenderQuestion question={getQAResponse[0]} index={1} product={{"name": "Camo Onesie"}}
+        getAnswers={() => {return promise}} productId={'13023'}/>, div
+    </ThemeProvider>
+  )
+
+  const rerender = await waitForElementToBeRemoved(() => screen.getAllByLabelText(/answerNull/i))
+    .then(() => {
+    getByText('What fabric is the top made of?', { exact: false});
+    })
+  jest.resetAllMocks()
+});
+
 
 test('<RenderAnswer/> to render answers', () => {
 const div = document.createElement('div')
@@ -202,16 +208,18 @@ const {getByText} = render(
 const answerBody = getByText('Suede', { exact: false});
 });
 
-test('Question to post helpful if helpful is clicked', () => {
+
+test('Question to post helpful if helpful is clicked', async () => {
     const div = document.createElement('div')
-    axios.get.mockResolvedValue(getQAAnswers)
+    const promise = Promise.resolve(getQAAnswers)
     const {getByTestId} = render(
     <ThemeProvider theme={light}>
       <RenderQuestion question={getQAResponse[0]} index={1} product={{"name": "Camo Onesie"}}
-      productId={'13023'}/>, div
+        getAnswers={() => {return promise}} productId={'13023'}/>, div
     </ThemeProvider>
     )
 
+    const rerender = await waitForElementToBeRemoved(() => screen.getAllByLabelText(/answerNull/i))
     axios.put.mockResolvedValue({question_id: 66299});
     const helpful = getByTestId('questionHelpful');
     fireEvent.click(helpful)
@@ -221,29 +229,29 @@ test('Question to post helpful if helpful is clicked', () => {
     jest.resetAllMocks()
   });
 
-  test('Answers to post helpful if helpful is clicked', () => {
-    const div = document.createElement('div')
-    const {getByTestId} = render(
-    <ThemeProvider theme={light}>
-      <RenderAnswer answer={getQAAnswers[0]} index={1}/>, div
-    </ThemeProvider>
-    )
-    axios.put.mockResolvedValue({answer_id: 630296});
-    const helpful = getByTestId('answerHelpful');
-    fireEvent.click(helpful)
+test('Answers to post helpful if helpful is clicked', () => {
+const div = document.createElement('div')
+const {getByTestId} = render(
+<ThemeProvider theme={light}>
+    <RenderAnswer answer={getQAAnswers[0]} index={1}/>, div
+</ThemeProvider>
+)
+axios.put.mockResolvedValue({answer_id: 630296});
+const helpful = getByTestId('answerHelpful');
+fireEvent.click(helpful)
 
-    expect(axios.put).toHaveBeenCalledTimes(1)
-    expect(axios.put).toHaveBeenCalledWith('qa/answers/630296/helpful', null)
-    jest.resetAllMocks()
-  });
+expect(axios.put).toHaveBeenCalledTimes(1)
+expect(axios.put).toHaveBeenCalledWith('qa/answers/630296/helpful', null)
+jest.resetAllMocks()
+});
 
-test('Question to report if report is clicked', () => {
+test('Question to report if report is clicked', async () => {
     const div = document.createElement('div')
-    axios.get.mockResolvedValue(getQAAnswers)
+    const promise = Promise.resolve(getQAAnswers)
     const {getByTestId} = render(
     <ThemeProvider theme={light}>
       <RenderQuestion question={getQAResponse[0]} index={1} product={{"name": "Camo Onesie"}}
-      productId={'13023'}/>, div
+       getAnswers={() => {return promise}} productId={'13023'}/>, div
     </ThemeProvider>
     )
 
@@ -251,24 +259,25 @@ test('Question to report if report is clicked', () => {
     const report = getByTestId('questionReport');
     fireEvent.click(report)
 
+    const rerender = await waitForElementToBeRemoved(() => screen.getAllByLabelText(/answerNull/i))
     expect(axios.put).toHaveBeenCalledTimes(1)
     expect(axios.put).toHaveBeenCalledWith('qa/questions/66299/report', null)
     jest.resetAllMocks()
   });
 
-  test('Answer to report if report is clicked', () => {
-    const div = document.createElement('div')
-    const {getByTestId} = render(
-    <ThemeProvider theme={light}>
-      <RenderAnswer answer={getQAAnswers[0]} index={1}/>, div
-    </ThemeProvider>
-    )
+test('Answer to report if report is clicked', () => {
+const div = document.createElement('div')
+const {getByTestId} = render(
+<ThemeProvider theme={light}>
+    <RenderAnswer answer={getQAAnswers[0]} index={1}/>, div
+</ThemeProvider>
+)
 
-    axios.put.mockResolvedValue({answer_id: 630296});
-    const report = getByTestId('answerReport');
-    fireEvent.click(report)
+axios.put.mockResolvedValue({answer_id: 630296});
+const report = getByTestId('answerReport');
+fireEvent.click(report)
 
-    expect(axios.put).toHaveBeenCalledTimes(1)
-    expect(axios.put).toHaveBeenCalledWith('qa/answers/630296/report', null)
-    jest.resetAllMocks()
-  });
+expect(axios.put).toHaveBeenCalledTimes(1)
+expect(axios.put).toHaveBeenCalledWith('qa/answers/630296/report', null)
+jest.resetAllMocks()
+});
