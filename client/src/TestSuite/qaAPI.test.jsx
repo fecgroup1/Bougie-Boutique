@@ -311,6 +311,30 @@ test('<Questions/> to open question modal when clicked', async () => {
     const htmlElement = document.querySelector('[data-testid="questionModal"]');
     expect(htmlElement).toBeInTheDocument();
   });
+
+  const questionBodyText = getByTestId('questionBodyText')
+  const questionBodyNickname = getByTestId('questionBodyNickname')
+  const questionBodyEmail = getByTestId('questionBodyEmail')
+
+
+  fireEvent.change(questionBodyText, { target : { value: 'Question'} })
+  fireEvent.change(questionBodyNickname, { target : { value: 'Person'} })
+  fireEvent.change(questionBodyEmail, { target : { value: 'not a valid email'} })
+
+
+  const submitAttempt = getByTestId('submitQuestionModal')
+  fireEvent.click(submitAttempt)
+  await waitFor(() => {
+    const invalidHtmlElement = document.querySelector('[data-testid="questionModal"]');
+    expect(invalidHtmlElement).toBeInTheDocument();
+    });
+
+  const closeModal = getByTestId('closeQuestionModal')
+  fireEvent.click(closeModal)
+  await waitFor(() => {
+    const oldHtmlElement = document.querySelector('[data-testid="questionModal"]');
+    expect(oldHtmlElement).not.toBeInTheDocument();
+    });
   jest.resetAllMocks()
 });
 

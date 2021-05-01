@@ -106,31 +106,31 @@ const AddQuestion = (props) => {
               >
               <form noValidate="" data-testid='questionModal'>
                 <div>
-                  <CloseModalButton onClick={closeForm}>X</CloseModalButton>
+                  <CloseModalButton type='button' data-testid='closeQuestionModal' onClick={closeForm}>X</CloseModalButton>
                   <h2 aria-label='askQuestion'>Ask your question</h2>
                   <h4>About the {props.product.name}</h4>
                   <label>* Your Question: </label>
                   {textBodyInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter a question</Warning> : null}
-                  <textarea id='questionInputText' style={{width: '100%', height: '100px', backgroundColor: theme.bg, border: `2px solid ${theme.bluGry}`,
+                  <textarea id='questionInputText' data-testid='questionBodyText' style={{width: '100%', height: '100px', backgroundColor: theme.bg, border: `2px solid ${theme.bluGry}`,
                     color: `${theme.text}`, fontFamily: "'Josefin Sans', sans-serif", padding: '5px'}}
                     name='question' type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
                   <p style={{fontSize: '14px', marginTop: '0', marginBottom: '30px'}}>{chars} characters remaining</p>
 
                   <label>* What is your nickname? </label><br></br>
                   {nicknameInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter a valid name</Warning> : null}
-                  <QAModalInput type="text" id="questionNickname"
+                  <QAModalInput type="text" id="questionNickname" data-testid='questionBodyNickname'
                     placeholder='Example: jackson11!' name="nickname" maxLength='60' required></QAModalInput>
                     <Warning>For privacy reasons, do not use your full name or email address</Warning><br></br>
 
                   <label>* Your email: </label><br></br>
                   {emailInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter a valid email</Warning> : null}
-                  <QAModalInput type="email" id="questionEmail"
+                  <QAModalInput type="email" id="questionEmail" data-testid='questionBodyEmail'
                     placeholder='Why did you like the product or not?' name="email" maxLength='60' required></QAModalInput>
                     <Warning>For authentication reasons, you will not be emailed</Warning>
 
                   <Required id='required'>* Required</Required>
 
-                  <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
+                  <QuestionsButtons data-testid='submitQuestionModal' onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
                 </div>
               </form>
               </Modal>

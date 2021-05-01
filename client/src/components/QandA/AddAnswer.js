@@ -178,7 +178,7 @@ const AddAnswer = (props) => {
             >
             <form noValidate="" data-testid='answerModal'>
               <div>
-              <CloseModalButton data-testid='closeAnswerModal' onClick={closeForm}>X</CloseModalButton>
+              <CloseModalButton type='button' data-testid='closeAnswerModal' onClick={closeForm}>X</CloseModalButton>
                 <h2>Add an answer</h2>
                 <p style={{fontWeight: 'bold'}}>{props.product.name}: {props.question.question_body}</p>
                 <label>* Your Answer: </label>
