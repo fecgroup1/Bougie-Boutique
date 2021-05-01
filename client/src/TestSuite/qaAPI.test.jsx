@@ -3,6 +3,7 @@ import axios from 'axios';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { render, fireEvent, waitFor, screen, waitForElementToBeRemoved} from '@testing-library/react'
+import '@testing-library/jest-dom'
 import Questions from '../components/QandA/Questions.js';
 import RenderQuestion from '../components/QandA/RenderQuestion.js';
 import RenderAnswer from '../components/QandA/RenderAnswer.js';
@@ -281,3 +282,53 @@ expect(axios.put).toHaveBeenCalledTimes(1)
 expect(axios.put).toHaveBeenCalledWith('qa/answers/630296/report', null)
 jest.resetAllMocks()
 });
+
+test('<Questions/> to open question modal when clicked', async () => {
+  const div = document.createElement('div')
+  const answerPromise = Promise.resolve(getQAAnswers)
+  const questionPromise = Promise.resolve(getQAResponse)
+  axios.get.mockResolvedValue(getQAAnswers)
+  const {getByText, getByTestId} = render(
+    <ThemeProvider theme={light}>
+        <Questions question={getQAResponse[0]} index={1} product={{"name": "Camo Onesie"}}
+        getAnswers={() => {return answerPromise}} getQuestions={() => {return questionPromise}} productId={'13023'}/>, div
+    </ThemeProvider>
+  )
+
+  const rerender = await waitForElementToBeRemoved(() => screen.getAllByLabelText(/questionNull/i))
+    .then(() => {
+    getByText('What fabric is the top made of?', { exact: false});
+    })
+  const newQuestion = getByTestId('addQuestion');
+  fireEvent.click(newQuestion)
+  await waitFor(() => {
+    const htmlElement = document.querySelector('[data-testid="questionModal"]');
+    expect(htmlElement).toBeInTheDocument();
+  });
+  jest.resetAllMocks()
+});
+
+test('<Questions/> to open answer modal when clicked', async () => {
+    const div = document.createElement('div')
+    const answerPromise = Promise.resolve(getQAAnswers)
+    const questionPromise = Promise.resolve([getQAResponse[0]])
+    axios.get.mockResolvedValue(getQAAnswers)
+    const {getByText, getByTestId} = render(
+      <ThemeProvider theme={light}>
+          <Questions question={getQAResponse[0]} index={1} product={{"name": "Camo Onesie"}}
+          getAnswers={() => {return answerPromise}} getQuestions={() => {return questionPromise}} productId={'13023'}/>, div
+      </ThemeProvider>
+    )
+
+    const rerender = await waitForElementToBeRemoved(() => screen.getAllByLabelText(/questionNull/i))
+      .then(() => {
+      getByText('What fabric is the top made of?', { exact: false});
+      })
+    const newAnswer = getByTestId('addAnswer');
+    fireEvent.click(newAnswer)
+    await waitFor(() => {
+      const htmlElement = document.querySelector('[data-testid="answerModal"]');
+      expect(htmlElement).toBeInTheDocument();
+    });
+    jest.resetAllMocks()
+  });

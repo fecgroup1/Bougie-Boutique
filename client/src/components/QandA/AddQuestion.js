@@ -104,10 +104,10 @@ const AddQuestion = (props) => {
                 }}
                 onRequestClose={() => closeForm()}
               >
-              <form noValidate="">
+              <form noValidate="" data-testid='questionModal'>
                 <div>
                   <CloseModalButton onClick={closeForm}>X</CloseModalButton>
-                  <h2>Ask your question</h2>
+                  <h2 aria-label='askQuestion'>Ask your question</h2>
                   <h4>About the {props.product.name}</h4>
                   <label>* Your Question: </label>
                   {textBodyInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter a question</Warning> : null}
@@ -136,7 +136,7 @@ const AddQuestion = (props) => {
               </Modal>
           }
         </ThemeConsumer>
-        <QuestionsButtons onClick={openModal}>ASK A QUESTION +</QuestionsButtons>
+        <QuestionsButtons data-testid='addQuestion' onClick={openModal}>ASK A QUESTION +</QuestionsButtons>
       </Fragment>
     )
   } else {

@@ -166,7 +166,7 @@ const Questions = (props) => {
   (
   <QuestionsContainer>
     <h2>Questions and Answers</h2>
-    <h4>There are no questions for this product... Please add a question!</h4>
+    <h4 aria-label='questionNull'>There are no questions for this product... Please add a question!</h4>
     <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
   </QuestionsContainer>
 
