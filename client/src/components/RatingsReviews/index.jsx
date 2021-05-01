@@ -30,7 +30,6 @@ class RatingsReviews extends React.Component {
   }
 
   componentDidMount(){
-    console.log('>------------------------ call to get reviews')
     this.props.store.setMeta(this.props.store.state.currentProductId)
     this.props.store.setReviews(this.props.store.state.currentProductId)
     this.setState({currentProductId: this.props.store.state.currentProductId})
@@ -38,7 +37,6 @@ class RatingsReviews extends React.Component {
 
  componentDidUpdate(prevProps){
     if (Number(this.props.store.state.currentProductId) !== Number(this.state.currentProductId)){
-      console.log('>------------------------ call to update reviews')
       this.setState({currentProductId: this.props.store.state.currentProductId})
       this.props.store.setMeta(this.props.store.state.currentProductId)
       this.props.store.setReviews(this.props.store.state.currentProductId)

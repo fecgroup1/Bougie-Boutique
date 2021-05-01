@@ -9,6 +9,7 @@ import ReviewAPI from '../Utils/ReviewAPI';
 
 jest.mock('axios');
 
+
 var store = {}
 store.setMeta = ReviewAPI.getMeta,
 store.setReviews = ReviewAPI.getReviews,
@@ -33,7 +34,11 @@ store.state = {
           "Fit": {
               "id": 43617,
               "value": "3.9583333333333333"
-          }
+          },
+          "Length": {
+            "id": 43618,
+            "value": "3.9583333333333333"
+        }
       },
       "averageRating": 3.9,
       "starRating": 4
@@ -99,8 +104,6 @@ test('<RatingsReviews/> renders without crashing', ()=>{
   render(
     <RatingsReviews store = {store} theme={light} />, div
   )
-
-  expect(axios.get).toHaveBeenCalledTimes(2)
   jest.resetAllMocks()
 });
 
@@ -124,6 +127,7 @@ test('<RatingsReviews/> to get meta and reviews upon render', ()=>{
 
 //   expect(component.container).toMatchSnapshot();
 // })
+
 
 test('<Review/> to render review body text as review', ()=>{
   const div = document.createElement('div')
@@ -183,6 +187,61 @@ test('show more button adds more reviews', ()=>{
   fireEvent.click(showMore)
 
   expect(getAllByTestId('reviewBody').length).toBe(3)
+
+})
+
+
+test('send review if submit review is clicked', ()=>{
+  const div = document.createElement('div')
+  const {getByTestId, getByText} = render(
+    <RatingsReviews store = {store} theme={light} />, div
+  )
+  axios.post.mockResolvedValue({productId: 13023});
+  const newReviewButton =getByText('Add A Review');
+  fireEvent.click(newReviewButton);
+  const submit = getByTestId('submitReviewButton');
+  fireEvent.click(submit)
+
+  expect(axios.post).toHaveBeenCalledTimes(1)
+  expect(axios.post).toHaveBeenCalledWith('/reviews', expect.anything(), {"headers": {"Content-Type": "application/json"}})
+  jest.resetAllMocks()
+
+})
+
+test('NewReviewModal should have name of product in Review About heading', ()=>{
+  const div = document.createElement('div')
+  const {getByTestId, getByText} = render(
+    <RatingsReviews store = {store} theme={light} />, div
+  )
+  var newReviewButton =getByText('Add A Review');
+  fireEvent.click(newReviewButton);
+  let reviewAbout = getByTestId('reviewAbout');
+  expect(reviewAbout.textContent).toBe("About the Camo Onesie")
+})
+
+
+
+test('NewReviewModal should have label for each characteristics input', ()=>{
+  const div = document.createElement('div')
+  const {getAllByTestId, getByText} = render(
+    <RatingsReviews store = {store} theme={light} />, div
+  )
+  var newReviewButton =getByText('Add A Review');
+  fireEvent.click(newReviewButton);
+  const charLabels = getAllByTestId('charLabel');
+  expect(charLabels[0].textContent).toBe("Fit:")
+  expect(charLabels[1].textContent).toBe("Length:")
+})
+
+test('clicking add a review button should open new review modal', ()=>{
+  const div = document.createElement('div')
+  const {getByTestId, getByText} = render(
+    <RatingsReviews store = {store} theme={light} />, div
+  )
+  var newReviewButton =getByText('Add A Review');
+  fireEvent.click(newReviewButton);
+
+  expect(getByTestId('reviewAbout')).toBeInTheDocument()
 
 })
 
