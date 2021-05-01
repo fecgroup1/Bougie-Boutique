@@ -336,6 +336,35 @@ test('<Questions/> to open answer modal when clicked', async () => {
       const htmlElement = document.querySelector('[data-testid="answerModal"]');
       expect(htmlElement).toBeInTheDocument();
     });
+
+    const answerBodyText = getByTestId('answerBodyText')
+    const answerBodyNickname = getByTestId('answerBodyNickname')
+    const answerBodyEmail = getByTestId('answerBodyEmail')
+
+
+    fireEvent.change(answerBodyText, { target : { value: 'Answer'} })
+    fireEvent.change(answerBodyNickname, { target : { value: 'Person'} })
+    fireEvent.change(answerBodyEmail, { target : { value: 'not a valid email'} })
+
+
+    const submitAttempt = getByTestId('submitAnswerModal')
+    fireEvent.click(submitAttempt)
+    await waitFor(() => {
+      const invalidHtmlElement = document.querySelector('[data-testid="answerModal"]');
+      expect(invalidHtmlElement).toBeInTheDocument();
+      });
+
+    // Need to refactor for actual image upload
+    const answerPhotoUpload = getByTestId('addAnswerPhoto')
+    fireEvent.change(answerPhotoUpload, { target : { value: ''}})
+
+    const closeModal = getByTestId('closeAnswerModal')
+    fireEvent.click(closeModal)
+    await waitFor(() => {
+      const oldHtmlElement = document.querySelector('[data-testid="answerModal"]');
+      expect(oldHtmlElement).not.toBeInTheDocument();
+      });
+
     jest.resetAllMocks()
   });
 
