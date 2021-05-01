@@ -135,7 +135,7 @@ const Questions = (props) => {
         {!moreSearchedQuestions && searchResults.length >  2 ?
         (
           <div>
-            <QuestionsButtons value={'search'} onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
+            <QuestionsButtons data-testid='moreQuestions' value={'search'} onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
             <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
           </div>
         )
@@ -150,7 +150,7 @@ const Questions = (props) => {
         {!moreQuestions && questions.length >  2 && !search?
         (
           <div>
-            <QuestionsButtons onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
+            <QuestionsButtons data-testid='moreQuestions' onClick={addMore}>MORE ANSWERED QUESTIONS</QuestionsButtons>
             <AddQuestion currentProductId={props.productId} setNewQuestion={setNewQuestion} product={props.product}/>
           </div>
         )

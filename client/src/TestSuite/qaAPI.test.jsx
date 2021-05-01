@@ -1,7 +1,5 @@
 import React from 'react'
 import axios from 'axios';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
 import { render, fireEvent, waitFor, screen, waitForElementToBeRemoved} from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Questions from '../components/QandA/Questions.js';
@@ -11,7 +9,6 @@ import Answers from '../components/QandA/Answers.js';
 import QandA from '../components/QandA'
 import styled, { ThemeProvider } from 'styled-components';
 import { Body, dark, light } from '../Styles';
-import { act } from 'react-dom/test-utils'
 
 var getQAResponse =
     [
@@ -330,5 +327,56 @@ test('<Questions/> to open answer modal when clicked', async () => {
       const htmlElement = document.querySelector('[data-testid="answerModal"]');
       expect(htmlElement).toBeInTheDocument();
     });
+    jest.resetAllMocks()
+  });
+
+  test('<Questions/> to load more 2 more questions when more questions button clicked', async () => {
+    const div = document.createElement('div')
+    const answerPromise = Promise.resolve(getQAAnswers)
+    const questionPromise = Promise.resolve(getQAResponse)
+    axios.get.mockResolvedValue(getQAAnswers)
+    const {getByText, getByTestId} = render(
+      <ThemeProvider theme={light}>
+          <Questions question={getQAResponse[0]} index={1} product={{"name": "Camo Onesie"}}
+          getAnswers={() => {return answerPromise}} getQuestions={() => {return questionPromise}} productId={'13023'}/>, div
+      </ThemeProvider>
+    )
+
+    const rerender = await waitForElementToBeRemoved(() => screen.getAllByLabelText(/questionNull/i))
+      .then(() => {
+      getByText('What fabric is the top made of?', { exact: false});
+      })
+    const loadMoreQuestions = getByTestId('moreQuestions');
+    fireEvent.click(loadMoreQuestions)
+    await waitFor(() => {
+        getByText('Hello World', { exact: false});
+    });
+    jest.resetAllMocks()
+  });
+
+  test('<Answers/> to load all ansewrs when more questions button clicked and collapse back to 2 when collapse button clicked', async () => {
+    const div = document.createElement('div')
+    const answerPromise = Promise.resolve(getQAAnswers)
+    const questionPromise = Promise.resolve(getQAResponse)
+    axios.get.mockResolvedValue(getQAAnswers)
+    const {getByText, getByTestId} = render(
+      <ThemeProvider theme={light}>
+          <Answers questionId={'66299'} index={1} product={{"name": "Camo Onesie"}}
+          getAnswers={() => {return answerPromise}}/>, div
+      </ThemeProvider>
+    )
+
+    const rerender = await waitForElementToBeRemoved(() => screen.getAllByLabelText(/answerNull/i))
+      .then(() => {
+      getByText('Something pretty soft but I can\'t be sure', { exact: false});
+      })
+    const loadMoreAnswers = getByTestId('moreAnswers');
+    fireEvent.click(loadMoreAnswers)
+    getByText('glass', { exact: false});
+
+    const collapseAnswers = getByTestId('lessAnswers');
+    fireEvent.click(collapseAnswers)
+    getByTestId('moreAnswers')
+
     jest.resetAllMocks()
   });

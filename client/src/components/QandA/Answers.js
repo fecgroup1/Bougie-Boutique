@@ -40,14 +40,14 @@ const Answers = (props) => {
             <div>
               {answers.slice(0, 2).map((answer, index) =>
               <RenderAnswer answer={answer} key={index}/>)}
-              {answers.length > 2 ? <MoreAnswers onClick={getMore}>See more answers</MoreAnswers> : null}
+              {answers.length > 2 ? <MoreAnswers data-testid='moreAnswers' onClick={getMore}>See more answers</MoreAnswers> : null}
             </div>
           )
           :
           (
             <div>
                 {answers.map((answer, index) => <RenderAnswer answer={answer} key={index}/>)}
-                {answers.length > 2 ? <MoreAnswers onClick={collapse}>Collapse answers</MoreAnswers> : null}
+                {answers.length > 2 ? <MoreAnswers aria-label='collapseAnswers' data-testid='lessAnswers' onClick={collapse}>Collapse answers</MoreAnswers> : null}
             </div>
           )
 
