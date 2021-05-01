@@ -130,27 +130,24 @@ test('<RatingsReviews/> to get meta and reviews upon render', ()=>{
 
 
 test('<Review/> to render review body text as review', ()=>{
-  const div = document.createElement('div')
   const {getByTestId} = render(
-    <Review review={store.state.reviews[0]} />, div
+    <Review review={store.state.reviews[0]} />
   )
   const reviewBody = getByTestId('reviewBody');
   expect(reviewBody.textContent).toBe("This product is great because it puts a little smile on my face!")
 });
 
 test('<Review/> to render review summary text as heading', ()=>{
-  const div = document.createElement('div')
   const {getByTestId} = render(
-    <Review review={store.state.reviews[0]} />, div
+    <Review review={store.state.reviews[0]} />
   )
   const reviewSummary = getByTestId('reviewSummary');
   expect(reviewSummary.textContent).toBe("Makes me smile")
 });
 
 test('Review to call markHelpful if helpful is clicked', ()=>{
-  const div = document.createElement('div')
   const {getByTestId} = render(
-    <Review review={store.state.reviews[0]} />, div
+    <Review review={store.state.reviews[0]} />
   )
   axios.put.mockResolvedValue({productId: 13023});
   const helpful = getByTestId('reviewHelpful');
@@ -162,10 +159,9 @@ test('Review to call markHelpful if helpful is clicked', ()=>{
 });
 
 test('Call Report if Report is clicked', ()=>{
-  const div = document.createElement('div')
+
   const {getByTestId} = render(
-    <Review review={store.state.reviews[0]} />, div
-  )
+    <Review review={store.state.reviews[0]} />)
   axios.put.mockResolvedValue({productId: 13023});
   const report = getByTestId('reviewReport');
   fireEvent.click(report)
@@ -177,9 +173,8 @@ test('Call Report if Report is clicked', ()=>{
 })
 
 test('show more button adds more reviews', ()=>{
-  const div = document.createElement('div')
   const {getByTestId, getAllByTestId} = render(
-    <RatingsReviews store = {store} theme={light} />, div
+    <RatingsReviews store = {store} theme={light} />
   )
   expect(getAllByTestId('reviewBody').length).toBe(2)
 
@@ -192,9 +187,8 @@ test('show more button adds more reviews', ()=>{
 
 
 test('send review if submit review is clicked', ()=>{
-  const div = document.createElement('div')
   const {getByTestId, getByText} = render(
-    <RatingsReviews store = {store} theme={light} />, div
+    <RatingsReviews store = {store} theme={light} />
   )
   axios.post.mockResolvedValue({productId: 13023});
   const newReviewButton =getByText('Add A Review');
@@ -209,9 +203,8 @@ test('send review if submit review is clicked', ()=>{
 })
 
 test('NewReviewModal should have name of product in Review About heading', ()=>{
-  const div = document.createElement('div')
   const {getByTestId, getByText} = render(
-    <RatingsReviews store = {store} theme={light} />, div
+    <RatingsReviews store = {store} theme={light} />
   )
   var newReviewButton =getByText('Add A Review');
   fireEvent.click(newReviewButton);
@@ -222,9 +215,8 @@ test('NewReviewModal should have name of product in Review About heading', ()=>{
 
 
 test('NewReviewModal should have label for each characteristics input', ()=>{
-  const div = document.createElement('div')
   const {getAllByTestId, getByText} = render(
-    <RatingsReviews store = {store} theme={light} />, div
+    <RatingsReviews store = {store} theme={light} />
   )
   var newReviewButton =getByText('Add A Review');
   fireEvent.click(newReviewButton);
@@ -234,9 +226,8 @@ test('NewReviewModal should have label for each characteristics input', ()=>{
 })
 
 test('clicking add a review button should open new review modal', ()=>{
-  const div = document.createElement('div')
   const {getByTestId, getByText} = render(
-    <RatingsReviews store = {store} theme={light} />, div
+    <RatingsReviews store = {store} theme={light} />
   )
   var newReviewButton =getByText('Add A Review');
   fireEvent.click(newReviewButton);
