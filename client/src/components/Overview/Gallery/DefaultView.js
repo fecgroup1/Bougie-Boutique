@@ -37,7 +37,7 @@ const DefaultView = ({ title, styles, currImg, lastImgIndex, lastStyleIndex, cur
           buttonWidth={buttonWidth} />
         <MainNull
           src='https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg'
-          alt={$`Image of ${styles[currImg[0]].name} of ${title} is unavailable`}/>
+          alt={`Image ${currImg[1]} for ${styles[currImg[0]].name} style ${title} is unavailable`}/>
       </>
     );
   } else {
@@ -59,7 +59,7 @@ const DefaultView = ({ title, styles, currImg, lastImgIndex, lastStyleIndex, cur
         <MainImg
           onClick={() => handleModalOpen(true)}
           src={styles[currImg[0]].photos[currImg[1]].url}
-          alt={$`Image of ${styles[currImg[0]].name} of ${title}`}/>
+          alt={`Image ${currImg[1]} for ${styles[currImg[0]].name} style ${title}`}/>
         <ExpandedView
           isOpen={modalOpen}
           styles={styles}

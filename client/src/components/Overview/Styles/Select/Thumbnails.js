@@ -48,7 +48,8 @@ class Thumbnails extends React.Component {
             return (
               <Loading
                 key={index}
-                src={style.photos[0].thumbnail_url}/>
+                src={style.photos[0].thumbnail_url}
+                alt="Thumbnail image is loading"/>
             )
           } else if (index === currStyle) {
             if (style.photos[0].thumbnail_url === null) {
@@ -56,6 +57,7 @@ class Thumbnails extends React.Component {
                 <PlaceholderBorder key={index}>
                 <SelectedStylePlaceholder
                   onClick={() => changeStyle(index)}
+                  alt={`Thumbnail image for ${style.name} style ${title} is unavailable`}
                   src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
                 </PlaceholderBorder>
               );
@@ -63,6 +65,7 @@ class Thumbnails extends React.Component {
               return (
                 <CurrThumb
                   key={index}
+                  alt={`Thumbnail image for currently selected ${style.name} style ${title}`}
                   src={style.photos[0].thumbnail_url}/>
               );
             }
@@ -70,6 +73,7 @@ class Thumbnails extends React.Component {
             return (
               <StylePlaceholder
                 key={index}
+                alt={`Thumbnail image for ${style.name} style ${title} is unavailable`}
                 onClick={() => changeStyle(index)}
                 src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
             );
@@ -77,6 +81,7 @@ class Thumbnails extends React.Component {
             return (
               <ThumbImg
                 key={index}
+                alt={`Thumbnail image for ${style.name} style ${title}`}
                 onClick={() => changeStyle(index)}
                 src={style.photos[0].thumbnail_url}/>
             );

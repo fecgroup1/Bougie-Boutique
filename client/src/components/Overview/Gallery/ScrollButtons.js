@@ -42,11 +42,13 @@ const ScrollButtons = ({ currImg, lastStyleIndex, lastImgIndex, currLastIndex, p
   return (
     <div id="lrbuttons" style={buttonContainer}>
       <GalleryScroll
+        aria-label={`${(currImg[0] === 0 && currImg[1] === 0) ? "": "Go to previous image"}`}
         style={leftOpacity}
         onClick={() => handleImgClick(nextLeft.style, nextLeft.photo)}>
           <i className="lni lni-chevron-left"></i>
       </GalleryScroll>
       <GalleryScroll
+        aria-label={`${(currImg[0] === lastStyleIndex && currImg[1] === lastImgIndex) ? "": "Go to next image"}`}
         style={rightOpacity}
         onClick={() => handleImgClick(nextRight.style, nextRight.photo)}>
           <i className="lni lni-chevron-right"></i>

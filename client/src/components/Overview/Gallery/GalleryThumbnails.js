@@ -93,6 +93,7 @@ class GalleryThumbnails extends React.Component {
   }
 
   render() {
+    const title = this.props.title;
     const styles = this.props.styles;
     const currImg = this.props.currImg;
     const handleImgClick = this.props.handleImgClick;
@@ -203,7 +204,8 @@ class GalleryThumbnails extends React.Component {
                         <GallergyBorder key={[sIndex, pIndex]}>
                           <SelectedGallPlaceholder
                             id={`img${sIndex}-${pIndex}`}
-                            src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
+                            src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"
+                            alt={`Thumbnail image for currently selected ${style.name} style ${title} is unavailable`}/>
                         </GallergyBorder>
                       );
                     } else {
@@ -212,7 +214,8 @@ class GalleryThumbnails extends React.Component {
                           style={thumbSize}
                           key={[sIndex, pIndex]}
                           id={`img${sIndex}-${pIndex}`}
-                          src={photo.thumbnail_url} />
+                          src={photo.thumbnail_url}
+                          alt={`Thumbnail image ${pIndex} for currently selected ${style.name} style ${title}`} />
                       );
                     }
                 } else if (photo.thumbnail_url === null) {
@@ -221,7 +224,8 @@ class GalleryThumbnails extends React.Component {
                       key={[sIndex, pIndex]}
                       id={`img${sIndex}-${pIndex}`}
                       onClick={() => {handleImgClick(sIndex, pIndex)}}
-                      src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"/>
+                      src="https://lineicons.com/wp-content/themes/xt-lineicons/free-regular-icons/circle-minus.svg"
+                      alt={`Thumbnail image ${pIndex} for ${style.name} of ${title} is unavailable`}/>
                   );
                 } else {
                   return (
@@ -230,6 +234,7 @@ class GalleryThumbnails extends React.Component {
                       key={[sIndex, pIndex]}
                       id={`img${sIndex}-${pIndex}`}
                       src={photo.thumbnail_url}
+                      alt={`Thumbnail image ${pIndex} for ${style.name} of ${title}`}
                       onClick={() => {handleImgClick(sIndex, pIndex)}} />
                   );
                 }
