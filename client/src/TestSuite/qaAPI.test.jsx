@@ -107,6 +107,15 @@ var getQAResponse =
                     ]
                 }
             }
+        },
+        {
+            "question_id": 183086,
+            "question_body": "3rd fabric question",
+            "question_date": "2021-04-26T00:00:00.000Z",
+            "asker_name": "Subject 42",
+            "question_helpfulness": 0,
+            "reported": false,
+            "answers": {}
         }
     ]
 
@@ -378,5 +387,34 @@ test('<Questions/> to open answer modal when clicked', async () => {
     fireEvent.click(collapseAnswers)
     getByTestId('moreAnswers')
 
+    jest.resetAllMocks()
+  });
+
+  test('<Questions/> to load more questions when scrolling', async () => {
+    const div = document.createElement('div')
+    const answerPromise = Promise.resolve(getQAAnswers)
+    const questionPromise = Promise.resolve(getQAResponse)
+    axios.get.mockResolvedValue(getQAAnswers)
+    const {getByText, getByTestId} = render(
+      <ThemeProvider theme={light}>
+          <Questions question={getQAResponse[0]} index={1} product={{"name": "Camo Onesie"}}
+          getAnswers={() => {return answerPromise}} getQuestions={() => {return questionPromise}} productId={'13023'}/>, div
+      </ThemeProvider>
+    )
+
+    const rerender = await waitForElementToBeRemoved(() => screen.getAllByLabelText(/questionNull/i))
+      .then(() => {
+      getByText('What fabric is the top made of?', { exact: false});
+      })
+    const loadMoreQuestions = getByTestId('moreQuestions');
+    fireEvent.click(loadMoreQuestions)
+    await waitFor(() => {
+        getByText('Hello World', { exact: false});
+    });
+    const scrollDownWidget = getByTestId('scroll');
+    fireEvent.scroll(scrollDownWidget, {y: 300})
+    await waitFor(() => {
+        getByText('3rd fabric question', { exact: false})
+    });
     jest.resetAllMocks()
   });

@@ -107,8 +107,8 @@ const Questions = (props) => {
     <Fragment>
     <QuestionsContainer>
       <h2>Questions and Answers</h2>
-      <SearchQuestions data-testid='test' currentProductId={props.productId} filterQuestions={filterQuestions}/>
-      <QuestionCardsContainer onScroll={unlimitedScroll}>
+      <SearchQuestions currentProductId={props.productId} filterQuestions={filterQuestions}/>
+      <QuestionCardsContainer data-testid='scroll' onScroll={unlimitedScroll}>
         {searchQuery.length >= 3 ? (
           <Fragment>
             {searchResults.slice(0, searchQuestionLength).map((question, index) =>
