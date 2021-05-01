@@ -119,8 +119,6 @@ class Gallery extends React.Component {
   }
 
   handleImgClick(x, y) {
-    console.log('style', x);
-    console.log('photo', y);
     this.props.changeImg(x, y);
   }
 
