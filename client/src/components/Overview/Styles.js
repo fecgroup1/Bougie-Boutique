@@ -66,12 +66,13 @@ const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews,
         flexGrow: 2,
       }}>
         <Thumbnails
+          title={title}
           styles={styles}
           currStyle={currStyle}
           changeStyle={changeStyle} />
       </div>
       <AddToCart
-        title={product.name}
+        title={title}
         currStyle={currStyle}
         styles={styles}
         outOfStock={outOfStock}

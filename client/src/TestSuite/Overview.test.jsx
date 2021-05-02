@@ -117,16 +117,30 @@ test('Add to Cart button asks user to select a size if no size is selected', () 
     cart={{}}
     setCart={setCart}/>);
 
-  fireEvent.click(screen.getByDisplayValue(/^(?=.*add)(?=.*cart).*$/i));
+  fireEvent.click(screen.getByText(/^(?=.*add)(?=.*cart).*$/i));
 
   expect(screen.getAllByText(/^(?=.*select)(?=.*size).*$/i).length).toBeGreaterThan(1);
 })
 
-import Thumbnails from './../components/Overview/Styles/Aelect/Thumbnails';
+import Thumbnails from './../components/Overview/Styles/Select/Thumbnails';
 
-test('On click, a new style is featured', () => {
+test('On click, call function to update current style', () => {
+  const getImgRegex = (styleIndex) => {
+    return new RegExp('^' + '(?=.*' + dummyState.styles[styleIndex].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
+  }
+  const mockChangeStyle = jest.fn();
 
+  render(<Thumbnails
+    title={dummyState.product.name}
+    styles={dummyState.styles}
+    currStyle={0}
+    changeStyle={mockChangeStyle} />);
+
+    fireEvent.click(screen.getByAltText(getImgRegex(3)));
+  expect(mockChangeStyle.mock.calls.length).toBe(1);
 });
+
+
 
 // import DefaultView from './../components/Overview/Gallery/DefaultView';
 // import ExpandedView from './../components/Overview/Gallery/ExpandedView.js';
