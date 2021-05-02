@@ -38,7 +38,7 @@ const RenderAnswer = ({answer, index}) => {
   const aDate = new Date(answer.date)
 
   return (
-    <div className='answerContainer' key={index}>
+    <div aria-label='renderedAnswer' className='answerContainer' key={index}>
       <div>
         {index === 0 ?
         <p style={{fontWeight: 'bold', display: 'inline-block', marginBottom: '10px'}}> A: </p>

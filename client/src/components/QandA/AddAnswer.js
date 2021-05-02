@@ -178,12 +178,12 @@ const AddAnswer = (props) => {
             >
             <form noValidate="" data-testid='answerModal'>
               <div>
-              <CloseModalButton onClick={closeForm}>X</CloseModalButton>
+              <CloseModalButton type='button' data-testid='closeAnswerModal' onClick={closeForm}>X</CloseModalButton>
                 <h2>Add an answer</h2>
                 <p style={{fontWeight: 'bold'}}>{props.product.name}: {props.question.question_body}</p>
                 <label>* Your Answer: </label>
                 {textBodyInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter an answer</Warning> : null}
-                <textarea name='answer' id='answerInputText' style={{width: '100%', height: '100px', backgroundColor: theme.bg, border: `2px solid ${theme.bluGry}`,
+                <textarea data-testid='answerBodyText' name='answer' id='answerInputText' style={{width: '100%', height: '100px', backgroundColor: theme.bg, border: `2px solid ${theme.bluGry}`,
                  color: `${theme.text}`, fontFamily: "'Josefin Sans', sans-serif", padding: '5px'}}
                   type='text' onChange={(e) => {charsLeft(e)}} maxLength='1000' required />
                 <p style={{fontSize: '14px', marginTop: '0', marginBottom: '30px'}}>{chars} characters remaining</p>
@@ -191,19 +191,19 @@ const AddAnswer = (props) => {
 
                 <label>* What is your nickname? </label><br></br>
                 {nicknameInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter a valid name</Warning> : null}
-                <QAModalInput type="text" id="answerNickname" name="nickname"
+                <QAModalInput data-testid='answerBodyNickname' type="text" id="answerNickname" name="nickname"
                   placeholder='Example: jack543!' maxLength='60'  required></QAModalInput>
 
                 <Warning>For privacy reasons, do not use your full name or email address</Warning><br></br>
 
                 <label>* Your email: </label><br></br>
                 {emailInvalid ? <Warning style={{color: 'red', marginBottom: '5px'}}>Please enter a valid email</Warning> : null}
-                <QAModalInput type="email" id="answerEmail" name="email"
+                <QAModalInput data-testid='answerBodyEmail' type="email" id="answerEmail" name="email"
                   placeholder='Example: jack@email.com' maxLength='60'  required></QAModalInput>
                 <Warning className='warning'>For authentication reasons, you will not be emailed</Warning><br></br>
 
                 <label> Photos: </label><br></br>
-                <input type='file' style={{width: '60%'}} name='image' accept='image/png, image/jpeg' onChange={addPhotos} multiple/>
+                <input data-testid='addAnswerPhoto' type='file' style={{width: '60%'}} name='image' accept='image/png, image/jpeg' onChange={addPhotos} multiple/>
                 {!overPhotoLimit ?
                   <Warning className='warning'>Choose up to 5 photos</Warning>
                   :
@@ -212,7 +212,7 @@ const AddAnswer = (props) => {
                   {!imgToUpload ?
                   <Fragment>
                   <Required id='required'>* Required</Required>
-                  <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
+                  <QuestionsButtons data-testid='submitAnswerModal' onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
                   </Fragment>
                   :
                   (
@@ -260,7 +260,7 @@ const AddAnswer = (props) => {
 
                   {failedPhotoUpload || invalidPhoto || overPhotoLimit ? null : <p style={{fontSize: '14px', marginBottom: '-10px'}}>Successfully uploaded photos</p>}
                   <p id='required'>* Required</p>
-                  <QuestionsButtons onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
+                  <QuestionsButtons data-testid='submitAnswerModal'  onClick={(event) => submitForm(event)}>Submit</QuestionsButtons>
                   </Fragment>)
                   :
                   (<i className="lni lni-spiner-solid lni-is-spinning"

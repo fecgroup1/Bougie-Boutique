@@ -1,0 +1,159 @@
+{
+  "getQAResponse":
+    [
+        {
+            "question_id": 66299,
+            "question_body": "What fabric is the top made of?",
+            "question_date": "2018-01-04T00:00:00.000Z",
+            "asker_name": "yankeelover",
+            "question_helpfulness": 13,
+            "reported": false,
+            "answers": {
+                "630244": {
+                    "id": 630244,
+                    "body": "Something pretty soft but I can't be sure",
+                    "date": "2018-01-04T00:00:00.000Z",
+                    "answerer_name": "metslover",
+                    "helpfulness": 7,
+                    "photos": [
+                        "https://images.unsplash.com/photo-1530519729491-aea5b51d1ee1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80",
+                        "https://images.unsplash.com/photo-1511127088257-53ccfcc769fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80",
+                        "https://images.unsplash.com/photo-1500603720222-eb7a1f997356?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"
+                    ]
+                },
+                "630296": {
+                    "id": 630296,
+                    "body": "Suede",
+                    "date": "2018-11-04T00:00:00.000Z",
+                    "answerer_name": "metslover",
+                    "helpfulness": 9,
+                    "photos": []
+                },
+                "630334": {
+                    "id": 630334,
+                    "body": "Supposedly suede, but I think its synthetic",
+                    "date": "2018-12-04T00:00:00.000Z",
+                    "answerer_name": "metslover",
+                    "helpfulness": 3,
+                    "photos": []
+                },
+                "1719523": {
+                    "id": 1719523,
+                    "body": "glass",
+                    "date": "2021-04-25T00:00:00.000Z",
+                    "answerer_name": "jackson11",
+                    "helpfulness": 0,
+                    "photos": []
+                }
+            }
+        },
+        {
+            "question_id": 183063,
+            "question_body": "Expanded question about the fabric",
+            "question_date": "2021-04-25T00:00:00.000Z",
+            "asker_name": "AFA",
+            "question_helpfulness": 7,
+            "reported": false,
+            "answers": {
+                "1719548": {
+                    "id": 1719548,
+                    "body": "This is a boldness test",
+                    "date": "2021-04-26T00:00:00.000Z",
+                    "answerer_name": "Seller",
+                    "helpfulness": 0,
+                    "photos": []
+                }
+            }
+        },
+        {
+            "question_id": 183087,
+            "question_body": "4th fabric q",
+            "question_date": "2021-04-26T00:00:00.000Z",
+            "asker_name": "Subject 98",
+            "question_helpfulness": 1,
+            "reported": false,
+            "answers": {}
+        },
+        {
+            "question_id": 183085,
+            "question_body": "Hello World",
+            "question_date": "2021-04-26T00:00:00.000Z",
+            "asker_name": "Shane",
+            "question_helpfulness": 1,
+            "reported": false,
+            "answers": {
+                "1719555": {
+                    "id": 1719555,
+                    "body": "Goodbye world",
+                    "date": "2021-04-26T00:00:00.000Z",
+                    "answerer_name": "Shai",
+                    "helpfulness": 0,
+                    "photos": [
+                        "https://hr-fec-group12.s3.amazonaws.com/Frog_on_palm_frond.jpg",
+                        "https://hr-fec-group12.s3.amazonaws.com/Ap_Creative_Stock_Header.jpg",
+                        "https://hr-fec-group12.s3.amazonaws.com/Keyboard-Mouse-And-Smartphone-On-Wooden-Desk-800x600.jpg",
+                        "https://hr-fec-group12.s3.amazonaws.com/photo-1518770660439-4636190af475.jpeg"
+                    ]
+                }
+            }
+        },
+        {
+            "question_id": 183086,
+            "question_body": "3rd fabric question",
+            "question_date": "2021-04-26T00:00:00.000Z",
+            "asker_name": "Subject 42",
+            "question_helpfulness": 0,
+            "reported": false,
+            "answers": {}
+        }
+    ],
+
+  "getQAAnswers":
+    [
+        {
+            "answer_id": 630296,
+            "body": "Suede",
+            "date": "2018-11-04T00:00:00.000Z",
+            "answerer_name": "metslover",
+            "helpfulness": 9,
+            "photos": ["https://hr-fec-group12.s3.amazonaws.com/Frog_on_palm_frond.jpg"]
+        },
+        {
+            "answer_id": 630244,
+            "body": "Something pretty soft but I can't be sure",
+            "date": "2018-01-04T00:00:00.000Z",
+            "answerer_name": "metslover",
+            "helpfulness": 7,
+            "photos": [
+                {
+                    "id": 529294,
+                    "url": "https://images.unsplash.com/photo-1530519729491-aea5b51d1ee1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80"
+                },
+                {
+                    "id": 529295,
+                    "url": "https://images.unsplash.com/photo-1511127088257-53ccfcc769fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+                },
+                {
+                    "id": 529296,
+                    "url": "https://images.unsplash.com/photo-1500603720222-eb7a1f997356?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1653&q=80"
+                }
+            ]
+        },
+        {
+            "answer_id": 630334,
+            "body": "Supposedly suede, but I think its synthetic",
+            "date": "2018-12-04T00:00:00.000Z",
+            "answerer_name": "metslover",
+            "helpfulness": 3,
+            "photos": []
+        },
+        {
+            "answer_id": 1719523,
+            "body": "glass",
+            "date": "2021-04-25T00:00:00.000Z",
+            "answerer_name": "jackson11",
+            "helpfulness": 0,
+            "photos": []
+        }
+    ]
+}
