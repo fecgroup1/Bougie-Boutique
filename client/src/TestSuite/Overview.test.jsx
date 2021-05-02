@@ -1,17 +1,16 @@
 import React, {Fragment} from 'react';
+import axios from 'axios';
 
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
-
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { render, fireEvent, waitForElementToBeRemoved, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom/extend-expect'
 
 import Overview from './../components/Overview';
 import CurrentProduct from './../Utils/CurrentProduct';
 import dummyState from './../Utils/dummyState.json';
-import { ThemeProvider, ThemeConsumer } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { dark } from './../Styles';
+import { scroll } from './../components/Overview/Gallery/GalleryThumbnails';
 
 // MOCK FUNCTIONS
 const localStorageMock = {
@@ -33,19 +32,21 @@ class ResizeObserverMock {
 window.ResizeObserver = ResizeObserverMock;
 global.ResizeObserver = ResizeObserverMock;
 
-// MOCK SERVER
-const server = setupServer(
-  rest.get('/greeting', (req, res, ctx) => {
-    return res(ctx.data(dummyState));
-  })
-)
+jest.mock('./../components/Overview/Gallery/GalleryThumbnails', () => {
+  return {
+    __esModule: true,
+    default: () => {
+      return <div></div>;
+    },
+  };
+});
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+const imgClickMock = jest.fn();
+const theme = dark;
+
+jest.mock('axios');
 
 // MOCK OVERVIEW
-
 class EmptyStore extends React.Component {
   constructor(props) {
     super(props);
@@ -65,6 +66,15 @@ class EmptyStore extends React.Component {
     )
   }
 }
+
+const MockOverview = ({Component, pid}) => (
+  <ThemeProvider theme={theme}>
+  <Component
+    pid={pid}
+    render={ store =>
+      (<Overview store={store}/>)}/>
+  </ThemeProvider>
+);
 
 // TESTS
 test('Overview loads loading imgs when there is no data', () => {
@@ -90,7 +100,6 @@ test('Quantity dropdown is disabled by default', () => {
     cart={{}}
     setCart={setCart}/>);
 
-  const mockSizeSelect = AddToCart.handleSizeSelect
   expect(screen.getByDisplayValue(/^(?=.*qty)(?=.*--).*$/i)).toHaveAttribute('disabled');
 });
 
@@ -140,101 +149,29 @@ test('On click, call function to update current style', () => {
   expect(mockChangeStyle.mock.calls.length).toBe(1);
 });
 
+describe('style thumbnails', () => {
+  it('change the main gallery image when clicked', async () => {
+    const res = {data: dummyState};
+    axios.get.mockResolvedValue(res);
+
+    const { rerender } = render(<MockOverview
+      Component={CurrentProduct}
+      pid="13023"/>);
 
 
-// import DefaultView from './../components/Overview/Gallery/DefaultView';
-// import ExpandedView from './../components/Overview/Gallery/ExpandedView.js';
+    await waitForElementToBeRemoved(screen.getAllByAltText(/is loading/i));
 
-// describe('Gallery', () => {
-//   const getRegex = (currStyle, currIndex) => {
-//     return new RegExp('^' + '(?=.*' + currIndex + ')' + '(?=.*' + dummyState.styles[currStyle].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
-//   }
+      var currentStyleRegex = new RegExp('^' + '(?=.*selected)' + '(?=.*' + dummyState.styles[0].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
+      expect(screen.getByAltText(currentStyleRegex)).toBeInTheDocument();
 
-//   it('changes it\'s image', () => {
-//     // MOCKS
-//     // jest.mock('./../components/Overview/Gallery/ExpandedView.js', () => {});
-//     const imgClickMock = jest.fn();
-//     const theme = dark;
+      var newCurrentStyleRegex = new RegExp('^' + '(?=.*selected)' + '(?=.*' + dummyState.styles[1].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
 
-//     var { rerender } = render(
-//       <ThemeProvider theme={theme}>
-//         <DefaultView
-//           title={dummyState.product.name}
-//           styles={dummyState.styles}
-//           currImg={[0,0]}
-//           lastImgIndex={5}
-//           lastStyleIndex={5}
-//           currLastIndex={5}
-//           prevLastIndex={0}
-//           handleImgClick={imgClickMock}
-//           galLeft={0}
-//           galTop={0}
-//           galHeight={400}
-//           galWidth={400}
-//           buttonHeight={30}
-//           buttonWidth={60}
-//           numImgs={36}
-//           currIndex={1}/>
-//       </ThemeProvider>
-//     )
-//     var currImgRegex = getRegex(0, 0);
-//     // expect(screen.getAllByAltText(currImgRegex).length).toBeGreaterThan(1);
-//     expect(screen.getByAltText(/.*camo onesie.*/i)).toBeInTheDocument();
+      var newStyleRegex = new RegExp('^' + '(?=.*' + dummyState.styles[1].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
+      fireEvent.click(screen.getByAltText(newStyleRegex));
 
-//     rerender(<DefaultView
-//       title={dummyState.product.name}
-//       styles={dummyState.styles}
-//       currImg={[1,0]}
-//       lastImgIndex={5}
-//       lastStyleIndex={5}
-//       currLastIndex={5}
-//       prevLastIndex={5}
-//       handleImgClick={imgClickMock}
-//       galLeft={0}
-//       galTop={0}
-//       galHeight={400}
-//       galWidth={400}
-//       buttonHeight={30}
-//       buttonWidth={60}
-//       numImgs={36}
-//       currIndex={1}
-//     />);
-//     var newImgRegex = getRegex(1, 0);
-//     expect(screen.getAllByAltText(newImgRegex).length).toBeGreaterThan(1);
-//   });
-
-
-
-  // describe('style thumbnails', () => {
-  //   it('change the main gallery image when clicked', async () => {
-  //     const { rerender } = render(<MockOverview
-  //       Component={CurrentProduct}
-  //       pid="13023"/>);
-
-
-  //     waitForElementToBeRemoved(screen.getAllByAltText(/is loading/i)).then(() => {
-  //       console.log(document.getElementById('defaultThumbs'));
-
-
-  //       var defaultScrollSpy = jest.spyOn(document.getElementById('defaultThumbs')).mockImplementation(()=>{});
-
-  //       var currentStyleRegex = new RegExp('^' + '(?=.*selected)' + '(?=.*' + dummyState.styles[0].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
-  //       expect(screen.getByAltText(currentStyleRegex)).toBeInTheDocument();
-
-  //       var newCurrentStyleRegex = new RegExp('^' + '(?=.*selected)' + '(?=.*' + dummyState.styles[1].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
-  //       expect(screen.getByAltText(newCurrentStyleRegex)).not.toBeInTheDocument();
-
-
-  //       var newStyleRegex = new RegExp('^' + '(?=.*' + dummyState.styles[1].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
-  //       fireEvent.click(screen.getByAltText(newStyleRegex));
-
-  //       expect(screen.getByAltText(newCurrentStyleRegex)).toBeInTheDocument();
-
-  //       expect(screen.getByAltText(currentStyleRegex)).not.toBeInTheDocument();
-
-  //     });
-  //   });
-  // });
+      expect(screen.getByAltText(newCurrentStyleRegex)).toBeInTheDocument();
+  });
+});
 
     // describe('price display', () => {
     //   it('displays original price', () => {
