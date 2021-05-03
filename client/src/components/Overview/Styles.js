@@ -1,5 +1,4 @@
 import Stars from './Styles/Stars.js';
-import Select from './Styles/Select.js';
 import AddToCart from './Styles/AddToCart.js';
 import Price from './Styles/Select/Price.js';
 import Thumbnails from './Styles/Select/Thumbnails.js';
@@ -67,13 +66,13 @@ const Styles = ({store, product, currStyle, changeStyle, styles, stars, reviews,
         flexGrow: 2,
       }}>
         <Thumbnails
+          title={title}
           styles={styles}
           currStyle={currStyle}
           changeStyle={changeStyle} />
       </div>
       <AddToCart
-        store={store}
-        title={product.name}
+        title={title}
         currStyle={currStyle}
         styles={styles}
         outOfStock={outOfStock}

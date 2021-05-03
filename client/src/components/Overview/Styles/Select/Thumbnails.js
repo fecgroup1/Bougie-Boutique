@@ -22,6 +22,7 @@ class Thumbnails extends React.Component {
     const styles = this.props.styles;
     const currStyle = this.props.currStyle;
     const changeStyle = this.props.changeStyle;
+
     const thumbsGrid = {
       display: 'grid',
       gridTemplateAreas: `
@@ -30,7 +31,6 @@ class Thumbnails extends React.Component {
       `,
       columnGap: '1fr',
       rowGap: '0.75vh',
-      // gridAutoRows: '100px',
       justifyContent: 'space-between',
       alignContent: 'space-between',
       marginBottom: '0.5%',
