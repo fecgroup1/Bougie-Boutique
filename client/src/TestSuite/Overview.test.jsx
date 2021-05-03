@@ -13,16 +13,6 @@ import { dark } from './../Styles';
 import { scroll } from './../components/Overview/Gallery/GalleryThumbnails';
 
 // MOCK FUNCTIONS
-const localStorageMock = {
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-  clear: jest.fn(),
-};
-
-global.localStorage = localStorageMock;
-window.localStorage = localStorageMock;
-
 class ResizeObserverMock {
   observe() {}
   unobserve() {}
@@ -88,118 +78,151 @@ test('Overview loads loading imgs when there is no data', () => {
   expect(screen.getAllByAltText(/is loading/i)[0]).toBeInTheDocument();
 });
 
-import AddToCart from './../components/Overview/Styles/AddToCart';
-const setCart = jest.fn();
-
-test('Quantity dropdown is disabled by default', () => {
-  render(<AddToCart
-    title={dummyState.product.name}
-    currStyle={1}
-    styles={dummyState.styles}
-    outOfStock={false}
-    cart={{}}
-    setCart={setCart}/>);
-
-  expect(screen.getByDisplayValue(/^(?=.*qty)(?=.*--).*$/i)).toHaveAttribute('disabled');
-});
-
-test('Quantity dropdown defaults to 1 when a size is selected', () => {
-  render(<AddToCart
-    title={dummyState.product.name}
-    currStyle={1}
-    styles={dummyState.styles}
-    outOfStock={false}
-    cart={{}}
-    setCart={setCart}/>);
-
-  fireEvent.change(screen.getByDisplayValue(/size/i), {target: {value: 0}});
-
-  expect(screen.getByDisplayValue(/^(?=.*qty)(?=.*1).*$/i)).toBeInTheDocument();
-})
-
-test('Add to Cart button asks user to select a size if no size is selected', () => {
-  render(<AddToCart
-    title={dummyState.product.name}
-    currStyle={1}
-    styles={dummyState.styles}
-    outOfStock={false}
-    cart={{}}
-    setCart={setCart}/>);
-
-  fireEvent.click(screen.getByText(/^(?=.*add)(?=.*cart).*$/i));
-
-  expect(screen.getAllByText(/^(?=.*select)(?=.*size).*$/i).length).toBeGreaterThan(1);
-})
-
-import Thumbnails from './../components/Overview/Styles/Select/Thumbnails';
-
-test('On click, call function to update current style', () => {
-  const getImgRegex = (styleIndex) => {
+describe('Overview', () => {
+  const getStyleRegex = (styleIndex) => {
     return new RegExp('^' + '(?=.*' + dummyState.styles[styleIndex].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
   }
-  const mockChangeStyle = jest.fn();
+  const getCurrStyleRegex = (styleIndex) => {
+    return new RegExp('^' + '(?=.*selected)' + '(?=.*' + dummyState.styles[styleIndex].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i')
+  }
+  const getImgRegex = (style, photo) => {
+    return new RegExp('^' + '(?=.*' + photo + ')'+ '(?=.*' + dummyState.styles[style].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
+  }
 
-  render(<Thumbnails
-    title={dummyState.product.name}
-    styles={dummyState.styles}
-    currStyle={0}
-    changeStyle={mockChangeStyle} />);
-
-    fireEvent.click(screen.getByAltText(getImgRegex(3)));
-  expect(mockChangeStyle.mock.calls.length).toBe(1);
-});
-
-describe('style thumbnails', () => {
-  it('change the main gallery image when clicked', async () => {
+  beforeAll(() => {
     const res = {data: dummyState};
     axios.get.mockResolvedValue(res);
+  });
 
-    const { rerender } = render(<MockOverview
+  beforeEach(() => {
+    render(<MockOverview
       Component={CurrentProduct}
       pid="13023"/>);
+  })
 
+  it('main image changes when a style thumbnail is clicked', async () => {
+    // await waitForElementToBeRemoved(screen.getAllByAltText(/is loading/i));
 
-    await waitForElementToBeRemoved(screen.getAllByAltText(/is loading/i));
+    var currentStyleRegex = getCurrStyleRegex(0);
+    var origStyleElement = screen.queryAllByAltText(currentStyleRegex);
+    expect(origStyleElement.length).toBeGreaterThan(0);
 
-      var currentStyleRegex = new RegExp('^' + '(?=.*selected)' + '(?=.*' + dummyState.styles[0].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
-      expect(screen.getByAltText(currentStyleRegex)).toBeInTheDocument();
+    var newStyleRegex = getStyleRegex(1);
+    var newStyleElement = screen.queryAllByAltText(newStyleRegex);
+    fireEvent.click(newStyleElement[0]);
 
-      var newCurrentStyleRegex = new RegExp('^' + '(?=.*selected)' + '(?=.*' + dummyState.styles[1].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
+    var newCurrentStyleRegex = getCurrStyleRegex(1);
+    var newCurrStyleElement = screen.queryAllByAltText(newCurrentStyleRegex);
+    expect(newCurrStyleElement.length).toBeGreaterThan(0);
 
-      var newStyleRegex = new RegExp('^' + '(?=.*' + dummyState.styles[1].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
-      fireEvent.click(screen.getByAltText(newStyleRegex));
-
-      expect(screen.getByAltText(newCurrentStyleRegex)).toBeInTheDocument();
+    var origStyleElement2 = screen.queryAllByAltText(currentStyleRegex);
+    expect(origStyleElement2.length).toBe(0);
   });
+
+  it('displays the price in red and the original price with a strikethough when there is a sale', () => {
+    var origPriceElement = screen.getByText(/.*140.*/);
+    expect(origPriceElement).not.toHaveStyle('text-decoration: strikethrough');
+
+    var saleStyleRegex = getStyleRegex(2)
+    fireEvent.click(screen.getByAltText(saleStyleRegex));
+
+    var salePriceElement = screen.getByText(/.*100.*/);
+    expect(salePriceElement).toHaveStyle('color: red');
+
+    var newOrigPriceElement = screen.getByText(/.*140\.00.*/);
+    expect(newOrigPriceElement).toHaveStyle('text-decoration: line-through');
+  });
+
+  it('quantity dropdown is disabled by default', () => {
+
+    expect(screen.getByDisplayValue(/^(?=.*qty)(?=.*--).*$/i)).toHaveAttribute('disabled');
+  });
+
+  it('quantity dropdown defaults to 1 when a size is selected', () => {
+
+    fireEvent.change(screen.getByDisplayValue(/size/i), {target: {value: 0}});
+
+    expect(screen.getByDisplayValue(/^(?=.*qty)(?=.*1).*$/i)).toBeInTheDocument();
+  })
+
+  it('Add To Cart button asks user to select a size if no size is selected', () => {
+
+    fireEvent.click(screen.getByText(/^(?=.*add)(?=.*cart).*$/i));
+
+    expect(screen.getAllByText(/^(?=.*select)(?=.*size).*$/i).length).toBeGreaterThan(1);
+  });
+
+  it('adds items to local storage when a size is selected and Add To Cart is clicked', () => {
+
+    const localStorageSpy = jest.spyOn(window.localStorage.__proto__, 'setItem');
+
+    fireEvent.change(screen.getByDisplayValue(/size/i), {target: {value: 0}});
+
+    fireEvent.click(screen.getByText(/^(?=.*add)(?=.*cart).*$/i));
+
+    expect(localStorageSpy).toHaveBeenCalled();
+  })
+
+  it('switches to the next image when the next image button is clicked', () => {
+    var nextButton = screen.getByLabelText(/^.*next.*$/i);
+
+    var image0 = getImgRegex(0, 0);
+    expect(screen.getByAltText(image0)).toBeInTheDocument;
+
+    fireEvent.click(nextButton);
+
+    var image1 = getImgRegex(0, 1);
+    expect(screen.getByAltText(image1)).toBeInTheDocument;
+    expect(screen.queryByAltText(image0)).toBe(null);
+  });
+
+  it('switches to the previous image when the previous image button is clicked', () => {
+    var nextButton = screen.getByLabelText(/^.*next.*$/i);
+
+    fireEvent.click(nextButton);
+
+    var image1 = getImgRegex(0, 1);
+    expect(screen.getByAltText(image1)).toBeInTheDocument;
+    expect(screen.queryByAltText(image0)).toBe(null);
+
+    var prevButton = screen.getByLabelText(/^.*previous.*$/i);
+
+    fireEvent.click(prevButton);
+    expect(screen.getByAltText(image0)).toBeInTheDocument;
+    expect(screen.queryByAltText(image1)).toBe(null);
+  });
+
+  it('switches to the next style when the next button switches to an image of the next style', () => {
+    var nextButton = screen.getByLabelText(/^.*next.*$/i);
+
+    var style0 = getCurrStyleRegex(0);
+    expect(screen.queryByAltText(style0)).toBeInTheDocument();
+
+    fireEvent.click(nextButton);
+    fireEvent.click(nextButton);
+    fireEvent.click(nextButton);
+    fireEvent.click(nextButton);
+    fireEvent.click(nextButton);
+    fireEvent.click(nextButton);
+    fireEvent.click(nextButton);
+
+    var style1 = getCurrStyleRegex(1);
+    expect(screen.queryByAltText(style1)).toBeInTheDocument();
+    expect(screen.queryByAltText(style0)).toBe(null);
+  })
+
+  it('switches to the previous style when the previous button switches to an image of the previous style', () => {
+
+    var style3 = getStyleRegex(3);
+    fireEvent.click(screen.queryByAltText(style3));
+
+    var prevButton = screen.getByLabelText(/^.*previous.*$/i);
+    fireEvent.click(prevButton);
+
+    var style2 = getCurrStyleRegex(2);
+    expect(screen.queryByAltText(style2)).toBeInTheDocument();
+
+    var style0 = getCurrStyleRegex(0);
+    expect(screen.queryByAltText(style0)).toBe(null);
+  })
 });
-
-    // describe('price display', () => {
-    //   it('displays original price', () => {
-
-    //   });
-    //   it('displays sale price in red', () => {
-
-    //   });
-    //   it('displays original price with a strikethrough when there is a sale price', () => {
-
-    //   });
-    // });
-
-    // describe('overlay thumbnails', () => {
-    //   it('displays all images', () => {
-
-    //   });
-    //   it('scrolls the currently selected image into view') {
-
-    //   };
-    // });
-
-    // describe('left/right gallery scroll buttons', () => {});
-// });
-
-// Gallery L/R Buttons
-// QTY button is disabled until size is selected
-// QTY button defaults to 1 when size is selected
-// Add to Cart button is disabled until size is selected
-// Add to Cart button throws an error when no size is selected
-// Price is in red when sale product is selected
