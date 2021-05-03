@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import axios from 'axios';
 
-import { render, fireEvent, waitForElementToBeRemoved, screen } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 import '@testing-library/jest-dom/extend-expect'
 
@@ -10,7 +10,6 @@ import CurrentProduct from './../Utils/CurrentProduct';
 import dummyState from './../Utils/dummyState.json';
 import { ThemeProvider } from 'styled-components';
 import { dark } from './../Styles';
-import { scroll } from './../components/Overview/Gallery/GalleryThumbnails';
 
 // MOCK FUNCTIONS
 class ResizeObserverMock {
@@ -22,7 +21,6 @@ class ResizeObserverMock {
 window.ResizeObserver = ResizeObserverMock;
 global.ResizeObserver = ResizeObserverMock;
 
-const imgClickMock = jest.fn();
 const theme = dark;
 
 jest.mock('axios');
@@ -100,7 +98,6 @@ describe('Overview', () => {
   })
 
   it('main image changes when a style thumbnail is clicked', async () => {
-    // await waitForElementToBeRemoved(screen.getAllByAltText(/is loading/i));
 
     var currentStyleRegex = getCurrStyleRegex(0);
     var origStyleElement = screen.queryAllByAltText(currentStyleRegex);
