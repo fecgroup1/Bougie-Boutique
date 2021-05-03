@@ -22,6 +22,11 @@ class ResizeObserverMock {
 window.ResizeObserver = ResizeObserverMock;
 global.ResizeObserver = ResizeObserverMock;
 
+const imgClickMock = jest.fn();
+const theme = dark;
+
+jest.mock('axios');
+
 jest.mock('./../components/Overview/Gallery/GalleryThumbnails', () => {
   return {
     __esModule: true,
@@ -31,32 +36,7 @@ jest.mock('./../components/Overview/Gallery/GalleryThumbnails', () => {
   };
 });
 
-const imgClickMock = jest.fn();
-const theme = dark;
-
-jest.mock('axios');
-
 // MOCK OVERVIEW
-class EmptyStore extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentProductId: this.props.pid,
-      cart: {},
-    };
-  }
-  setProduct() {}
-  changeImg() {}
-  setCart() {}
-  render() {
-    return (
-      <Fragment>
-        {this.props.render(this)}
-      </Fragment>
-    )
-  }
-}
-
 const MockOverview = ({Component, pid}) => (
   <ThemeProvider theme={theme}>
   <Component
@@ -68,6 +48,25 @@ const MockOverview = ({Component, pid}) => (
 
 // TESTS
 test('Overview loads loading imgs when there is no data', () => {
+  class EmptyStore extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        currentProductId: this.props.pid,
+        cart: {},
+      };
+    }
+    setProduct() {}
+    changeImg() {}
+    setCart() {}
+    render() {
+      return (
+        <Fragment>
+          {this.props.render(this)}
+        </Fragment>
+      )
+    }
+  }
 
   render(<EmptyStore
     render={ store =>
@@ -81,13 +80,13 @@ test('Overview loads loading imgs when there is no data', () => {
 describe('Overview', () => {
   const getStyleRegex = (styleIndex) => {
     return new RegExp('^' + '(?=.*' + dummyState.styles[styleIndex].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
-  }
+  };
   const getCurrStyleRegex = (styleIndex) => {
     return new RegExp('^' + '(?=.*selected)' + '(?=.*' + dummyState.styles[styleIndex].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i')
-  }
+  };
   const getImgRegex = (style, photo) => {
     return new RegExp('^' + '(?=.*' + photo + ')'+ '(?=.*' + dummyState.styles[style].name + ')' + '(?=.*' + dummyState.product.name + ').*$', 'i');
-  }
+  };
 
   beforeAll(() => {
     const res = {data: dummyState};
@@ -181,6 +180,7 @@ describe('Overview', () => {
 
     fireEvent.click(nextButton);
 
+    var image0 = getImgRegex(0, 0);
     var image1 = getImgRegex(0, 1);
     expect(screen.getByAltText(image1)).toBeInTheDocument;
     expect(screen.queryByAltText(image0)).toBe(null);
