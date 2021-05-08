@@ -25,14 +25,39 @@ const theme = dark;
 
 jest.mock('axios');
 
-jest.mock('./../components/Overview/Gallery/GalleryThumbnails', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div></div>;
-    },
-  };
-});
+// jest.mock('./../components/Overview/Gallery/GalleryThumbnails', () => {
+//   return {
+//     __esModule: true,
+//     default: () => {
+//       return <div></div>;
+//     },
+//   };
+// });
+
+import GalleryThumbnails from './../components/Overview/Gallery/GalleryThumbnails';
+
+test.only('GalleryThumbnail renders', () => {
+  render(
+    <GalleryThumbnails
+            title={dummyState.product.name}
+            galHeight={0}
+            galWidth={0}
+            galLeft={0}
+            galTop={0}
+            styles={dummyState.styles}
+            currImg={[0, 0]}
+            numImgs={36}
+            handleImgClick={jest.fn()}
+            currIndex={0}
+            id="defaultThumbs"/>
+  );
+
+  document.getElementById('defaultThumbs').scrollTo = jest.fn();
+  console.log(document.getElementById('defaultThumbs'));
+  console.log(document.getElementById('defaultThumbs').scrollTo);
+  console.log(document.getElementById('defaultThumbs').scroll);
+  console.log(window.scrollTo);
+})
 
 // MOCK OVERVIEW
 const MockOverview = ({Component, pid}) => (

@@ -11,13 +11,13 @@ const strikethru = {
 const Price = ({orig, sale}) => {
   if (sale === null) {
     return(
-      <span>{orig}</span>
+      <span>${typeof orig === 'number' ? orig.toFixed(2): '0.00'}</span>
     );
   } else {
     return(
       <>
-      <span style={salePrice}>${sale} </span>
-      <span style={strikethru}>${orig}</span>
+      <span style={salePrice}>${typeof sale === 'number' ? sale.toFixed(2): sale} </span>
+      <span style={strikethru}>${typeof orig === 'number' ? orig.toFixed(2): orig}</span>
       </>
     );
   }
