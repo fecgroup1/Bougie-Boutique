@@ -29,7 +29,7 @@ app.use('/product', routers.productRouter);
 
 app.use('/reviews', routers.reviewRouter);
 
-app.use('/qa', controller.qa.qaController);
+// app.use('/qa', controller.qa.qaController);
 
 app.use('/addPhoto', form.single('image'), controller.s3);
 

@@ -32,8 +32,8 @@ module.exports = (req, res) => {
       res.json({success: false, error: err})
     }
 
-    const qaImgUrl = `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
-    console.log(qaImgUrl)
-    res.send(qaImgUrl)
+    const mediaUrl = `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+    console.log(mediaUrl)
+    res.send(mediaUrl)
   })
 }

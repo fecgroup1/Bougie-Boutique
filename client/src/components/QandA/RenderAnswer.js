@@ -33,9 +33,9 @@ const RenderAnswer = ({answer, index}) => {
       .replace(new RegExp("&"+"#"+"x27;", "g"), "'")
   }
 
-  const tempBody = (escape(answer.body))
-  const report = (aReported.includes(answer.answer_id))
-  const aDate = new Date(answer.date)
+  const tempBody = (escape(answer.answer_body))
+  const report = (aReported.includes(answer.a_id))
+  const aDate = new Date(answer.answer_date)
 
   return (
     <div aria-label='renderedAnswer' className='answerContainer' key={index}>
@@ -64,7 +64,7 @@ const RenderAnswer = ({answer, index}) => {
             <span style={{marginLeft: '15px'}}>|</span>
             <span style={{marginLeft: '15px', fontSize: '14px', marginBottom: '20px', display: 'inline-block'}}> Was this answer helpful?
               <HelpfulButton data-testid='answerHelpful' onClick={() => markHelpful(answer)}> Yes </HelpfulButton>
-              ({answer.helpfulness})
+              ({answer.answer_helpfulness})
               <span style={{marginLeft: '15px'}}>|  </span>
               {!report ?
                 (
@@ -86,7 +86,7 @@ const RenderAnswer = ({answer, index}) => {
             <span style={{marginLeft: '15px'}}>|</span>
             <span style={{marginLeft: '15px', fontSize: '14px', marginBottom: '20px', display: 'inline-block'}} className='answererInfo'> Was this answer helpful?
               <HelpfulButton data-testid='answerHelpful' onClick={() => markHelpful(answer)}> Yes </HelpfulButton>
-              ({answer.helpfulness})
+              ({answer.answer_helpfulness})
               <span style={{marginLeft: '15px'}}>|</span>
               {!report ?
                 (

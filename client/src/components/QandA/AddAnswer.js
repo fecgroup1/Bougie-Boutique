@@ -80,9 +80,9 @@ const AddAnswer = (props) => {
           setImgUploading(false);
           return;
         }
-        const bodyFormData = new FormData();
+        var bodyFormData = new FormData();
         bodyFormData.append('image', file);
-        const options = {
+        var options = {
             'Content-Type': 'multipart/form-data'
         }
         return axios.post('/addPhoto', bodyFormData, options)
